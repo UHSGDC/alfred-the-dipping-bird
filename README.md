@@ -1,5 +1,5 @@
 # Alfred the Dipping Bird
-Alfred the Dipping Bird is a game being developed by UHS GDC. You can view the design document [here](https://docs.google.com/document/d/1_6G9ULByE3mOKXzH_PkwhxxOqDKpeOXbp-sWbqQ0vHw/edit)
+Alfred the Dipping Bird is a game being developed by UHS GDC. You can view the design document [here](https://docs.google.com/document/d/1fIJ-ZI_8utNiiU8Cq0HMYWliuOGEth-xrPfnoSlnYYc/edit?usp=sharing)
 
 The game is being developed for Windows, Mac, Linux, and Web using Godot 4.2.1
 
