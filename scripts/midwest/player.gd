@@ -42,3 +42,7 @@ func _physics_process(delta: float) -> void:
 	position.x = clampf(position.x, top_left_bound.position.x, bot_right_bound.position.x)
 	position.y = clampf(position.y, top_left_bound.position.y, bot_right_bound.position.y)
 
+
+
+func _on_area_entered(area: Area2D) -> void:
+	print(name + " hit obstacle")
