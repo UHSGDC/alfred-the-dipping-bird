@@ -1,7 +1,7 @@
 extends Area2D
 
 
-const MAX_SPEED: Vector2 = Vector2(300, 500)
+const MAX_SPEED: Vector2 = Vector2(400, 400)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 
 @export var top_left_bound: Marker2D
