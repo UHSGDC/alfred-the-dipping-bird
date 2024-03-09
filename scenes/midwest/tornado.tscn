@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dadhkw5ulxa0b"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_qcfba"]
+[ext_resource type="Script" path="res://scripts/midwest/tornado.gd" id="1_wlt6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euvjd"]
+radius = 148.165
+
+[node name="Tornado" type="Area2D"]
+z_index = -1
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+linear_damp_space_override = 1
+linear_damp = 0.2
+script = ExtResource("1_wlt6b")
+path_follow_speed = 50.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.462745, 0.901961, 1)
+position = Vector2(2, -5)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qcfba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_euvjd")
+debug_color = Color(0, 0.552941, 0.917647, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
