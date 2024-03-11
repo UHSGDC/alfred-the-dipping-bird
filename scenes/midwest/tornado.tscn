@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_euvjd"]
 radius = 148.165
 
-[node name="Tornado" type="Area2D"]
+[node name="Tornado" type="Area2D" groups=["tornado"]]
 z_index = -1
 gravity_space_override = 1
 gravity_point = true

@@ -38,7 +38,6 @@ script = ExtResource("2_8757x")
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
-debug_pause_movement = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.5, 0.25)
@@ -57,19 +56,23 @@ layer_0/tile_data = PackedInt32Array(-262140, 1, 0, -196604, 1, 0, -131068, 1, 0
 [node name="TornadoPaths" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="TornadoPaths"]
-position = Vector2(-172.219, -8)
+position = Vector2(564, 14)
 curve = SubResource("Curve2D_mx3ea")
 
 [node name="Obstacles" type="Node2D" parent="."]
 
-[node name="Obstacle" parent="Obstacles" instance=ExtResource("4_qgnbj")]
-position = Vector2(987, 259)
-linear_velocity = Vector2(0, 200)
-
-[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_qgnbj")]
-position = Vector2(346, 151)
+[node name="Obstacle3" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(872, 270)
 mass = 0.5
-linear_velocity = Vector2(100, 100)
+
+[node name="Obstacle4" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(514, 165)
+mass = 0.5
+linear_velocity = Vector2(-100, 70)
+
+[node name="Obstacle5" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(598, 462)
+mass = 0.5
 
 [node name="Tornado" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
 position = Vector2(937, 667)
@@ -84,4 +87,6 @@ position = Vector2(-520, -270)
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
 position = Vector2(520, 270)
 
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
+[connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]
