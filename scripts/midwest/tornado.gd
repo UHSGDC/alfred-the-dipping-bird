@@ -52,11 +52,15 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("obstacle"):
+		return
 	if body is RigidBody2D:
 		pulled_obstacles.append(PulledObstacle.new(body))
 
 
 func _on_body_exited(body: Node2D) -> void:
+	if !body.is_in_group("obstacle"):
+		return
 	for i in pulled_obstacles.size():
 		if pulled_obstacles[i].body == body:
 			pulled_obstacles[i].body.set_obstacle_scale(1)
