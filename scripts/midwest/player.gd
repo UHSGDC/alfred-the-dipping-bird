@@ -16,7 +16,7 @@ const TORNADO_BASE_ROTATION_SPEED: float = PI * 1.1
 @export var bot_right_bound: Marker2D
 @export var camera: Camera2D
 @export var debug_mode: bool
-@export var max_lives: int = 3.0
+@export var max_lives: int = 3
 
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
