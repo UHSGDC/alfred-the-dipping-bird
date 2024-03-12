@@ -42,4 +42,5 @@ func instance_minigame() -> void:
 	
 	
 func _on_minigame_ended(win: bool, currency_rewarded: int) -> void:
+	minigame.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	print("Minigame Tester: minigame_ended signal recieved into _on_minigame_ended with arguments win = %s and currency rewarded = %s" % [win, currency_rewarded])
