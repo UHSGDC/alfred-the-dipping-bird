@@ -21,6 +21,7 @@ const TORNADO_BASE_ROTATION_SPEED: float = PI * 1.1
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var tornado: Area2D
+var was_just_hit: bool = false
 
 @onready var current_lives: int = max_lives :
 	set(value):
@@ -29,6 +30,9 @@ var tornado: Area2D
 		current_lives = value
 		if current_lives <= 0:
 			player_killed.emit()
+			
+@onready var anim_player = $AnimationPlayer
+@onready var sprite = $Sprite2D
 	
 
 func _physics_process(delta: float) -> void:
@@ -101,15 +105,29 @@ func move(delta: float) -> void:
 	position.x = clampf(position.x, top_left_bound.global_position.x, bot_right_bound.global_position.x)
 	position.y = clampf(position.y, top_left_bound.global_position.y, bot_right_bound.global_position.y)
 	
+	# Zero out velocity if on edge of screen
+	if position.x == top_left_bound.global_position.x or position.x == bot_right_bound.global_position.x:
+		velocity.x = AUTOSCROLL_SPEED
+	if position.y == top_left_bound.global_position.y or position.y == bot_right_bound.global_position.y:
+		velocity.y = 0
+	
 
 # Obstacle
 func _on_body_entered(body: Node2D) -> void:
 	if !body.is_in_group("obstacle"):
 		return
+	if was_just_hit: # Player can't be hurt again if they were just hit
+		if debug_mode:
+			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
+		return
 	if debug_mode:
 		print(name + " hit obstacle")
 	current_lives -= 1
 	body.queue_free()
+	
+	anim_player.play("hurt")
+	was_just_hit = true
+	
 
 
 # Tornado
@@ -120,3 +138,7 @@ func _on_area_entered(area: Area2D) -> void:
 		print(name + " hit tornado")
 	tornado = area
 	tornado.path_follow_speed = 0
+
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	was_just_hit = false
