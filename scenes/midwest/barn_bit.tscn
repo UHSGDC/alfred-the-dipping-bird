@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_gvpj0"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ipl1w"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_un8ei"]
-bounce = 0.5
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yxxsx"]
+bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnu5j"]
 size = Vector2(90, 146)
@@ -12,7 +12,7 @@ size = Vector2(90, 146)
 [node name="BarnBit" type="RigidBody2D" groups=["obstacle"]]
 collision_layer = 3
 mass = 0.8
-physics_material_override = SubResource("PhysicsMaterial_un8ei")
+physics_material_override = SubResource("PhysicsMaterial_yxxsx")
 angular_damp = 0.1
 script = ExtResource("1_gvpj0")
 
@@ -24,3 +24,6 @@ texture = ExtResource("2_ipl1w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gnu5j")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-70, -90, 140, 180)

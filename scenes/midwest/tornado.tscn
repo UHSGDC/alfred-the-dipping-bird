@@ -36,8 +36,9 @@ shape = SubResource("CircleShape2D_euvjd")
 debug_color = Color(0, 0.552941, 0.917647, 0.419608)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+process_mode = 3
 scale = Vector2(1.6, 1.6)
-amount = 400
+amount = 600
 local_coords = true
 emission_shape = 1
 emission_sphere_radius = 128.0
@@ -52,6 +53,9 @@ scale_amount_min = 0.6
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_366l8")
 color_ramp = SubResource("Gradient_kwm2x")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-250, -250, 500, 500)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

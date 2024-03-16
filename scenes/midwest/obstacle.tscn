@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_23vuf"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_drk35"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_un8ei"]
-bounce = 0.5
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_utie3"]
+bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnu5j"]
 size = Vector2(128, 128)
 
 [node name="Obstacle" type="RigidBody2D" groups=["obstacle"]]
 collision_layer = 3
-physics_material_override = SubResource("PhysicsMaterial_un8ei")
+physics_material_override = SubResource("PhysicsMaterial_utie3")
 angular_damp = 0.1
 script = ExtResource("1_23vuf")
 
@@ -21,3 +21,6 @@ texture = ExtResource("2_drk35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_gnu5j")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-90, -90, 180, 180)
