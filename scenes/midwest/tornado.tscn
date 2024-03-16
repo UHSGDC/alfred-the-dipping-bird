@@ -3,14 +3,17 @@
 [ext_resource type="Script" path="res://scripts/midwest/tornado.gd" id="1_wlt6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_euvjd"]
-radius = 173.0
+radius = 196.0
 
 [sub_resource type="Curve" id="Curve_51bvq"]
-_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0]
+min_value = -10.0
+max_value = 5.0
+_data = [Vector2(0, -2.473), 0.0, 0.0, 0, 0, Vector2(0.513, -8), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_8t43v"]
-_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(0.7, 1), 0.0, 0.0, 0, 0]
+min_value = -1.0
+_data = [Vector2(0, -0.208791), 0.0, 0.0, 0, 0, Vector2(0.492063, -0.67033), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_366l8"]
@@ -29,7 +32,8 @@ gravity_direction = Vector2(0, 0)
 linear_damp_space_override = 1
 linear_damp = 0.2
 script = ExtResource("1_wlt6b")
-path_follow_speed = 50.0
+path_follow_speed = 100.0
+time_before_force = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_euvjd")
@@ -38,21 +42,25 @@ debug_color = Color(0, 0.552941, 0.917647, 0.419608)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 process_mode = 3
 scale = Vector2(1.6, 1.6)
-amount = 600
+amount = 400
+lifetime = 2.0
 local_coords = true
 emission_shape = 1
 emission_sphere_radius = 128.0
 gravity = Vector2(0, 0)
-angular_velocity_min = 0.2
-angular_velocity_max = 1.0
+angular_velocity_max = 10.0
 angular_velocity_curve = SubResource("Curve_51bvq")
-orbit_velocity_min = 0.2
 orbit_velocity_max = 1.0
 orbit_velocity_curve = SubResource("Curve_8t43v")
 scale_amount_min = 0.6
-scale_amount_max = 4.0
+scale_amount_max = 4.5
 scale_amount_curve = SubResource("Curve_366l8")
 color_ramp = SubResource("Gradient_kwm2x")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="CPUParticles2D"]
+scale = Vector2(0.625, 0.625)
+rect = Rect2(-1000, -250, 2000, 500)
+enable_mode = 1
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 rect = Rect2(-250, -250, 500, 500)

@@ -2,11 +2,10 @@ extends Area2D
 
 signal player_killed
 
-const MAX_SPEED: Vector2 = Vector2(400, 400)
+const MAX_SPEED: Vector2 = Vector2(0, 500)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 const AUTOSCROLL_SPEED: float = 600
-const MAX_TORNADO_SPEED: float = 400
-const TORNADO_VELOCITY: float = 500
+const TORNADO_VELOCITY: float = 700
 const TORNADO_DEACCELERATION_MULTIPLIER: float = 5.0
 const TORNADO_DEATH_DISTANCE: float = 10.0
 const MIN_SCALE: float = 0.3
