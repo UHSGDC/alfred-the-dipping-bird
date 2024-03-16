@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://d05kqnx5bfvhh"]
+[gd_scene load_steps=9 format=3 uid="uid://d05kqnx5bfvhh"]
 
 [ext_resource type="Script" path="res://scripts/chicago/chicago_minigame.gd" id="1_aeqwi"]
 [ext_resource type="Script" path="res://scripts/chicago/player.gd" id="2_xgthb"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="3_kftn3"]
 [ext_resource type="PackedScene" uid="uid://c56o1esrlxcce" path="res://scenes/chicago/skyscraper.tscn" id="4_0tdps"]
+[ext_resource type="PackedScene" uid="uid://b2bxisrhl4j1s" path="res://scenes/chicago/bird.tscn" id="4_4us4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p78j3"]
-size = Vector2(64, 32)
+size = Vector2(128, 64)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmu1u"]
 texture = ExtResource("3_kftn3")
@@ -23,17 +24,19 @@ sources/0 = SubResource("TileSetAtlasSource_bmu1u")
 
 [node name="ChicagoMinigame" type="Node2D"]
 script = ExtResource("1_aeqwi")
+debug_mode = true
 
-[node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("top_left_bound", "bot_right_bound", "camera")]
+[node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("main_scene", "top_left_bound", "bot_right_bound", "camera")]
 position = Vector2(-547, 312)
 collision_layer = 0
 script = ExtResource("2_xgthb")
+main_scene = NodePath("..")
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.5, 0.25)
+scale = Vector2(1, 0.5)
 texture = ExtResource("3_kftn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -47,10 +50,13 @@ layer_0/tile_data = PackedInt32Array(4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612,
 
 [node name="Birds" type="Node2D" parent="."]
 
+[node name="Bird1" parent="Birds" instance=ExtResource("4_4us4u")]
+position = Vector2(791, 153)
+
 [node name="Skyscrapers" type="Node2D" parent="."]
 
 [node name="Skyscraper1" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
-position = Vector2(392, 121)
+position = Vector2(808, 125)
 
 [node name="BirdDetechers" type="Node2D" parent="."]
 
@@ -65,4 +71,8 @@ position = Vector2(-520, -270)
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
 position = Vector2(520, 270)
 
-[connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_bird"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_skyscraper"]
+[connection signal="player_lost" from="Player" to="." method="_on_player_player_lost"]
+[connection signal="player_lost" from="Player" to="Player" method="_on_player_lost"]
+[connection signal="player_won" from="Player" to="." method="_on_player_player_won"]

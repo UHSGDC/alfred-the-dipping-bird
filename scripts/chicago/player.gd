@@ -1,38 +1,28 @@
 extends Area2D
 
-signal player_killed
+signal player_lost
+signal player_won
 
 const MAX_SPEED: Vector2 = Vector2(400, 400)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 const AUTOSCROLL_SPEED: float = 600
 
+@export var main_scene: BaseMinigame
 @export var top_left_bound: Marker2D
 @export var bot_right_bound: Marker2D
 @export var camera: Camera2D
-@export var debug_mode: bool
-@export var max_lives: int = 3
 
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 
-@onready var current_lives: int = max_lives :
-	set(value):
-		if debug_mode:
-			print("current_lives changed from %s to %s" % [current_lives, value])
-		current_lives = value
-		if current_lives <= 0:
-			player_killed.emit()
-	
+@onready var debug_mode: bool = main_scene.debug_mode
 
 func _physics_process(delta: float) -> void:
 	if debug_mode and Input.is_action_just_pressed("interact"):
 		debug_movement_paused = !debug_movement_paused
-
+	
 	if !debug_movement_paused:
-		if debug_mode:
-			camera.position += Input.get_vector("left", "right", "up", "down") * delta * AUTOSCROLL_SPEED
-		else:
-			move(delta)
+		move(delta)
 
 func move(delta: float) -> void:
 	var input := Input.get_vector("left", "right", "up", "down")
@@ -73,11 +63,23 @@ func move(delta: float) -> void:
 	position.y = clampf(position.y, top_left_bound.global_position.y, bot_right_bound.global_position.y)
 	
 
-# Skyscraper
-func _on_body_entered(body: Node2D) -> void:
+# Collision of skyscraper
+func _on_body_entered_skyscraper(body: Node2D) -> void:
 	if !body.is_in_group("skyscraper"):
 		return
 	if debug_mode:
 		print(name + " hit skyscraper")
-	current_lives -= 1
-	body.queue_free()
+	player_lost.emit()
+
+# Collision of bird
+func _on_body_entered_bird(body: Node2D) -> void:
+	if !body.is_in_group("bird"):
+		return
+	if debug_mode:
+		print(name + " hit bird")
+	player_lost.emit()
+
+# Going to be used to create a death animation and such for the bird
+func _on_player_lost():
+	print("Player lost")
+	get_tree().reload_scene()
