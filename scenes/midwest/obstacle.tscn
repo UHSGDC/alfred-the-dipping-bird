@@ -16,7 +16,7 @@ angular_damp = 0.1
 script = ExtResource("1_23vuf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 1, 1)
 texture = ExtResource("2_drk35")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

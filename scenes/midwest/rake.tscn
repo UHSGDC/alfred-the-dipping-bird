@@ -17,7 +17,7 @@ angular_damp = 0.1
 script = ExtResource("1_g6gmd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(1, 0, 1, 1)
 position = Vector2(-3.8147e-06, 4.76837e-07)
 scale = Vector2(0.8125, 0.171875)
 texture = ExtResource("2_hsqto")
