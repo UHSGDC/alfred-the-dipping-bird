@@ -73,11 +73,11 @@ func move(delta: float) -> void:
 	position.y = clampf(position.y, top_left_bound.global_position.y, bot_right_bound.global_position.y)
 	
 
-# Obstacle
+# Skyscraper
 func _on_body_entered(body: Node2D) -> void:
-	if !body.is_in_group("obstacle"):
+	if !body.is_in_group("skyscraper"):
 		return
 	if debug_mode:
-		print(name + " hit obstacle")
+		print(name + " hit skyscraper")
 	current_lives -= 1
 	body.queue_free()
