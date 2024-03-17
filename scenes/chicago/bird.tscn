@@ -9,7 +9,8 @@ bounce = 0.5
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
 size = Vector2(64, 32)
 
-[node name="Bird" type="RigidBody2D" groups=["skyscraper"]]
+[node name="Bird" type="RigidBody2D" groups=["bird"]]
+z_index = 1
 collision_layer = 3
 physics_material_override = SubResource("PhysicsMaterial_sbmu4")
 script = ExtResource("1_ju043")

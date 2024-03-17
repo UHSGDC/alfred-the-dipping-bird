@@ -14,8 +14,17 @@ const AUTOSCROLL_SPEED: float = 600
 
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
+var health: int = 100
 
 @onready var debug_mode: bool = main_scene.debug_mode
+@onready var smoke_timer: Timer = get_node("SmokeTimer")
+
+func _ready():
+	smoke_timer.set_paused(true)
+
+func _process(_delta) -> void:
+	if health <= 0:
+		player_lost.emit()
 
 func _physics_process(delta: float) -> void:
 	if debug_mode and Input.is_action_just_pressed("interact"):
@@ -68,7 +77,7 @@ func _on_body_entered_skyscraper(body: Node2D) -> void:
 	if !body.is_in_group("skyscraper"):
 		return
 	if debug_mode:
-		print(name + " hit skyscraper")
+		print(name + " hit a skyscraper")
 	player_lost.emit()
 
 # Collision of bird
@@ -76,10 +85,28 @@ func _on_body_entered_bird(body: Node2D) -> void:
 	if !body.is_in_group("bird"):
 		return
 	if debug_mode:
-		print(name + " hit bird")
+		print(name + " hit a bird")
 	player_lost.emit()
+	
+# Collision of factory
+func _on_body_entered_smoke(body: Node2D) -> void:
+	if !body.is_in_group("factory"):
+		return
+	if debug_mode:
+		print(name + " is in the smoke zone of a factory")
+	smoke_timer.set_paused(false)
 
-# Going to be used to create a death animation and such for the bird
-func _on_player_lost():
-	print("Player lost")
-	get_tree().reload_scene()
+func _on_body_exited_smoke(body: Node2D) -> void:
+	if !body.is_in_group("factory"):
+		return
+	if debug_mode:
+		print(name + " is outside the smoke zone of a factory")
+	smoke_timer.set_paused(true)
+
+func _on_smoke_timer_timeout():
+	# Everytime the wait time is completed, it will decrease the health by the set number
+	# Just do `wait_time*health_decrease` to get the seconds that the player can last in the smoke
+	# Also, health_decrease representes the number set below
+	health -= 10
+	if debug_mode:
+		print(name + " has a health of " + str(health))
