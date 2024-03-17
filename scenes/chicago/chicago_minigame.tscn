@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d05kqnx5bfvhh"]
+[gd_scene load_steps=13 format=3 uid="uid://d05kqnx5bfvhh"]
 
 [ext_resource type="Script" path="res://scripts/chicago/chicago_minigame.gd" id="1_aeqwi"]
 [ext_resource type="Script" path="res://scripts/chicago/player.gd" id="2_xgthb"]
@@ -6,9 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://c56o1esrlxcce" path="res://scenes/chicago/skyscraper.tscn" id="4_0tdps"]
 [ext_resource type="PackedScene" uid="uid://b2bxisrhl4j1s" path="res://scenes/chicago/bird.tscn" id="4_4us4u"]
 [ext_resource type="PackedScene" uid="uid://b0onck61deuc0" path="res://scenes/chicago/factory.tscn" id="6_ap0b2"]
+[ext_resource type="PackedScene" uid="uid://5nh6tcoevhkg" path="res://scenes/chicago/win_zone.tscn" id="7_m8urx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p78j3"]
 size = Vector2(128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pkoi"]
+atlas = ExtResource("3_kftn3")
+region = Rect2(16, 16, 16, 16)
+margin = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arai4"]
+atlas = ExtResource("3_kftn3")
+region = Rect2(50, 40, 16, 16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bmu1u"]
 texture = ExtResource("3_kftn3")
@@ -28,11 +38,11 @@ script = ExtResource("1_aeqwi")
 player = NodePath("Player")
 debug_mode = true
 
-[node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("main_scene", "top_left_bound", "bot_right_bound", "camera")]
+[node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("main_node", "top_left_bound", "bot_right_bound", "camera")]
 position = Vector2(-547, 312)
 collision_layer = 0
 script = ExtResource("2_xgthb")
-main_scene = NodePath("..")
+main_node = NodePath("..")
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
@@ -44,9 +54,43 @@ texture = ExtResource("3_kftn3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_p78j3")
 
-[node name="SmokeTimer" type="Timer" parent="Player"]
+[node name="Smoke Particles Emitter" type="CPUParticles2D" parent="Player"]
+emitting = false
+amount = 4
+lifetime = 2.5
+preprocess = 5.0
+speed_scale = 10.0
+fixed_fps = 10
+local_coords = true
+texture = SubResource("AtlasTexture_6pkoi")
+emission_shape = 3
+emission_rect_extents = Vector2(128, 64)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+
+[node name="Enemy Bird Particles Emitter" type="CPUParticles2D" parent="Player"]
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+preprocess = 2.0
+speed_scale = 10.0
+fixed_fps = 10
+local_coords = true
+texture = SubResource("AtlasTexture_arai4")
+emission_shape = 3
+emission_rect_extents = Vector2(128, 64)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+
+[node name="Smoke Timer" type="Timer" parent="Player"]
 wait_time = 0.5
 autostart = true
+
+[node name="Smoke Particles Timer" type="Timer" parent="Player"]
+wait_time = 3.0
 
 [node name="DebugBackground" type="TileMap" parent="."]
 z_index = -5
@@ -57,12 +101,21 @@ layer_0/tile_data = PackedInt32Array(4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612,
 [node name="Birds" type="Node2D" parent="."]
 
 [node name="Bird1" parent="Birds" instance=ExtResource("4_4us4u")]
-position = Vector2(791, 153)
+position = Vector2(1133, 268)
+
+[node name="Bird2" parent="Birds" instance=ExtResource("4_4us4u")]
+position = Vector2(3630, 106)
+
+[node name="Bird3" parent="Birds" instance=ExtResource("4_4us4u")]
+position = Vector2(3652, 209)
+
+[node name="Bird4" parent="Birds" instance=ExtResource("4_4us4u")]
+position = Vector2(3662, 328)
 
 [node name="Skyscrapers" type="Node2D" parent="."]
 
 [node name="Skyscraper1" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
-position = Vector2(804, 129)
+position = Vector2(642, 114)
 
 [node name="Skyscraper3" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
 position = Vector2(2205, 109)
@@ -70,7 +123,14 @@ position = Vector2(2205, 109)
 [node name="Skyscraper2" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
 position = Vector2(1629, 525)
 
-[node name="BirdDetechers" type="Node2D" parent="."]
+[node name="Skyscraper6" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
+position = Vector2(2186, 535)
+
+[node name="Skyscraper4" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
+position = Vector2(3282, 497)
+
+[node name="Skyscraper5" parent="Skyscrapers" instance=ExtResource("4_0tdps")]
+position = Vector2(4660, 499)
 
 [node name="Factories" type="Node2D" parent="."]
 
@@ -79,6 +139,15 @@ position = Vector2(419, 497)
 
 [node name="Factory2" parent="Factories" instance=ExtResource("6_ap0b2")]
 position = Vector2(1603, 171)
+
+[node name="Factory5" parent="Factories" instance=ExtResource("6_ap0b2")]
+position = Vector2(2884, 335)
+
+[node name="Factory3" parent="Factories" instance=ExtResource("6_ap0b2")]
+position = Vector2(4101, 489)
+
+[node name="Factory4" parent="Factories" instance=ExtResource("6_ap0b2")]
+position = Vector2(4292, 159)
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(151, 324)
@@ -89,10 +158,17 @@ position = Vector2(-520, -270)
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
 position = Vector2(520, 270)
 
-[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_bird"]
+[node name="Win Zone" parent="." instance=ExtResource("7_m8urx")]
+position = Vector2(4952, 337)
+
+[connection signal="minigame_ended" from="." to="." method="_on_minigame_ended"]
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered_win_zone"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_skyscraper"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_bird"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_smoke"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_body_entered_win_zone"]
 [connection signal="body_exited" from="Player" to="Player" method="_on_body_exited_smoke"]
 [connection signal="player_lost" from="Player" to="." method="_on_player_lost"]
 [connection signal="player_won" from="Player" to="." method="_on_player_won"]
-[connection signal="timeout" from="Player/SmokeTimer" to="Player" method="_on_smoke_timer_timeout"]
+[connection signal="timeout" from="Player/Smoke Timer" to="Player" method="_on_smoke_timer_timeout"]
+[connection signal="timeout" from="Player/Smoke Particles Timer" to="Player" method="_on_particles_timer_timeout"]

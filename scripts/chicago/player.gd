@@ -7,30 +7,32 @@ const MAX_SPEED: Vector2 = Vector2(400, 400)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 const AUTOSCROLL_SPEED: float = 600
 
-@export var main_scene: BaseMinigame
+@export var main_node: BaseMinigame
 @export var top_left_bound: Marker2D
 @export var bot_right_bound: Marker2D
 @export var camera: Camera2D
 
-var debug_movement_paused: bool = false
+var movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var health: int = 100
 
-@onready var debug_mode: bool = main_scene.debug_mode
-@onready var smoke_timer: Timer = get_node("SmokeTimer")
+@onready var debug_mode: bool = main_node.debug_mode
+@onready var smoke_timer: Timer = get_node("Smoke Timer")
+@onready var smoke_particles_timer: Timer = get_node("Smoke Particles Timer")
+@onready var smoke_particles_emitter: CPUParticles2D = get_node("Smoke Particles Emitter")
+@onready var enemy_bird_particles_emitter: CPUParticles2D = get_node("Enemy Bird Particles Emitter")
 
 func _ready():
 	smoke_timer.set_paused(true)
 
 func _process(_delta) -> void:
 	if health <= 0:
+		if debug_mode:
+			print("Player has 0 or less health")
 		player_lost.emit()
 
 func _physics_process(delta: float) -> void:
-	if debug_mode and Input.is_action_just_pressed("interact"):
-		debug_movement_paused = !debug_movement_paused
-	
-	if !debug_movement_paused:
+	if !movement_paused:
 		move(delta)
 
 func move(delta: float) -> void:
@@ -70,7 +72,6 @@ func move(delta: float) -> void:
 	# Clamping position
 	position.x = clampf(position.x, top_left_bound.global_position.x, bot_right_bound.global_position.x)
 	position.y = clampf(position.y, top_left_bound.global_position.y, bot_right_bound.global_position.y)
-	
 
 # Collision of skyscraper
 func _on_body_entered_skyscraper(body: Node2D) -> void:
@@ -84,10 +85,13 @@ func _on_body_entered_skyscraper(body: Node2D) -> void:
 func _on_body_entered_bird(body: Node2D) -> void:
 	if !body.is_in_group("bird"):
 		return
+	health -= 25
 	if debug_mode:
 		print(name + " hit a bird")
-	player_lost.emit()
-	
+		print(name + " has a health of " + str(health))
+	body.queue_free()
+	enemy_bird_particles_emitter.emitting = true
+
 # Collision of factory
 func _on_body_entered_smoke(body: Node2D) -> void:
 	if !body.is_in_group("factory"):
@@ -95,6 +99,8 @@ func _on_body_entered_smoke(body: Node2D) -> void:
 	if debug_mode:
 		print(name + " is in the smoke zone of a factory")
 	smoke_timer.set_paused(false)
+	smoke_particles_emitter.emitting = true
+	smoke_particles_timer.stop()
 
 func _on_body_exited_smoke(body: Node2D) -> void:
 	if !body.is_in_group("factory"):
@@ -102,6 +108,7 @@ func _on_body_exited_smoke(body: Node2D) -> void:
 	if debug_mode:
 		print(name + " is outside the smoke zone of a factory")
 	smoke_timer.set_paused(true)
+	smoke_particles_timer.start()
 
 func _on_smoke_timer_timeout():
 	# Everytime the wait time is completed, it will decrease the health by the set number
@@ -110,3 +117,19 @@ func _on_smoke_timer_timeout():
 	health -= 10
 	if debug_mode:
 		print(name + " has a health of " + str(health))
+
+func _on_particles_timer_timeout():
+	smoke_particles_emitter.emitting = false
+	if debug_mode:
+		print("Particle timer has timed out")
+
+# Collision of win zone
+func _on_body_entered_win_zone(body:Node2D) -> void:
+	if !body.is_in_group("win_zone"):
+		return
+	player_won.emit()
+
+func _on_area_entered_win_zone(area: Area2D) -> void:
+	if !area.is_in_group("win_zone"):
+		return
+	player_won.emit()
