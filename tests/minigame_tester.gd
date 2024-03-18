@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	# 2. The game should be reinstanced once the minigame is ended before unpausing
 	# 3. When the game is reinstanced it will be paused by default
 	# Note: Reinstancing means deleting the old copy of the minigame and creating a new instance of it.
-	if event.is_action_pressed("minigame_tester_reinstance"): # ENTER by default
+	if event.is_action_pressed("minigame_tester_reinstance"): # ENTER or R by default
 		minigame.queue_free()
 		instance_minigame()
 	elif event.is_action_pressed("minigame_tester_pause"): # ESC by default
@@ -25,11 +25,11 @@ func _input(event: InputEvent) -> void:
 		elif minigame.process_mode == PROCESS_MODE_DISABLED:
 			minigame.process_mode = Node.PROCESS_MODE_INHERIT
 			print("Minigame Tester: Minigame unpaused via minigame_tester_pause input")
-	elif event.is_action_pressed("minigame_tester_end"): # BACKSPACE by default
-		var win := false
-		var currency_rewarded := 0
-		minigame.end_minigame(win, currency_rewarded)
-		print("Minigame Tester: Minigame ended via minigame_tester_end input")
+	#elif event.is_action_pressed("minigame_tester_end"): # BACKSPACE by default
+		#var win := false
+		#var currency_rewarded := 0
+		#minigame.end_minigame(win, currency_rewarded)
+		#print("Minigame Tester: Minigame ended via minigame_tester_end input")
 
 
 # Create new minigame and pause it
