@@ -74,7 +74,6 @@ layer_0/tile_data = PackedInt32Array(4, 0, 0, 65540, 0, 0, 131076, 0, 0, 196612,
 
 [node name="Pigeon1" parent="Pigeons" instance=ExtResource("4_lfy16")]
 position = Vector2(1241, 153)
-linear_velocity = Vector2(-500, 0)
 
 [node name="Pigeon2" parent="Pigeons" instance=ExtResource("4_lfy16")]
 position = Vector2(3630, 106)
