@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0onck61deuc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j3ms"]
+radius = 87.4643
+
+[sub_resource type="Curve" id="Curve_tklpw"]
+_data = [Vector2(0, 0.395604), 0.0, 0.0, 0, 0, Vector2(0.798942, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ipgif"]
+colors = PackedColorArray(0.577008, 0.577008, 0.577008, 1, 0.165656, 0.165656, 0.165656, 1)
+
+[sub_resource type="Gradient" id="Gradient_ieub1"]
+colors = PackedColorArray(0.470076, 0.470076, 0.470076, 1, 1, 1, 1, 1)
+
+[node name="Smoke" type="StaticBody2D" groups=["smoke"]]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4j3ms")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 300
+lifetime = 5.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.62
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_tklpw")
+color_ramp = SubResource("Gradient_ipgif")
+color_initial_ramp = SubResource("Gradient_ieub1")

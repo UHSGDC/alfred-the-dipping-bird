@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2bxisrhl4j1s"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_a10fc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
+size = Vector2(64, 32)
+
+[node name="Pigeon" type="RigidBody2D" groups=["bird"]]
+z_index = 1
+collision_mask = 0
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.984314, 0.631373, 0, 1)
+scale = Vector2(0.5, 0.25)
+texture = ExtResource("1_a10fc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y7cvp")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-32, -16, 64, 32)
