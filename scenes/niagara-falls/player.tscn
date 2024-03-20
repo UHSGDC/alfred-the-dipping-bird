@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv26boqu0ncd0"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_46q3x"]
+[ext_resource type="Script" path="res://scripts/niagara-falls/player.gd" id="1_uitqq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ro650"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_46q3x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a2fsw"]
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_uitqq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ro650")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.095, 6.095)
+shape = SubResource("CapsuleShape2D_a2fsw")

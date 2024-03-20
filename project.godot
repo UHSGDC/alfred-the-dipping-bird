@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="alfred-the-dipping-bird"
-run/main_scene="res://tests/minigame_tester.tscn"
+run/main_scene="res://scenes/niagara-falls/niagara-falls-minigame.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [input]
 

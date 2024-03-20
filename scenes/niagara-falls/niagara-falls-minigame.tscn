@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://laaln4dpdyqi"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_3wxmk"]
+[ext_resource type="PackedScene" uid="uid://dv26boqu0ncd0" path="res://scenes/niagara-falls/player.tscn" id="2_gb7i3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p0hpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3wxmk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Niagara-falls-minigame" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(12, 8)
+sprite_frames = SubResource("SpriteFrames_p0hpm")
+
+[node name="player" parent="." instance=ExtResource("2_gb7i3")]
+position = Vector2(960, 750)
