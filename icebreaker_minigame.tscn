@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bekkqcark34pd"]
+
+[ext_resource type="Script" path="res://icebreaker_minigame.gd" id="1_b4pjh"]
+[ext_resource type="Texture2D" uid="uid://cm4puh3a37qve" path="res://FlatIceLakeBackground.jpg" id="2_xpe3l"]
+[ext_resource type="SpriteFrames" uid="uid://c87hhfr44nlt5" path="res://IceCrack.tres" id="3_x6rqw"]
+[ext_resource type="Script" path="res://IceCrack.gd" id="4_lxebc"]
+[ext_resource type="PackedScene" uid="uid://bws3x5o2faklf" path="res://player.tscn" id="5_7umcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljg8a"]
+size = Vector2(1169.5, 20)
+
+[node name="icebreaker_minigame" type="Node2D"]
+script = ExtResource("1_b4pjh")
+
+[node name="FlatIceLakeBackground" type="Sprite2D" parent="."]
+position = Vector2(576.127, 284.5)
+scale = Vector2(3.675, 3.675)
+texture = ExtResource("2_xpe3l")
+
+[node name="IceCrack" type="AnimatedSprite2D" parent="."]
+position = Vector2(399, 549)
+scale = Vector2(0.804124, 0.257692)
+sprite_frames = ExtResource("3_x6rqw")
+animation = &"IceCrack"
+script = ExtResource("4_lxebc")
+
+[node name="Player" parent="." instance=ExtResource("5_7umcj")]
+position = Vector2(143, 319)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(143, 319)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(428.25, 252)
+shape = SubResource("RectangleShape2D_ljg8a")

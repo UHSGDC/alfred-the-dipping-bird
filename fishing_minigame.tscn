@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4rnlk6qo2yrw"]
+
+[ext_resource type="Script" path="res://fishing_minigame.gd" id="1_0fkhn"]
+[ext_resource type="Texture2D" uid="uid://6c4awf810kmb" path="res://IceLakeBackground.jpg" id="2_qxqgg"]
+[ext_resource type="Texture2D" uid="uid://lx34kcx5rlsw" path="res://FishingPole.jpg" id="2_xilqs"]
+
+[node name="FishingMinigame" type="Node2D"]
+script = ExtResource("1_0fkhn")
+
+[node name="IceLakeBackground" type="Sprite2D" parent="."]
+position = Vector2(504, 326)
+scale = Vector2(2.24, 2.24)
+texture = ExtResource("2_qxqgg")
+
+[node name="FishingPole2" type="Sprite2D" parent="."]
+position = Vector2(785, 330)
+texture = ExtResource("2_xilqs")

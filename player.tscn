@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bws3x5o2faklf"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ys2ur"]
+[ext_resource type="Texture2D" uid="uid://cpvbspca1huw2" path="res://RandomPelican.jpg" id="2_grb3n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1e4gd"]
+size = Vector2(106, 99)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ys2ur")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.524272, 0.524272)
+texture = ExtResource("2_grb3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1e4gd")

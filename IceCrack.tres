@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://c87hhfr44nlt5"]
+
+[ext_resource type="Texture2D" uid="uid://dnlgmr4ebo2ws" path="res://IceCrack1.png" id="1_bw167"]
+[ext_resource type="Texture2D" uid="uid://gw4yc8o20037" path="res://IceCrack2.png" id="2_kcw3p"]
+[ext_resource type="Texture2D" uid="uid://bqrvon0gyku0x" path="res://IceCrack3.png" id="3_y52n3"]
+[ext_resource type="Texture2D" uid="uid://cepma6x0w2g6i" path="res://IceCrack4.png" id="4_a8v3c"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bw167")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kcw3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y52n3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a8v3c")
+}],
+"loop": true,
+"name": &"IceCrack",
+"speed": 5.0
+}]
