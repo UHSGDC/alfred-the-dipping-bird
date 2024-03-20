@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://duh63b48eladp"]
+
+[ext_resource type="Texture2D" uid="uid://ccwn8xl7jge54" path="res://YetiDestructionFist.png" id="1_h4rc1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3yp78"]
+radius = 212.0
+height = 784.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="YetiDestructionFist" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_h4rc1")
+
+[node name="Area2D" type="Area2D" parent="YetiDestructionFist"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YetiDestructionFist/Area2D"]
+shape = SubResource("CapsuleShape2D_3yp78")

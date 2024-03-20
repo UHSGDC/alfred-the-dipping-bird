@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://rlswgmlm28si"]
+
+[ext_resource type="Texture2D" uid="uid://b62extwfaemox" path="res://YetiFist.png" id="1_hif15"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kwfx2"]
+radius = 31.0
+height = 100.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="YetiFist" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_hif15")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kwfx2")

@@ -3,8 +3,9 @@ extends BaseMinigame
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	var player: Node = $Player
+	var YetiFist = preload("res://YetiFist.tscn").instantiate()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

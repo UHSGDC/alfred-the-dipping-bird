@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cif0jsl24jca6"]
+
+[ext_resource type="SpriteFrames" uid="uid://c87hhfr44nlt5" path="res://IceCrack.tres" id="1_rlff7"]
+[ext_resource type="Script" path="res://IceCrack.gd" id="2_y0q4d"]
+
+[node name="IceCrack" type="AnimatedSprite2D"]
+position = Vector2(399, 549)
+scale = Vector2(0.804124, 0.257692)
+sprite_frames = ExtResource("1_rlff7")
+animation = &"IceCrack"
+script = ExtResource("2_y0q4d")
