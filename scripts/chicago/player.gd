@@ -82,7 +82,7 @@ func _on_body_entered(body: Node2D) -> void:
 func on_body_entered_skyscraper(_body: Node2D) -> void:
 	if debug_mode:
 		print(name + " hit a skyscraper")
-	player_lost.emit()
+	lives = 0
 
 # Collision of bird
 func on_body_entered_bird(body: Node2D) -> void:
