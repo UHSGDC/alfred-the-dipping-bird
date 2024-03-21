@@ -10,6 +10,8 @@ The game is being developed for Windows, Mac, Linux, and Web using Godot 4.2.1
 3. Start making changes
 ## Minigames
 When working on a minigame, the root node of your minigame scene must have a script attached to it that *extends BaseMinigame*. In other words, your minigame should be a subclass of the BaseMinigame class.
+
+Please also make separate folders for each minigame. So for the scripts and scenes you create for your minigame you would put them inside the scripts and scenes folder respectively inside another folder with the name of your minigame. Ex: All scenes for the midwest minigame will be inside scenes/midwest. The player.tscn for the midwest would be in the location scenes/midwest/player.tscn.
 ## Folder Structure
 Please use the following folders to organize your script, scene, and other files. Files that are already outside the folders (Ex: icon.svg and README.md), should STAY outside of the folders.
 
