@@ -3,7 +3,7 @@ extends Area2D
 signal player_lost
 signal player_won(lives: int)
 
-const MAX_SPEED: Vector2 = Vector2(400, 400)
+const MAX_SPEED: Vector2 = Vector2(0, 400)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 const AUTOSCROLL_SPEED: float = 600
 
@@ -23,9 +23,10 @@ const AUTOSCROLL_SPEED: float = 600
 
 var movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
+var was_just_hit: bool = false
 
 @onready var debug_mode: bool = minigame_node.debug_mode
-@onready var pigeon_particles: CPUParticles2D = $PigeonParticles
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	if !movement_paused:
@@ -85,17 +86,30 @@ func on_body_entered_skyscraper(_body: Node2D) -> void:
 
 # Collision of bird
 func on_body_entered_bird(body: Node2D) -> void:
-	lives -= 1
+	if was_just_hit: # Player can't be hurt again if they were just hit
+		if debug_mode:
+			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
+		return
 	if debug_mode:
 		print(name + " hit a bird")
-	body.queue_free()
-	pigeon_particles.emitting = true
+	lives -= 1
+	body.kill()
+	
+	anim_player.play("hurt")
+	was_just_hit = true
 
 # Collision of smoke
 func on_body_entered_smoke(_body: Node2D) -> void:
-	lives -= 1
+	if was_just_hit: # Player can't be hurt again if they were just hit
+		if debug_mode:
+			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
+		return
 	if debug_mode:
 		print(name + " hit smoke")
+	lives -= 1
+	
+	anim_player.play("hurt")
+	was_just_hit = true
 
 
 # Player win
@@ -105,5 +119,6 @@ func _on_area_entered(area: Area2D) -> void:
 	player_won.emit(lives)
 
 
-
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	was_just_hit = false
 
