@@ -96,12 +96,13 @@ bounce = 0.3
 script = ExtResource("1_6cg3t")
 
 [node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("top_left_bound", "bot_right_bound", "camera")]
-position = Vector2(-300, 312)
+position = Vector2(-314, 314)
 collision_layer = 0
 script = ExtResource("2_8757x")
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
+print_debug_messages = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 position = Vector2(-2.86102e-06, -1.43051e-06)
@@ -199,7 +200,7 @@ linear_velocity = Vector2(-30, -60)
 angular_velocity = -0.349066
 
 [node name="Animal6" parent="Obstacles" instance=ExtResource("4_qgnbj")]
-position = Vector2(7120, 319)
+position = Vector2(7213, 302)
 linear_velocity = Vector2(-80, -30)
 angular_velocity = -0.872665
 
@@ -298,7 +299,7 @@ linear_velocity = Vector2(-10, -20)
 angular_velocity = -0.174533
 
 [node name="BarnBit8" parent="Obstacles" instance=ExtResource("6_7utqy")]
-position = Vector2(6847, 249)
+position = Vector2(6940, 232)
 linear_velocity = Vector2(-20, 10)
 angular_velocity = -0.174533
 
@@ -406,10 +407,10 @@ angular_velocity = -0.349066
 position = Vector2(151, 324)
 
 [node name="LeftPlayerBound" type="Marker2D" parent="PlayerCamera"]
-position = Vector2(-520, -290)
+position = Vector2(-480, -290)
 
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
-position = Vector2(520, 290)
+position = Vector2(-480, 290)
 
 [connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]
