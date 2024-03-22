@@ -20,6 +20,9 @@ sand_acceleration = 400.0
 air_acceleration_multiplier = 0.7
 
 [node name="CamelDetector" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CamelDetector"]
 shape = SubResource("CircleShape2D_7yf1i")
@@ -39,3 +42,5 @@ region_rect = Rect2(14, 3, 5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_ffi61")
+
+[connection signal="area_entered" from="Player/CamelDetector" to="Player" method="_on_camel_detector_area_entered"]

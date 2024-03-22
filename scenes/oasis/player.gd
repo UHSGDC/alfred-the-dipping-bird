@@ -5,19 +5,29 @@ extends CharacterBody2D
 @export var air_acceleration_multiplier: float
 
 var in_air: bool = false
+var camel: Area2D
 
 @onready var bird_sprite: Sprite2D = $BirdSprite
 
 
 func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("left", "right", "up", "down")
-	move(delta, input)
+	if camel:
+		camel_move()
+	else:
+		move(delta, input)
 	look(input)
 	
 	
 func look(input: Vector2) -> void:
 	if input != Vector2.ZERO:
 		bird_sprite.rotation = input.angle()
+	elif camel:
+		bird_sprite.rotation = camel.rotation
+
+
+func camel_move() -> void:
+	position = camel.player_pos
 
 
 func move(delta: float, input: Vector2) -> void:	
@@ -49,3 +59,8 @@ func move(delta: float, input: Vector2) -> void:
 		velocity = velocity.move_toward(velocity.normalized() * max_speed, sand_acceleration * 2 * delta)
 	print(velocity, velocity.length())
 	move_and_slide()
+
+
+func _on_camel_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("camel"):
+		camel = area
