@@ -1,13 +1,19 @@
 extends CharacterBody2D
 
-@export var max_speed: float
-@export var sand_acceleration: float
+@export var max_ground_speed: float
+@export var max_air_speed: float
+@export var ground_acceleration: float
 @export var air_acceleration_multiplier: float
+
+@export var max_jump_scale: float
+@export var jump_time: float
+@export var fall_time: float
 
 var in_air: bool = false
 var camel: Area2D
 
 @onready var bird_sprite: Sprite2D = $BirdSprite
+@onready var anim_play: AnimationPlayer = $AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
@@ -17,12 +23,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		move(delta, input)
 	look(input)
+	animate()
 	
-	if velocity == Vector2.ZERO:
-		$BirdSprite.rotation = 0
-		$AnimationPlayer.play("idle")
-	else:
-		$AnimationPlayer.play("walk")
+	if !in_air and Input.is_action_just_pressed("interact"):
+		jump()
 	
 	
 func look(input: Vector2) -> void:
@@ -32,14 +36,32 @@ func look(input: Vector2) -> void:
 		rotation = camel.rotation
 
 
+func jump() -> void:
+	in_air = true
+	anim_play.play("jump")
+	await anim_play.animation_finished
+	in_air = false
+
+
+func animate() -> void:
+	if in_air:
+		anim_play.play("jump")
+	elif velocity == Vector2.ZERO:
+		anim_play.play("idle")
+	else:
+		anim_play.play("walk")
+		
+
 func camel_move() -> void:
 	position = camel.player_pos
 
 
 func move(delta: float, input: Vector2) -> void:	
-	var acceleration := sand_acceleration
+	var acceleration := ground_acceleration
+	var max_speed := max_ground_speed
 	if in_air:
 		acceleration *= air_acceleration_multiplier
+		max_speed = max_air_speed
 		
 		
 	if input.y: # Acceleration
@@ -59,10 +81,10 @@ func move(delta: float, input: Vector2) -> void:
 		else:
 			velocity.x += -signf(velocity.x) * acceleration * delta
 	
-	# Slow down player down to max speed if they are on the ground and above the max speed 		
-	if !in_air and velocity.length() > max_speed:
+	# Slow down player down to max speed if they are on the ground and above the max speed 	
+	if velocity.length() > max_speed:
 		# Move toward stops this from making the velocity below max_speed
-		velocity = velocity.move_toward(velocity.normalized() * max_speed, sand_acceleration * 2 * delta)
+		velocity = velocity.move_toward(velocity.normalized() * max_speed, acceleration * 2 * delta)
 	move_and_slide()
 
 
