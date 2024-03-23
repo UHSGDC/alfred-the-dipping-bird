@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs4ov2c13pn4t"]
+[gd_scene load_steps=11 format=3 uid="uid://bs4ov2c13pn4t"]
 
 [ext_resource type="Script" path="res://scripts/oasis/player.gd" id="1_ypfrp"]
 [ext_resource type="Texture2D" uid="uid://dhw27vwpnig2r" path="res://assets/oasis/alfred.png" id="2_8fht6"]
@@ -7,7 +7,7 @@
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffi61"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="Animation" id="Animation_521q1"]
 length = 0.001
@@ -184,15 +184,20 @@ tracks/1/keys = {
 "values": [Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_dd2hs"]
+resource_name = "ride"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1uo27"]
 _data = {
 "RESET": SubResource("Animation_521q1"),
 "idle": SubResource("Animation_oj53f"),
 "jump": SubResource("Animation_wu7oh"),
+"ride": SubResource("Animation_dd2hs"),
 "walk": SubResource("Animation_chxjd")
 }
 
 [node name="Player" type="CharacterBody2D"]
+texture_filter = 1
 position = Vector2(41, 16)
 motion_mode = 1
 script = ExtResource("1_ypfrp")
@@ -207,7 +212,6 @@ fall_time = 0.25
 [node name="CamelDetector" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CamelDetector"]
 shape = SubResource("CircleShape2D_7yf1i")
@@ -235,4 +239,4 @@ libraries = {
 "": SubResource("AnimationLibrary_1uo27")
 }
 
-[connection signal="area_entered" from="CamelDetector" to="." method="_on_camel_detector_area_entered"]
+[connection signal="body_entered" from="CamelDetector" to="." method="_on_camel_detector_body_entered"]

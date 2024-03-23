@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkbec7h7tvmdb"]
+
+[ext_resource type="Script" path="res://scripts/oasis/camel_path_follow.gd" id="1_brk7h"]
+[ext_resource type="Texture2D" uid="uid://u4y1pe668xod" path="res://assets/oasis/camel.png" id="2_03oim"]
+
+[node name="CamelPathFollow" type="PathFollow2D"]
+texture_filter = 1
+position = Vector2(20, 64)
+rotation = -1.43903
+script = ExtResource("1_brk7h")
+
+[node name="Camel" type="StaticBody2D" parent="." groups=["camel"]]
+collision_layer = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Camel"]
+texture = ExtResource("2_03oim")
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Camel"]
+polygon = PackedVector2Array(-10, 0, -9, 2, -4, 4, 2, 3, 10, 3, 15, 1, 16, 0, 15, -1, 10, -3, 2, -3, -4, -4, -9, -2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camel"]

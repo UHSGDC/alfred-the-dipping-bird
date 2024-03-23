@@ -1,8 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnoixbqvij500"]
+[gd_scene load_steps=4 format=3 uid="uid://cnoixbqvij500"]
 
 [ext_resource type="PackedScene" uid="uid://bs4ov2c13pn4t" path="res://scenes/oasis/player.tscn" id="1_ovkda"]
+[ext_resource type="PackedScene" uid="uid://dkbec7h7tvmdb" path="res://scenes/oasis/camel_path_follow.tscn" id="2_f1j6k"]
+
+[sub_resource type="Curve2D" id="Curve2D_q8gna"]
+_data = {
+"points": PackedVector2Array(-3.88909, 29.3449, 3.88909, -29.3449, 20, 64, -31.4663, 2.12132, 31.4663, -2.12132, 129, 20, -8.13173, -22.2739, 8.13173, 22.2739, 281, 50, 3.53553, -22.981, -3.53553, 22.981, 190, 104, 34.6482, 0.707107, -34.6482, -0.707107, 120, 124, -3.88909, 22.6274, 3.88909, -22.6274, 20, 64)
+}
+point_count = 6
 
 [node name="OasisMinigame" type="Node2D"]
 texture_filter = 1
 
 [node name="Player" parent="." instance=ExtResource("1_ovkda")]
+z_index = 1
+position = Vector2(108, 28)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_q8gna")
+
+[node name="CamelPathFollow" parent="Path2D" instance=ExtResource("2_f1j6k")]
