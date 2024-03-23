@@ -18,12 +18,18 @@ func _physics_process(delta: float) -> void:
 		move(delta, input)
 	look(input)
 	
+	if velocity == Vector2.ZERO:
+		$BirdSprite.rotation = 0
+		$AnimationPlayer.play("idle")
+	else:
+		$AnimationPlayer.play("walk")
+	
 	
 func look(input: Vector2) -> void:
 	if input != Vector2.ZERO:
-		bird_sprite.rotation = input.angle()
+		rotation = input.angle()
 	elif camel:
-		bird_sprite.rotation = camel.rotation
+		rotation = camel.rotation
 
 
 func camel_move() -> void:
@@ -57,7 +63,6 @@ func move(delta: float, input: Vector2) -> void:
 	if !in_air and velocity.length() > max_speed:
 		# Move toward stops this from making the velocity below max_speed
 		velocity = velocity.move_toward(velocity.normalized() * max_speed, sand_acceleration * 2 * delta)
-	print(velocity, velocity.length())
 	move_and_slide()
 
 
