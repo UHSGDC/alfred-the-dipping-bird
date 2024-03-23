@@ -63,6 +63,7 @@ func animate() -> void:
 
 func camel_move(_delta: float) -> void:
 	global_position = camel.global_position
+	bird_sprite.scale = camel.sprite.scale
 
 
 func move(delta: float, input: Vector2) -> void:	
