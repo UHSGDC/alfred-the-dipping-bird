@@ -264,5 +264,6 @@ shape = SubResource("CircleShape2D_ffi61")
 libraries = {
 "": SubResource("AnimationLibrary_1uo27")
 }
+playback_default_blend_time = 0.2
 
 [connection signal="body_entered" from="CamelDetector" to="." method="_on_camel_detector_body_entered"]

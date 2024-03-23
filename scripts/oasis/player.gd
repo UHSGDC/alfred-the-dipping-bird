@@ -16,6 +16,7 @@ var camel: StaticBody2D : set = _set_camel
 
 @onready var bird_sprite: Sprite2D = $BirdSprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+@onready var camel_detector: Area2D = $CamelDetector
 
 
 func _physics_process(delta: float) -> void:
@@ -40,9 +41,12 @@ func look(input: Vector2) -> void:
 
 
 func jump() -> void:
-	if camel:
+	if camel: # Dismount camel
 		camel = null
-	in_air = true
+	elif camel_detector.get_overlapping_bodies(): # Allow player to instantly mount camel after jumping
+		camel = camel_detector.get_overlapping_bodies()[0]
+		
+	in_air = true	
 	anim_player.play("jump")
 	await anim_player.animation_finished
 	in_air = false
@@ -55,10 +59,10 @@ func animate() -> void:
 			anim_player.play("ride")
 	elif in_air:
 		anim_player.play("jump")
-	elif velocity == Vector2.ZERO:
-		anim_player.play("idle")
-	else:
+	elif velocity != Vector2.ZERO:
 		anim_player.play("walk")
+	else:
+		anim_player.play("idle")
 		
 
 func camel_move(_delta: float) -> void:
@@ -106,7 +110,10 @@ func _set_camel(value: StaticBody2D) -> void:
 	var old_value := camel
 	camel = value
 	
+	# If dismounting camel
 	if old_value:
+		# Give player velocity after dismounting based off input.
+		velocity = Input.get_vector("left", "right", "up", "down") * max_ground_speed
 		add_collision_exception_with(old_value)
 		await get_tree().create_timer(same_camel_collision_cooldown).timeout
 		remove_collision_exception_with(old_value)
