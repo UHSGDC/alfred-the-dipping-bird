@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnoixbqvij500"]
+
+[ext_resource type="Script" path="res://scenes/oasis/player.gd" id="1_citb5"]
+[ext_resource type="Texture2D" uid="uid://dhw27vwpnig2r" path="res://assets/oasis/alfred.png" id="2_74at4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7yf1i"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ffi61"]
+radius = 5.0
+
+[node name="OasisMinigame" type="Node2D"]
+texture_filter = 1
+
+[node name="Player" type="CharacterBody2D" parent="."]
+motion_mode = 1
+script = ExtResource("1_citb5")
+max_speed = 50.0
+sand_acceleration = 400.0
+air_acceleration_multiplier = 0.7
+
+[node name="CamelDetector" type="Area2D" parent="Player"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/CamelDetector"]
+shape = SubResource("CircleShape2D_7yf1i")
+debug_color = Color(0.768627, 0.431373, 0.337255, 0.419608)
+
+[node name="BirdSprite" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_74at4")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(1, 1, 11, 9)
+
+[node name="HatSprite" type="Sprite2D" parent="Player/BirdSprite"]
+position = Vector2(-4, 0)
+texture = ExtResource("2_74at4")
+region_enabled = true
+region_rect = Rect2(14, 3, 5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_ffi61")
+
+[connection signal="area_entered" from="Player/CamelDetector" to="Player" method="_on_camel_detector_area_entered"]
