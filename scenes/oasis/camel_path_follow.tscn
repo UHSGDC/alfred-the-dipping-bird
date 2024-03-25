@@ -4,6 +4,34 @@
 [ext_resource type="Texture2D" uid="uid://u4y1pe668xod" path="res://assets/oasis/camel.png" id="2_03oim"]
 [ext_resource type="Script" path="res://scripts/oasis/camel.gd" id="2_igg5s"]
 
+[sub_resource type="Animation" id="Animation_37ke6"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_letxq"]
 resource_name = "walk"
 length = 0.8
@@ -33,34 +61,6 @@ tracks/1/keys = {
 "values": [0.0, -0.0872665, 0.0872665, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_37ke6"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nofdw"]
 _data = {
 "RESET": SubResource("Animation_37ke6"),
@@ -70,8 +70,10 @@ _data = {
 [node name="CamelPathFollow" type="PathFollow2D"]
 texture_filter = 1
 script = ExtResource("1_brk7h")
+speed = 60.0
 
 [node name="Camel" type="StaticBody2D" parent="." groups=["camel"]]
+z_index = -1
 collision_layer = 3
 script = ExtResource("2_igg5s")
 
