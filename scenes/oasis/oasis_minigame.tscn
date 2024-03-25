@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnoixbqvij500"]
+[gd_scene load_steps=18 format=3 uid="uid://cnoixbqvij500"]
 
 [ext_resource type="PackedScene" uid="uid://bs4ov2c13pn4t" path="res://scenes/oasis/player.tscn" id="1_ovkda"]
 [ext_resource type="PackedScene" uid="uid://dkbec7h7tvmdb" path="res://scenes/oasis/camel_path_follow.tscn" id="2_f1j6k"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scripts/oasis/water_bar.gd" id="5_clx4t"]
 [ext_resource type="PackedScene" uid="uid://c0q5o0c5q53o8" path="res://scenes/oasis/medium_dune.tscn" id="7_xamte"]
 [ext_resource type="PackedScene" uid="uid://chjnxm0ljjerh" path="res://scenes/oasis/big_dune.tscn" id="8_dcxdn"]
+[ext_resource type="PackedScene" uid="uid://dfi5u0vuus4an" path="res://scenes/oasis/cactus.tscn" id="9_wfylr"]
+[ext_resource type="PackedScene" uid="uid://c3u7b5gve82ix" path="res://scenes/oasis/cactus_bush1.tscn" id="10_6hlyb"]
+[ext_resource type="PackedScene" uid="uid://csiqmx0amlgje" path="res://scenes/oasis/cactus_bush2.tscn" id="11_kdbnp"]
+[ext_resource type="PackedScene" uid="uid://bt7bk5na0gvm6" path="res://scenes/oasis/cactus_bush3.tscn" id="12_p72ka"]
 
 [sub_resource type="Curve2D" id="Curve2D_q8gna"]
 _data = {
@@ -84,6 +88,9 @@ position = Vector2(4, 15)
 [node name="MediumDune" parent="." instance=ExtResource("7_xamte")]
 position = Vector2(202, -24)
 
+[node name="BigDune" parent="." instance=ExtResource("8_dcxdn")]
+position = Vector2(61, 131)
+
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="WaterBar" type="ProgressBar" parent="HUD"]
@@ -97,7 +104,19 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_feo43")
 show_percentage = false
 script = ExtResource("5_clx4t")
 
-[node name="BigDune" parent="." instance=ExtResource("8_dcxdn")]
-position = Vector2(61, 131)
+[node name="Cactus" parent="." instance=ExtResource("9_wfylr")]
+position = Vector2(116, 55)
+
+[node name="CactusBush" parent="." instance=ExtResource("10_6hlyb")]
+position = Vector2(95, 79)
+
+[node name="CactusBush2" parent="." instance=ExtResource("11_kdbnp")]
+position = Vector2(254, 99)
+
+[node name="CactusBush3" parent="." instance=ExtResource("12_p72ka")]
+position = Vector2(80, -10)
+
+[node name="CactusBush4" parent="." instance=ExtResource("11_kdbnp")]
+position = Vector2(276, -3)
 
 [connection signal="water_changed" from="Player" to="HUD/WaterBar" method="_on_player_water_changed"]
