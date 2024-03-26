@@ -8,13 +8,13 @@ size = Vector2(83, 1.25)
 
 [node name="MediumDune" type="StaticBody2D"]
 texture_filter = 1
-position = Vector2(53, -9)
 script = ExtResource("1_2beww")
+dune_size = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 5)
 texture = ExtResource("2_bv47g")
-offset = Vector2(-2, 0)
+offset = Vector2(-1.5, -0.5)
 region_enabled = true
 region_rect = Rect2(68, 1, 119, 27)
 

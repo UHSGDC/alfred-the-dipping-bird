@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cggb7h0ldebg5"]
+
+[ext_resource type="Script" path="res://scripts/oasis/oasis.gd" id="1_oj25v"]
+[ext_resource type="Texture2D" uid="uid://cvsxk0jlbetef" path="res://assets/oasis/oasis.png" id="2_ycvjv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h274f"]
+radius = 54.0
+height = 148.0
+
+[node name="Oasis" type="Area2D"]
+position = Vector2(347, 189)
+script = ExtResource("1_oj25v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ycvjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_h274f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
