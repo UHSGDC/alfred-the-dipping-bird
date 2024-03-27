@@ -16,7 +16,7 @@ func _ready() -> void:
 		spawn_delay -= spawn_delay_reduction
 
 func _spawn_obstacle() -> void:
-	var obstacle = preload("res://scenes/niagara-falls/obstacle.tscn").instantiate()
+	var obstacle = preload("res://scenes/niagara/obstacle.tscn").instantiate()
 	var rand_x = randf_range(top_left_bound.x, bot_right_bound.x)
 	obstacle.global_position = Vector2(rand_x, -200)
 	add_child(obstacle)
