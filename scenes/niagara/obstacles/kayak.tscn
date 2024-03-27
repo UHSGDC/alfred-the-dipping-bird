@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3ao3473gk8hf"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_qglqe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
+size = Vector2(112, 115.5)
+
+[node name="Kayak" type="RigidBody2D" groups=["obstacle"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qglqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i8gr5")
