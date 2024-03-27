@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://cnoixbqvij500"]
+[gd_scene load_steps=27 format=3 uid="uid://cnoixbqvij500"]
 
+[ext_resource type="Script" path="res://scripts/oasis/oasis_minigame.gd" id="1_o5uj5"]
 [ext_resource type="PackedScene" uid="uid://bs4ov2c13pn4t" path="res://scenes/oasis/player.tscn" id="1_ovkda"]
 [ext_resource type="PackedScene" uid="uid://dkbec7h7tvmdb" path="res://scenes/oasis/camel_path_follow.tscn" id="2_f1j6k"]
 [ext_resource type="Script" path="res://scripts/oasis/map.gd" id="3_62gl8"]
@@ -70,6 +71,7 @@ point_count = 6
 [node name="OasisMinigame" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
+script = ExtResource("1_o5uj5")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -169,4 +171,6 @@ position = Vector2(276, -3)
 
 [node name="Oasis" parent="." instance=ExtResource("15_345v6")]
 
+[connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]
 [connection signal="water_changed" from="Player" to="HUD/WaterBar" method="_on_player_water_changed"]
+[connection signal="oasis_reached" from="Oasis" to="." method="_on_oasis_oasis_reached"]
