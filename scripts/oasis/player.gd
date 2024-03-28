@@ -128,11 +128,7 @@ func _set_current_water(value: float) -> void:
 	water_changed.emit(current_water, max_water)	
 
 
-func _set_camel(value: StaticBody2D) -> void:
-	# Sets the frame to 1 if there is a value. Sets to 0 if value is null
-	# We do this so the beak color changes so it doesn't blend in to camel sprite or sand tiles depending on situation
-	bird_sprite.frame = (value != null)
-	
+func _set_camel(value: StaticBody2D) -> void:	
 	var old_value := camel
 	camel = value
 	

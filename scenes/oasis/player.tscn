@@ -247,15 +247,14 @@ debug_color = Color(0.768627, 0.431373, 0.337255, 0.419608)
 texture = ExtResource("2_8fht6")
 offset = Vector2(2, 0)
 flip_h = true
-hframes = 2
 region_enabled = true
-region_rect = Rect2(0, 1, 26, 9)
+region_rect = Rect2(0, 1, 13, 9)
 
 [node name="HatSprite" type="Sprite2D" parent="BirdSprite"]
 texture = ExtResource("2_8fht6")
 offset = Vector2(-2, 0)
 region_enabled = true
-region_rect = Rect2(27, 3, 5, 5)
+region_rect = Rect2(13, 3, 5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ffi61")
