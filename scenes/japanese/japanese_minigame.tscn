@@ -1,46 +1,73 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75tak24pccdk"]
+[gd_scene load_steps=9 format=3 uid="uid://b75tak24pccdk"]
 
 [ext_resource type="Script" path="res://scripts/japanese/japanese_minigame.gd" id="1_q86hw"]
+[ext_resource type="Resource" uid="uid://bw1flskvgajn4" path="res://assets/japanese/phsummit.tres" id="2_8cmlt"]
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_8g4kp"]
 [ext_resource type="PackedScene" uid="uid://bnnxmjxkdm565" path="res://scenes/japanese/rhythm_conductor.tscn" id="2_st8hx"]
-[ext_resource type="AudioStream" uid="uid://cdfg5t0aw4gnc" path="res://assets/japanese/PHSummitSong.wav" id="3_pnxxh"]
+[ext_resource type="Script" path="res://scripts/japanese/player.gd" id="3_qfsrm"]
 [ext_resource type="PackedScene" uid="uid://ebglyiq7nmj7" path="res://scenes/japanese/drum.tscn" id="3_y7nx7"]
+[ext_resource type="PackedScene" uid="uid://beh2ln8ceok27" path="res://scenes/japanese/stick.tscn" id="4_04ayk"]
 [ext_resource type="PackedScene" uid="uid://ctgw5vu4lgpq0" path="res://scenes/japanese/note_target.tscn" id="4_vgji6"]
 
 [node name="JapaneseMinigame" type="Node2D" node_paths=PackedStringArray("targets")]
 script = ExtResource("1_q86hw")
-targets = [NodePath("DrumTop/LeftTarget"), NodePath("DrumTop/RightTarget"), NodePath("DrumBottom/LeftTarget"), NodePath("DrumBottom/RightTarget")]
+targets = [NodePath("LeftTopTarget"), NodePath("RightTopTarget"), NodePath("LeftBotTarget"), NodePath("RightBotTarget")]
+beatmap = ExtResource("2_8cmlt")
+debug_mode = true
+
+[node name="Player" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(160, 90)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_8g4kp")
+flip_v = true
+script = ExtResource("3_qfsrm")
+
+[node name="LeftTopStick" parent="Player" instance=ExtResource("4_04ayk")]
+
+[node name="RightTopStick" parent="Player" instance=ExtResource("4_04ayk")]
+scale = Vector2(-1, 1)
+
+[node name="LeftBotStick" parent="Player" instance=ExtResource("4_04ayk")]
+visible = false
+scale = Vector2(1, -1)
+
+[node name="RightBotStick" parent="Player" instance=ExtResource("4_04ayk")]
+visible = false
+scale = Vector2(-1, -1)
 
 [node name="Conductor" parent="." instance=ExtResource("2_st8hx")]
-stream = ExtResource("3_pnxxh")
 volume_db = -14.615
 bpm = 95
 
-[node name="DrumTop" parent="." instance=ExtResource("3_y7nx7")]
-position = Vector2(160, 72)
-
-[node name="LeftTarget" parent="DrumTop" instance=ExtResource("4_vgji6")]
-position = Vector2(-6, -11)
+[node name="LeftTopTarget" parent="." instance=ExtResource("4_vgji6")]
+position = Vector2(154, 64)
 input_action = &"left"
 player_direction = &"up"
 
-[node name="RightTarget" parent="DrumTop" instance=ExtResource("4_vgji6")]
-position = Vector2(6, -11)
+[node name="RightTopTarget" parent="." instance=ExtResource("4_vgji6")]
+position = Vector2(166, 64)
 input_action = &"right"
 player_direction = &"up"
+
+[node name="LeftBotTarget" parent="." instance=ExtResource("4_vgji6")]
+position = Vector2(154, 116)
+rotation = 3.14159
+input_action = &"left"
+player_direction = &"down"
+
+[node name="RightBotTarget" parent="." instance=ExtResource("4_vgji6")]
+position = Vector2(166, 116)
+rotation = 3.14159
+input_action = &"right"
+player_direction = &"down"
+
+[node name="DrumTop" parent="." instance=ExtResource("3_y7nx7")]
+position = Vector2(160, 75)
 
 [node name="DrumBottom" parent="." instance=ExtResource("3_y7nx7")]
-position = Vector2(160, 104)
+position = Vector2(160, 105)
 rotation = 3.14159
-
-[node name="LeftTarget" parent="DrumBottom" instance=ExtResource("4_vgji6")]
-position = Vector2(6, -11)
-input_action = &"left"
-player_direction = &"down"
-
-[node name="RightTarget" parent="DrumBottom" instance=ExtResource("4_vgji6")]
-position = Vector2(-6, -11)
-input_action = &"right"
-player_direction = &"down"
 
 [node name="TopStart" type="Marker2D" parent="."]
 position = Vector2(160, -8)

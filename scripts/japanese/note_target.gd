@@ -11,18 +11,18 @@ var okay := false
 var current_note: Area2D = null
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action(input_action):
-		if event.is_action_pressed(input_action):
-			$Sprite2D.modulate = Color.WHITE
-			if current_note != null:
-				# Adding up booleans (false = 0, true = 1) instead of having if statements
-				var score: int = int(perfect) + int(good) + int(okay)
-				note_hit.emit(score)
-				current_note.destroy(score)
-				_reset()
-		elif event.is_action_released(input_action):
-			$PushTimer.start()
+func handle_input(direction: StringName) -> void:
+	if direction == player_direction and Input.is_action_just_pressed(input_action):
+		$Sprite2D.modulate = Color.WHITE
+		$PushTimer.start()
+		if current_note != null:
+			# Adding up booleans (false = 0, true = 1) instead of having if statements
+			var score: int = int(perfect) + int(good) + int(okay)
+			note_hit.emit(score)
+			current_note.destroy(score)
+			_reset()
+	elif direction != player_direction || !Input.is_action_pressed(input_action):
+		$Sprite2D.modulate = Color.BLACK
 
 
 func _on_perfect_area_area_entered(area: Area2D) -> void:
