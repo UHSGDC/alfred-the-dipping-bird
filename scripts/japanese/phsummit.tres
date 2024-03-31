@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Beatmap" load_steps=3 format=3 uid="uid://bw1flskvgajn4"]
+
+[ext_resource type="Script" path="res://scripts/japanese/beatmap.gd" id="1_ubn36"]
+[ext_resource type="AudioStream" uid="uid://cdfg5t0aw4gnc" path="res://assets/japanese/PHSummitSong.wav" id="2_qwmda"]
+
+[resource]
+script = ExtResource("1_ubn36")
+stream = ExtResource("2_qwmda")
+bpm = 95
+beats = PackedStringArray()
