@@ -17,7 +17,7 @@ debug_mode = true
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(160, 90)
+position = Vector2(160, 150)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_8g4kp")
 flip_v = true
@@ -41,32 +41,32 @@ volume_db = -14.615
 bpm = 95
 
 [node name="LeftTopTarget" parent="." instance=ExtResource("4_vgji6")]
-position = Vector2(154, 64)
+position = Vector2(154, 124)
 input_action = &"left"
 player_direction = &"up"
 
 [node name="RightTopTarget" parent="." instance=ExtResource("4_vgji6")]
-position = Vector2(166, 64)
+position = Vector2(166, 124)
 input_action = &"right"
 player_direction = &"up"
 
 [node name="LeftBotTarget" parent="." instance=ExtResource("4_vgji6")]
-position = Vector2(154, 116)
+position = Vector2(154, 199)
 rotation = 3.14159
 input_action = &"left"
 player_direction = &"down"
 
 [node name="RightBotTarget" parent="." instance=ExtResource("4_vgji6")]
-position = Vector2(166, 116)
+position = Vector2(166, 199)
 rotation = 3.14159
 input_action = &"right"
 player_direction = &"down"
 
 [node name="DrumTop" parent="." instance=ExtResource("3_y7nx7")]
-position = Vector2(160, 75)
+position = Vector2(160, 135)
 
 [node name="DrumBottom" parent="." instance=ExtResource("3_y7nx7")]
-position = Vector2(160, 105)
+position = Vector2(160, 188)
 rotation = 3.14159
 
 [node name="TopStart" type="Marker2D" parent="."]
