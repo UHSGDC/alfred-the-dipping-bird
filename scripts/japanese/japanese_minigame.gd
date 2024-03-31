@@ -5,19 +5,18 @@ const NOTE_SCENE: PackedScene = preload("res://scenes/japanese/note.tscn")
 @export var targets: Array[Area2D]
 @export var beatmap: Beatmap
 
-var player_direction: StringName : 
-	set(value):
-		player_direction = value
-		player.direction = value
 var score: int = 0
 var beats_till_hit: int = 0
 
+@onready var player_direction: StringName = "up": 
+	set(value):
+		player_direction = value
+		player.direction = value
 @onready var conductor: RhythmConductor = $Conductor
 @onready var player: Sprite2D = $Player
 
 func _ready() -> void:
 	start()
-	player_direction = "up"
 	for target in targets:
 		target.note_hit.connect(_on_note_hit)
 
@@ -30,10 +29,11 @@ func start() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Changing player direction
-	if event.is_action_pressed("up"):
-		player_direction = "up"
-	elif event.is_action_pressed("down"):
-		player_direction = "down"
+	if beatmap.use_two_drums:
+		if event.is_action_pressed("up"):
+			player_direction = "up"
+		elif event.is_action_pressed("down"):
+			player_direction = "down"
 	
 	# Player animation
 	if event.is_action_pressed("left"):
@@ -72,4 +72,4 @@ func _read_and_spawn_notes(notes: String) -> void:
 func _spawn_note(note_start: Vector2, note_target: Vector2) -> void:
 	var note := NOTE_SCENE.instantiate()
 	add_child(note)
-	note.initialize(note_start, note_target, beatmap.bpm, 2)
+	note.initialize(note_start, note_target, beatmap.bpm, beats_till_hit)

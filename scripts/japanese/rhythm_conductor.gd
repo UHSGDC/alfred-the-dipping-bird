@@ -31,10 +31,10 @@ func play_with_beat_offset(beat: int) -> void:
 	beats_before_start = beat
 	if (beat == 0):
 		play()
-		_report_beat()
 	else:
 		$StartTimer.wait_time = sec_per_beat
 		$StartTimer.start()
+	_report_beat()
 
 
 #func closest_beat(nth) -> void:
