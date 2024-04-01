@@ -4,6 +4,7 @@ const NOTE_SCENE: PackedScene = preload("res://scenes/japanese/note.tscn")
 
 @export var targets: Array[Area2D]
 @export var beatmap: Beatmap
+@export var print_score: bool = false
 
 var score: int = 0
 var beats_till_hit: int = 0
@@ -34,7 +35,7 @@ func start() -> void:
 	sec_per_half_beat = 30.0 / beatmap.bpm
 	beats_till_hit = beatmap.beats_till_hit
 	total_notes = beatmap.get_total_notes()
-	conductor.play_from_beat(45, beats_till_hit)
+	conductor.play_with_beat_offset(beats_till_hit)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -58,7 +59,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_note_hit(score_to_add: int) -> void:
 	score += score_to_add
-	if debug_mode:
+	if print_score:
 		print("score: " + str(score) + "/" + str(total_notes * 3))
 
 

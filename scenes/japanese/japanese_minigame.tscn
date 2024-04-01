@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b75tak24pccdk"]
+[gd_scene load_steps=9 format=3 uid="uid://clombk6ni8atl"]
 
 [ext_resource type="Script" path="res://scripts/japanese/japanese_minigame.gd" id="1_q86hw"]
 [ext_resource type="Resource" uid="uid://bw1flskvgajn4" path="res://assets/japanese/phsummit.tres" id="2_8cmlt"]
@@ -13,7 +13,7 @@
 script = ExtResource("1_q86hw")
 targets = [NodePath("LeftTopTarget"), NodePath("RightTopTarget"), NodePath("LeftBotTarget"), NodePath("RightBotTarget")]
 beatmap = ExtResource("2_8cmlt")
-debug_mode = true
+print_score = true
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
