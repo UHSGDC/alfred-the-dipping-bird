@@ -38,7 +38,6 @@ scale = Vector2(-1, -1)
 
 [node name="Conductor" parent="." instance=ExtResource("2_st8hx")]
 volume_db = -14.615
-bpm = 95
 
 [node name="LeftTopTarget" parent="." instance=ExtResource("4_vgji6")]
 position = Vector2(154, 124)
@@ -74,5 +73,7 @@ position = Vector2(160, -8)
 
 [node name="BottomStart" type="Marker2D" parent="."]
 position = Vector2(160, 188)
+
+[node name="HalfBeatTimer" type="Timer" parent="."]
 
 [connection signal="beat_reached" from="Conductor" to="." method="_on_rhythm_conductor_beat_reached"]

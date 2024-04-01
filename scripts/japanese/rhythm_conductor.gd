@@ -2,15 +2,14 @@ class_name RhythmConductor extends AudioStreamPlayer
 
 signal beat_reached(beat_position: int)
 
-@export var bpm: int = 100
+var bpm: int
 
 # Tracking the beat and song position
 var song_position_seconds: float = 0.0
 var song_position_beats: int = 1
 var last_reported_beat: int = 0
 var beats_before_start: int = 0
-
-@onready var sec_per_beat: float = 60.0 / bpm
+var sec_per_beat: float
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,9 +42,10 @@ func play_with_beat_offset(beat: int) -> void:
 	#return Vector2(closest, time_off_beat)
 
 
-func play_from_beat(beat: int) -> void:
+func play_from_beat(beat: int, beat_offset: int) -> void:
 	play()
 	seek((beat - 1) * sec_per_beat)
+	beats_before_start = beat_offset
 
 
 func _on_start_timer_timeout() -> void:

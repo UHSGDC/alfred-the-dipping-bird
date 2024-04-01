@@ -6,3 +6,9 @@ class_name Beatmap extends Resource
 ## String should be a binary number. From left to right bits are: top left, top right, bot left, bot right
 @export var beats: PackedStringArray
 @export var use_two_drums: bool = false
+
+func get_total_notes() -> int:
+	var total_notes: int = 0
+	for beat in beats:
+		total_notes += beat.count("1")
+	return total_notes
