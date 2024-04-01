@@ -11,17 +11,20 @@ var last_reported_beat: int = 0
 var beats_before_start: int = 0
 var sec_per_beat: float
 
+var audio_latency: float
+
 
 func _physics_process(_delta: float) -> void:
 	if playing:
 		song_position_seconds = get_playback_position() + AudioServer.get_time_since_last_mix()
-		song_position_seconds -= AudioServer.get_output_latency()
+		song_position_seconds -= audio_latency
 		song_position_beats = int(ceilf(song_position_seconds / sec_per_beat)) + beats_before_start
 		_report_beat()
 
 
 func _report_beat() -> void:
 	if last_reported_beat < song_position_beats:
+		audio_latency = AudioServer.get_output_latency()
 		beat_reached.emit(song_position_beats)
 		last_reported_beat = song_position_beats
 

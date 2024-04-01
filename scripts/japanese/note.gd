@@ -14,7 +14,7 @@ func initialize(start: Vector2, target: Vector2, bpm: int, beats_till_hit: int) 
 	global_position.y = start.y
 	global_position.x = target.x
 	var sec_per_beat := 60.0 / bpm
-	var seconds_till_hit = sec_per_beat * beats_till_hit
+	var seconds_till_hit = sec_per_beat * beats_till_hit + AudioServer.get_output_latency()
 	
 	speed = (target.y - start.y) / seconds_till_hit
 	
