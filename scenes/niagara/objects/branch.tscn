@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_664u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
-size = Vector2(30, 14)
+size = Vector2(28, 12)
 
 [node name="Branch" type="RigidBody2D" groups=["breakable", "obstacle"]]
 collision_mask = 0
