@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_a542m"]
 [ext_resource type="Script" path="res://scripts/niagara/fish_indicator.gd" id="1_cm0wf"]
 
+[sub_resource type="Animation" id="Animation_r6ije"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 1, 0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_p6osk"]
 resource_name = "flash"
 length = 1.1
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 1, 0, 1), Color(0, 1, 0, 0), Color(0, 1, 0, 1), Color(0, 1, 0, 0), Color(0, 1, 0, 1), Color(0, 1, 0, 0), Color(0, 1, 0, 1), Color(0, 1, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_r6ije"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 1, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eocgo"]

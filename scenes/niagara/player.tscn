@@ -18,5 +18,8 @@ position = Vector2(-5.68434e-14, 0)
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_vs87n")
 
+[node name="DryingTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="DryingTimer" to="." method="_on_drying_timer_timeout"]

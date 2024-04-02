@@ -1,5 +1,7 @@
 extends BaseMinigame
 
+signal fish_collected(count: int)
+
 const TOP_LEFT_BOUND: Vector2 = Vector2(0, 0)
 const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
 
@@ -9,7 +11,10 @@ const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
 ## The length of the minigame in seconds
 @export var minigame_time: float
 
-var fish_collected: int = 0
+var total_fish_collected: int = 0 :
+	set(value):
+		total_fish_collected = value
+		fish_collected.emit(value)
 
 @onready var hud: CanvasLayer = $HUD
 @onready var gush_spawn_left: Marker2D = $GushSpawn/LeftSpawn
@@ -45,13 +50,13 @@ func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) ->
 
 func _on_player_body_entered(body: Node2D) -> void:
 	if body.is_in_group("fish"):
-		fish_collected += 1
+		total_fish_collected += 1
 		if debug_mode:
-			print(str(fish_collected) + " fish collected")
+			print(str(total_fish_collected) + " fish collected")
 	elif body.is_in_group("obstacle"):
-		end_minigame(false, 0)
 		if debug_mode:
 			print("player hit obstacle")
+		end_minigame(false, 0)
 			
 	if body.is_in_group("breakable"):
 		body.queue_free()
@@ -63,7 +68,7 @@ func _on_obstacle_timer_timeout() -> void:
 
 
 func _on_gush_timer_timeout() -> void:
-	var rand_x := randf_range(gush_spawn_left.position.x, gush_spawn_right.position.x)
+	var rand_x := clampf(randf_range(gush_spawn_left.position.x, gush_spawn_right.position.x), $GushSpawn/LeftSpawnBound.position.x, $GushSpawn/RightSpawnBound.position.x)
 	_spawn_falling_object(gush_indicator_scene, Vector2(rand_x, gush_spawn_left.position.y))
 
 
@@ -73,4 +78,14 @@ func _on_fish_timer_timeout() -> void:
 
 
 func _on_minigame_timer_timeout() -> void:
-	end_minigame(true, fish_collected)
+	if debug_mode:
+		print("timer finished. Player won")
+	end_minigame(true, total_fish_collected)
+	
+
+
+func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> void:
+	if current_wetness >= max_wetness:
+		if debug_mode:
+			print("player got too wet")
+		end_minigame(false, 0)

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="alfred-the-dipping-bird"
-run/main_scene="res://scenes/niagara/niagara_minigame.tscn"
+run/main_scene="res://tests/minigame_tester.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -73,4 +73,5 @@ interact={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
