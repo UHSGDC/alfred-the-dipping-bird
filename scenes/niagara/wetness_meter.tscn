@@ -25,13 +25,14 @@ script = ExtResource("2_po66g")
 [node name="ParticleProgress" type="Control" parent="."]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -9.0
-offset_right = 1.0
-offset_bottom = 15.0
+anchor_left = -0.091
+anchor_top = -5.37
+anchor_right = -0.091
+anchor_bottom = -5.37
+offset_left = 7.645
+offset_top = 135.99
+offset_right = 104.645
+offset_bottom = 186.99
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -34,7 +34,7 @@ func _ready() -> void:
 	$GushTimer.start_spawn_timer()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$HUD/TimeRemaining.text = "Survive %.1f seconds" % $MinigameTimer.time_left
 
 
