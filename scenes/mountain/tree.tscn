@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdlspp44f5lmj"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_1u0au"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwjaw"]
+size = Vector2(128, 128)
+
+[node name="Tree" type="StaticBody2D" groups=["tree"]]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.407843, 1, 0.254902, 1)
+texture = ExtResource("1_1u0au")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gwjaw")
