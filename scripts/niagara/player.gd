@@ -1,20 +1,18 @@
 extends Area2D
 
-signal player_killed
-
-const MAX_SPEED: float = 400
-const MAX_FALL_SPEED: float = 700
+const MAX_SPEED: float = 150
 const ACCELERATION: float = MAX_SPEED * 10
-const AUTOSCROLL_SPEED: float = 600
-const MIN_SCALE: float = 0.3
 
-const left_bound: float = 16
-const right_bound: float = 632
+const LEFT_BOUND: float = 8
+const RIGHT_BOUND: float = 320 - LEFT_BOUND
 
 var velocity: Vector2 = Vector2(0, 0)
 
+var in_water: bool = false
+
 func _physics_process(delta: float) -> void:
 	move(delta)
+
 
 func move(delta: float) -> void:	
 	var input := Input.get_vector("left", "right", "up", "down")
@@ -30,8 +28,16 @@ func move(delta: float) -> void:
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
 
 	position.x += velocity.x * delta
-	position.x = clampf(position.x, left_bound, right_bound)
-	
-# Obstacle
-func _on_area_entered(body: Node2D) -> void:
-	print("test")
+	position.x = clampf(position.x, LEFT_BOUND, RIGHT_BOUND)
+
+
+# Waterfall detection
+func _on_area_entered(area: Node2D) -> void:
+	if area.is_in_group("waterfall"):
+		in_water = true
+
+
+# Waterfall detection
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("waterfall"):
+		in_water = false

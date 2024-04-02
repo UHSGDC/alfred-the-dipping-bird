@@ -4,16 +4,19 @@
 [ext_resource type="Script" path="res://scripts/niagara/player.gd" id="1_uitqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs87n"]
-size = Vector2(13.1255, 21.329)
+size = Vector2(2.6251, 4.26579)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_uitqq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.617188, 1.00781)
+scale = Vector2(0.125, 0.2)
 texture = ExtResource("1_46q3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7.15256e-07, -2.92063e-06)
-scale = Vector2(6.095, 6.095)
+position = Vector2(-5.68434e-14, 0)
+scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_vs87n")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
