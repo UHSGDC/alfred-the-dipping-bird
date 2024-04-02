@@ -100,7 +100,8 @@ func on_body_entered_bear(body: Node2D) -> void:
 # Player win
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("coin"):
-		coins += area.value
+		coins += 1
+		area.queue_free()
 	elif area.is_in_group("win_zone"):
 		player_won.emit(lives, coins)
 

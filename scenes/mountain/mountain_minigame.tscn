@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dwts4s3g7ggmq"]
+[gd_scene load_steps=13 format=3 uid="uid://dwts4s3g7ggmq"]
 
 [ext_resource type="Script" path="res://scripts/mountain/mountain_minigame.gd" id="1_tc88e"]
 [ext_resource type="Script" path="res://scripts/mountain/player.gd" id="2_71350"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://0pjhoi8tcmtu" path="res://scenes/mountain/bear.tscn" id="6_fuq4y"]
 [ext_resource type="PackedScene" uid="uid://canwef3g62p43" path="res://scenes/mountain/avalanche.tscn" id="7_80j0t"]
 [ext_resource type="PackedScene" uid="uid://dq3yj81r6my4o" path="res://scenes/mountain/coin.tscn" id="8_xtm7i"]
+[ext_resource type="PackedScene" uid="uid://cloumtqeb1sn8" path="res://scenes/mountain/win_zone.tscn" id="9_hcgm5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mt0rb"]
 size = Vector2(33, 79)
@@ -91,6 +92,9 @@ position = Vector2(623, 893)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("8_xtm7i")]
 position = Vector2(-12, 1881)
+
+[node name="Win Zone" parent="." instance=ExtResource("9_hcgm5")]
+position = Vector2(336, 3415)
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(324, 151)

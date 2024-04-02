@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq3yj81r6my4o"]
+[gd_scene load_steps=3 format=3 uid="uid://dq3yj81r6my4o"]
 
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_4fdfl"]
-[ext_resource type="Script" path="res://scripts/mountain/coin.gd" id="1_aexle"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfdyk"]
 size = Vector2(96, 96)
@@ -10,7 +9,6 @@ size = Vector2(96, 96)
 collision_layer = 8
 collision_mask = 0
 monitoring = false
-script = ExtResource("1_aexle")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0.141176, 1)
