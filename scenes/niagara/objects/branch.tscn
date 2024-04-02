@@ -3,11 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_664u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
-size = Vector2(112, 115.5)
+size = Vector2(30, 14)
 
-[node name="Branch" type="RigidBody2D" groups=["obstacle"]]
+[node name="Branch" type="RigidBody2D" groups=["breakable", "obstacle"]]
+collision_mask = 0
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 40)
+constant_force = Vector2(0, 300)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.234375, 0.109375)
 texture = ExtResource("1_664u7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

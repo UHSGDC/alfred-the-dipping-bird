@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://laaln4dpdyqi"]
+[gd_scene load_steps=12 format=3 uid="uid://laaln4dpdyqi"]
 
 [ext_resource type="Script" path="res://scripts/niagara/niagara_minigame.gd" id="1_6bwwf"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_lqpmu"]
+[ext_resource type="PackedScene" uid="uid://dar4ylmf5vwos" path="res://scenes/niagara/indicators/gush_indicator.tscn" id="2_pm52m"]
 [ext_resource type="Script" path="res://scripts/niagara/background.gd" id="3_7ch8u"]
+[ext_resource type="PackedScene" uid="uid://cfuyqhj777tif" path="res://scenes/niagara/indicators/obstacle_indicator.tscn" id="3_hgaek"]
 [ext_resource type="PackedScene" uid="uid://dv26boqu0ncd0" path="res://scenes/niagara/player.tscn" id="3_j8q3t"]
 [ext_resource type="PackedScene" uid="uid://cuwf4kfx0g4m6" path="res://scenes/niagara/spawn_timer.tscn" id="5_ua3ch"]
+[ext_resource type="PackedScene" uid="uid://uwnlbh4c5fac" path="res://scenes/niagara/indicators/fish_indicator.tscn" id="6_voupq"]
 [ext_resource type="Script" path="res://scripts/niagara/object_remover.gd" id="7_6awaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or3sr"]
@@ -15,6 +18,11 @@ size = Vector2(360, 10)
 
 [node name="NiagaraMinigame" type="Node2D"]
 script = ExtResource("1_6bwwf")
+gush_indicator_scene = ExtResource("2_pm52m")
+obstacle_indicator_scene = ExtResource("3_hgaek")
+fish_indicator_scene = ExtResource("6_voupq")
+minigame_time = 60.0
+debug_mode = true
 
 [node name="MinigameTimer" type="Timer" parent="."]
 
@@ -56,10 +64,18 @@ scale = Vector2(0.773437, 1.40625)
 texture = ExtResource("2_lqpmu")
 
 [node name="FishTimer" parent="." instance=ExtResource("5_ua3ch")]
+starting_max_time = 8.0
+starting_min_time = 5.0
 
 [node name="GushTimer" parent="." instance=ExtResource("5_ua3ch")]
+starting_max_time = 10.0
+starting_min_time = 6.0
+time_reduction = 0.2
 
 [node name="ObstacleTimer" parent="." instance=ExtResource("5_ua3ch")]
+starting_max_time = 3.5
+starting_min_time = 0.5
+time_reduction = 0.1
 
 [node name="GushSpawn" type="Node2D" parent="."]
 
@@ -88,10 +104,15 @@ position = Vector2(320, -48)
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="ObjectRemover" type="Area2D" parent="."]
-position = Vector2(160, 200)
+position = Vector2(160, 500)
 script = ExtResource("7_6awaa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectRemover"]
 shape = SubResource("RectangleShape2D_bl2v0")
 
+[connection signal="timeout" from="MinigameTimer" to="." method="_on_minigame_timer_timeout"]
+[connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
+[connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
+[connection signal="timeout" from="GushTimer" to="." method="_on_gush_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
 [connection signal="body_entered" from="ObjectRemover" to="ObjectRemover" method="_on_body_entered"]
