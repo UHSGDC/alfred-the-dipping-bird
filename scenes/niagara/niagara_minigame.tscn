@@ -131,6 +131,11 @@ script = ExtResource("10_48dym")
 
 [node name="WetnessMeter" parent="HUD" instance=ExtResource("9_woj0y")]
 
+[node name="TimeRemaining" type="Label" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 8
+
 [node name="ObjectRemover" type="Area2D" parent="."]
 position = Vector2(160, 500)
 script = ExtResource("7_6awaa")

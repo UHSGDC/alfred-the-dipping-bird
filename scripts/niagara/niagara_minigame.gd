@@ -32,7 +32,10 @@ func _ready() -> void:
 	$FishTimer.start_spawn_timer()
 	await get_tree().create_timer(1).timeout
 	$GushTimer.start_spawn_timer()
-	
+
+
+func _process(delta: float) -> void:
+	$HUD/TimeRemaining.text = "Survive %.1f seconds" % $MinigameTimer.time_left
 
 
 func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) -> void:

@@ -12,7 +12,7 @@ linear_velocity = Vector2(0, 40)
 constant_force = Vector2(0, 300)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0.862745, 0, 0.286275, 1)
 scale = Vector2(0.234375, 0.109375)
 texture = ExtResource("1_664u7")
 
