@@ -21,6 +21,6 @@ texture = ExtResource("1_oiw6h")
 shape = SubResource("RectangleShape2D_6rhos")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-57.5, -57.5, 115, 115)
+rect = Rect2(-120, -70, 240, 140)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

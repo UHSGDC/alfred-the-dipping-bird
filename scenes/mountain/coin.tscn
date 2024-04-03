@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_4fdfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfdyk"]
-size = Vector2(96, 96)
+size = Vector2(68, 66)
 
 [node name="Coin" type="Area2D" groups=["coin"]]
 collision_layer = 8
@@ -11,8 +11,8 @@ collision_mask = 0
 monitoring = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 0.141176, 1)
-scale = Vector2(0.75, 0.75)
+modulate = Color(1, 0.682353, 0, 1)
+scale = Vector2(0.484375, 0.46875)
 texture = ExtResource("1_4fdfl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_aro2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1y2j"]
-size = Vector2(600, 344)
+size = Vector2(496, 288)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uc8gk"]
-size = Vector2(650, 394)
+size = Vector2(590, 342)
 
 [node name="Avalanche" type="RigidBody2D" groups=["avalanche"]]
 collision_layer = 4
@@ -17,7 +17,7 @@ contact_monitor = true
 script = ExtResource("1_ocqe0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(5, 3)
+scale = Vector2(4.15625, 2.54688)
 texture = ExtResource("2_aro2i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,6 +29,6 @@ shape = SubResource("RectangleShape2D_t1y2j")
 shape = SubResource("RectangleShape2D_uc8gk")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-320, -192, 640, 384)
+rect = Rect2(-400, -192, 800, 384)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
