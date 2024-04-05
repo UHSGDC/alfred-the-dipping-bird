@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-@export_enum("Small", "Medium", "Big") var dune_size: int
+@export_enum("Small", "Medium", "Big", "Very Big") var dune_size: int
 @onready var col_shape: CollisionShape2D = $CollisionShape2D
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
