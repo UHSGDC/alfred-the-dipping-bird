@@ -1,8 +1,8 @@
 extends PathFollow2D
 
-@export var speed: float = 70.0
+@export var speed_ratio: float = 0.12
 
 
 func _physics_process(delta: float) -> void:
-	progress += delta * speed
+	progress_ratio += delta * speed_ratio
 	

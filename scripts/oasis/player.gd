@@ -142,5 +142,5 @@ func _set_camel(value: StaticBody2D) -> void:
 
 
 func _on_camel_detector_body_entered(body: Node2D) -> void:
-	if in_air and body.is_in_group("camel"):
+	if in_air and body.is_in_group("camel") and !camel:
 		camel = body

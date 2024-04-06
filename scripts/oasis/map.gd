@@ -2,6 +2,7 @@ extends TextureRect
 
 @export var dunes: Node2D
 @export var oasis: Node2D
+@export var player: Node2D
 
 @export var dune_textures: Array[Texture2D]
 @export var oasis_texture: Texture2D
@@ -31,6 +32,11 @@ func _input(event: InputEvent) -> void:
 		show()
 	elif event.is_action_released("action"):
 		hide()
+
+
+func _physics_process(_delta: float) -> void:
+	if player:
+		$PlayerMarker.position = level_to_map_coords(player.position)
 
 
 # Scales coords in the level to coords on the map and then offsets so that the origin is the top left
