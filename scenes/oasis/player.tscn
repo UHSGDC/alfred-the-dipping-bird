@@ -1,7 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs4ov2c13pn4t"]
+[gd_scene load_steps=12 format=3 uid="uid://bs4ov2c13pn4t"]
 
 [ext_resource type="Script" path="res://scripts/oasis/player.gd" id="1_ypfrp"]
 [ext_resource type="Texture2D" uid="uid://dhw27vwpnig2r" path="res://assets/oasis/alfred.png" id="2_8fht6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fdsob"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7yf1i"]
 radius = 7.0
@@ -235,8 +238,15 @@ max_jump_scale = 1.3
 jump_time = 0.3
 fall_time = 0.25
 max_water = 150.0
-water_per_second_walk = 5.0
+water_per_second_walk = 4.0
 water_per_jump = 2.0
+
+[node name="BoundsChecker" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundsChecker"]
+shape = SubResource("CircleShape2D_fdsob")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
 
 [node name="CamelDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -268,4 +278,6 @@ libraries = {
 }
 playback_default_blend_time = 0.2
 
+[connection signal="body_entered" from="BoundsChecker" to="." method="_on_bounds_checker_body_entered"]
+[connection signal="body_exited" from="BoundsChecker" to="." method="_on_bounds_checker_body_exited"]
 [connection signal="body_entered" from="CamelDetector" to="." method="_on_camel_detector_body_entered"]

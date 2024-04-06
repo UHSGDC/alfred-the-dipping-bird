@@ -1,5 +1,13 @@
 extends BaseMinigame
 
+@export var random_spawning: bool = true
+
+func _ready() -> void:
+	if random_spawning:
+		$Player.global_position = $PlayerSpawn.get_random_point()
+		
+	$PlayerCamera.global_position = $Player.global_position
+
 
 func _on_player_player_killed() -> void:
 	end_minigame(false, 0)

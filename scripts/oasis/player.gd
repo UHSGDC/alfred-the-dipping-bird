@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 signal player_killed
 signal water_changed(current_value: float, max_value: float)
+signal bounds_hit
+signal bounds_left
 
 @export var max_ground_speed: float
 @export var max_air_speed: float
@@ -60,10 +62,15 @@ func look(input: Vector2) -> void:
 
 
 func jump() -> void:
-	if camel: # Dismount camel
+	var old_camel := camel
+	for body in camel_detector.get_overlapping_bodies(): # Allow player to instantly mount camel after jumping
+		# Switch camel instantly 
+		if body != old_camel:
+			camel = body
+			break
+	if old_camel == camel: # Dismount camel with velocity
 		camel = null
-	elif camel_detector.get_overlapping_bodies(): # Allow player to instantly mount camel after jumping
-		camel = camel_detector.get_overlapping_bodies()[0]
+			
 			
 	in_air = true	
 	anim_player.play("jump")
@@ -144,3 +151,13 @@ func _set_camel(value: StaticBody2D) -> void:
 func _on_camel_detector_body_entered(body: Node2D) -> void:
 	if in_air and body.is_in_group("camel") and !camel:
 		camel = body
+
+
+func _on_bounds_checker_body_entered(body: Node2D) -> void:
+	if body.is_in_group("bounds"):
+		bounds_hit.emit()
+
+
+func _on_bounds_checker_body_exited(body: Node2D) -> void:
+	if body.is_in_group("bounds"):
+		bounds_left.emit()

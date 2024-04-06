@@ -8,9 +8,6 @@ extends Camera2D
 
 @onready var offset_tween: Tween
 
-func _ready() -> void:
-	global_position = player.global_position
-
 
 func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("left", "right", "up", "down")
