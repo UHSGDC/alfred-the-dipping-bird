@@ -234,7 +234,9 @@ air_acceleration_multiplier = 0.3
 max_jump_scale = 1.3
 jump_time = 0.3
 fall_time = 0.25
-max_water = 300.0
+max_water = 150.0
+water_per_second_walk = 5.0
+water_per_jump = 2.0
 
 [node name="CamelDetector" type="Area2D" parent="."]
 collision_layer = 0
