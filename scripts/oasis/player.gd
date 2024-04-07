@@ -10,9 +10,6 @@ signal bounds_left
 @export var ground_acceleration: float
 @export var air_acceleration_multiplier: float
 
-@export var max_jump_scale: float
-@export var jump_time: float
-@export var fall_time: float
 ## Cooldown before player can collide (not ride) again with a camel it just dismounted
 @export var same_camel_collision_cooldown: float = 0.5
 @export var max_water: float = 100.0
@@ -72,7 +69,7 @@ func jump() -> void:
 		camel = null
 			
 			
-	in_air = true	
+	in_air = true
 	anim_player.play("jump")
 	await anim_player.animation_finished
 	in_air = false

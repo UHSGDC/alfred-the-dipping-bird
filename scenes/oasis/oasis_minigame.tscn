@@ -102,7 +102,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_7xy8x"]
 _data = {
-"points": PackedVector2Array(20.9516, 36.8658, -20.9516, -36.8658, 132, 169, -33.4546, 10.0583, 33.4546, -10.0583, 153, 16, -20.1433, -41.3555, 20.1433, 41.3555, 264, 91, 29.8341, -7.39514, -29.8341, 7.39514, 252, 238, 15.874, 38.0976, -15.874, -38.0976, 132, 169)
+"points": PackedVector2Array(20.9516, 36.8658, -20.9516, -36.8658, 132, 169, -33.4546, 10.0583, 33.4546, -10.0583, 153, 16, -20.1433, -41.3555, 20.1433, 41.3555, 264, 91, 29.8341, -7.39514, -29.8341, 7.39514, 248.015, 243.744, 15.874, 38.0976, -15.874, -38.0976, 132, 169)
 }
 point_count = 5
 
@@ -312,7 +312,7 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_xwbje"]
 _data = {
-"points": PackedVector2Array(33.824, 4.08945, 4.61374, -50.4157, 180.211, -40.0637, 39.5615, -9.59675, -39.5615, 9.59675, 51.616, -93.9563, -1.06207, -51.4859, 1.06207, 51.4859, -60.0774, 25.4697, -47.5049, 15.0081, 47.5049, -15.0081, 83.6499, 79.2887, -1.604, 41.9956, 1.604, -41.9956, 180.211, -40.0637)
+"points": PackedVector2Array(-2.32769, 49.8747, 2.32769, -49.8747, 180.211, -40.0637, 39.5615, -9.59675, -39.5615, 9.59675, 51.616, -93.9563, -1.06207, -51.4859, 1.06207, 51.4859, -60.0774, 25.4697, -47.5049, 15.0081, 47.5049, -15.0081, 83.6499, 79.2887, -1.604, 41.9956, 1.604, -41.9956, 180.211, -40.0637)
 }
 point_count = 5
 
@@ -324,19 +324,19 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_g8df7"]
 _data = {
-"points": PackedVector2Array(33.824, 4.08945, 4.61374, -50.4157, 145.109, -96.7902, 39.5615, -9.59675, -39.5615, 9.59675, 36.6204, -92.8923, -1.06207, -51.4859, 1.06207, 51.4859, -61.6159, 21.6443, -47.5049, 15.0081, 47.5049, -15.0081, 184.351, 77.4771, 4.10364, 62.6214, -4.10364, -62.6214, 145.109, -96.7902)
+"points": PackedVector2Array(2.27303, 47.6767, -2.27303, -47.6767, 145.109, -96.7902, 39.5615, -9.59675, -39.5615, 9.59675, 37.0631, -96.9913, -1.06207, -51.4859, 1.06207, 51.4859, -61.6159, 21.6443, -47.5049, 15.0081, 47.5049, -15.0081, 184.351, 77.4771, 4.10364, 62.6214, -4.10364, -62.6214, 145.109, -96.7902)
 }
 point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_7vc01"]
 _data = {
-"points": PackedVector2Array(62.2138, -22.0082, -62.2138, 22.0082, 42.5965, -195.68, -37.8659, -69.2908, 37.8659, 69.2908, -64.4292, -13.2996, -57.7546, -3.92511, 57.7546, 3.92511, 35.2478, 181.886, 6.97264, 76.4231, -6.97264, -76.4231, 166.395, 13.3323, 73.1193, -19.902, -73.1193, 19.902, 42.5965, -195.68)
+"points": PackedVector2Array(62.2138, -22.0082, -62.2138, 22.0082, 42.5965, -195.68, -37.8659, -69.2908, 37.8659, 69.2908, -64.4292, -13.2996, -57.7546, -3.92511, 57.7546, 3.92511, 35.2478, 181.886, 6.97264, 76.4231, -6.97264, -76.4231, 158.725, 14.4028, 73.1193, -19.902, -73.1193, 19.902, 42.5965, -195.68)
 }
 point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_cotnv"]
 _data = {
-"points": PackedVector2Array(43.5791, -38.2628, -43.5791, 38.2628, -34.0364, -136.625, -14.3875, -38.214, 14.3875, 38.214, -37.927, 68.8444, -34.9188, -3.04496, 34.9188, 3.04496, 21.2325, 153.539, 6.97264, 76.4231, -6.97264, -76.4231, 73.2706, -3.0658, 37.208, -25.9415, -37.208, 25.9415, -34.0364, -136.625)
+"points": PackedVector2Array(43.5791, -38.2628, -43.5791, 38.2628, -34.0364, -136.625, -14.3875, -38.214, 14.3875, 38.214, -36.5444, 69.6729, -34.9188, -3.04496, 34.9188, 3.04496, 21.2325, 153.539, 6.97264, 76.4231, -6.97264, -76.4231, 73.2706, -3.0658, 37.208, -25.9415, -37.208, 25.9415, -34.0364, -136.625)
 }
 point_count = 5
 
@@ -384,9 +384,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_ks86d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1459, 950, 0, 0, 0, 0, 1447, 670, 0, 0, 0, 0, 1108, 350, 0, 0, 0, 0, 1179, 159, 0, 0, 0, 0, 1321, 42, 0, 0, 0, 0, 1647, -18, 0, 0, 0, 0, 1416, -182, 0, 0, 0, 0, 1704, -388, 0, 0, 0, 0, 1710, -1181, 0, 0, 0, 0, 1070, -880, 0, 0, 0, 0, 714, -901, 0, 0, 0, 0, 606, -653, 0, 0, 0, 0, 214, -605, 0, 0, 0, 0, -257, -743, 0, 0, 0, 0, -102, -1133, 0, 0, 0, 0, -917, -1159, 0, 0, 0, 0, -1195, -1027, 0, 0, 0, 0, -1238, -810, 0, 0, 0, 0, -1835, -1212, 0, 0, 0, 0, -1701, -209, 0, 0, 0, 0, -1343, 298, 0, 0, 0, 0, -1592, 408, 0, 0, 0, 0, -1469, 570, 0, 0, 0, 0, -1577, 840, 0, 0, 0, 0, -1115, 810, 0, 0, 0, 0, -678, 879, 0, 0, 0, 0, -450, 1023, 0, 0, 0, 0, -207, 819, 0, 0, 0, 0, 72, 1023, 0, 0, 0, 0, 407, 1037, 0, 0, 0, 0, 735, 859, 0, 0, 0, 0, 1287, 992)
+"points": PackedVector2Array(0, 0, 0, 0, 1459, 950, 0, 0, 0, 0, 1447, 670, 0, 0, 0, 0, 1108, 350, 0, 0, 0, 0, 1179, 159, 0, 0, 0, 0, 1321, 42, 0, 0, 0, 0, 1647, -18, 0, 0, 0, 0, 1416, -182, 0, 0, 0, 0, 1704, -388, 0, 0, 0, 0, 1710, -1181, 0, 0, 0, 0, 1070, -880, 0, 0, 0, 0, 415, -984, 0, 0, 0, 0, -102, -1133, 0, 0, 0, 0, -917, -1159, 0, 0, 0, 0, -1195, -1027, 0, 0, 0, 0, -1238, -810, 0, 0, 0, 0, -1835, -1212, 0, 0, 0, 0, -1701, -209, 0, 0, 0, 0, -1343, 298, 0, 0, 0, 0, -1592, 408, 0, 0, 0, 0, -1469, 570, 0, 0, 0, 0, -1577, 840, 0, 0, 0, 0, -1115, 810, 0, 0, 0, 0, -678, 879, 0, 0, 0, 0, -450, 1023, 0, 0, 0, 0, -207, 819, 0, 0, 0, 0, 72, 1023, 0, 0, 0, 0, 407, 1037, 0, 0, 0, 0, 735, 859, 0, 0, 0, 0, 1287, 992)
 }
-point_count = 32
+point_count = 29
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv3o2"]
 size = Vector2(81.5, 2968)
@@ -459,7 +459,6 @@ _data = {
 y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_o5uj5")
-random_spawning = false
 debug_mode = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -894,9 +893,9 @@ rotation = -1.43338
 curve = SubResource("Curve2D_db3j1")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D15" instance=ExtResource("2_f1j6k")]
-position = Vector2(-49.2354, 16.3886)
-rotation = 1.40806
-progress = 344.766
+position = Vector2(-27.4447, -113.586)
+rotation = 2.03641
+progress = 211.472
 
 [node name="Path2D16" type="Path2D" parent="CamelPaths"]
 position = Vector2(-999.015, -256.744)
@@ -904,10 +903,10 @@ rotation = -1.43338
 curve = SubResource("Curve2D_6hmj7")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D16" instance=ExtResource("2_f1j6k")]
-position = Vector2(5.86931, -104.166)
-rotation = 2.58694
+position = Vector2(-50.4807, -3.66745)
+rotation = 1.59352
 scale = Vector2(-1, -1)
-progress = 186.545
+progress = 305.669
 speed_ratio = -0.12
 
 [node name="Path2D17" type="Path2D" parent="CamelPaths"]
@@ -916,11 +915,9 @@ rotation = -1.43338
 curve = SubResource("Curve2D_xwbje")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D17" instance=ExtResource("2_f1j6k")]
-position = Vector2(24.0789, 83.2894)
-rotation = 0.113685
-scale = Vector2(-1, -1)
-progress = 439.705
-speed_ratio = -0.12
+position = Vector2(-2.50349, -64.6612)
+rotation = 2.47744
+progress = 217.608
 
 [node name="Path2D47" type="Path2D" parent="CamelPaths"]
 position = Vector2(-1053, -783)
@@ -928,10 +925,10 @@ rotation = -1.43338
 curve = SubResource("Curve2D_l61tf")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D47" instance=ExtResource("2_f1j6k")]
-position = Vector2(24.0969, 89.2892)
-rotation = 0.121687
+position = Vector2(-53.007, -46.9493)
+rotation = 2.36347
 scale = Vector2(-1, -1)
-progress = 468.539
+progress = 271.219
 speed_ratio = -0.12
 
 [node name="Path2D48" type="Path2D" parent="CamelPaths"]
@@ -940,10 +937,10 @@ rotation = -1.43338
 curve = SubResource("Curve2D_g8df7")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D48" instance=ExtResource("2_f1j6k")]
-position = Vector2(68.3339, -103.651)
-rotation = 2.77612
+position = Vector2(197.404, 66.2498)
+rotation = -1.19025
 scale = Vector2(-1, -1)
-progress = 95.9911
+progress = 572.449
 speed_ratio = -0.12
 
 [node name="Path2D18" type="Path2D" parent="CamelPaths"]
@@ -952,15 +949,15 @@ rotation = -1.43338
 curve = SubResource("Curve2D_7vc01")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D18" instance=ExtResource("2_f1j6k")]
-position = Vector2(-73.88, -46.8722)
-rotation = 1.51967
-progress = 199.628
+position = Vector2(-26.009, -149.257)
+rotation = 2.34507
+progress = 83.5052
 speed_ratio = 0.06
 
 [node name="CamelPathFollow2" parent="CamelPaths/Path2D18" instance=ExtResource("2_f1j6k")]
-position = Vector2(166.68, 28.4046)
-rotation = -1.52139
-progress = 680.644
+position = Vector2(119.176, 131.013)
+rotation = -0.91176
+progress = 564.526
 speed_ratio = 0.06
 
 [node name="Path2D19" type="Path2D" parent="CamelPaths"]
@@ -969,8 +966,8 @@ rotation = -1.43338
 curve = SubResource("Curve2D_cotnv")
 
 [node name="CamelPathFollow" parent="CamelPaths/Path2D19" instance=ExtResource("2_f1j6k")]
-position = Vector2(16.8039, -123.769)
-rotation = -2.39175
+position = Vector2(16.3886, -124.154)
+rotation = -2.39686
 progress = 636.443
 
 [node name="Path2D20" type="Path2D" parent="CamelPaths"]
@@ -1057,8 +1054,11 @@ position = Vector2(1198, 578)
 [node name="SmallDune23" parent="Dunes" instance=ExtResource("5_87tto")]
 position = Vector2(485, 326)
 
+[node name="SmallDune26" parent="Dunes" instance=ExtResource("5_87tto")]
+position = Vector2(228, 541)
+
 [node name="SmallDune24" parent="Dunes" instance=ExtResource("5_87tto")]
-position = Vector2(632, 710)
+position = Vector2(494, 668)
 
 [node name="SmallDune25" parent="Dunes" instance=ExtResource("5_87tto")]
 position = Vector2(-40, 911)
@@ -1073,7 +1073,7 @@ position = Vector2(958, -378)
 position = Vector2(1581, -711)
 
 [node name="SmallDune20" parent="Dunes" instance=ExtResource("5_87tto")]
-position = Vector2(550.985, -30.7443)
+position = Vector2(677, 81)
 
 [node name="SmallDune19" parent="Dunes" instance=ExtResource("5_87tto")]
 position = Vector2(1538, -956)
@@ -1112,31 +1112,58 @@ position = Vector2(-1207, 18)
 position = Vector2(-1366, 134)
 
 [node name="SmallDune3" parent="Dunes" instance=ExtResource("5_87tto")]
-position = Vector2(-586, -699)
+position = Vector2(-468, -699)
 
 [node name="SmallDune5" parent="Dunes" instance=ExtResource("5_87tto")]
 position = Vector2(-169, -1061)
 
 [node name="SmallDune4" parent="Dunes" instance=ExtResource("5_87tto")]
-position = Vector2(-600, -1036)
+position = Vector2(-739, -943)
 
 [node name="MediumDune" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(-228, -116)
 
+[node name="MediumDune23" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(1, -340)
+
+[node name="MediumDune26" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(605, -374)
+
 [node name="MediumDune15" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(1563, -374)
+
+[node name="MediumDune19" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(1170, -512)
+
+[node name="MediumDune20" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(631, -722)
 
 [node name="MediumDune16" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(485, 588)
 
 [node name="MediumDune17" parent="Dunes" instance=ExtResource("7_xamte")]
-position = Vector2(829, 75)
+position = Vector2(901, 126)
+
+[node name="MediumDune25" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(1252, -177)
 
 [node name="MediumDune5" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(-780, -52)
 
 [node name="MediumDune8" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(-1026, 140)
+
+[node name="MediumDune18" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(967, 389)
+
+[node name="MediumDune24" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(-931, -405)
+
+[node name="MediumDune21" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(382, 120)
+
+[node name="MediumDune22" parent="Dunes" instance=ExtResource("7_xamte")]
+position = Vector2(250, 331)
 
 [node name="MediumDune11" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(-330, 504)
@@ -1154,7 +1181,7 @@ position = Vector2(-1483, 766)
 position = Vector2(-610, -239)
 
 [node name="MediumDune7" parent="Dunes" instance=ExtResource("7_xamte")]
-position = Vector2(-1151, -399)
+position = Vector2(-1315, -355)
 
 [node name="MediumDune10" parent="Dunes" instance=ExtResource("7_xamte")]
 position = Vector2(-1651, -684)
@@ -1169,10 +1196,13 @@ position = Vector2(-388, -628)
 position = Vector2(-713, -789)
 
 [node name="MediumDune2" parent="Dunes" instance=ExtResource("7_xamte")]
-position = Vector2(-526, -582)
+position = Vector2(-665, -524)
 
 [node name="BigDune4" parent="Dunes" instance=ExtResource("8_dcxdn")]
-position = Vector2(256, -490)
+position = Vector2(-125, -456)
+
+[node name="BigDune25" parent="Dunes" instance=ExtResource("8_dcxdn")]
+position = Vector2(209, -236)
 
 [node name="VeryBigDune2" parent="Dunes" instance=ExtResource("19_u6gkw")]
 position = Vector2(-2, -578)
@@ -1187,7 +1217,7 @@ position = Vector2(885, -835)
 position = Vector2(-783, -669)
 
 [node name="VeryBigDune4" parent="Dunes" instance=ExtResource("19_u6gkw")]
-position = Vector2(-446, -1000)
+position = Vector2(-83, -904)
 
 [node name="VeryBigDune" parent="Dunes" instance=ExtResource("19_u6gkw")]
 position = Vector2(-375, -293)
@@ -1197,6 +1227,9 @@ position = Vector2(309, -27)
 
 [node name="VeryBigDune15" parent="Dunes" instance=ExtResource("19_u6gkw")]
 position = Vector2(901, 683)
+
+[node name="VeryBigDune18" parent="Dunes" instance=ExtResource("19_u6gkw")]
+position = Vector2(817, -12)
 
 [node name="VeryBigDune17" parent="Dunes" instance=ExtResource("19_u6gkw")]
 position = Vector2(470, 848)
@@ -1233,6 +1266,9 @@ position = Vector2(-775, 139)
 
 [node name="BigDune9" parent="Dunes" instance=ExtResource("8_dcxdn")]
 position = Vector2(-1219, -297)
+
+[node name="BigDune24" parent="Dunes" instance=ExtResource("8_dcxdn")]
+position = Vector2(1280, 170)
 
 [node name="BigDune11" parent="Dunes" instance=ExtResource("8_dcxdn")]
 position = Vector2(-1277, 206)
@@ -1271,7 +1307,7 @@ position = Vector2(785.985, -456.744)
 position = Vector2(1193, -616)
 
 [node name="BigDune19" parent="Dunes" instance=ExtResource("8_dcxdn")]
-position = Vector2(1369, -816)
+position = Vector2(1205, -942)
 
 [node name="BigDune17" parent="Dunes" instance=ExtResource("8_dcxdn")]
 position = Vector2(889, -174)
@@ -1279,8 +1315,11 @@ position = Vector2(889, -174)
 [node name="BigDune21" parent="Dunes" instance=ExtResource("8_dcxdn")]
 position = Vector2(850, 345)
 
+[node name="BigDune26" parent="Dunes" instance=ExtResource("8_dcxdn")]
+position = Vector2(524, -185)
+
 [node name="BigDune6" parent="Dunes" instance=ExtResource("8_dcxdn")]
-position = Vector2(-832.015, -1079.74)
+position = Vector2(-782, -1102)
 
 [node name="BigDune5" parent="Dunes" instance=ExtResource("8_dcxdn")]
 position = Vector2(-378, -819)
@@ -1288,29 +1327,29 @@ position = Vector2(-378, -819)
 [node name="Cacti" type="Node2D" parent="."]
 
 [node name="Cactus" parent="Cacti" instance=ExtResource("9_wfylr")]
-position = Vector2(-26.0148, -242.744)
+position = Vector2(-96, -68)
 
 [node name="Cactus2" parent="Cacti" instance=ExtResource("9_wfylr")]
 position = Vector2(-424.015, 16.2557)
 
 [node name="CactusBush" parent="Cacti" instance=ExtResource("10_6hlyb")]
-position = Vector2(-98.0148, -259.744)
+position = Vector2(-83, 52)
 
 [node name="CactusBush2" parent="Cacti" instance=ExtResource("11_kdbnp")]
-position = Vector2(-20.0148, -290.744)
+position = Vector2(99, 75)
 
 [node name="CactusBush3" parent="Cacti" instance=ExtResource("12_p72ka")]
-position = Vector2(108.985, -226.744)
+position = Vector2(114, -86)
 
 [node name="CactusBush4" parent="Cacti" instance=ExtResource("11_kdbnp")]
-position = Vector2(43.9852, -231.744)
+position = Vector2(15, -113)
 
 [node name="Oasis" parent="." instance=ExtResource("15_345v6")]
 position = Vector2(0.985229, -3.74432)
 
 [node name="Player" parent="." instance=ExtResource("1_ovkda")]
 z_index = 1
-position = Vector2(164, -524)
+position = Vector2(605, 803)
 
 [node name="PlayerSpawn" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ks86d")
