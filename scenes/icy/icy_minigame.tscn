@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bojjxin3rbo7q"]
+
+[ext_resource type="Script" path="res://scripts/icy/icy_minigame.gd" id="1_0qgft"]
+[ext_resource type="Script" path="res://scripts/icy/player.gd" id="2_d2r57"]
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ogyha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwv6q"]
+size = Vector2(10, 10)
+
+[node name="IcyMinigame" type="Node2D"]
+script = ExtResource("1_0qgft")
+debug_mode = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+motion_mode = 1
+script = ExtResource("2_d2r57")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.078125, 0.078125)
+texture = ExtResource("2_ogyha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_wwv6q")
