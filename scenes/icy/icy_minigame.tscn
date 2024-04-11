@@ -11,9 +11,15 @@ size = Vector2(10, 10)
 script = ExtResource("1_0qgft")
 debug_mode = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Player" type="CharacterBody2D" parent="."]
 motion_mode = 1
 script = ExtResource("2_d2r57")
+ground_acceleration = 150.0
+max_ground_speed = 200.0
+ice_acceleration = 60.0
+max_ice_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(0.078125, 0.078125)
