@@ -1,0 +1,233 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbjq7mfwv5wh3"]
+
+[ext_resource type="Script" path="res://scripts/icy/player.gd" id="1_4odhq"]
+[ext_resource type="Texture2D" uid="uid://qehs6ixgxh4a" path="res://assets/icy/alfred.png" id="2_gfnyu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0md5g"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7bp00"]
+radius = 3.16228
+
+[sub_resource type="Animation" id="Animation_wirqj"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite/HatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BirdSprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a5esp"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite/HatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 1.4, 1.8, 2.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6, 1.2, 1.6, 2.2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-1, 0), Vector2(-1, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = false
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 1.4, 1.8, 2.2, 2.6, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, -0.0872665, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l8sad"]
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite/HatSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BirdSprite:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a5iyq"]
+resource_name = "walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.174533, -0.174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite/HatSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2lxe6"]
+_data = {
+"RESET": SubResource("Animation_wirqj"),
+"idle": SubResource("Animation_a5esp"),
+"jump": SubResource("Animation_l8sad"),
+"walk": SubResource("Animation_a5iyq")
+}
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_4odhq")
+ground_acceleration = 500.0
+max_ground_speed = 60.0
+ice_acceleration = 60.0
+max_ice_speed = 140.0
+jump_acceleration = 40.0
+max_jump_speed = 150.0
+direction_change_multilpier = 3.0
+
+[node name="BirdSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_gfnyu")
+offset = Vector2(2, 0)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 1, 13, 9)
+
+[node name="HatSprite" type="Sprite2D" parent="BirdSprite"]
+texture = ExtResource("2_gfnyu")
+offset = Vector2(-2, 0)
+region_enabled = true
+region_rect = Rect2(13, 3, 5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0md5g")
+
+[node name="IceDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IceDetector"]
+shape = SubResource("CircleShape2D_7bp00")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2lxe6")
+}
+
+[connection signal="area_entered" from="IceDetector" to="." method="_on_ice_detector_area_entered"]
+[connection signal="area_exited" from="IceDetector" to="." method="_on_ice_detector_area_exited"]

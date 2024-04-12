@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bojjxin3rbo7q"]
 
 [ext_resource type="Script" path="res://scripts/icy/icy_minigame.gd" id="1_0qgft"]
-[ext_resource type="Script" path="res://scripts/icy/player.gd" id="2_d2r57"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ogyha"]
+[ext_resource type="PackedScene" uid="uid://dbjq7mfwv5wh3" path="res://scenes/icy/player.tscn" id="3_geuf7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwv6q"]
-size = Vector2(10, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pg40r"]
+radius = 6.0
 
 [node name="IcyMinigame" type="Node2D"]
 script = ExtResource("1_0qgft")
@@ -13,17 +13,31 @@ debug_mode = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-motion_mode = 1
-script = ExtResource("2_d2r57")
-ground_acceleration = 150.0
-max_ground_speed = 200.0
-ice_acceleration = 60.0
-max_ice_speed = 200.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.078125, 0.078125)
+[node name="Snow" type="Polygon2D" parent="."]
+texture_repeat = 2
+color = Color(0, 0, 1, 1)
 texture = ExtResource("2_ogyha")
+invert_enabled = true
+invert_border = 154.4
+polygon = PackedVector2Array(-36, -82, -67, -38, -39, 16, -59, 32, -54, 51, -18, 73, 30, 49, 72, -8, 42, -45, 56, -105)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_wwv6q")
+[node name="Ice" type="Area2D" parent="." groups=["ice"]]
+
+[node name="Polygon2D" type="Polygon2D" parent="Ice"]
+texture_repeat = 2
+color = Color(0, 0.768627, 1, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice"]
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="Player" parent="." instance=ExtResource("3_geuf7")]
+position = Vector2(92, 31)
+
+[node name="WeakSpot" type="Area2D" parent="."]
+position = Vector2(50, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakSpot"]
+shape = SubResource("CircleShape2D_pg40r")
