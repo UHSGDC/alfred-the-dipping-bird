@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 var on_ice: bool = false
 var in_air: bool = false
+var weak_spot: Area2D = null
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -30,6 +31,8 @@ func jump() -> void:
 	anim_player.play("jump")
 	await anim_player.animation_finished
 	in_air = false
+	if weak_spot:
+		weak_spot.crack()
 
 
 func look(input: Vector2) -> void:
@@ -104,3 +107,13 @@ func _on_ice_detector_area_entered(area: Area2D) -> void:
 func _on_ice_detector_area_exited(area: Area2D) -> void:
 	if area.is_in_group("ice"):
 		on_ice = false
+
+
+func _on_weak_spot_detector_area_entered(area: Area2D) -> void:
+	if area.is_in_group("weak_spot"):
+		weak_spot = area
+
+
+func _on_weak_spot_detector_area_exited(area: Area2D) -> void:
+	if area.is_in_group("weak_spot"):
+		weak_spot = null

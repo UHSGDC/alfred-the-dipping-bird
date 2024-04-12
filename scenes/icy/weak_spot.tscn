@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://jty2haqh7u7j"]
+
+[ext_resource type="Script" path="res://scenes/icy/weak_spot.gd" id="1_kpvck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pg40r"]
+radius = 4.12311
+
+[node name="WeakSpot" type="Area2D" groups=["weak_spot"]]
+position = Vector2(50, -7)
+script = ExtResource("1_kpvck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pg40r")

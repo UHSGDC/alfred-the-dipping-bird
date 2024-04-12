@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbjq7mfwv5wh3"]
+[gd_scene load_steps=11 format=3 uid="uid://dbjq7mfwv5wh3"]
 
 [ext_resource type="Script" path="res://scripts/icy/player.gd" id="1_4odhq"]
 [ext_resource type="Texture2D" uid="uid://qehs6ixgxh4a" path="res://assets/icy/alfred.png" id="2_gfnyu"]
@@ -8,6 +8,9 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bp00"]
 radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_chqfm"]
+radius = 1.0
 
 [sub_resource type="Animation" id="Animation_wirqj"]
 resource_name = "RESET"
@@ -224,6 +227,11 @@ shape = SubResource("CircleShape2D_0md5g")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IceDetector"]
 shape = SubResource("CircleShape2D_7bp00")
 
+[node name="WeakSpotDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeakSpotDetector"]
+shape = SubResource("CircleShape2D_chqfm")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2lxe6")
@@ -231,3 +239,5 @@ libraries = {
 
 [connection signal="area_entered" from="IceDetector" to="." method="_on_ice_detector_area_entered"]
 [connection signal="area_exited" from="IceDetector" to="." method="_on_ice_detector_area_exited"]
+[connection signal="area_entered" from="WeakSpotDetector" to="." method="_on_weak_spot_detector_area_entered"]
+[connection signal="area_exited" from="WeakSpotDetector" to="." method="_on_weak_spot_detector_area_exited"]
