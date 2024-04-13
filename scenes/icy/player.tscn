@@ -196,10 +196,11 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_4odhq")
-ground_acceleration = 500.0
-max_ground_speed = 60.0
+ground_acceleration = 300.0
+max_ground_speed = 40.0
 ice_acceleration = 60.0
 max_ice_speed = 140.0
 jump_acceleration = 40.0
