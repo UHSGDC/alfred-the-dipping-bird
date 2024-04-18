@@ -33,7 +33,11 @@ linear_damp_space_override = 1
 linear_damp = 0.2
 script = ExtResource("1_wlt6b")
 path_follow_speed = 100.0
-time_before_force = 500.0
+force_vel_multiplier = 0.5
+minimum_scale = 0.0
+torque_vel_multiplier = 10.0
+torque_vel_exponent = 0.2
+time_before_force = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_euvjd")

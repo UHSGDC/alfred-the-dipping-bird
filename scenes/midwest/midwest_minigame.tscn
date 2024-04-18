@@ -176,7 +176,6 @@ path = NodePath("../../TornadoPaths/Path2D5")
 
 [node name="Tornado5" parent="Obstacles" instance=ExtResource("5_88lxc")]
 position = Vector2(12877, 427)
-path = NodePath("")
 
 [node name="Tornado6" parent="Obstacles" instance=ExtResource("5_88lxc")]
 position = Vector2(14803, 318)

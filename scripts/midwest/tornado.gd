@@ -45,9 +45,9 @@ func _physics_process(delta: float) -> void:
 		obstacle.body.apply_torque(obstacle.body.linear_velocity.length_squared() ** torque_vel_exponent * torque_vel_multiplier)
 		# Apply an extra force
 		if obstacle.get_time_since_pulled() > time_before_force:
-			var perpindicular_to_tangent: Vector2 = global_position.direction_to(obstacle.body.global_position)
+			var perpindicular_to_tangent: Vector2 = obstacle.body.global_position.direction_to(global_position)
 			var tangent: Vector2 = perpindicular_to_tangent.rotated(PI / 2) # rotate that by 90 to get tangent
-			obstacle.body.apply_central_force(tangent * obstacle.body.linear_velocity.length() * force_vel_multiplier)
+			obstacle.body.apply_central_force(perpindicular_to_tangent.rotated(-PI / 4) * obstacle.body.linear_velocity.length() * force_vel_multiplier)
 		
 
 
