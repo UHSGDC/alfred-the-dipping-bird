@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0onck61deuc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j3ms"]
+radius = 57.0088
+
+[sub_resource type="Curve" id="Curve_tklpw"]
+_data = [Vector2(0, 0.395604), 0.0, 0.0, 0, 0, Vector2(0.798942, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ipgif"]
+interpolation_mode = 2
+colors = PackedColorArray(0.813258, 0.813257, 0.813258, 1, 0.509286, 0.509286, 0.509286, 1)
+
+[sub_resource type="Gradient" id="Gradient_b5ned"]
+colors = PackedColorArray(0.493545, 0.493546, 0.493546, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_ieub1"]
+colors = PackedColorArray(0.396889, 0.396889, 0.396889, 1, 1, 1, 1, 1)
+
+[node name="Smoke" type="StaticBody2D" groups=["smoke"]]
+collision_mask = 0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-100, -100, 200, 200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4j3ms")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 300
+lifetime = 5.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 8.62
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_tklpw")
+color_ramp = SubResource("Gradient_ipgif")
+color_initial_ramp = SubResource("Gradient_b5ned")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+amount = 150
+lifetime = 5.0
+preprocess = 5.0
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 65.0
+spread = 180.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+orbit_velocity_min = -0.1
+orbit_velocity_max = 0.1
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_tklpw")
+color_ramp = SubResource("Gradient_ipgif")
+color_initial_ramp = SubResource("Gradient_ieub1")

@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://do012aisnubw"]
 
 [ext_resource type="Script" path="res://tests/minigame_tester.gd" id="1_8jcs1"]
-[ext_resource type="PackedScene" uid="uid://laaln4dpdyqi" path="res://scenes/niagara/niagara_minigame.tscn" id="2_losi0"]
+
+[ext_resource type="PackedScene" uid="uid://d05kqnx5bfvhh" path="res://scenes/chicago/chicago_minigame.tscn" id="2_1a7kc"]
 
 [node name="MinigameTester" type="Node2D"]
 script = ExtResource("1_8jcs1")
-minigame_scene = ExtResource("2_losi0")
+minigame_scene = ExtResource("2_1a7kc")
