@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c56o1esrlxcce"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_tc2o7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
+size = Vector2(36, 36)
+
+[node name="Skyscraper" type="StaticBody2D" groups=["skyscraper"]]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("2_tc2o7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y7cvp")

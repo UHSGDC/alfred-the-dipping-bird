@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://js817b4xkyyx"]
+
+[ext_resource type="Script" path="res://scripts/niagara/gush.gd" id="1_73ubr"]
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_oa0pv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
+size = Vector2(82, 172)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_piypo"]
+size = Vector2(92, 188)
+
+[node name="Gush" type="RigidBody2D" groups=["obstacle"]]
+collision_mask = 0
+gravity_scale = 0.0
+linear_velocity = Vector2(0, 500)
+script = ExtResource("1_73ubr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+scale = Vector2(0.6875, 1.4375)
+texture = ExtResource("1_oa0pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i8gr5")
+
+[node name="BreakArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreakArea"]
+shape = SubResource("RectangleShape2D_piypo")
+
+[connection signal="body_entered" from="BreakArea" to="." method="_on_break_area_body_entered"]

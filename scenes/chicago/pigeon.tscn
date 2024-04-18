@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2bxisrhl4j1s"]
+
+[ext_resource type="Script" path="res://scripts/chicago/pigeon.gd" id="1_07j60"]
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_a10fc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
+size = Vector2(22, 10)
+
+[sub_resource type="Curve" id="Curve_r1p26"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.571429), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Pigeon" type="RigidBody2D" groups=["bird"]]
+z_index = 1
+gravity_scale = 0.0
+max_contacts_reported = 5
+contact_monitor = true
+linear_velocity = Vector2(-150, 0)
+script = ExtResource("1_07j60")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y7cvp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.443137, 0.12549, 1)
+position = Vector2(0, 1.49012e-07)
+scale = Vector2(0.17, 0.078125)
+texture = ExtResource("1_a10fc")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-11, -5, 22, 10)
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+process_mode = 3
+emitting = false
+amount = 16
+lifetime = 0.25
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(128, 64)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_r1p26")
+color = Color(0.380392, 0.639216, 1, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
