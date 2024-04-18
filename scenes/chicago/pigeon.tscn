@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_a10fc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
-size = Vector2(64, 32)
+size = Vector2(22, 10)
 
 [sub_resource type="Curve" id="Curve_r1p26"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.571429), 0.0, 0.0, 0, 0]
@@ -15,19 +15,20 @@ z_index = 1
 gravity_scale = 0.0
 max_contacts_reported = 5
 contact_monitor = true
-linear_velocity = Vector2(-500, 0)
+linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_07j60")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y7cvp")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-32, -16, 64, 32)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.443137, 0.12549, 1)
-scale = Vector2(0.5, 0.25)
+position = Vector2(0, 1.49012e-07)
+scale = Vector2(0.17, 0.078125)
 texture = ExtResource("1_a10fc")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-11, -5, 22, 10)
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 process_mode = 3

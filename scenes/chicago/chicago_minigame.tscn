@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5nh6tcoevhkg" path="res://scenes/chicago/win_zone.tscn" id="7_m8urx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p78j3"]
-size = Vector2(79, 33)
+size = Vector2(20, 8)
 
 [sub_resource type="Animation" id="Animation_0vri5"]
 resource_name = "RESET"
@@ -67,7 +67,7 @@ script = ExtResource("1_aeqwi")
 debug_mode = true
 
 [node name="Player" type="Area2D" parent="." node_paths=PackedStringArray("minigame_node", "top_left_bound", "bot_right_bound", "camera")]
-position = Vector2(-300, 312)
+position = Vector2(9, 98)
 collision_layer = 0
 script = ExtResource("2_xgthb")
 minigame_node = NodePath("..")
@@ -76,11 +76,11 @@ bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.7, 0.3)
+position = Vector2(-1.72853e-06, -5.72205e-06)
+scale = Vector2(0.15625, 0.0625001)
 texture = ExtResource("3_kftn3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_p78j3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
@@ -217,7 +217,8 @@ position = Vector2(439, 424)
 [node name="Factory" type="Sprite2D" parent="Factories/Smoke"]
 modulate = Color(0.756863, 0.584314, 0.501961, 1)
 show_behind_parent = true
-position = Vector2(-40, 46)
+position = Vector2(-13, 14)
+scale = Vector2(0.286, 0.286)
 texture = ExtResource("3_kftn3")
 
 [node name="Smoke3" parent="Factories" instance=ExtResource("6_rynt6")]
@@ -302,13 +303,13 @@ position = Vector2(-33, -20)
 texture = ExtResource("3_kftn3")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(151, 324)
+position = Vector2(160, 90)
 
 [node name="LeftPlayerBound" type="Marker2D" parent="PlayerCamera"]
-position = Vector2(-480, -290)
+position = Vector2(-152, -82)
 
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
-position = Vector2(-480, 290)
+position = Vector2(-152, 82)
 
 [node name="Win Zone" parent="." instance=ExtResource("7_m8urx")]
 position = Vector2(11165, 323)

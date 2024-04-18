@@ -3,9 +3,9 @@ extends Area2D
 signal player_lost
 signal player_won(lives: int)
 
-const MAX_SPEED: Vector2 = Vector2(0, 400)
+const MAX_SPEED: Vector2 = Vector2(0, 120)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
-const AUTOSCROLL_SPEED: float = 600
+const AUTOSCROLL_SPEED: float = 170
 
 @export var minigame_node: BaseMinigame
 @export var top_left_bound: Marker2D
