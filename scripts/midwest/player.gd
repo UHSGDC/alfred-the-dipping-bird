@@ -2,13 +2,12 @@ extends Area2D
 
 signal player_killed
 
-const MAX_SPEED: Vector2 = Vector2(400, 400)
+const MAX_SPEED: Vector2 = Vector2(0, 400)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
 const AUTOSCROLL_SPEED: float = 600
-const MAX_TORNADO_SPEED: float = 400
-const TORNADO_VELOCITY: float = 500
+const TORNADO_VELOCITY: float = 700
 const TORNADO_DEACCELERATION_MULTIPLIER: float = 5.0
-const TORNADO_DEATH_DISTANCE: float = 10.0
+const TORNADO_DEATH_DISTANCE: float = 15.0
 const MIN_SCALE: float = 0.3
 const TORNADO_BASE_ROTATION_SPEED: float = PI * 1.1
 
@@ -16,19 +15,24 @@ const TORNADO_BASE_ROTATION_SPEED: float = PI * 1.1
 @export var bot_right_bound: Marker2D
 @export var camera: Camera2D
 @export var debug_mode: bool
+@export var print_debug_messages: bool
 @export var max_lives: int = 3
 
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var tornado: Area2D
+var was_just_hit: bool = false
 
 @onready var current_lives: int = max_lives :
 	set(value):
-		if debug_mode:
+		if print_debug_messages:
 			print("current_lives changed from %s to %s" % [current_lives, value])
 		current_lives = value
 		if current_lives <= 0:
 			player_killed.emit()
+			
+@onready var anim_player = $AnimationPlayer
+@onready var sprite = $Sprite2D
 	
 
 func _physics_process(delta: float) -> void:
@@ -101,22 +105,39 @@ func move(delta: float) -> void:
 	position.x = clampf(position.x, top_left_bound.global_position.x, bot_right_bound.global_position.x)
 	position.y = clampf(position.y, top_left_bound.global_position.y, bot_right_bound.global_position.y)
 	
+	# Zero out velocity if on edge of screen
+	if position.x == top_left_bound.global_position.x or position.x == bot_right_bound.global_position.x:
+		velocity.x = AUTOSCROLL_SPEED
+	if position.y == top_left_bound.global_position.y or position.y == bot_right_bound.global_position.y:
+		velocity.y = 0
+	
 
 # Obstacle
 func _on_body_entered(body: Node2D) -> void:
 	if !body.is_in_group("obstacle"):
 		return
-	if debug_mode:
+	if was_just_hit: # Player can't be hurt again if they were just hit
+		if print_debug_messages:
+			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
+		return
+	if print_debug_messages:
 		print(name + " hit obstacle")
 	current_lives -= 1
 	body.queue_free()
-
+	
+	anim_player.play("hurt")
+	was_just_hit = true
+	
 
 # Tornado
 func _on_area_entered(area: Area2D) -> void:
 	if !area.is_in_group("tornado") || tornado:
 		return
-	if debug_mode:
+	if print_debug_messages:
 		print(name + " hit tornado")
 	tornado = area
 	tornado.path_follow_speed = 0
+
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	was_just_hit = false
