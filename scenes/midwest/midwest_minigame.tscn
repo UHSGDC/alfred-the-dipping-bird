@@ -44,6 +44,17 @@ bounce = 0.3
 [node name="MidwestMinigame" type="Node2D"]
 script = ExtResource("1_6cg3t")
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.701961, 0.701961, 0.701961, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 5
+position = Vector2(320, 90)
+texture = ExtResource("7_ryw68")
+
 [node name="Player" parent="." node_paths=PackedStringArray("top_left_bound", "bot_right_bound", "camera") instance=ExtResource("2_tds7h")]
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
@@ -163,7 +174,7 @@ linear_velocity = Vector2(-10, 20)
 angular_velocity = -0.174533
 
 [node name="BarnBit14" parent="Obstacles" instance=ExtResource("6_7utqy")]
-position = Vector2(453, 163)
+position = Vector2(893, 122)
 linear_velocity = Vector2(50, -70)
 angular_velocity = -0.174533
 
@@ -194,11 +205,6 @@ angular_velocity = -0.174533
 [node name="Rake2" parent="Obstacles" instance=ExtResource("7_x0j48")]
 position = Vector2(1037, 81)
 linear_velocity = Vector2(-100, -80)
-angular_velocity = 0.349066
-
-[node name="Rake11" parent="Obstacles" instance=ExtResource("7_x0j48")]
-position = Vector2(608, 148)
-linear_velocity = Vector2(-80, -50)
 angular_velocity = 0.349066
 
 [node name="Animal14" parent="Obstacles" instance=ExtResource("4_qgnbj")]
@@ -334,14 +340,3 @@ position = Vector2(-140, -80)
 
 [node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
 position = Vector2(-140, 80)
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color(0.701961, 0.701961, 0.701961, 1)
-motion_mirroring = Vector2(640, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture_filter = 5
-position = Vector2(320, 90)
-texture = ExtResource("7_ryw68")

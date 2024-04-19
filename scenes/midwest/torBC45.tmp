@@ -29,16 +29,14 @@ gravity_space_override = 1
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
-gravity = 400.0
 linear_damp_space_override = 1
 linear_damp = 0.2
-angular_damp_space_override = 3
-angular_damp = 0.0
 script = ExtResource("1_wlt6b")
 path_follow_speed = 30.0
-force_vel_multiplier = 0.2
-minimum_scale = 0.3
-torque_vel_multiplier = 10.0
+force_vel_multiplier = 0.5
+minimum_scale = 0.0
+torque_vel_multiplier = 7.0
+torque_vel_exponent = 0.2
 time_before_force = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

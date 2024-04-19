@@ -1,5 +1,7 @@
 extends Area2D
 
+const OBJECT_DESTROY_DISTANCE: float = 15.0
+
 @export var path: Path2D
 ## Speed in pixels
 @export var path_follow_speed: float
@@ -46,9 +48,19 @@ func _physics_process(delta: float) -> void:
 		# Apply an extra force
 		if obstacle.get_time_since_pulled() > time_before_force:
 			var perpindicular_to_tangent: Vector2 = obstacle.body.global_position.direction_to(global_position)
-			var tangent: Vector2 = perpindicular_to_tangent.rotated(PI / 2) # rotate that by 90 to get tangent
 			obstacle.body.apply_central_force(perpindicular_to_tangent.rotated(-PI / 4) * obstacle.body.linear_velocity.length() * force_vel_multiplier)
+			
+		if dist < OBJECT_DESTROY_DISTANCE:
+			kill_obstacle(obstacle)
 		
+
+func kill_obstacle(obstacle: PulledObstacle) -> void:
+	obstacle.body.linear_velocity = Vector2.ZERO
+	pulled_obstacles.remove_at(pulled_obstacles.find(obstacle))
+	var tween: Tween = create_tween()
+	tween.tween_property(obstacle.body, "scale", Vector2.ZERO, 0.2)
+	await tween.finished
+	obstacle.body.queue_free()
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -8,7 +8,7 @@ bounce = 0.3
 
 [node name="BarnBit2" type="RigidBody2D" groups=["obstacle"]]
 collision_layer = 3
-mass = 0.8
+mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_yxxsx")
 angular_damp = 0.1
 script = ExtResource("1_6mau5")

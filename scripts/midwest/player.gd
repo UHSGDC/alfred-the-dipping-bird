@@ -4,14 +4,14 @@ signal player_killed
 
 const MAX_ROTATION: float = PI / 8
 const MAX_SPEED: Vector2 = Vector2(150, 150)
-const ACCELERATION: Vector2 = MAX_SPEED * 10
+const ACCELERATION: Vector2 = MAX_SPEED * 16
 const AUTOSCROLL_SPEED: float = 150
 const MAX_TORNADO_SPEED: float = 120
 const TORNADO_VELOCITY: float = 140
 const TORNADO_DEACCELERATION_MULTIPLIER: float = 5.0
-const TORNADO_DEATH_DISTANCE: float = 15.0
+const TORNADO_DEATH_DISTANCE: float = 20.0
 const MIN_SCALE: float = 0.3
-const TORNADO_BASE_ROTATION_SPEED: float = PI * 1.1
+const TORNADO_BASE_ROTATION_SPEED: float = PI * 0.7
 
 @export var top_left_bound: Marker2D
 @export var bot_right_bound: Marker2D
@@ -112,7 +112,7 @@ func move(delta: float) -> void:
 	if position.x == top_left_bound.global_position.x or position.x == bot_right_bound.global_position.x:
 		velocity.x = AUTOSCROLL_SPEED
 	if position.y == top_left_bound.global_position.y or position.y == bot_right_bound.global_position.y:
-		velocity.y = 0
+		velocity.y = move_toward(velocity.y, 0, ACCELERATION.y * 2 * delta) # We use lerp so that player rotation is still smooth
 	
 
 # Obstacle
