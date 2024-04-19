@@ -1,28 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://dff0mufl3ilgk"]
 
-[ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_3i05b"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_b2fof"]
+[ext_resource type="Script" path="res://scripts/midwest/animal.gd" id="1_nrpwq"]
+[ext_resource type="Texture2D" uid="uid://bu417c3rq36yw" path="res://assets/midwest/cow.png" id="2_fm47t"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2dtkj"]
 bounce = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fffxb"]
-size = Vector2(80, 48)
+size = Vector2(7, 12)
 
 [node name="Animal" type="RigidBody2D" groups=["obstacle"]]
 collision_layer = 3
 mass = 0.5
 physics_material_override = SubResource("PhysicsMaterial_2dtkj")
 angular_damp = 0.1
-script = ExtResource("1_3i05b")
+script = ExtResource("1_nrpwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-scale = Vector2(0.625, 0.367188)
-texture = ExtResource("1_b2fof")
+texture = ExtResource("2_fm47t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
 shape = SubResource("RectangleShape2D_fffxb")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-60, -40, 120, 80)
+rect = Rect2(-5, -8, 9, 14)

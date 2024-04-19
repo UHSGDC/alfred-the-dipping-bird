@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blyma6prntnp0"]
+[gd_scene load_steps=4 format=3 uid="uid://blyma6prntnp0"]
 
 [ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_g6gmd"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_hsqto"]
+[ext_resource type="Texture2D" uid="uid://d7l28moejwj" path="res://assets/midwest/rake.png" id="2_a6ady"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_waqkd"]
 bounce = 0.3
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4dxx"]
-size = Vector2(104, 22)
 
 [node name="Rake" type="RigidBody2D" groups=["obstacle"]]
 collision_layer = 3
@@ -17,13 +14,11 @@ angular_damp = 0.1
 script = ExtResource("1_g6gmd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
 position = Vector2(-3.8147e-06, 4.76837e-07)
-scale = Vector2(0.8125, 0.171875)
-texture = ExtResource("2_hsqto")
+texture = ExtResource("2_a6ady")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_n4dxx")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -12, -12, -2, -8, 2, -3, -2, 11, 12, 12, 11, -2, -3, 2, -8)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-60, -30, 120, 60)
+rect = Rect2(-15, -15, 30, 30)

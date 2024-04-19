@@ -2,10 +2,12 @@ extends Area2D
 
 signal player_killed
 
-const MAX_SPEED: Vector2 = Vector2(0, 400)
+const MAX_ROTATION: float = PI / 8
+const MAX_SPEED: Vector2 = Vector2(150, 150)
 const ACCELERATION: Vector2 = MAX_SPEED * 10
-const AUTOSCROLL_SPEED: float = 600
-const TORNADO_VELOCITY: float = 700
+const AUTOSCROLL_SPEED: float = 150
+const MAX_TORNADO_SPEED: float = 120
+const TORNADO_VELOCITY: float = 140
 const TORNADO_DEACCELERATION_MULTIPLIER: float = 5.0
 const TORNADO_DEATH_DISTANCE: float = 15.0
 const MIN_SCALE: float = 0.3
@@ -31,8 +33,7 @@ var was_just_hit: bool = false
 		if current_lives <= 0:
 			player_killed.emit()
 			
-@onready var anim_player = $AnimationPlayer
-@onready var sprite = $Sprite2D
+@onready var hurt_animator = $HurtAnimator
 	
 
 func _physics_process(delta: float) -> void:
@@ -46,6 +47,8 @@ func _physics_process(delta: float) -> void:
 				camera.position += Input.get_vector("left", "right", "up", "down") * delta * AUTOSCROLL_SPEED
 		else:
 			move(delta)
+			# Rotate based on velocity
+			rotation = velocity.y / MAX_SPEED.y * MAX_ROTATION
 
 
 func tornado_move(delta: float) -> void:
@@ -125,7 +128,7 @@ func _on_body_entered(body: Node2D) -> void:
 	current_lives -= 1
 	body.queue_free()
 	
-	anim_player.play("hurt")
+	hurt_animator.play("hurt")
 	was_just_hit = true
 	
 
@@ -139,5 +142,5 @@ func _on_area_entered(area: Area2D) -> void:
 	tornado.path_follow_speed = 0
 
 
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+func _on_hurt_animator_animation_finished(_anim_name: StringName) -> void:
 	was_just_hit = false
