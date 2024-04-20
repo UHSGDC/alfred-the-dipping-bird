@@ -1,7 +1,9 @@
 extends Area2D
 
 signal player_killed
+signal lives_changed(new_lives: int, max_lives: int)
 
+const DESTROY_PARTICLES: PackedScene = preload("res://scenes/midwest/destroy_particles.tscn")
 const MAX_ROTATION: float = PI / 8
 const MAX_SPEED: Vector2 = Vector2(150, 150)
 const ACCELERATION: Vector2 = MAX_SPEED * 16
@@ -9,7 +11,7 @@ const AUTOSCROLL_SPEED: float = 150
 const MAX_TORNADO_SPEED: float = 120
 const TORNADO_VELOCITY: float = 140
 const TORNADO_DEACCELERATION_MULTIPLIER: float = 5.0
-const TORNADO_DEATH_DISTANCE: float = 20.0
+const TORNADO_DEATH_DISTANCE: float = 10.0
 const MIN_SCALE: float = 0.3
 const TORNADO_BASE_ROTATION_SPEED: float = PI * 0.7
 
@@ -25,16 +27,21 @@ var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var tornado: Area2D
 var was_just_hit: bool = false
 
-@onready var current_lives: int = max_lives :
+@onready var current_lives: int :
 	set(value):
 		if print_debug_messages:
 			print("current_lives changed from %s to %s" % [current_lives, value])
 		current_lives = value
+		lives_changed.emit(value, max_lives)
 		if current_lives <= 0:
 			player_killed.emit()
 			
 @onready var hurt_animator = $HurtAnimator
-	
+
+
+func _ready() -> void:
+	current_lives = max_lives
+
 
 func _physics_process(delta: float) -> void:
 	if debug_mode and Input.is_action_just_pressed("interact"):
@@ -126,6 +133,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if print_debug_messages:
 		print(name + " hit obstacle")
 	current_lives -= 1
+	emit_destroy_particles(body.global_position)
 	body.queue_free()
 	
 	hurt_animator.play("hurt")
@@ -144,3 +152,12 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_hurt_animator_animation_finished(_anim_name: StringName) -> void:
 	was_just_hit = false
+
+
+func emit_destroy_particles(global_pos: Vector2) -> void:
+	var particles: CPUParticles2D = DESTROY_PARTICLES.instantiate()
+	particles.emitting = true
+	add_child(particles)
+	particles.global_position = global_pos
+	await particles.finished
+	particles.queue_free()

@@ -12,3 +12,4 @@ func _ready() -> void:
 func set_obstacle_scale(value: float) -> void:
 	sprite.scale = value * Vector2.ONE
 	collision_shape.scale = value * Vector2.ONE
+

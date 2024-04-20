@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://rmgdlodutsm6"]
+[gd_scene load_steps=10 format=3 uid="uid://rmgdlodutsm6"]
 
 [ext_resource type="Script" path="res://scripts/midwest/player.gd" id="1_2ehcf"]
 [ext_resource type="Shader" path="res://scripts/flash.gdshader" id="1_3ejt8"]
@@ -13,6 +13,9 @@ shader_parameter/flashState = 0.0
 shader = ExtResource("1_3ejt8")
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/flashState = 0.0
+
+[sub_resource type="Gradient" id="Gradient_x88mj"]
+colors = PackedColorArray(0.517184, 0.517184, 0.517184, 1, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_wkn2e"]
 resource_name = "RESET"
@@ -52,7 +55,7 @@ _data = {
 "hurt": SubResource("Animation_nbrom")
 }
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="Area2D" groups=["player"]]
 material = SubResource("ShaderMaterial_5pm1c")
 collision_layer = 0
 script = ExtResource("1_2ehcf")
@@ -83,9 +86,21 @@ texture = ExtResource("2_vklqj")
 region_enabled = true
 region_rect = Rect2(26, 16, 7, 7)
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(-4, 0)
+amount = 64
+emission_shape = 3
+emission_rect_extents = Vector2(1, 14)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+color_initial_ramp = SubResource("Gradient_x88mj")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
-polygon = PackedVector2Array(-3.93403e-07, -9, 2, -4, 3, 1, 7, 4, 4.80825e-07, 11, -7, 4, -3, 1, -2, -4)
+polygon = PackedVector2Array(-2.89599e-05, -8, 1.99999, -4.00001, 3, 1, 8.00001, 3.99997, 4.80825e-07, 11, -7.99999, 4.00003, -3, 1, -2.00001, -3.99999)
 
 [node name="HurtAnimator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -94,3 +109,4 @@ libraries = {
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="HurtAnimator" to="." method="_on_hurt_animator_animation_finished"]

@@ -17,7 +17,7 @@ _data = [Vector2(0, -0.208791), 0.0, 0.0, 0, 0, Vector2(0.492063, -0.67033), 0.0
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_366l8"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.650794, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.661376, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_kwm2x"]
@@ -59,8 +59,8 @@ angular_velocity_max = 3.0
 angular_velocity_curve = SubResource("Curve_51bvq")
 orbit_velocity_max = 1.0
 orbit_velocity_curve = SubResource("Curve_8t43v")
-scale_amount_min = 0.3
-scale_amount_max = 2.0
+scale_amount_min = 0.7
+scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_366l8")
 color_ramp = SubResource("Gradient_kwm2x")
 
