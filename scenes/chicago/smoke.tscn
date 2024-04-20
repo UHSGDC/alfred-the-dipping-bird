@@ -36,13 +36,12 @@ initial_velocity_min = 2.5
 initial_velocity_max = 6.0
 angular_velocity_min = -3.0
 angular_velocity_max = 3.0
-scale_amount_min = 0.5
-scale_amount_max = 2.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_tklpw")
 color_ramp = SubResource("Gradient_ipgif")
 color_initial_ramp = SubResource("Gradient_b5ned")
 
-[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+[node name="OutlineParticles" type="CPUParticles2D" parent="."]
 amount = 150
 lifetime = 5.0
 preprocess = 5.0
@@ -56,7 +55,7 @@ angular_velocity_max = 3.0
 orbit_velocity_min = -0.05
 orbit_velocity_max = 0.05
 scale_amount_min = 0.5
-scale_amount_max = 2.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_tklpw")
-color_ramp = SubResource("Gradient_ipgif")
+color = Color(0.909804, 0.137255, 0.215686, 1)
 color_initial_ramp = SubResource("Gradient_b5ned")
