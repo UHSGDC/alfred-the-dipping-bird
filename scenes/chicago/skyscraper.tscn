@@ -1,17 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://c56o1esrlxcce"]
+[gd_scene load_steps=14 format=3 uid="uid://c56o1esrlxcce"]
 
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_tc2o7"]
+[ext_resource type="Shader" path="res://scripts/outline.gdshader" id="1_fgopf"]
+[ext_resource type="Texture2D" uid="uid://54gad21dof6x" path="res://assets/chicago/skyscraper0.png" id="1_iydd7"]
+[ext_resource type="Script" path="res://scripts/chicago/skyscraper.gd" id="1_xpnip"]
+[ext_resource type="Texture2D" uid="uid://jx15c675q2vf" path="res://assets/chicago/skyscraper1.png" id="4_58jds"]
+[ext_resource type="Texture2D" uid="uid://co78mnofup3jr" path="res://assets/chicago/skyscraper2.png" id="5_0sfuk"]
+[ext_resource type="Texture2D" uid="uid://uwbbysvd133e" path="res://assets/chicago/skyscraper3.png" id="6_1g3vx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ah5c"]
+shader = ExtResource("1_fgopf")
+shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
-size = Vector2(36, 36)
+size = Vector2(32, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gm080"]
+size = Vector2(14, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc7a7"]
+size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wd5nq"]
+size = Vector2(27, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4mdc"]
+size = Vector2(33, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psuhn"]
+size = Vector2(46, 46)
 
 [node name="Skyscraper" type="StaticBody2D" groups=["skyscraper"]]
 collision_mask = 0
+script = ExtResource("1_xpnip")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 1, 1)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("2_tc2o7")
+material = SubResource("ShaderMaterial_7ah5c")
+texture = ExtResource("1_iydd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 0)
 shape = SubResource("RectangleShape2D_y7cvp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(16, -10.5)
+shape = SubResource("RectangleShape2D_gm080")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7ah5c")
+texture = ExtResource("4_58jds")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_tc7a7")
+disabled = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7ah5c")
+texture = ExtResource("5_0sfuk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-16.5, -6.5)
+shape = SubResource("RectangleShape2D_wd5nq")
+disabled = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(13.5, 0)
+shape = SubResource("RectangleShape2D_m4mdc")
+disabled = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_7ah5c")
+texture = ExtResource("6_1g3vx")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_psuhn")
+disabled = true
