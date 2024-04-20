@@ -26,6 +26,7 @@ var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var tornado: Area2D
 var was_just_hit: bool = false
+var death_pause: bool = false
 
 @onready var current_lives: int :
 	set(value):
@@ -34,7 +35,7 @@ var was_just_hit: bool = false
 		current_lives = value
 		lives_changed.emit(value, max_lives)
 		if current_lives <= 0:
-			player_killed.emit()
+			kill()
 			
 @onready var hurt_animator = $HurtAnimator
 
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	if debug_mode and Input.is_action_just_pressed("interact"):
 		debug_movement_paused = !debug_movement_paused
 
-	if !debug_movement_paused:
+	if !debug_movement_paused and !death_pause:
 		if tornado:
 			tornado_move(delta)
 			if debug_mode:
@@ -161,3 +162,12 @@ func emit_destroy_particles(global_pos: Vector2) -> void:
 	particles.global_position = global_pos
 	await particles.finished
 	particles.queue_free()
+
+
+func kill() -> void:
+	$Body.hide()
+	$CPUParticles2D.hide()
+	$DeathParticles.emitting = true
+	death_pause = true
+	await $DeathParticles.finished	
+	player_killed.emit()

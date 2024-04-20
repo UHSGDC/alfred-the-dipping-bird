@@ -61,7 +61,6 @@ texture = ExtResource("7_ryw68")
 
 [node name="Player" parent="." node_paths=PackedStringArray("top_left_bound", "bot_right_bound", "camera") instance=ExtResource("2_tds7h")]
 position = Vector2(20, 90)
-collision_layer = 16
 top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
 bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
 camera = NodePath("../PlayerCamera")
