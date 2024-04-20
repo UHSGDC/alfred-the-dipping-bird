@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2bxisrhl4j1s"]
+[gd_scene load_steps=6 format=3 uid="uid://b2bxisrhl4j1s"]
 
 [ext_resource type="Script" path="res://scripts/chicago/pigeon.gd" id="1_07j60"]
+[ext_resource type="Shader" path="res://scripts/outline.gdshader" id="2_gtlnh"]
 [ext_resource type="Texture2D" uid="uid://c0j2rl4a483it" path="res://assets/chicago/pigeon.png" id="2_kajvk"]
+[ext_resource type="PackedScene" uid="uid://cxmrylq28us3q" path="res://scenes/midwest/destroy_particles.tscn" id="4_ujivd"]
 
-[sub_resource type="Curve" id="Curve_r1p26"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.571429), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_g7nva"]
-offsets = PackedFloat32Array(0, 0.993789)
-colors = PackedColorArray(0.376471, 0.298039, 0.490196, 1, 0.564706, 0.54902, 0.780392, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t40xu"]
+shader = ExtResource("2_gtlnh")
+shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 1)
 
 [node name="Pigeon" type="RigidBody2D" groups=["bird"]]
 z_index = 1
@@ -20,6 +18,7 @@ linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_07j60")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t40xu")
 position = Vector2(0, -4.47035e-08)
 texture = ExtResource("2_kajvk")
 
@@ -30,20 +29,8 @@ rect = Rect2(-6, -6, 12, 12)
 position = Vector2(-0.5, 0)
 polygon = PackedVector2Array(-4.5, 0, -1.5, 3, 4.5, 0, -1.5, -3)
 
-[node name="DeathParticles" type="CPUParticles2D" parent="."]
+[node name="DeathParticles" parent="." instance=ExtResource("4_ujivd")]
 process_mode = 3
-emitting = false
-amount = 16
-lifetime = 0.25
-one_shot = true
-explosiveness = 1.0
-emission_shape = 2
-emission_sphere_radius = 5.0
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_r1p26")
-color_initial_ramp = SubResource("Gradient_g7nva")
+color = Color(0.917647, 0.164706, 0.32549, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
