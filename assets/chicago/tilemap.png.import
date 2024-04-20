@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk3bphsbbj6dq"
-path="res://.godot/imported/grass.png-7c81f2fd2632ab3a156dc6cbdb8da125.ctex"
+uid="uid://b11vn2q30imus"
+path="res://.godot/imported/tilemap.png-78dd281720e3a2e57f50ecc424c2ae8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/chicago/grass.png"
-dest_files=["res://.godot/imported/grass.png-7c81f2fd2632ab3a156dc6cbdb8da125.ctex"]
+source_file="res://assets/chicago/tilemap.png"
+dest_files=["res://.godot/imported/tilemap.png-78dd281720e3a2e57f50ecc424c2ae8f.ctex"]
 
 [params]
 
