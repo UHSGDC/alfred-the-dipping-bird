@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctnpoit68dsld"]
+
+[ext_resource type="PackedScene" uid="uid://cy0uso36digxw" path="res://scenes/menus/menus.tscn" id="1_c7o8y"]
+
+[node name="Game" type="Node"]
+
+[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
+
+[node name="MinigameManager" type="Node" parent="."]
+
+[node name="CutsceneManager" type="Node" parent="."]
