@@ -1,11 +1,13 @@
 extends BaseMinigame
 
+const LIFE_SCORE_MULTIPLIER: int = 500
+
 func _ready() -> void:
 	$HUD/ProgressBar.max_value = $WinArea.position.x
 
 
 func _on_player_player_killed() -> void:
-	end_minigame(false, 0)
+	end_minigame(0, "%s lives left" % $Player.current_lives)
 
 
 func _on_win_area_area_entered(area: Area2D) -> void:
@@ -14,7 +16,8 @@ func _on_win_area_area_entered(area: Area2D) -> void:
 		
 	$HUD/BlackScreen.fade_in()
 	await $HUD/BlackScreen.fade_done
-	end_minigame(true, $Player.current_lives)
+	var score: int = $Player.current_lives * LIFE_SCORE_MULTIPLIER
+	end_minigame(score, "%s lives left x %s = %s" % [$Player.current_lives, LIFE_SCORE_MULTIPLIER, score])
 
 
 func _process(_delta: float) -> void:

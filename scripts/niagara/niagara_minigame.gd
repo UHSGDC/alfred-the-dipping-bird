@@ -59,7 +59,7 @@ func _on_player_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("obstacle"):
 		if debug_mode:
 			print("player hit obstacle")
-		end_minigame(false, 0)
+		end_minigame(0, "to be implemented")
 			
 	if body.is_in_group("breakable"):
 		body.queue_free()
@@ -83,7 +83,7 @@ func _on_fish_timer_timeout() -> void:
 func _on_minigame_timer_timeout() -> void:
 	if debug_mode:
 		print("timer finished. Player won")
-	end_minigame(true, total_fish_collected)
+	end_minigame(total_fish_collected, "to be implemented")
 	
 
 
@@ -91,4 +91,4 @@ func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> v
 	if current_wetness >= max_wetness:
 		if debug_mode:
 			print("player got too wet")
-		end_minigame(false, 0)
+		end_minigame(0, "to be implemented")

@@ -21,8 +21,8 @@ enum {
 	NONE,
 }
 
-var current_menu: int
-var previous_menu: int
+var current_menu: int = NONE
+var previous_menu: int = NONE
 
 
 func _ready() -> void:
@@ -31,12 +31,13 @@ func _ready() -> void:
 	for child in get_children():
 		child.menus = self
 	
-	change_menu.call_deferred(MAIN)
+	change_menu.call_deferred(MAIN, false)
 
 
+# If signal_emitted is true the signals menu_closed and menu_opened will not be triggered
 func change_menu(new_menu: int, signal_emitted: bool) -> void:
 	for child in get_children():
-		child.hide.call_deferred()
+		child.hide()
 	
 	match new_menu:
 		MAIN:
@@ -46,7 +47,7 @@ func change_menu(new_menu: int, signal_emitted: bool) -> void:
 		PAUSE:
 			$PauseMenu.show()
 		OPTIONS:
-			$SettingsMenu.show()
+			$OptionsMenu.show()
 		LEVEL_SELECT:
 			$LevelSelectMenu.show()
 		RESULTS:
@@ -68,3 +69,10 @@ func _input(event: InputEvent) -> void:
 			change_menu(NONE, false)
 		elif current_menu == NONE:
 			change_menu(PAUSE, false)
+
+
+func _on_minigame_manager_minigame_ended(score: int, score_info: String) -> void:
+	$ResultsMenu.score = score
+	if score_info:
+		$ResultsMenu.score_info = score_info
+	change_menu(RESULTS, false)

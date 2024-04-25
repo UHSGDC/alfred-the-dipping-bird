@@ -8,15 +8,18 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_akeri")
 
-[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
-visible = false
-
 [node name="MinigameManager" type="Node" parent="."]
 script = ExtResource("2_yod0e")
 
-[node name="CutsceneManager" type="Node" parent="."]
+[node name="CutsceneManager" type="CanvasLayer" parent="."]
+layer = 2
 script = ExtResource("4_cyvwb")
 
+[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
+layer = 3
+visible = false
+
+[connection signal="minigame_ended" from="MinigameManager" to="Menus" method="_on_minigame_manager_minigame_ended"]
 [connection signal="level_selected" from="Menus" to="." method="_on_menus_level_selected"]
 [connection signal="menu_closed" from="Menus" to="." method="_on_menus_menu_closed"]
 [connection signal="menu_opened" from="Menus" to="." method="_on_menus_menu_opened"]
