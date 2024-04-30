@@ -6,8 +6,9 @@
 bg_color = Color(0, 0, 0, 0.243137)
 
 [node name="ResultsMenu" type="Panel"]
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.175
+anchor_right = 0.825
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2

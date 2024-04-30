@@ -17,4 +17,4 @@ func _on_options_pressed() -> void:
 
 func _on_main_menu_pressed() -> void:
 	menus.trigger_minigame_kill.emit()
-	menus.change_menu(menus.MAIN, false)
+	menus.change_menu(menus.MAIN, true)

@@ -7,24 +7,31 @@ var is_playing: bool = false
 
 
 func play_cutscene(level: Game.Level) -> void:
-	print("PLACEHOLDER: cutscene played")
+	$CutsceneImitator.paused = false
+	$CutsceneImitator.start()
+	print("PLACEHOLDER: cutscene playing")
 	is_playing = true
-	await get_tree().create_timer(0.5).timeout
-	print("PLACEHOLDER: cutscene finished emitted after 0.5 seconds")
-	cutscene_finished.emit()
-	kill_cutscene.call_deferred()
 
 
 func unpause_cutscene() -> void:
+	$CutsceneImitator.paused = false
 	print("PLACEHOLDER: cutscene unpaused")
 	is_playing = true
 
 
 func pause_cutscene() -> void:
+	$CutsceneImitator.paused = true
 	print("PLACEHOLDER: cutscene paused")
 	is_playing = false
 
 
 func kill_cutscene() -> void:
+	$CutsceneImitator.stop()
 	print("PLACEHOLDER: cutscene killed")
 	is_playing = false
+
+
+func _on_cutscene_finished() -> void:
+	print("PLACEHOLDER: cutscene finished")
+	cutscene_finished.emit()
+	kill_cutscene.call_deferred()

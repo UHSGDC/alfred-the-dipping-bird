@@ -9,6 +9,7 @@ signal play_pressed
 signal level_selected(level: Game.Level)
 signal next_pressed
 signal retry_pressed
+signal trigger_minigame_kill
 
 
 enum {

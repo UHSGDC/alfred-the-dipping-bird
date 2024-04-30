@@ -26,9 +26,7 @@ func play_current_level() -> void:
 		minigame_manager.play_minigame(current_level)
 		return
 	cutscene_manager.play_cutscene(current_level)
-	await cutscene_manager.cutscene_finished
-	cutscene_played[current_level] = true
-	minigame_manager.play_minigame(current_level)
+	# The rest of this method continues after the minigame finishes in the _on_cutscene finished method
 
 
 func _on_menus_level_selected(level: Game.Level) -> void:
@@ -57,3 +55,13 @@ func _on_menus_play_pressed() -> void:
 
 func _on_menus_retry_pressed() -> void:
 	play_current_level()
+
+
+func _on_menus_trigger_minigame_kill() -> void:
+	minigame_manager.kill_minigame()
+	cutscene_manager.kill_cutscene()
+
+
+func _on_cutscene_manager_cutscene_finished() -> void:
+	cutscene_played[current_level] = true
+	minigame_manager.play_minigame(current_level)

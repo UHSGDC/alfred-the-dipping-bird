@@ -8,27 +8,19 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_akeri")
 
+[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
+layer = 2
+visible = false
+
 [node name="MinigameManager" type="Node" parent="."]
 script = ExtResource("2_yod0e")
 
-[node name="CutsceneManager" type="CanvasLayer" parent="."]
-layer = 2
+[node name="CutsceneManager" type="Node" parent="."]
 script = ExtResource("4_cyvwb")
 
-[node name="CutsceneImitator" type="Timer" parent="CutsceneManager"]
-one_shot = true
-
-[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
-layer = 3
-visible = false
-
-[connection signal="minigame_ended" from="MinigameManager" to="Menus" method="_on_minigame_manager_minigame_ended"]
-[connection signal="cutscene_finished" from="CutsceneManager" to="." method="_on_cutscene_manager_cutscene_finished"]
-[connection signal="timeout" from="CutsceneManager/CutsceneImitator" to="CutsceneManager" method="_on_cutscene_finished"]
 [connection signal="level_selected" from="Menus" to="." method="_on_menus_level_selected"]
 [connection signal="menu_closed" from="Menus" to="." method="_on_menus_menu_closed"]
 [connection signal="menu_opened" from="Menus" to="." method="_on_menus_menu_opened"]
 [connection signal="next_pressed" from="Menus" to="." method="_on_menus_next_pressed"]
 [connection signal="play_pressed" from="Menus" to="." method="_on_menus_play_pressed"]
 [connection signal="retry_pressed" from="Menus" to="." method="_on_menus_retry_pressed"]
-[connection signal="trigger_minigame_kill" from="Menus" to="." method="_on_menus_trigger_minigame_kill"]
