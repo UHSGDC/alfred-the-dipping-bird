@@ -27,6 +27,7 @@ font_color = Color(0.137255, 0.486275, 0.541176, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_ptw0h"]
 font = ExtResource("4_64jim")
 font_size = 6
+font_color = Color(0.239216, 0.698039, 0.678431, 1)
 
 [node name="ControlsView" type="Panel"]
 custom_minimum_size = Vector2(192, 152)
