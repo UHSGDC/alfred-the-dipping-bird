@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dsffuedg4maj6"
-path="res://.godot/imported/Pixeled.ttf-553b08c0f5186870489581e3ca02edd7.fontdata"
+uid="uid://b1bh8q82a83pd"
+path="res://.godot/imported/PressStart2P-Regular.ttf-8bbbd1066bbbb174255f9b354181a985.fontdata"
 
 [deps]
 
-source_file="res://assets/font/Pixeled.ttf"
-dest_files=["res://.godot/imported/Pixeled.ttf-553b08c0f5186870489581e3ca02edd7.fontdata"]
+source_file="res://assets/font/PressStart2P-Regular.ttf"
+dest_files=["res://.godot/imported/PressStart2P-Regular.ttf-8bbbd1066bbbb174255f9b354181a985.fontdata"]
 
 [params]
 
@@ -31,8 +31,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}

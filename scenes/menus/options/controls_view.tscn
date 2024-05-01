@@ -1,0 +1,174 @@
+[gd_scene load_steps=13 format=3 uid="uid://dkirc166y8d8u"]
+
+[ext_resource type="Script" path="res://scripts/menus/options/controls_view.gd" id="1_c8llo"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_bt2no"]
+[ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_wsp8x"]
+[ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="4_64jim"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnvaw"]
+bg_color = Color(0.0862745, 0.290196, 0.403922, 1)
+corner_detail = 2
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_4gy0e"]
+font = ExtResource("2_bt2no")
+font_color = Color(0.137255, 0.486275, 0.541176, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnpsg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y48ib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7f3s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6381i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3ptu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ptw0h"]
+font = ExtResource("4_64jim")
+font_size = 6
+
+[node name="ControlsView" type="Panel"]
+custom_minimum_size = Vector2(192, 152)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -76.0
+offset_right = 96.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tnvaw")
+script = ExtResource("1_c8llo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.333333
+anchor_top = -0.105263
+anchor_right = 1.33333
+anchor_bottom = 1.10526
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 20.0
+grow_horizontal = 2
+text = "Controls"
+label_settings = SubResource("LabelSettings_4gy0e")
+uppercase = true
+
+[node name="Close" type="Button" parent="."]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 184.0
+offset_bottom = 16.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.137255, 0.486275, 0.541176, 1)
+theme_override_colors/font_pressed_color = Color(0.0627451, 0.196078, 0.356863, 1)
+theme_override_colors/font_hover_color = Color(0.239216, 0.698039, 0.678431, 1)
+theme_override_colors/font_focus_color = Color(0.239216, 0.698039, 0.678431, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.239216, 0.698039, 0.678431, 1)
+theme_override_fonts/font = ExtResource("3_wsp8x")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wnpsg")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_y48ib")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c7f3s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6381i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r3ptu")
+text = "X"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.158
+anchor_right = 0.917
+anchor_bottom = 0.895
+offset_left = 0.0639992
+offset_top = -0.0159912
+offset_right = -0.0640106
+offset_bottom = -0.0399475
+theme_override_constants/separation = 12
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Action" type="Label" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Movement"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="Input" type="Label" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "WASD/Arrow Keys"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Action" type="Label" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Primary Action"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="Input" type="Label" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "SPACE"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Action" type="Label" parent="VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Secondary Action"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="Input" type="Label" parent="VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+text = "Shift"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Action" type="Label" parent="VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[node name="Input" type="Label" parent="VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+text = "ESCAPE"
+label_settings = SubResource("LabelSettings_ptw0h")
+uppercase = true
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
