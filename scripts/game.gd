@@ -17,9 +17,6 @@ var current_level: Level = Level.MIDWEST
 @onready var minigame_manager: MinigameManager = $MinigameManager
 @onready var cutscene_manager: CutsceneManager = $CutsceneManager
 
-func _ready() -> void:
-	pass
-
 
 func play_current_level() -> void:
 	if cutscene_played[current_level]:

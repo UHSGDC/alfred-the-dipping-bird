@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cy0uso36digxw"]
+[gd_scene load_steps=7 format=3 uid="uid://cy0uso36digxw"]
 
 [ext_resource type="Script" path="res://scripts/menus/menus.gd" id="1_aloou"]
-[ext_resource type="PackedScene" uid="uid://dunsm6c8jipyf" path="res://scenes/menus/main_menu.tscn" id="2_cdpf7"]
-[ext_resource type="PackedScene" uid="uid://dmoa37dm4ehqc" path="res://scenes/menus/pause_menu.tscn" id="3_anyxd"]
-[ext_resource type="PackedScene" uid="uid://bnhcekbfwy7m8" path="res://scenes/menus/results_menu.tscn" id="4_1lt4m"]
+[ext_resource type="PackedScene" uid="uid://boywxuhfg8sh5" path="res://scenes/menus/main_menu.tscn" id="2_cdpf7"]
+[ext_resource type="PackedScene" path="res://scenes/menus/pause_menu.tscn" id="3_anyxd"]
+[ext_resource type="PackedScene" path="res://scenes/menus/results_menu.tscn" id="4_1lt4m"]
 [ext_resource type="PackedScene" uid="uid://duwyqtp6my2s0" path="res://scenes/menus/options_menu.tscn" id="5_mn1nu"]
+[ext_resource type="PackedScene" uid="uid://c8igrafkyth5w" path="res://scenes/menus/level_select_menu.tscn" id="6_7acst"]
 
 [node name="Menus" type="CanvasLayer"]
 script = ExtResource("1_aloou")
@@ -18,4 +19,7 @@ visible = false
 visible = false
 
 [node name="OptionsMenu" parent="." instance=ExtResource("5_mn1nu")]
+visible = false
+
+[node name="LevelSelectMenu" parent="." instance=ExtResource("6_7acst")]
 visible = false

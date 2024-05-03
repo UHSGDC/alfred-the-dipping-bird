@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8igrafkyth5w"]
+[gd_scene load_steps=12 format=3 uid="uid://c8igrafkyth5w"]
 
 [ext_resource type="Script" path="res://scripts/menus/level_select_menu.gd" id="1_17o3r"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_1306q"]
 [ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="3_y8jlr"]
+[ext_resource type="PackedScene" uid="uid://cxyfgqi6tn4s8" path="res://scenes/menus/level_select_button.tscn" id="4_fnreq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhal4"]
 bg_color = Color(0.376471, 0.298039, 0.490196, 1)
@@ -66,7 +67,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
 text = "BACK"
 
-[node name="OptionsWindow" type="ColorRect" parent="."]
+[node name="LevelSelectWindow" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 32.0
@@ -74,4 +75,34 @@ offset_right = 304.0
 offset_bottom = 168.0
 color = Color(0.564706, 0.54902, 0.780392, 1)
 
+[node name="ButtonContainer" type="VBoxContainer" parent="LevelSelectWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0277778
+anchor_top = 0.0588235
+anchor_right = 0.972222
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelSelectButton" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
+layout_mode = 2
+
+[node name="LevelSelectButton2" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
+layout_mode = 2
+text = "Chicago"
+
+[node name="LevelSelectButton3" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
+layout_mode = 2
+text = "Niagara Falls"
+
+[node name="LevelSelectButton4" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
+layout_mode = 2
+disabled = true
+text = "Coming Soon..."
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton2" to="." method="_on_level_select_button_2_pressed"]
+[connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton3" to="." method="_on_level_select_button_3_pressed"]
