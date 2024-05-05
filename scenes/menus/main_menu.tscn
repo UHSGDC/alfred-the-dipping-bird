@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://boywxuhfg8sh5"]
+[gd_scene load_steps=5 format=3 uid="uid://boywxuhfg8sh5"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwh5c"]
-bg_color = Color(0.6, 0.0627451, 0.298039, 1)
+bg_color = Color(0.294118, 0.0313726, 0.262745, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tpvyh"]
+font = ExtResource("2_8k3rw")
+font_size = 12
+font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 
 [node name="MainMenu" type="Panel"]
 anchors_preset = 15
@@ -21,15 +27,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -190.0
-offset_top = -49.0
-offset_right = -13.0
-offset_bottom = -26.0
+offset_left = -189.0
+offset_top = -71.0
+offset_right = -5.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "Alfred
 the
 Dipping Bird"
+label_settings = SubResource("LabelSettings_tpvyh")
 horizontal_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -37,35 +43,55 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 20.0
-offset_top = -71.0
-offset_right = 96.0
-offset_bottom = 70.0
+offset_left = 12.0
+offset_top = -70.0
+offset_right = 124.0
+offset_bottom = 71.0
 grow_vertical = 2
 
 [node name="Play" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+focus_mode = 0
+theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
 text = "Play"
 
 [node name="LevelSelect" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+focus_mode = 0
+theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
 text = "Level Select"
 
 [node name="Options" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+focus_mode = 0
+theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
 text = "Options"
 
 [node name="Credits" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+focus_mode = 0
+theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
 text = "Credits"
 
 [node name="Quit" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+focus_mode = 0
+theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]

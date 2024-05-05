@@ -1,0 +1,254 @@
+[gd_scene load_steps=15 format=3 uid="uid://2srxhe2sufkd"]
+
+[ext_resource type="Script" path="res://scripts/menus/credits_menu.gd" id="1_xadlr"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8fbnn"]
+[ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="3_u6cd5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhal4"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkjht"]
+font = ExtResource("2_8fbnn")
+font_color = Color(0.690196, 0.811765, 0.933333, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cc05"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xodc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mfa7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpm63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h61au"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7qgv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w5ta6"]
+
+[sub_resource type="Theme" id="Theme_uphxe"]
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_y7qgv")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_w5ta6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fyna"]
+font = ExtResource("2_8fbnn")
+font_size = 4
+font_color = Color(0.690196, 0.811765, 0.933333, 1)
+
+[node name="CreditsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vhal4")
+script = ExtResource("1_xadlr")
+SCROLL_SPEED = 30.0
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_rkjht")
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 31.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("3_u6cd5")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+text = "BACK"
+
+[node name="CreditsWindow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 304.0
+offset_bottom = 168.0
+color = Color(0.564706, 0.54902, 0.780392, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CreditsWindow"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 284.0
+offset_bottom = 132.0
+theme = SubResource("Theme_uphxe")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsWindow/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 132
+theme_override_constants/margin_bottom = 8
+
+[node name="CreditsLabel" type="Label" parent="CreditsWindow/ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+text = "Placeholder Text:
+Photographer's Hike
+
+
+
+A game created by University High School Game Development Club
+
+Developed in 2023
+
+
+
+Nick Vatanshenas
+- Club President
+- Programming Head
+- Lead Developer
+- Level, Mechanic, and World Design
+- Tile Art
+- Yeti Art
+- Pictures and Title Screen Art
+- Base Camp and Snowy Tundra Background Art
+- UI Art
+- Cougar, Yeti, and Old Man Sounds
+- Music
+
+
+Arman Akhtari
+- Art Head
+- Initial Game Vision
+- Player Animations and Art
+- Cougar Animations and Art
+- Dense and Sparse Forest Background Art
+
+
+Miryam Greenstein
+- Club Vice President
+- Sound Head
+- Educating the team on Sound Design and Creation
+
+
+Nguyen Do
+- Game Design Head
+- Educating the team on Game Design
+
+William Jenkins
+- Trees in the Dense and Sparse Forest Background Art
+
+
+Andrew Fu
+- Implementing Cougar Animations
+- Finding and editing stock sounds from pixabay.com
+
+
+Juliet Kozlov
+- Wind Sound
+- Great Communicator
+- Picture Sound
+
+
+Dylan Mac
+- Dialog System Groundwork
+
+
+Ajay Sathish Preetha
+- Menu System Groundwork
+- Settings Menu Groundwork
+- Pause Menu Groundwork
+- Keybinding Groundwork
+
+
+Jun Choi
+- Former Club President
+- Former Game Design Head
+
+
+Playtesting
+
+Playtesters provided feedback and ideas many of which are now a part of the game
+
+1st Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+
+2nd Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+- Cody Cascalla
+- Connor Mursalo
+- Edward Li
+- Caden Lee (Speedrun Timer)
+
+3rd Round of Playtesters
+- Anirudh Sunkad
+- Linda Khalfa
+- Chase Morse
+- Cody Cascalla
+- Connor Mursalo
+- Edward Li
+- Caden Lee
+- Nguyen Do
+- Iris Dou
+- Winston Zhou
+- Eric Li
+- Juliet Kozlov
+- Alec Apelian (Camera Film Roll Secrets)
+- Alexis Joystick
+- George Matta
+- Arman Akhtari
+- Miryam Greenstein
+- Neeraj Bhuvaneshwaran
+- Armia Asgari
+- Sly Moaleji
+- Agam Randhawa
+
+
+Current Board Members
+- President and Programming Head: Nick Vatanshenas
+- Vice President and Sound Head: Miryam Greenstein
+- Art Head: Arman Akhtari
+- Game Design Head: Nguyen Do
+- Secretary: Cody Cascalla
+- Publicist: Minerva You
+- Treasuer: Neeraj Bhuvaneshwaran
+
+Special thanks to Mr. Frat our club advisor, who provided us a space to meet during the development of the game.
+
+
+Sounds generated from sfxr.me
+- Player jump, respawn, and death sounds
+- Yeti punch sound
+
+
+Stock sounds from pixabay.com
+- Player run sounds
+- Player land sound
+- Picture taking sound
+
+
+Game inspired by Celeste, A Short Hike, and Pokémon Snap™"
+label_settings = SubResource("LabelSettings_6fyna")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

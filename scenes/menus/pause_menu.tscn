@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmoa37dm4ehqc"]
+[gd_scene load_steps=5 format=3 uid="uid://dmoa37dm4ehqc"]
 
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_n4geu"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_ioj14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw3a"]
 bg_color = Color(0, 0, 0, 0.243137)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bib5n"]
+font = ExtResource("2_ioj14")
+font_color = Color(0.564706, 0.54902, 0.780392, 1)
 
 [node name="PauseMenu" type="Panel"]
 anchors_preset = 15
@@ -25,6 +30,7 @@ offset_right = 160.0
 offset_bottom = 40.0
 grow_horizontal = 2
 text = "Game Paused"
+label_settings = SubResource("LabelSettings_bib5n")
 horizontal_alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="."]
@@ -34,26 +40,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.0
+offset_left = -48.0
 offset_top = -38.0
-offset_right = 37.0
-offset_bottom = 63.0
+offset_right = 48.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resume" type="Button" parent="Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("2_ioj14")
+theme_override_font_sizes/font_size = 8
 text = "Resume"
 
 [node name="Options" type="Button" parent="Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("2_ioj14")
+theme_override_font_sizes/font_size = 8
 text = "Options"
 
 [node name="MainMenu" type="Button" parent="Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("2_ioj14")
+theme_override_font_sizes/font_size = 8
 text = "Main Menu"
 
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
