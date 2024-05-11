@@ -19,6 +19,8 @@ var current_level: Level = Level.MIDWEST
 
 
 func play_current_level() -> void:
+	minigame_manager.kill_minigame()
+	cutscene_manager.kill_cutscene()
 	if cutscene_played[current_level]:
 		minigame_manager.play_minigame(current_level)
 		return
@@ -60,5 +62,6 @@ func _on_menus_trigger_minigame_kill() -> void:
 
 
 func _on_cutscene_manager_cutscene_finished() -> void:
+	cutscene_manager.kill_cutscene.call_deferred()
 	cutscene_played[current_level] = true
 	minigame_manager.play_minigame(current_level)

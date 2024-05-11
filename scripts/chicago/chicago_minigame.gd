@@ -3,7 +3,9 @@ extends BaseMinigame
 const LIFE_SCORE_MULTIPLIER: int = 500
 
 func _ready() -> void:
+	$HUD.show()
 	$HUD/ProgressBar.max_value = $WinArea.position.x
+	$HUD/BlackScreen.fade_out()
 
 
 func _on_player_player_killed() -> void:

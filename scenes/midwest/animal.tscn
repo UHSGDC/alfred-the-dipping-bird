@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dff0mufl3ilgk"]
+[gd_scene load_steps=6 format=3 uid="uid://dff0mufl3ilgk"]
 
 [ext_resource type="Script" path="res://scripts/midwest/animal.gd" id="1_nrpwq"]
 [ext_resource type="Texture2D" uid="uid://bu417c3rq36yw" path="res://assets/midwest/cow.png" id="2_fm47t"]
+[ext_resource type="Material" uid="uid://bwa6wjjfiic02" path="res://scenes/midwest/obstacle_outline.tres" id="2_leuj6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2dtkj"]
 bounce = 0.3
@@ -17,6 +18,7 @@ angular_damp = 0.1
 script = ExtResource("1_nrpwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_leuj6")
 texture = ExtResource("2_fm47t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c0j2rl4a483it" path="res://assets/chicago/pigeon.png" id="2_kajvk"]
 [ext_resource type="PackedScene" uid="uid://cxmrylq28us3q" path="res://scenes/midwest/destroy_particles.tscn" id="4_ujivd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t40xu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh61q"]
 shader = ExtResource("2_gtlnh")
 shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 1)
 
@@ -18,7 +18,7 @@ linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_07j60")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_t40xu")
+material = SubResource("ShaderMaterial_sh61q")
 position = Vector2(0, -4.47035e-08)
 texture = ExtResource("2_kajvk")
 

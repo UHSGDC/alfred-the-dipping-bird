@@ -64,6 +64,25 @@ scale_amount_max = 1.5
 scale_amount_curve = SubResource("Curve_366l8")
 color_ramp = SubResource("Gradient_kwm2x")
 
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+process_mode = 3
+scale = Vector2(1.6, 1.6)
+amount = 200
+lifetime = 2.0
+preprocess = 2.0
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 36.57
+gravity = Vector2(0, 0)
+angular_velocity_max = 3.0
+angular_velocity_curve = SubResource("Curve_51bvq")
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("Curve_8t43v")
+scale_amount_min = 0.7
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_366l8")
+color_ramp = SubResource("Gradient_kwm2x")
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 rect = Rect2(-70, -70, 140, 140)
 

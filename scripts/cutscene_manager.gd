@@ -34,4 +34,3 @@ func kill_cutscene() -> void:
 func _on_cutscene_finished() -> void:
 	print("PLACEHOLDER: cutscene finished")
 	cutscene_finished.emit()
-	kill_cutscene.call_deferred()
