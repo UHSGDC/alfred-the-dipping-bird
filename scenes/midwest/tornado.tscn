@@ -48,7 +48,7 @@ debug_color = Color(0, 0.552941, 0.917647, 0.419608)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 process_mode = 3
 scale = Vector2(1.6, 1.6)
-amount = 400
+amount = 300
 lifetime = 2.0
 preprocess = 2.0
 local_coords = true
@@ -67,7 +67,7 @@ color_ramp = SubResource("Gradient_kwm2x")
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
 process_mode = 3
 scale = Vector2(1.6, 1.6)
-amount = 200
+amount = 150
 lifetime = 2.0
 preprocess = 2.0
 local_coords = true

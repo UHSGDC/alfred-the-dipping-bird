@@ -24,7 +24,7 @@ rect = Rect2(-16, -16, 32, 32)
 shape = SubResource("CircleShape2D_4j3ms")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 150
+amount = 100
 lifetime = 5.0
 preprocess = 5.0
 local_coords = true
@@ -42,7 +42,7 @@ color_ramp = SubResource("Gradient_ipgif")
 color_initial_ramp = SubResource("Gradient_b5ned")
 
 [node name="OutlineParticles" type="CPUParticles2D" parent="."]
-amount = 150
+amount = 100
 lifetime = 5.0
 preprocess = 5.0
 local_coords = true
