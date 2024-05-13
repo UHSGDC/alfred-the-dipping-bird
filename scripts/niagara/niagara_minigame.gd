@@ -1,7 +1,8 @@
 extends BaseMinigame
 
-signal fish_collected(count: int)
+signal lives_changed(lives: int)
 
+const DESTROY_PARTICLES: PackedScene = preload("res://scenes/midwest/destroy_particles.tscn")
 const TOP_LEFT_BOUND: Vector2 = Vector2(0, 0)
 const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
 
@@ -10,12 +11,20 @@ const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
 @export var fish_indicator_scene: PackedScene
 ## The length of the minigame in seconds
 @export var minigame_time: float
+@export var max_lives: int = 3
 
-var total_fish_collected: int = 0 :
+var current_lives: int :
 	set(value):
-		total_fish_collected = value
-		fish_collected.emit(value)
+		lives_changed.emit(value)
+		current_lives = value
+		$HUD/LivesBar.value = current_lives
+		$HUD/LivesBar.max_value = max_lives
+		if value <= 0:
+			_stop_game()
+			await player.kill()
+			end_minigame(0, "to be implemented")
 
+@onready var player: Area2D = $Player
 @onready var hud: CanvasLayer = $HUD
 @onready var gush_spawn_left: Marker2D = $GushSpawn/LeftSpawn
 @onready var gush_spawn_right: Marker2D = $GushSpawn/RightSpawn
@@ -26,6 +35,7 @@ var total_fish_collected: int = 0 :
 
 
 func _ready() -> void:
+	current_lives = max_lives
 	$MinigameTimer.start(minigame_time)
 	$ObstacleTimer.start_spawn_timer()
 	await get_tree().create_timer(1).timeout
@@ -35,7 +45,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	$HUD/TimeRemaining.text = "Survive %.1f seconds" % $MinigameTimer.time_left
+	$HUD/ProgressBar.value = (minigame_time - $MinigameTimer.time_left) / minigame_time * 100
 
 
 func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) -> void:
@@ -50,19 +60,21 @@ func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) ->
 	indicator.queue_free()
 
 
-
 func _on_player_body_entered(body: Node2D) -> void:
 	if body.is_in_group("fish"):
-		total_fish_collected += 1
+		current_lives += 1
+		body.queue_free()
 		if debug_mode:
-			print(str(total_fish_collected) + " fish collected")
+			print(str(current_lives) + " lives left")
 	elif body.is_in_group("obstacle"):
 		if debug_mode:
 			print("player hit obstacle")
-		end_minigame(0, "to be implemented")
-			
-	if body.is_in_group("breakable"):
-		body.queue_free()
+		if body.is_in_group("gush"):
+			current_lives = 0
+		else:
+			body.queue_free()
+			emit_destroy_particles(player.global_position)
+			current_lives -= 1
 
 
 func _on_obstacle_timer_timeout() -> void:
@@ -76,19 +88,39 @@ func _on_gush_timer_timeout() -> void:
 
 
 func _on_fish_timer_timeout() -> void:
-	var rand_x := randf_range(fish_spawn_left.position.x, fish_spawn_right.position.x)
+	if current_lives >= max_lives:
+		return
+	var rand_x := clampf(randf_range(fish_spawn_left.position.x, fish_spawn_right.position.x), $FishSpawn/LeftSpawnBound.position.x, $FishSpawn/RightSpawnBound.position.x)
 	_spawn_falling_object(fish_indicator_scene, Vector2(rand_x, fish_spawn_left.position.y))
 
 
 func _on_minigame_timer_timeout() -> void:
 	if debug_mode:
 		print("timer finished. Player won")
-	end_minigame(total_fish_collected, "to be implemented")
+	end_minigame(current_lives, "to be implemented")
 	
-
 
 func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> void:
 	if current_wetness >= max_wetness:
 		if debug_mode:
 			print("player got too wet")
+		_stop_game()
+		await player.fall()
+		current_lives = 0
 		end_minigame(0, "to be implemented")
+
+
+func _stop_game() -> void:
+	$FishTimer.stop()
+	$GushTimer.stop()
+	$ObstacleTimer.stop()
+	$MinigameTimer.paused = true
+
+
+func emit_destroy_particles(global_pos: Vector2) -> void:
+	var particles: CPUParticles2D = DESTROY_PARTICLES.instantiate()
+	particles.emitting = true
+	add_child(particles)
+	particles.global_position = global_pos
+	await particles.finished
+	particles.queue_free()

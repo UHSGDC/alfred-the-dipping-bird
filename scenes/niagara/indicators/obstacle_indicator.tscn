@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfuyqhj777tif"]
 
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_3hmmy"]
+[ext_resource type="Texture2D" uid="uid://dpeyfmlsn14ib" path="res://assets/niagara/warning.png" id="1_vg0bq"]
 [ext_resource type="Script" path="res://scripts/niagara/obstacle_indicator.gd" id="2_7hhtq"]
 
 [sub_resource type="Animation" id="Animation_r6ije"]
@@ -41,10 +41,8 @@ _data = {
 }
 
 [node name="ObstacleIndicator" type="Sprite2D"]
-self_modulate = Color(0.862745, 0, 0.286275, 1)
-scale = Vector2(0.171875, 0.15625)
-texture = ExtResource("1_3hmmy")
-offset = Vector2(0, 64)
+texture = ExtResource("1_vg0bq")
+offset = Vector2(0, 12)
 script = ExtResource("2_7hhtq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

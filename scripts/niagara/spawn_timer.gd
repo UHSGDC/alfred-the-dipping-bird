@@ -12,7 +12,7 @@ var total_spawns: int = 0
 func start_spawn_timer() -> void:
 	max_time = starting_max_time
 	min_time = starting_min_time
-	start(randf_range(min_time / 4, max_time / 4))
+	start(randf_range(min_time / 4, max_time / 4)) # Divide by 4 to start sooner
 
 
 func _on_timeout() -> void:

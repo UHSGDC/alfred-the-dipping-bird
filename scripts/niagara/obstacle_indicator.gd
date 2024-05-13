@@ -9,6 +9,7 @@ func initialize(obstacle_pos: Vector2) -> RigidBody2D:
 	$AnimationPlayer.play("flash")
 	await $AnimationPlayer.animation_finished
 	var obstacle: RigidBody2D = get_random_obstacle_scene().instantiate()
+	obstacle.angular_velocity = randf_range(-0.5, 0.5)
 	return obstacle
 	
 func get_random_obstacle_scene() -> PackedScene:

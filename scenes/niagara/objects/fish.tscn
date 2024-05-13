@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cruif64ixon4j"]
 
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_8ii7o"]
+[ext_resource type="Texture2D" uid="uid://d1nrm5s8l3s4p" path="res://assets/niagara/fish1.png" id="1_2wer6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
-size = Vector2(24, 16)
+size = Vector2(15, 17)
 
 [node name="Fish" type="RigidBody2D" groups=["breakable", "fish"]]
 collision_mask = 0
@@ -12,9 +12,8 @@ linear_velocity = Vector2(0, 40)
 constant_force = Vector2(0, 400)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0.760784, 0, 1)
-scale = Vector2(0.1875, 0.125)
-texture = ExtResource("1_8ii7o")
+texture = ExtResource("1_2wer6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_i8gr5")

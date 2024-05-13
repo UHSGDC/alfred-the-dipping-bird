@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://js817b4xkyyx"]
+[gd_scene load_steps=7 format=3 uid="uid://js817b4xkyyx"]
 
 [ext_resource type="Script" path="res://scripts/niagara/gush.gd" id="1_73ubr"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_oa0pv"]
+[ext_resource type="Texture2D" uid="uid://jojwhkqen8h8" path="res://assets/niagara/gush_background.png" id="2_uxwag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
 size = Vector2(82, 172)
@@ -9,16 +9,24 @@ size = Vector2(82, 172)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_piypo"]
 size = Vector2(92, 188)
 
-[node name="Gush" type="RigidBody2D" groups=["obstacle"]]
+[sub_resource type="Curve" id="Curve_6u3s8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.771429, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_phhe3"]
+colors = PackedColorArray(0.282353, 0.215686, 0.780392, 1, 0.352941, 0.858824, 0.980392, 1)
+
+[node name="Gush" type="RigidBody2D" groups=["gush", "obstacle"]]
 collision_mask = 0
 gravity_scale = 0.0
 linear_velocity = Vector2(0, 500)
 script = ExtResource("1_73ubr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.6875, 1.4375)
-texture = ExtResource("1_oa0pv")
+modulate = Color(1, 1, 1, 0.439216)
+position = Vector2(-1.66893e-06, -2.86102e-06)
+scale = Vector2(1.83333, 1.89583)
+texture = ExtResource("2_uxwag")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i8gr5")
@@ -27,5 +35,19 @@ shape = SubResource("RectangleShape2D_i8gr5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreakArea"]
 shape = SubResource("RectangleShape2D_piypo")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -21)
+amount = 300
+preprocess = 1.0
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(48, 96)
+direction = Vector2(0, 1)
+gravity = Vector2(0, 50)
+initial_velocity_max = 20.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_6u3s8")
+color_initial_ramp = SubResource("Gradient_phhe3")
 
 [connection signal="body_entered" from="BreakArea" to="." method="_on_break_area_body_entered"]

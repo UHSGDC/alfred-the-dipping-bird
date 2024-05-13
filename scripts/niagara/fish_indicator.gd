@@ -7,5 +7,6 @@ func initialize(obstacle_pos: Vector2) -> RigidBody2D:
 	$AnimationPlayer.play("flash")
 	await $AnimationPlayer.animation_finished
 	var fish: RigidBody2D = FISH_SCENE.instantiate()
+	fish.angular_velocity = randf_range(-0.5, 0.5)
 	return fish
 	

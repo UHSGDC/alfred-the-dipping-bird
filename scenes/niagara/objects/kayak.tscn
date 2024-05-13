@@ -1,20 +1,67 @@
 [gd_scene load_steps=3 format=3 uid="uid://d3ao3473gk8hf"]
 
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_qglqe"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
-size = Vector2(52, 16)
+[ext_resource type="Script" path="res://scripts/niagara/kayak.gd" id="1_a1o7f"]
+[ext_resource type="Texture2D" uid="uid://da477xm16c8nl" path="res://assets/niagara/kayak.png" id="1_f88u7"]
 
 [node name="Kayak" type="RigidBody2D" groups=["obstacle"]]
 collision_mask = 0
 gravity_scale = 0.0
 linear_velocity = Vector2(0, 80)
 constant_force = Vector2(0, 200)
+script = ExtResource("1_a1o7f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.862745, 0, 0.286275, 1)
-scale = Vector2(0.421875, 0.140625)
-texture = ExtResource("1_qglqe")
+texture = ExtResource("1_f88u7")
+region_enabled = true
+region_rect = Rect2(0, 0, 52, 19)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_i8gr5")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-26, 0, -16, 6, 5, 5, 22, 0, 5, -5, -16, -6)
+
+[node name="Passenger1" type="Sprite2D" parent="."]
+position = Vector2(1.5, -4)
+texture = ExtResource("1_f88u7")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(53, 1, 22, 9)
+
+[node name="Shirt" type="Sprite2D" parent="Passenger1"]
+position = Vector2(0, 4)
+texture = ExtResource("1_f88u7")
+hframes = 2
+vframes = 3
+frame = 5
+region_enabled = true
+region_rect = Rect2(53, 10, 22, 9)
+
+[node name="Hair" type="Sprite2D" parent="Passenger1"]
+position = Vector2(0.5, 0)
+texture = ExtResource("1_f88u7")
+hframes = 4
+vframes = 2
+region_enabled = true
+region_rect = Rect2(77, 1, 32, 18)
+
+[node name="Passenger2" type="Sprite2D" parent="."]
+position = Vector2(-10.5, -4)
+texture = ExtResource("1_f88u7")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(53, 1, 22, 9)
+
+[node name="Shirt" type="Sprite2D" parent="Passenger2"]
+position = Vector2(0, 4)
+texture = ExtResource("1_f88u7")
+hframes = 2
+vframes = 3
+frame = 5
+region_enabled = true
+region_rect = Rect2(53, 10, 22, 9)
+
+[node name="Hair" type="Sprite2D" parent="Passenger2"]
+position = Vector2(0.5, 0)
+texture = ExtResource("1_f88u7")
+hframes = 4
+vframes = 2
+region_enabled = true
+region_rect = Rect2(77, 1, 32, 18)

@@ -1,19 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://laaln4dpdyqi"]
+[gd_scene load_steps=17 format=3 uid="uid://laaln4dpdyqi"]
 
 [ext_resource type="Script" path="res://scripts/niagara/niagara_minigame.gd" id="1_6bwwf"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_lqpmu"]
 [ext_resource type="PackedScene" uid="uid://dar4ylmf5vwos" path="res://scenes/niagara/indicators/gush_indicator.tscn" id="2_pm52m"]
 [ext_resource type="Script" path="res://scripts/niagara/background.gd" id="3_7ch8u"]
 [ext_resource type="PackedScene" uid="uid://cfuyqhj777tif" path="res://scenes/niagara/indicators/obstacle_indicator.tscn" id="3_hgaek"]
 [ext_resource type="PackedScene" uid="uid://dv26boqu0ncd0" path="res://scenes/niagara/player.tscn" id="3_j8q3t"]
 [ext_resource type="PackedScene" uid="uid://cuwf4kfx0g4m6" path="res://scenes/niagara/spawn_timer.tscn" id="5_ua3ch"]
 [ext_resource type="PackedScene" uid="uid://uwnlbh4c5fac" path="res://scenes/niagara/indicators/fish_indicator.tscn" id="6_voupq"]
+[ext_resource type="Texture2D" uid="uid://du4jjoj2wvpgo" path="res://assets/niagara/background.png" id="7_3k8ij"]
 [ext_resource type="Script" path="res://scripts/niagara/object_remover.gd" id="7_6awaa"]
 [ext_resource type="PackedScene" uid="uid://sngqk6vdp58r" path="res://scenes/niagara/wetness_meter.tscn" id="9_woj0y"]
-[ext_resource type="Script" path="res://scripts/niagara/fish_counter.gd" id="10_48dym"]
+[ext_resource type="Texture2D" uid="uid://dmcoqvd1ml70d" path="res://assets/heart.png" id="10_s8vwk"]
+[ext_resource type="PackedScene" uid="uid://cbevh14qab4rl" path="res://scenes/midwest/progress_bar.tscn" id="11_f6fy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or3sr"]
 size = Vector2(126, 180)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bq03w"]
+texture = ExtResource("10_s8vwk")
+axis_stretch_horizontal = 1
+modulate_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u76ck"]
+texture = ExtResource("10_s8vwk")
+axis_stretch_horizontal = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bl2v0"]
 size = Vector2(360, 10)
@@ -25,7 +35,6 @@ gush_indicator_scene = ExtResource("2_pm52m")
 obstacle_indicator_scene = ExtResource("3_hgaek")
 fish_indicator_scene = ExtResource("6_voupq")
 minigame_time = 60.0
-debug_mode = true
 
 [node name="MinigameTimer" type="Timer" parent="."]
 
@@ -50,35 +59,22 @@ script = ExtResource("3_7ch8u")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(0, 180)
 
-[node name="Cliff" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(160, 90)
-scale = Vector2(0.953125, 1.40625)
-texture = ExtResource("2_lqpmu")
-
-[node name="Water1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(0, 0.803922, 1, 1)
-position = Vector2(63, 90)
-scale = Vector2(0.984375, 1.40625)
-texture = ExtResource("2_lqpmu")
-
-[node name="Water2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(0, 0.803922, 1, 1)
-position = Vector2(257, 90)
-scale = Vector2(0.984375, 1.40625)
-texture = ExtResource("2_lqpmu")
+texture = ExtResource("7_3k8ij")
 
 [node name="FishTimer" parent="." instance=ExtResource("5_ua3ch")]
-starting_max_time = 8.0
-starting_min_time = 5.0
+starting_max_time = 5.0
+starting_min_time = 3.0
 
 [node name="GushTimer" parent="." instance=ExtResource("5_ua3ch")]
-starting_max_time = 10.0
+starting_max_time = 9.0
 starting_min_time = 6.0
 time_reduction = 0.4
 
 [node name="ObstacleTimer" parent="." instance=ExtResource("5_ua3ch")]
-starting_max_time = 3.5
-starting_min_time = 0.5
+starting_max_time = 2.5
+starting_min_time = 1.0
 time_reduction = 0.1
 
 [node name="GushSpawn" type="Node2D" parent="."]
@@ -97,44 +93,50 @@ position = Vector2(320, -96)
 
 [node name="FishSpawn" type="Node2D" parent="."]
 
-[node name="LeftSpawn" type="Marker2D" parent="FishSpawn"]
+[node name="LeftSpawnBound" type="Marker2D" parent="FishSpawn"]
 position = Vector2(20, -32)
 
-[node name="RightSpawn" type="Marker2D" parent="FishSpawn"]
+[node name="RightSpawnBound" type="Marker2D" parent="FishSpawn"]
 position = Vector2(300, -32)
+
+[node name="LeftSpawn" type="Marker2D" parent="FishSpawn"]
+position = Vector2(0, -32)
+
+[node name="RightSpawn" type="Marker2D" parent="FishSpawn"]
+position = Vector2(320, -32)
 
 [node name="ObstacleSpawn" type="Node2D" parent="."]
 
 [node name="LeftSpawn" type="Marker2D" parent="ObstacleSpawn"]
-position = Vector2(40, -48)
+position = Vector2(56, -48)
 
 [node name="RightSpawn" type="Marker2D" parent="ObstacleSpawn"]
-position = Vector2(280, -48)
+position = Vector2(264, -48)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="FishCounter" type="Label" parent="HUD"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -74.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 8
-text = "0 fish collected"
-horizontal_alignment = 2
-vertical_alignment = 2
-script = ExtResource("10_48dym")
-
 [node name="WetnessMeter" parent="HUD" instance=ExtResource("9_woj0y")]
 
-[node name="TimeRemaining" type="Label" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 8
+[node name="LivesBar" type="ProgressBar" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.831
+anchor_top = 0.0614444
+anchor_right = 0.92475
+anchor_bottom = 0.105889
+offset_left = 0.0799866
+offset_top = -0.0600004
+offset_right = 0.0799866
+offset_bottom = -0.0600014
+theme_override_styles/background = SubResource("StyleBoxTexture_bq03w")
+theme_override_styles/fill = SubResource("StyleBoxTexture_u76ck")
+max_value = 3.0
+rounded = true
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" parent="HUD" instance=ExtResource("11_f6fy7")]
+offset_top = 2.0
+offset_bottom = 9.0
 
 [node name="ObjectRemover" type="Area2D" parent="."]
 position = Vector2(160, 500)
@@ -143,7 +145,6 @@ script = ExtResource("7_6awaa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectRemover"]
 shape = SubResource("RectangleShape2D_bl2v0")
 
-[connection signal="fish_collected" from="." to="HUD/FishCounter" method="update_value"]
 [connection signal="timeout" from="MinigameTimer" to="." method="_on_minigame_timer_timeout"]
 [connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
 [connection signal="wetness_changed" from="Player" to="." method="_on_player_wetness_changed"]

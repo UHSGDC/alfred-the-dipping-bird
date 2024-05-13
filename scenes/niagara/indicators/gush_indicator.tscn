@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dar4ylmf5vwos"]
 
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_8tjsy"]
+[ext_resource type="Texture2D" uid="uid://dqjpvlefh4cug" path="res://assets/niagara/gush_warning.png" id="1_1upus"]
 [ext_resource type="Script" path="res://scripts/niagara/gush_indicator.gd" id="2_qu1r3"]
 
 [sub_resource type="Animation" id="Animation_r6ije"]
@@ -41,10 +41,8 @@ _data = {
 }
 
 [node name="GushIndicator" type="Sprite2D"]
-self_modulate = Color(0, 0, 1, 1)
-scale = Vector2(0.296875, 0.296875)
-texture = ExtResource("1_8tjsy")
-offset = Vector2(0, 64)
+texture = ExtResource("1_1upus")
+offset = Vector2(0, 12)
 script = ExtResource("2_qu1r3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
