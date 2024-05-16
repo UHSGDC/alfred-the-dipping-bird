@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyjwweniftc78"]
+
+[ext_resource type="Script" path="res://scripts/music_manager.gd" id="1_3opie"]
+[ext_resource type="AudioStream" uid="uid://c6fv61ar6my0w" path="res://assets/music/adptitle.wav" id="1_eeogr"]
+[ext_resource type="AudioStream" uid="uid://dltdawawltrql" path="res://assets/music/adpniagara.wav" id="2_asu7r"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_3opie")
+
+[node name="Title" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_eeogr")
+bus = &"Music"
+
+[node name="Midwest" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="Chicago" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="Niagara" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_asu7r")
+bus = &"Music"
