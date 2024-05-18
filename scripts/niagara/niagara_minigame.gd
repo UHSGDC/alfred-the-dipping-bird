@@ -71,10 +71,11 @@ func _on_player_body_entered(body: Node2D) -> void:
 			print("player hit obstacle")
 		if body.is_in_group("gush"):
 			current_lives = 0
-		else:
+		elif !player.was_just_hit:
 			body.queue_free()
 			emit_destroy_particles(player.global_position)
 			current_lives -= 1
+			player.hit()
 
 
 func _on_obstacle_timer_timeout() -> void:

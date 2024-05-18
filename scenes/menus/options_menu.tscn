@@ -135,4 +135,7 @@ visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Music" to="." method="_on_music_value_changed"]
 [connection signal="pressed" from="ViewControls" to="." method="_on_view_controls_pressed"]

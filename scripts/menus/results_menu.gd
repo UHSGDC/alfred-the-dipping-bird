@@ -24,4 +24,5 @@ func _on_next_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	menus.change_menu(menus.MAIN, false)
+	menus.trigger_minigame_kill.emit()
+	menus.change_menu(menus.MAIN, true)

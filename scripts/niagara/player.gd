@@ -14,6 +14,8 @@ const WET_SPEED: float = 10.0
 const INSTANT_WETNESS: float = 3.0
 const MAX_WETNESS: float = 100
 
+
+var was_just_hit: bool = false
 var velocity: Vector2 = Vector2(0, 0)
 
 var in_water: bool = false
@@ -90,3 +92,9 @@ func fall() -> void:
 	velocity.y = 1
 	await $VisibleOnScreenNotifier2D.screen_exited
 
+
+func hit() -> void:
+	was_just_hit = true
+	$HurtAnimator.play("hurt")
+	await $HurtAnimator.animation_finished
+	was_just_hit = false
