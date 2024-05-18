@@ -20,16 +20,18 @@ var current_level: Level = Level.MIDWEST
 
 func _ready() -> void:
 	MusicManager.play_track(0)
+	cutscene_manager.kill_all()
 
 
 func play_current_level() -> void:
 	minigame_manager.kill_minigame()
 	cutscene_manager.kill_cutscene()
 	MusicManager.fade_to_track(current_level + 1)
-	if cutscene_played[current_level]:
-		minigame_manager.play_minigame(current_level)
-		return
-	cutscene_manager.play_cutscene(current_level)
+	#if cutscene_played[current_level]:
+		#minigame_manager.play_minigame(current_level)
+		#return
+	#cutscene_manager.play_cutscene(current_level, true)
+	minigame_manager.play_minigame(current_level)
 	# The rest of this method continues after the minigame finishes in the _on_cutscene finished method
 
 
@@ -49,12 +51,7 @@ func _on_menus_menu_opened() -> void:
 
 
 func _on_menus_next_pressed() -> void:
-	current_level = (current_level + 1) as Level # Sets current level to next level. Assumes the levels enum has the levels in order
-	if current_level < Level.size():
-		play_current_level()
-	else:
-		menus.change_menu.call_deferred(Menus.CREDITS, false)
-		MusicManager.fade_to_track(MusicManager.Track.TITLE)
+	cutscene_manager.play_cutscene(current_level, true)
 
 
 func _on_menus_play_pressed() -> void:
@@ -71,7 +68,16 @@ func _on_menus_trigger_minigame_kill() -> void:
 	MusicManager.fade_to_track(0)
 
 
-func _on_cutscene_manager_cutscene_finished() -> void:
+func _on_cutscene_manager_dipping_finished() -> void:
+	current_level = (current_level + 1) as Level # Sets current level to next level. Assumes the levels enum has the levels in order
+	if current_level < Level.size():
+		play_current_level()
+	else:
+		menus.change_menu.call_deferred(Menus.CREDITS, false)
+		MusicManager.fade_to_track(MusicManager.Track.TITLE)
+
+
+func _on_cutscene_manager_intro_finished() -> void:
 	cutscene_manager.kill_cutscene.call_deferred()
 	cutscene_played[current_level] = true
 	minigame_manager.play_minigame(current_level)
