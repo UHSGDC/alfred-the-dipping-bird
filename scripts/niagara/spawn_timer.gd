@@ -20,5 +20,3 @@ func _on_timeout() -> void:
 	if max_time > min_time:
 		max_time -= time_reduction
 	start(randf_range(min_time, max_time))
-	if name == "FishTimer":
-		print("yo")
