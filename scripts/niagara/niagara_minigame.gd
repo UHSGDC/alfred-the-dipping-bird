@@ -112,7 +112,7 @@ func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> v
 		_stop_game()
 		await player.fall()
 		current_lives = 0
-		end_minigame(0, "Alfred soaked with water and fell! If only he had time to dry over the bare cliff...")
+		end_minigame(0, "Alfred soaked with water and fell! If only he hadn't flown over the waterfall for so long...")
 
 
 func _stop_game() -> void:

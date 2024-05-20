@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://laaln4dpdyqi"]
+[gd_scene load_steps=18 format=3 uid="uid://laaln4dpdyqi"]
 
 [ext_resource type="Script" path="res://scripts/niagara/niagara_minigame.gd" id="1_6bwwf"]
 [ext_resource type="PackedScene" uid="uid://dar4ylmf5vwos" path="res://scenes/niagara/indicators/gush_indicator.tscn" id="2_pm52m"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://sngqk6vdp58r" path="res://scenes/niagara/wetness_meter.tscn" id="9_woj0y"]
 [ext_resource type="Texture2D" uid="uid://dmcoqvd1ml70d" path="res://assets/heart.png" id="10_s8vwk"]
 [ext_resource type="PackedScene" uid="uid://cbevh14qab4rl" path="res://scenes/midwest/progress_bar.tscn" id="11_f6fy7"]
+[ext_resource type="Script" path="res://scenes/niagara/wetness_overlay.gd" id="12_puoni"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or3sr"]
 size = Vector2(126, 180)
@@ -138,6 +139,15 @@ metadata/_edit_use_anchors_ = true
 offset_top = 2.0
 offset_bottom = 9.0
 
+[node name="WetnessOverlay" type="ColorRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 0.321569)
+script = ExtResource("12_puoni")
+
 [node name="ObjectRemover" type="Area2D" parent="."]
 position = Vector2(160, 500)
 script = ExtResource("7_6awaa")
@@ -149,6 +159,7 @@ shape = SubResource("RectangleShape2D_bl2v0")
 [connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]
 [connection signal="wetness_changed" from="Player" to="." method="_on_player_wetness_changed"]
 [connection signal="wetness_changed" from="Player" to="HUD/WetnessMeter" method="update_meter"]
+[connection signal="wetness_changed" from="Player" to="HUD/WetnessOverlay" method="_on_player_wetness_changed"]
 [connection signal="timeout" from="FishTimer" to="." method="_on_fish_timer_timeout"]
 [connection signal="timeout" from="GushTimer" to="." method="_on_gush_timer_timeout"]
 [connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
