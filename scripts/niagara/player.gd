@@ -8,8 +8,8 @@ const ACCELERATION: float = MAX_SPEED * 10
 
 const LEFT_BOUND: float = 8
 const RIGHT_BOUND: float = 320 - LEFT_BOUND
-const DRY_SPEED: float = 7.0
-const WET_SPEED: float = 10.0
+const DRY_SPEED: float = 6.0
+const WET_SPEED: float = 8.0
 ## Wetness applied right after entering water
 const INSTANT_WETNESS: float = 3.0
 const MAX_WETNESS: float = 100

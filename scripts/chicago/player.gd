@@ -1,6 +1,6 @@
 extends Area2D
 
-signal player_killed
+signal player_killed(message: String)
 signal lives_changed(new_lives: int, max_lives: int)
 
 const DESTROY_PARTICLES: PackedScene = preload("res://scenes/midwest/destroy_particles.tscn")
@@ -31,10 +31,13 @@ var death_pause: bool = false
 	set(value):
 		if print_debug_messages:
 			print("current_lives changed from %s to %s" % [current_lives, value])
-		current_lives = value
-		lives_changed.emit(value, max_lives)
-		if current_lives <= 0:
-			kill()
+		current_lives = max(0, value)
+		lives_changed.emit(current_lives, max_lives)
+		if value <= 0:
+			if value == -10:
+				kill("Alfred hit a skyscraper!")
+			else:
+				kill("Oh no! Alfred lost all his lives!")
 			
 @onready var hurt_animator = $HurtAnimator
 
@@ -121,17 +124,17 @@ func _on_body_entered(body: Node2D) -> void:
 
 # Collision of skyscraper
 func on_body_entered_skyscraper(_body: Node2D) -> void:
-	if debug_mode:
+	if print_debug_messages:
 		print(name + " hit a skyscraper")
-	current_lives = 0
+	current_lives = -10
 
 # Collision of bird
 func on_body_entered_bird(body: Node2D) -> void:
 	if was_just_hit: # Player can't be hurt again if they were just hit
-		if debug_mode:
+		if print_debug_messages:
 			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
 		return
-	if debug_mode:
+	if print_debug_messages:
 		print(name + " hit a bird")
 	current_lives -= 1
 	body.kill()
@@ -142,10 +145,10 @@ func on_body_entered_bird(body: Node2D) -> void:
 # Collision of smoke
 func on_body_entered_smoke(_body: Node2D) -> void:
 	if was_just_hit: # Player can't be hurt again if they were just hit
-		if debug_mode:
+		if print_debug_messages:
 			print(name + " hit obstacle, but player was just hit, so no damage inflicted")
 		return
-	if debug_mode:
+	if print_debug_messages:
 		print(name + " hit smoke")
 	current_lives -= 1
 	
@@ -153,10 +156,10 @@ func on_body_entered_smoke(_body: Node2D) -> void:
 	was_just_hit = true
 
 
-func kill() -> void:
+func kill(message: String) -> void:
 	$Body.hide()
 	$CPUParticles2D.hide()
 	$DeathParticles.emitting = true
 	death_pause = true
 	await $DeathParticles.finished	
-	player_killed.emit()
+	player_killed.emit(message)

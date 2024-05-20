@@ -8,8 +8,8 @@ func _ready() -> void:
 	$HUD/BlackScreen.fade_out()
 
 
-func _on_player_player_killed() -> void:
-	end_minigame(0, "%s lives left" % $Player.current_lives)
+func _on_player_player_killed(message: String) -> void:
+	end_minigame(0, message)
 
 
 func _on_win_area_area_entered(area: Area2D) -> void:

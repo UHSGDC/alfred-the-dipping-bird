@@ -2,6 +2,7 @@ extends BaseMinigame
 
 signal lives_changed(lives: int)
 
+const LIFE_SCORE_MULTIPLIER: int = 500
 const DESTROY_PARTICLES: PackedScene = preload("res://scenes/midwest/destroy_particles.tscn")
 const TOP_LEFT_BOUND: Vector2 = Vector2(0, 0)
 const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
@@ -16,13 +17,16 @@ const BOT_RIGHT_BOUND: Vector2 = Vector2(300, 160)
 var current_lives: int :
 	set(value):
 		lives_changed.emit(value)
-		current_lives = value
+		current_lives = min(value, max_lives)
 		$HUD/LivesBar.value = current_lives
 		$HUD/LivesBar.max_value = max_lives
 		if value <= 0:
 			_stop_game()
 			await player.kill()
-			end_minigame(0, "to be implemented")
+			if value == -10:
+				end_minigame(0, "Alfred got caught in a gush of water!")
+			else:
+				end_minigame(0, "Oh no! Alfred lost all his lives!")
 
 @onready var player: Area2D = $Player
 @onready var hud: CanvasLayer = $HUD
@@ -62,7 +66,8 @@ func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) ->
 
 func _on_player_body_entered(body: Node2D) -> void:
 	if body.is_in_group("fish"):
-		current_lives += 1
+		if current_lives < max_lives:
+			current_lives += 1
 		body.queue_free()
 		if debug_mode:
 			print(str(current_lives) + " lives left")
@@ -70,7 +75,7 @@ func _on_player_body_entered(body: Node2D) -> void:
 		if debug_mode:
 			print("player hit obstacle")
 		if body.is_in_group("gush"):
-			current_lives = 0
+			current_lives = -10
 		elif !player.was_just_hit:
 			body.queue_free()
 			emit_destroy_particles(player.global_position)
@@ -89,8 +94,6 @@ func _on_gush_timer_timeout() -> void:
 
 
 func _on_fish_timer_timeout() -> void:
-	if current_lives >= max_lives:
-		return
 	var rand_x := clampf(randf_range(fish_spawn_left.position.x, fish_spawn_right.position.x), $FishSpawn/LeftSpawnBound.position.x, $FishSpawn/RightSpawnBound.position.x)
 	_spawn_falling_object(fish_indicator_scene, Vector2(rand_x, fish_spawn_left.position.y))
 
@@ -98,7 +101,8 @@ func _on_fish_timer_timeout() -> void:
 func _on_minigame_timer_timeout() -> void:
 	if debug_mode:
 		print("timer finished. Player won")
-	end_minigame(current_lives, "to be implemented")
+	var score: int = $Player.current_lives * LIFE_SCORE_MULTIPLIER
+	end_minigame(score, "%s lives left x %s = %s" % [$Player.current_lives, LIFE_SCORE_MULTIPLIER, score])
 	
 
 func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> void:
@@ -108,7 +112,7 @@ func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> v
 		_stop_game()
 		await player.fall()
 		current_lives = 0
-		end_minigame(0, "to be implemented")
+		end_minigame(0, "Alfred soaked with water and fell! If only he had time to dry over the bare cliff...")
 
 
 func _stop_game() -> void:

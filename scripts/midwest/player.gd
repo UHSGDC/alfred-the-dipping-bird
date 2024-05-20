@@ -1,6 +1,6 @@
 extends Area2D
 
-signal player_killed
+signal player_killed(message: String)
 signal lives_changed(new_lives: int, max_lives: int)
 
 const DESTROY_PARTICLES: PackedScene = preload("res://scenes/midwest/destroy_particles.tscn")
@@ -35,7 +35,10 @@ var death_pause: bool = false
 		current_lives = value
 		lives_changed.emit(value, max_lives)
 		if current_lives <= 0:
-			kill()
+			if current_lives == -10:
+				kill("Alfred got sucked into a tornado!")
+			else:
+				kill("Oh no! Alfred lost all his lives!")
 			
 @onready var hurt_animator = $HurtAnimator
 
@@ -75,7 +78,7 @@ func tornado_move(delta: float) -> void:
 	
 	# Kill player if they are close to the center of the tornado
 	if distance < TORNADO_DEATH_DISTANCE:
-		current_lives = 0
+		current_lives = -10
 
 
 func move(delta: float) -> void:
@@ -164,10 +167,10 @@ func emit_destroy_particles(global_pos: Vector2) -> void:
 	particles.queue_free()
 
 
-func kill() -> void:
+func kill(message: String) -> void:
 	$Body.hide()
 	$CPUParticles2D.hide()
 	$DeathParticles.emitting = true
 	death_pause = true
 	await $DeathParticles.finished	
-	player_killed.emit()
+	player_killed.emit(message)

@@ -10,4 +10,4 @@ func _ready() -> void:
 	
 func update_meter(current_wetness: float, max_wetness: float) -> void:
 	# Add 5 to max_x to make the progress be a little more than it actually is
-	$ParticleProgress.size.x = current_wetness / max_wetness * (max_x + 5)
+	$ParticleProgress.size.x = float(current_wetness) / max_wetness * (max_x + 5)

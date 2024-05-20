@@ -19,7 +19,8 @@ func play_cutscene(level: Game.Level, dipping: bool) -> void:
 
 
 func unpause_cutscene() -> void:
-	current_cutscene.unpause()
+	if current_cutscene:
+		current_cutscene.unpause()
 	is_playing = true
 
 
