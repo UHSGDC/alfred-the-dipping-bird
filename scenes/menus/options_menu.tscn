@@ -97,6 +97,7 @@ initial_value = 10
 max_value = 10
 
 [node name="Sound" parent="OptionsWindow/ScrollContainer/Settings" instance=ExtResource("2_lhgcb")]
+visible = false
 layout_mode = 2
 setting_name = "Sound"
 initial_value = 5

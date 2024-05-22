@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://boywxuhfg8sh5"]
+[gd_scene load_steps=6 format=3 uid="uid://boywxuhfg8sh5"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
+[ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/alfred_cutscene.png" id="2_gi225"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwh5c"]
 bg_color = Color(0.294118, 0.0313726, 0.262745, 1)
@@ -19,6 +20,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gwh5c")
 script = ExtResource("1_y3qq4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 37.0
+offset_right = 320.0
+offset_bottom = 203.0
+texture = ExtResource("2_gi225")
+flip_h = true
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1

@@ -107,14 +107,13 @@ theme_override_constants/margin_bottom = 8
 [node name="CreditsLabel" type="Label" parent="CreditsWindow/ScrollContainer/MarginContainer"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
-text = "Placeholder Text:
-Photographer's Hike
+text = "Alfred the Dipping Bird
 
 
 
 A game created by University High School Game Development Club
 
-Developed in 2023
+Developed in 2024
 
 
 
@@ -122,105 +121,76 @@ Nick Vatanshenas
 - Club President
 - Programming Head
 - Lead Developer
-- Level, Mechanic, and World Design
-- Tile Art
-- Yeti Art
-- Pictures and Title Screen Art
-- Base Camp and Snowy Tundra Background Art
-- UI Art
-- Cougar, Yeti, and Old Man Sounds
+- Midwest, Chicago, Niagara, Oasis,
+and Japanese Levels Game Design
+- UI Design
 - Music
+- Programming
 
 
 Arman Akhtari
 - Art Head
 - Initial Game Vision
-- Player Animations and Art
-- Cougar Animations and Art
-- Dense and Sparse Forest Background Art
+- Art
 
 
 Miryam Greenstein
 - Club Vice President
 - Sound Head
-- Educating the team on Sound Design and Creation
 
 
 Nguyen Do
 - Game Design Head
 - Educating the team on Game Design
+- Game Design
 
-William Jenkins
-- Trees in the Dense and Sparse Forest Background Art
+
+Levi
+- Niagara Falls Background
+- Niagara Falls Indicators
 
 
 Andrew Fu
-- Implementing Cougar Animations
-- Finding and editing stock sounds from pixabay.com
+- Chicago Skyscraper Art
+- Chicago Pigeon Art
+- Midwest Animals Art
+- Rock, Branch, Kayak Niagara Falls Art
+- Niagara Falls Wetness Meter Art
+
+
+Neel Wu
+- Chicago Tile Art
+- Niagara Falls Fish Art
 
 
 Juliet Kozlov
-- Wind Sound
-- Great Communicator
-- Picture Sound
+- Icy Lake Game Design
 
 
-Dylan Mac
-- Dialog System Groundwork
+Edward Li
+- Mountain Game Design
 
 
-Ajay Sathish Preetha
-- Menu System Groundwork
-- Settings Menu Groundwork
-- Pause Menu Groundwork
-- Keybinding Groundwork
+Sean Z
+- Programming Niagara Falls Minigame
 
 
-Jun Choi
-- Former Club President
-- Former Game Design Head
+Marcellino Abdelmalak
+- Programming Chicago Minigame
+- Programming Mountain Minigame
 
 
-Playtesting
+Dylan M
+- Programming Icy Lake Minigame
 
-Playtesters provided feedback and ideas many of which are now a part of the game
 
-1st Round of Playtesters
-- Anirudh Sunkad
-- Linda Khalfa
-- Chase Morse
-
-2nd Round of Playtesters
-- Anirudh Sunkad
-- Linda Khalfa
-- Chase Morse
-- Cody Cascalla
-- Connor Mursalo
-- Edward Li
-- Caden Lee (Speedrun Timer)
-
-3rd Round of Playtesters
-- Anirudh Sunkad
-- Linda Khalfa
-- Chase Morse
-- Cody Cascalla
-- Connor Mursalo
-- Edward Li
-- Caden Lee
-- Nguyen Do
-- Iris Dou
-- Winston Zhou
-- Eric Li
+Playtesters
 - Juliet Kozlov
-- Alec Apelian (Camera Film Roll Secrets)
-- Alexis Joystick
-- George Matta
-- Arman Akhtari
-- Miryam Greenstein
-- Neeraj Bhuvaneshwaran
-- Armia Asgari
-- Sly Moaleji
-- Agam Randhawa
+- Andrew Fu
+- Dylan M
+- Caden Lee
+- Edward Li
+
 
 
 Current Board Members
@@ -232,21 +202,7 @@ Current Board Members
 - Publicist: Minerva You
 - Treasuer: Neeraj Bhuvaneshwaran
 
-Special thanks to Mr. Frat our club advisor, who provided us a space to meet during the development of the game.
-
-
-Sounds generated from sfxr.me
-- Player jump, respawn, and death sounds
-- Yeti punch sound
-
-
-Stock sounds from pixabay.com
-- Player run sounds
-- Player land sound
-- Picture taking sound
-
-
-Game inspired by Celeste, A Short Hike, and Pokémon Snap™"
+Special thanks to Mr. Brighton, our club advisor, who provided us a space to meet during the development of the game."
 label_settings = SubResource("LabelSettings_6fyna")
 horizontal_alignment = 1
 autowrap_mode = 2
