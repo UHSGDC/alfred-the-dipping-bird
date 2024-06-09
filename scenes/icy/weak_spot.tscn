@@ -1,17 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://jty2haqh7u7j"]
+[gd_scene load_steps=5 format=3 uid="uid://jty2haqh7u7j"]
 
-[ext_resource type="Script" path="res://scenes/icy/weak_spot.gd" id="1_kpvck"]
+[ext_resource type="Script" path="res://scripts/weak_spot.gd" id="1_kpvck"]
 [ext_resource type="Texture2D" uid="uid://b42o4rtwwlrqh" path="res://assets/icy/weakspot.png" id="2_txjlx"]
+[ext_resource type="Texture2D" uid="uid://c8o031me5kwba" path="res://assets/icy/weakspot_circle.png" id="3_x6juu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pg40r"]
 radius = 6.0
 
 [node name="WeakSpot" type="Area2D" groups=["weak_spot"]]
 script = ExtResource("1_kpvck")
+max_freeze_time = 10.0
+min_freeze_time = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pg40r")
 
+[node name="Outline" type="Sprite2D" parent="."]
+texture = ExtResource("3_x6juu")
+
+[node name="FreezeTimer" type="Timer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_txjlx")
 hframes = 3
+
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

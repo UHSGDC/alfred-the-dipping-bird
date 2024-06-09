@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ogyha"]
 [ext_resource type="PackedScene" uid="uid://dbjq7mfwv5wh3" path="res://scenes/icy/player.tscn" id="3_geuf7"]
 [ext_resource type="PackedScene" uid="uid://jty2haqh7u7j" path="res://scenes/icy/weak_spot.tscn" id="4_0ceqv"]
-[ext_resource type="Script" path="res://scenes/icy/weak_spots.gd" id="4_e12hr"]
+[ext_resource type="Script" path="res://scripts/weak_spots.gd" id="4_e12hr"]
 
 [node name="IcyMinigame" type="Node2D"]
 script = ExtResource("1_0qgft")
@@ -23,6 +23,7 @@ polygon = PackedVector2Array(-36, -82, -67, -38, -39, 16, -59, 32, -54, 51, -18,
 [node name="Ice" type="Area2D" parent="." groups=["ice"]]
 
 [node name="Polygon2D" type="Polygon2D" parent="Ice"]
+texture_filter = 1
 texture_repeat = 2
 color = Color(0, 0.768627, 1, 1)
 texture = ExtResource("2_ogyha")
@@ -34,6 +35,7 @@ polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18,
 
 [node name="Player" parent="." instance=ExtResource("3_geuf7")]
 position = Vector2(92, 31)
+collision_layer = 4
 
 [node name="WeakSpots" type="Node2D" parent="."]
 script = ExtResource("4_e12hr")
