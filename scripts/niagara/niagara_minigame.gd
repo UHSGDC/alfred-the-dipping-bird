@@ -101,8 +101,8 @@ func _on_fish_timer_timeout() -> void:
 func _on_minigame_timer_timeout() -> void:
 	if debug_mode:
 		print("timer finished. Player won")
-	var score: int = $Player.current_lives * LIFE_SCORE_MULTIPLIER
-	end_minigame(score, "%s lives left x %s = %s" % [$Player.current_lives, LIFE_SCORE_MULTIPLIER, score])
+	var score: int = current_lives * LIFE_SCORE_MULTIPLIER
+	end_minigame(score, "%s lives left x %s = %s" % [current_lives, LIFE_SCORE_MULTIPLIER, score])
 	
 
 func _on_player_wetness_changed(current_wetness: float, max_wetness: float) -> void:
