@@ -195,7 +195,7 @@ _data = {
 "walk": SubResource("Animation_a5iyq")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 motion_mode = 1
 script = ExtResource("1_4odhq")

@@ -1,50 +1,270 @@
-[gd_scene load_steps=6 format=3 uid="uid://bojjxin3rbo7q"]
+[gd_scene load_steps=20 format=3 uid="uid://bojjxin3rbo7q"]
 
 [ext_resource type="Script" path="res://scripts/icy/icy_minigame.gd" id="1_0qgft"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ogyha"]
 [ext_resource type="PackedScene" uid="uid://dbjq7mfwv5wh3" path="res://scenes/icy/player.tscn" id="3_geuf7"]
 [ext_resource type="PackedScene" uid="uid://jty2haqh7u7j" path="res://scenes/icy/weak_spot.tscn" id="4_0ceqv"]
 [ext_resource type="Script" path="res://scripts/weak_spots.gd" id="4_e12hr"]
+[ext_resource type="PackedScene" uid="uid://bwth8r8cejiuq" path="res://scenes/icy/room.tscn" id="6_ydcf3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vfn6r"]
+size = Vector2(14, 184)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4b1y"]
+size = Vector2(334, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_py44c"]
+size = Vector2(322, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7202j"]
+size = Vector2(328, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fowcl"]
+size = Vector2(18, 190)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b6k1a"]
+size = Vector2(18, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkrvd"]
+size = Vector2(334, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1q1b"]
+size = Vector2(647, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2fx0"]
+size = Vector2(18, 553)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb4dl"]
+size = Vector2(648, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1k38"]
+size = Vector2(18, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8bt57"]
+size = Vector2(18, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc5gd"]
+size = Vector2(18, 186)
 
 [node name="IcyMinigame" type="Node2D"]
 script = ExtResource("1_0qgft")
 debug_mode = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="Snow" type="Polygon2D" parent="."]
 texture_repeat = 2
-color = Color(0, 0, 1, 1)
+position = Vector2(320, 0)
 texture = ExtResource("2_ogyha")
 invert_enabled = true
-invert_border = 154.4
-polygon = PackedVector2Array(-36, -82, -67, -38, -39, 16, -59, 32, -54, 51, -18, 73, 30, 49, 72, -8, 42, -45, 56, -105)
-
-[node name="Ice" type="Area2D" parent="." groups=["ice"]]
-
-[node name="Polygon2D" type="Polygon2D" parent="Ice"]
-texture_filter = 1
-texture_repeat = 2
-color = Color(0, 0.768627, 1, 1)
-texture = ExtResource("2_ogyha")
-polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
-uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ice"]
-polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+invert_border = 1505.6
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
 
 [node name="Player" parent="." instance=ExtResource("3_geuf7")]
-position = Vector2(92, 31)
 collision_layer = 4
 
-[node name="WeakSpots" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Room0" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
+camera = NodePath("../Camera2D")
+
+[node name="Room1" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
+position = Vector2(320, 0)
+camera = NodePath("../Camera2D")
+
+[node name="Start" parent="Room1" index="1"]
+position = Vector2(-122, 0)
+
+[node name="Gate" parent="Room1" index="2"]
+position = Vector2(-167, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/Gate" index="0"]
+shape = SubResource("RectangleShape2D_vfn6r")
+
+[node name="Ice" type="Area2D" parent="Room1" groups=["ice"]]
+
+[node name="Polygon2D" type="Polygon2D" parent="Room1/Ice"]
+texture_filter = 1
+texture_repeat = 2
+color = Color(0.454902, 0.737255, 1, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room1/Ice"]
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+
+[node name="Water" type="Polygon2D" parent="Room1"]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+color = Color(0, 0.458824, 0.760784, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="WeakSpots" type="Node2D" parent="Room1"]
 script = ExtResource("4_e12hr")
 
-[node name="WeakSpot" parent="WeakSpots" instance=ExtResource("4_0ceqv")]
+[node name="WeakSpot" parent="Room1/WeakSpots" instance=ExtResource("4_0ceqv")]
 position = Vector2(53, -7)
 
-[node name="WeakSpot2" parent="WeakSpots" instance=ExtResource("4_0ceqv")]
+[node name="WeakSpot2" parent="Room1/WeakSpots" instance=ExtResource("4_0ceqv")]
 position = Vector2(31, -21)
 
-[node name="WeakSpot3" parent="WeakSpots" instance=ExtResource("4_0ceqv")]
+[node name="WeakSpot3" parent="Room1/WeakSpots" instance=ExtResource("4_0ceqv")]
 position = Vector2(26, -47)
+
+[node name="CrackGate" type="StaticBody2D" parent="Room1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room1/CrackGate"]
+position = Vector2(-1, -100)
+shape = SubResource("RectangleShape2D_g4b1y")
+
+[node name="Room2" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
+position = Vector2(320, -180)
+camera = NodePath("../Camera2D")
+
+[node name="Start" parent="Room2" index="1"]
+position = Vector2(0, 70)
+
+[node name="Gate" parent="Room2" index="2"]
+position = Vector2(0, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/Gate" index="0"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_py44c")
+
+[node name="WeakSpots" type="Node2D" parent="Room2"]
+script = ExtResource("4_e12hr")
+
+[node name="Ice" type="Area2D" parent="Room2" groups=["ice"]]
+
+[node name="Polygon2D" type="Polygon2D" parent="Room2/Ice"]
+texture_filter = 1
+texture_repeat = 2
+color = Color(0.454902, 0.737255, 1, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room2/Ice"]
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+
+[node name="Water" type="Polygon2D" parent="Room2"]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+color = Color(0, 0.458824, 0.760784, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CrackGate" type="StaticBody2D" parent="Room2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/CrackGate"]
+position = Vector2(-1, -100)
+shape = SubResource("RectangleShape2D_g4b1y")
+
+[node name="Room3" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
+position = Vector2(320, -360)
+camera = NodePath("../Camera2D")
+
+[node name="Start" parent="Room3" index="1"]
+position = Vector2(1, 71)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room3/Gate" index="0"]
+position = Vector2(1, 98)
+shape = SubResource("RectangleShape2D_7202j")
+
+[node name="WeakSpots" type="Node2D" parent="Room3"]
+script = ExtResource("4_e12hr")
+
+[node name="Ice" type="Area2D" parent="Room3" groups=["ice"]]
+
+[node name="Polygon2D" type="Polygon2D" parent="Room3/Ice"]
+texture_filter = 1
+texture_repeat = 2
+color = Color(0.454902, 0.737255, 1, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Room3/Ice"]
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+
+[node name="Water" type="Polygon2D" parent="Room3"]
+visible = false
+texture_filter = 1
+texture_repeat = 2
+color = Color(0, 0.458824, 0.760784, 1)
+texture = ExtResource("2_ogyha")
+polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+
+[node name="CrackGate" type="StaticBody2D" parent="Room3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room3/CrackGate"]
+position = Vector2(-169, -1)
+shape = SubResource("RectangleShape2D_fowcl")
+
+[node name="Room4" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
+position = Vector2(0, -360)
+camera = NodePath("../Camera2D")
+
+[node name="Start" parent="Room4" index="1"]
+position = Vector2(129, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room4/Gate" index="0"]
+position = Vector2(169, 0)
+shape = SubResource("RectangleShape2D_b6k1a")
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-7, -100)
+shape = SubResource("RectangleShape2D_bkrvd")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(162.5, 100)
+shape = SubResource("RectangleShape2D_n1q1b")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(489, -184.5)
+shape = SubResource("RectangleShape2D_w2fx0")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-7, -260)
+shape = SubResource("RectangleShape2D_bkrvd")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(156, -460)
+shape = SubResource("RectangleShape2D_cb4dl")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(151, -180)
+shape = SubResource("RectangleShape2D_w1k38")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-169, -360)
+shape = SubResource("RectangleShape2D_8bt57")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(-169, 3)
+shape = SubResource("RectangleShape2D_fc5gd")
+debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
+
+[connection signal="uncracked_count_changed" from="Room1/WeakSpots" to="." method="_on_weak_spots1_uncracked_count_changed"]
+[connection signal="uncracked_count_changed" from="Room2/WeakSpots" to="." method="_on_weak_spots2_uncracked_count_changed"]
+[connection signal="uncracked_count_changed" from="Room3/WeakSpots" to="." method="_on_weak_spots3_uncracked_count_changed"]
+
+[editable path="Room0"]
+[editable path="Room1"]
+[editable path="Room2"]
+[editable path="Room3"]
+[editable path="Room4"]
