@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ncg2l7nfglaw"]
+
+[ext_resource type="Script" path="res://scripts/icy/splash_particles.gd" id="1_2jwv8"]
+[ext_resource type="PackedScene" uid="uid://5hr4lhrnut5s" path="res://scenes/icy/splash_particle.tscn" id="2_y3yf2"]
+
+[node name="SplashParticles" type="Node2D"]
+script = ExtResource("1_2jwv8")
+
+[node name="SplashParticle" parent="." instance=ExtResource("2_y3yf2")]
+
+[connection signal="finished" from="SplashParticle" to="." method="_on_splash_particle_finished"]

@@ -1,16 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbjq7mfwv5wh3"]
+[gd_scene load_steps=12 format=3 uid="uid://dbjq7mfwv5wh3"]
 
 [ext_resource type="Script" path="res://scripts/icy/player.gd" id="1_4odhq"]
 [ext_resource type="Texture2D" uid="uid://qehs6ixgxh4a" path="res://assets/icy/alfred.png" id="2_gfnyu"]
+[ext_resource type="PackedScene" uid="uid://5hr4lhrnut5s" path="res://scenes/icy/splash_particle.tscn" id="3_7kdms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0md5g"]
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7bp00"]
-radius = 3.16228
+radius = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_chqfm"]
-radius = 1.0
+radius = 2.0
 
 [sub_resource type="Animation" id="Animation_wirqj"]
 resource_name = "RESET"
@@ -223,7 +224,8 @@ region_rect = Rect2(13, 3, 5, 5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0md5g")
 
-[node name="IceDetector" type="Area2D" parent="."]
+[node name="IceDetector" type="Area2D" parent="." groups=["player"]]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IceDetector"]
 shape = SubResource("CircleShape2D_7bp00")
@@ -237,6 +239,8 @@ shape = SubResource("CircleShape2D_chqfm")
 libraries = {
 "": SubResource("AnimationLibrary_2lxe6")
 }
+
+[node name="SplashParticle" parent="." instance=ExtResource("3_7kdms")]
 
 [connection signal="area_entered" from="IceDetector" to="." method="_on_ice_detector_area_entered"]
 [connection signal="area_exited" from="IceDetector" to="." method="_on_ice_detector_area_exited"]

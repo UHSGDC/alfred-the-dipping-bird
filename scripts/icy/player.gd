@@ -11,18 +11,22 @@ extends CharacterBody2D
 var on_ice: bool = false
 var in_air: bool = false
 var weak_spot: Area2D = null
+var falling: bool = false # falling into water
 
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
 	var input := Input.get_vector("left", "right", "up", "down")
-	move(delta, input)
+	if falling:
+		move(delta, Vector2.ZERO)
+	else:
+		move(delta, input)
 	look(input)
 	animate()
 	
 	# jumping
-	if !in_air and Input.is_action_just_pressed("interact"):
+	if !falling and !in_air and Input.is_action_just_pressed("interact"):
 		jump()
 
 
@@ -117,3 +121,7 @@ func _on_weak_spot_detector_area_entered(area: Area2D) -> void:
 func _on_weak_spot_detector_area_exited(area: Area2D) -> void:
 	if area.is_in_group("weak_spot"):
 		weak_spot = null
+
+
+func splash() -> void:
+	$SplashParticle.restart()

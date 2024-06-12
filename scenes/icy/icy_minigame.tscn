@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bojjxin3rbo7q"]
+[gd_scene load_steps=22 format=3 uid="uid://bojjxin3rbo7q"]
 
 [ext_resource type="Script" path="res://scripts/icy/icy_minigame.gd" id="1_0qgft"]
 [ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ogyha"]
 [ext_resource type="PackedScene" uid="uid://dbjq7mfwv5wh3" path="res://scenes/icy/player.tscn" id="3_geuf7"]
 [ext_resource type="PackedScene" uid="uid://jty2haqh7u7j" path="res://scenes/icy/weak_spot.tscn" id="4_0ceqv"]
-[ext_resource type="Script" path="res://scripts/weak_spots.gd" id="4_e12hr"]
+[ext_resource type="Script" path="res://scripts/icy/weak_spots.gd" id="4_e12hr"]
 [ext_resource type="PackedScene" uid="uid://bwth8r8cejiuq" path="res://scenes/icy/room.tscn" id="6_ydcf3"]
+[ext_resource type="PackedScene" uid="uid://ncg2l7nfglaw" path="res://scenes/icy/splash_particles.tscn" id="7_rjnib"]
+[ext_resource type="PackedScene" uid="uid://5hr4lhrnut5s" path="res://scenes/icy/splash_particle.tscn" id="8_m04ln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vfn6r"]
 size = Vector2(14, 184)
@@ -59,6 +61,7 @@ invert_border = 1505.6
 polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
 
 [node name="Player" parent="." instance=ExtResource("3_geuf7")]
+position = Vector2(70, -5)
 collision_layer = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -80,6 +83,7 @@ position = Vector2(-167, 0)
 shape = SubResource("RectangleShape2D_vfn6r")
 
 [node name="Ice" type="Area2D" parent="Room1" groups=["ice"]]
+collision_mask = 4
 
 [node name="Polygon2D" type="Polygon2D" parent="Room1/Ice"]
 texture_filter = 1
@@ -99,7 +103,7 @@ texture_repeat = 2
 color = Color(0, 0.458824, 0.760784, 1)
 texture = ExtResource("2_ogyha")
 polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
-uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
+uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
 
 [node name="WeakSpots" type="Node2D" parent="Room1"]
 script = ExtResource("4_e12hr")
@@ -119,6 +123,110 @@ position = Vector2(26, -47)
 position = Vector2(-1, -100)
 shape = SubResource("RectangleShape2D_g4b1y")
 
+[node name="SplashParticles" parent="Room1" instance=ExtResource("7_rjnib")]
+
+[node name="SplashParticle2" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-60, -38)
+
+[node name="SplashParticle3" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-52, -42)
+
+[node name="SplashParticle4" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-49, -48)
+
+[node name="SplashParticle5" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-45, -55)
+
+[node name="SplashParticle6" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-39, -46)
+
+[node name="SplashParticle7" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-44, -38)
+
+[node name="SplashParticle8" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-54, -32)
+
+[node name="SplashParticle9" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-53, -21)
+
+[node name="SplashParticle10" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-45, -27)
+
+[node name="SplashParticle11" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-44, -32)
+
+[node name="SplashParticle12" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-35, -39)
+
+[node name="SplashParticle13" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-37, -58)
+
+[node name="SplashParticle14" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-53, -56)
+
+[node name="SplashParticle15" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-44, -68)
+
+[node name="SplashParticle16" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-30, -72)
+
+[node name="SplashParticle17" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-35, -76)
+
+[node name="SplashParticle18" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-32, -64)
+
+[node name="SplashParticle19" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-21, -66)
+
+[node name="SplashParticle20" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-12, -68)
+
+[node name="SplashParticle21" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-28, -58)
+
+[node name="SplashParticle22" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-25, -47)
+
+[node name="SplashParticle23" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-15, -55)
+
+[node name="SplashParticle24" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-4, -58)
+
+[node name="SplashParticle25" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-13, -44)
+
+[node name="SplashParticle26" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-24, -37)
+
+[node name="SplashParticle27" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-31, -22)
+
+[node name="SplashParticle28" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-41, -14)
+
+[node name="SplashParticle29" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-43, -4)
+
+[node name="SplashParticle30" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-48, -9)
+
+[node name="SplashParticle31" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-30, -9)
+
+[node name="SplashParticle32" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-17, -22)
+
+[node name="SplashParticle33" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-34, -30)
+
+[node name="SplashParticle34" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-4, -37)
+
+[node name="SplashParticle35" parent="Room1/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(6, -41)
+
 [node name="Room2" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
 position = Vector2(320, -180)
 camera = NodePath("../Camera2D")
@@ -133,10 +241,8 @@ position = Vector2(0, 93)
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_py44c")
 
-[node name="WeakSpots" type="Node2D" parent="Room2"]
-script = ExtResource("4_e12hr")
-
 [node name="Ice" type="Area2D" parent="Room2" groups=["ice"]]
+collision_mask = 4
 
 [node name="Polygon2D" type="Polygon2D" parent="Room2/Ice"]
 texture_filter = 1
@@ -158,11 +264,22 @@ texture = ExtResource("2_ogyha")
 polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
 uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
 
+[node name="WeakSpots" type="Node2D" parent="Room2"]
+script = ExtResource("4_e12hr")
+
+[node name="WeakSpot" parent="Room2/WeakSpots" instance=ExtResource("4_0ceqv")]
+position = Vector2(53, -7)
+
 [node name="CrackGate" type="StaticBody2D" parent="Room2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room2/CrackGate"]
 position = Vector2(-1, -100)
 shape = SubResource("RectangleShape2D_g4b1y")
+
+[node name="SplashParticles" parent="Room2" instance=ExtResource("7_rjnib")]
+
+[node name="SplashParticle2" parent="Room2/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-60, -38)
 
 [node name="Room3" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
 position = Vector2(320, -360)
@@ -175,10 +292,8 @@ position = Vector2(1, 71)
 position = Vector2(1, 98)
 shape = SubResource("RectangleShape2D_7202j")
 
-[node name="WeakSpots" type="Node2D" parent="Room3"]
-script = ExtResource("4_e12hr")
-
 [node name="Ice" type="Area2D" parent="Room3" groups=["ice"]]
+collision_mask = 4
 
 [node name="Polygon2D" type="Polygon2D" parent="Room3/Ice"]
 texture_filter = 1
@@ -200,11 +315,22 @@ texture = ExtResource("2_ogyha")
 polygon = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45)
 uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 30, 49, 72, -8, 42, -45, 56, -105)
 
+[node name="WeakSpots" type="Node2D" parent="Room3"]
+script = ExtResource("4_e12hr")
+
+[node name="WeakSpot" parent="Room3/WeakSpots" instance=ExtResource("4_0ceqv")]
+position = Vector2(53, -7)
+
 [node name="CrackGate" type="StaticBody2D" parent="Room3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room3/CrackGate"]
 position = Vector2(-169, -1)
 shape = SubResource("RectangleShape2D_fowcl")
+
+[node name="SplashParticles" parent="Room3" instance=ExtResource("7_rjnib")]
+
+[node name="SplashParticle2" parent="Room3/SplashParticles" instance=ExtResource("8_m04ln")]
+position = Vector2(-60, -38)
 
 [node name="Room4" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_ydcf3")]
 position = Vector2(0, -360)
@@ -259,9 +385,11 @@ position = Vector2(-169, 3)
 shape = SubResource("RectangleShape2D_fc5gd")
 debug_color = Color(0.811765, 0.337255, 0.603922, 0.419608)
 
-[connection signal="uncracked_count_changed" from="Room1/WeakSpots" to="." method="_on_weak_spots1_uncracked_count_changed"]
-[connection signal="uncracked_count_changed" from="Room2/WeakSpots" to="." method="_on_weak_spots2_uncracked_count_changed"]
-[connection signal="uncracked_count_changed" from="Room3/WeakSpots" to="." method="_on_weak_spots3_uncracked_count_changed"]
+[connection signal="body_entered" from="Room1" to="." method="_on_room_1_body_entered"]
+[connection signal="uncracked_count_changed" from="Room1/WeakSpots" to="Room1" method="_on_weak_spots_uncracked_count_changed"]
+[connection signal="uncracked_count_changed" from="Room2/WeakSpots" to="Room2" method="_on_weak_spots_uncracked_count_changed"]
+[connection signal="uncracked_count_changed" from="Room3/WeakSpots" to="Room3" method="_on_weak_spots_uncracked_count_changed"]
+[connection signal="body_entered" from="Room4" to="." method="_on_room_4_body_entered"]
 
 [editable path="Room0"]
 [editable path="Room1"]

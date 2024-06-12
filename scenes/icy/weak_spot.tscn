@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://jty2haqh7u7j"]
 
-[ext_resource type="Script" path="res://scripts/weak_spot.gd" id="1_kpvck"]
+[ext_resource type="Script" path="res://scripts/icy/weak_spot.gd" id="1_kpvck"]
 [ext_resource type="Texture2D" uid="uid://b42o4rtwwlrqh" path="res://assets/icy/weakspot.png" id="2_txjlx"]
 [ext_resource type="Texture2D" uid="uid://c8o031me5kwba" path="res://assets/icy/weakspot_circle.png" id="3_x6juu"]
 

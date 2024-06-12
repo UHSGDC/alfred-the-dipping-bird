@@ -15,4 +15,13 @@ func _ready() -> void:
 		
 
 func _on_cracked_set(value: bool) -> void:
-	uncracked_count -= int(value)
+	if value:
+		uncracked_count -= 1
+	else:
+		uncracked_count += 1
+
+
+func reset_weakspots() -> void:
+	for child in get_children():
+		child.freeze_over()
+		child.freeze_over()
