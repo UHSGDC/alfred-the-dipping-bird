@@ -1,0 +1,142 @@
+[gd_scene load_steps=13 format=3 uid="uid://duwyqtp6my2s0"]
+
+[ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_rahuf"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_3ptin"]
+[ext_resource type="PackedScene" uid="uid://r4n8rma3un50" path="res://scenes/menus/options/simple_setting.tscn" id="2_lhgcb"]
+[ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="3_mthvx"]
+[ext_resource type="PackedScene" uid="uid://dkirc166y8d8u" path="res://scenes/menus/options/controls_view.tscn" id="5_05qtu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhal4"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rkjht"]
+font = ExtResource("2_3ptin")
+font_color = Color(0.690196, 0.811765, 0.933333, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cc05"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xodc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mfa7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpm63"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h61au"]
+
+[node name="OptionsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vhal4")
+script = ExtResource("1_rahuf")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 28.0
+grow_horizontal = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_rkjht")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 31.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("3_mthvx")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+text = "BACK"
+
+[node name="OptionsWindow" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 304.0
+offset_bottom = 168.0
+color = Color(0.564706, 0.54902, 0.780392, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OptionsWindow"]
+layout_mode = 2
+offset_left = 16.0
+offset_right = 288.0
+offset_bottom = 136.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Settings" type="VBoxContainer" parent="OptionsWindow/ScrollContainer"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Master" parent="OptionsWindow/ScrollContainer/Settings" instance=ExtResource("2_lhgcb")]
+layout_mode = 2
+setting_name = "Master"
+initial_value = 10
+max_value = 10
+
+[node name="Sound" parent="OptionsWindow/ScrollContainer/Settings" instance=ExtResource("2_lhgcb")]
+visible = false
+layout_mode = 2
+setting_name = "Sound"
+initial_value = 5
+max_value = 10
+
+[node name="Music" parent="OptionsWindow/ScrollContainer/Settings" instance=ExtResource("2_lhgcb")]
+layout_mode = 2
+setting_name = "Music"
+initial_value = 5
+max_value = 10
+
+[node name="ViewControls" type="Button" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 31.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("3_mthvx")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+text = "CONTROLS"
+
+[node name="ControlsView" parent="." instance=ExtResource("5_05qtu")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Sound" to="." method="_on_sound_value_changed"]
+[connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Music" to="." method="_on_music_value_changed"]
+[connection signal="pressed" from="ViewControls" to="." method="_on_view_controls_pressed"]

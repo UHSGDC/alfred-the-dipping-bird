@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuwf4kfx0g4m6"]
+
+[ext_resource type="Script" path="res://scripts/niagara/spawn_timer.gd" id="1_jiah2"]
+
+[node name="SpawnTimer" type="Timer"]
+one_shot = true
+script = ExtResource("1_jiah2")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

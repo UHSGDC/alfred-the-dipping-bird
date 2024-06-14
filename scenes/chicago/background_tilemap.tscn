@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx80j726p2txt"]
+
+[ext_resource type="Texture2D" uid="uid://b11vn2q30imus" path="res://assets/chicago/tilemap.png" id="1_h4eb3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uv55u"]
+texture = ExtResource("1_h4eb3")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/probability = 2.0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jl60c"]
+sources/0 = SubResource("TileSetAtlasSource_uv55u")
+
+[node name="Background" type="TileMap"]
+modulate = Color(0.717647, 0.666667, 0.819608, 1)
+z_index = -5
+tile_set = SubResource("TileSet_jl60c")
+format = 2

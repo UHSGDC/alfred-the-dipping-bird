@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ebglyiq7nmj7"]
+
+[ext_resource type="Script" path="res://scripts/japanese/note_destroy.gd" id="1_pekp6"]
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ilx45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e64a4"]
+size = Vector2(26, 2)
+
+[node name="Drum" type="Area2D"]
+script = ExtResource("1_pekp6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.1)
+texture = ExtResource("2_ilx45")
+
+[node name="NoteDestroyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_e64a4")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

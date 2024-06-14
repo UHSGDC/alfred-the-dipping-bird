@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfi5u0vuus4an"]
+
+[ext_resource type="Texture2D" uid="uid://bdia6efutw57g" path="res://assets/oasis/seguro cactus.png" id="1_rd8i5"]
+
+[node name="Cactus" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rd8i5")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -3, -9, 3, 1, 2, 8, -2)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://blyma6prntnp0"]
+
+[ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_g6gmd"]
+[ext_resource type="Texture2D" uid="uid://d7l28moejwj" path="res://assets/midwest/rake.png" id="2_a6ady"]
+[ext_resource type="Material" uid="uid://bwa6wjjfiic02" path="res://scenes/midwest/obstacle_outline.tres" id="2_g0nv7"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_waqkd"]
+bounce = 0.3
+
+[node name="Rake" type="RigidBody2D" groups=["obstacle"]]
+collision_layer = 3
+mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_waqkd")
+angular_damp = 0.1
+script = ExtResource("1_g6gmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_g0nv7")
+position = Vector2(-3.8147e-06, 4.76837e-07)
+texture = ExtResource("2_a6ady")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -12, -12, -2, -8, 2, -3, -2, 11, 12, 12, 11, -2, -3, 2, -8)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-15, -15, 30, 30)

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://mdhccje1m7wh"]
+
+[ext_resource type="Script" path="res://scripts/midwest/obstacle.gd" id="1_gvpj0"]
+[ext_resource type="Texture2D" uid="uid://d05e6s5kplagg" path="res://assets/midwest/broken_barn_bit1.png" id="2_0f66d"]
+[ext_resource type="Material" uid="uid://bwa6wjjfiic02" path="res://scenes/midwest/obstacle_outline.tres" id="2_2cf7p"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yxxsx"]
+bounce = 0.3
+
+[node name="BarnBit1" type="RigidBody2D" groups=["obstacle"]]
+collision_layer = 3
+mass = 0.7
+physics_material_override = SubResource("PhysicsMaterial_yxxsx")
+angular_damp = 0.1
+script = ExtResource("1_gvpj0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_2cf7p")
+texture = ExtResource("2_0f66d")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1.105, 1.105)
+polygon = PackedVector2Array(2, -36, -40, -3, -5, 33, 5, 23, 19, 30, 13, 18, 25, -2, 22, -3, 40, -18, 15, -22)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-45, -50, 90, 100)

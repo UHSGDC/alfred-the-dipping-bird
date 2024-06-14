@@ -1,0 +1,642 @@
+[gd_scene load_steps=18 format=3 uid="uid://j8mu3u2ibpkd"]
+
+[ext_resource type="Script" path="res://scripts/midwest/midwest_minigame.gd" id="1_6cg3t"]
+[ext_resource type="PackedScene" uid="uid://rmgdlodutsm6" path="res://scenes/midwest/player.tscn" id="2_tds7h"]
+[ext_resource type="PackedScene" uid="uid://dff0mufl3ilgk" path="res://scenes/midwest/animal.tscn" id="4_qgnbj"]
+[ext_resource type="PackedScene" uid="uid://dadhkw5ulxa0b" path="res://scenes/midwest/tornado.tscn" id="5_88lxc"]
+[ext_resource type="PackedScene" uid="uid://mdhccje1m7wh" path="res://scenes/midwest/barn_bit1.tscn" id="6_7utqy"]
+[ext_resource type="Texture2D" uid="uid://c2kxx07gg4u0f" path="res://assets/midwest/midwest_background.png" id="7_ryw68"]
+[ext_resource type="PackedScene" uid="uid://blyma6prntnp0" path="res://scenes/midwest/rake.tscn" id="7_x0j48"]
+[ext_resource type="PackedScene" uid="uid://bmhmsudomlnck" path="res://scenes/midwest/hud.tscn" id="8_qrdrs"]
+[ext_resource type="PackedScene" uid="uid://67cjdpxmixv6" path="res://scenes/midwest/barn_bit2.tscn" id="9_oqvgn"]
+
+[sub_resource type="Curve2D" id="Curve2D_mx3ea"]
+_data = {
+"points": PackedVector2Array(-2.38042, 18.5807, 0, 0, 850, 511.234, -15.1191, 46.6171, 15.1191, -46.6171, 911, 463.234, 0, 0, 0, 0, 991, 459.234)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_dt2go"]
+_data = {
+"points": PackedVector2Array(-2.38042, 18.5807, 0, 0, 874, 475.887, -47.1552, 6.57188, 47.1552, -6.57188, 953, 356, 0, 0, 0, 0, 1040, 374)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_otot6"]
+_data = {
+"points": PackedVector2Array(-2.38042, 18.5807, 0, 0, 1081, 456, 63.2538, -4.45449, -63.2538, 4.45449, 966, 398, 0, 0, 0, 0, 882, 470)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_d7g5e"]
+_data = {
+"points": PackedVector2Array(0.7937, 38.8913, 0, 0, 935, 355, 0, 0, -63.2538, 4.45449, 862, 276)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_whr27"]
+_data = {
+"points": PackedVector2Array(0.7937, 38.8913, 0, 0, 936, 356, 0, 0, -63.2538, 4.45449, 829, 256)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_pl34q"]
+_data = {
+"points": PackedVector2Array(-2.38042, 18.5807, 0, 0, 931, 452, 0, 0, -57.6848, 9.739, 851, 523)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_xhwnw"]
+_data = {
+"points": PackedVector2Array(-2.38042, 18.5807, 0, 0, 931, 452, 0, 0, -57.6848, 9.739, 851, 523)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn7nn"]
+size = Vector2(10, 180)
+
+[node name="MidwestMinigame" type="Node2D"]
+script = ExtResource("1_6cg3t")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.701961, 0.701961, 0.701961, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 5
+position = Vector2(320, 90)
+texture = ExtResource("7_ryw68")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+
+[node name="LeftPlayerBound" type="Marker2D" parent="PlayerCamera"]
+position = Vector2(-130, -80)
+
+[node name="RightPlayerBound" type="Marker2D" parent="PlayerCamera"]
+position = Vector2(-130, 80)
+
+[node name="Player" parent="." node_paths=PackedStringArray("top_left_bound", "bot_right_bound", "camera") instance=ExtResource("2_tds7h")]
+position = Vector2(20, 90)
+top_left_bound = NodePath("../PlayerCamera/LeftPlayerBound")
+bot_right_bound = NodePath("../PlayerCamera/RightPlayerBound")
+camera = NodePath("../PlayerCamera")
+
+[node name="TornadoPaths" type="Node2D" parent="."]
+
+[node name="Path2D" type="Path2D" parent="TornadoPaths"]
+position = Vector2(297, -352.234)
+curve = SubResource("Curve2D_mx3ea")
+
+[node name="Path2D2" type="Path2D" parent="TornadoPaths"]
+position = Vector2(1802, -346.887)
+curve = SubResource("Curve2D_dt2go")
+
+[node name="Path2D3" type="Path2D" parent="TornadoPaths"]
+position = Vector2(1094, -290)
+curve = SubResource("Curve2D_otot6")
+
+[node name="Path2D4" type="Path2D" parent="TornadoPaths"]
+position = Vector2(2364, -309)
+curve = SubResource("Curve2D_d7g5e")
+
+[node name="Path2D7" type="Path2D" parent="TornadoPaths"]
+position = Vector2(6128, -271)
+curve = SubResource("Curve2D_whr27")
+
+[node name="Path2D5" type="Path2D" parent="TornadoPaths"]
+position = Vector2(2364, -309)
+curve = SubResource("Curve2D_pl34q")
+
+[node name="Path2D6" type="Path2D" parent="TornadoPaths"]
+position = Vector2(6069, -304)
+curve = SubResource("Curve2D_xhwnw")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Tornado" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(1146, 160)
+path = NodePath("../../TornadoPaths/Path2D")
+
+[node name="Tornado18" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(7004, 145)
+path = NodePath("../../TornadoPaths/Path2D6")
+
+[node name="Tornado19" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(7064, 86)
+path = NodePath("../../TornadoPaths/Path2D7")
+
+[node name="Tornado2" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(2674, 130)
+path = NodePath("../../TornadoPaths/Path2D2")
+
+[node name="Tornado5" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(3300, 48)
+path = NodePath("../../TornadoPaths/Path2D5")
+
+[node name="Tornado9" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(3716, 36)
+
+[node name="Tornado10" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(3864, 156)
+
+[node name="Tornado11" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4007, 39)
+path = NodePath("")
+
+[node name="Tornado12" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4151, 156)
+path = NodePath("")
+
+[node name="Tornado13" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4295, 45)
+path = NodePath("")
+
+[node name="Tornado14" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4442, 75)
+path = NodePath("")
+
+[node name="Tornado15" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4586, 167)
+path = NodePath("")
+
+[node name="Tornado16" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4734, 56)
+path = NodePath("")
+
+[node name="Tornado17" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(4912, 127)
+path = NodePath("")
+
+[node name="Tornado7" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(3569, 156)
+
+[node name="Tornado6" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(3297, 141)
+path = NodePath("../../TornadoPaths/Path2D4")
+
+[node name="Tornado4" parent="Obstacles" node_paths=PackedStringArray("path") instance=ExtResource("5_88lxc")]
+position = Vector2(2178, 165)
+path = NodePath("../../TornadoPaths/Path2D3")
+
+[node name="Animal" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5608, 165)
+linear_velocity = Vector2(-80, -15)
+angular_velocity = 0.872665
+
+[node name="Animal2" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5659, 143)
+rotation = -0.523598
+linear_velocity = Vector2(-90, 15)
+angular_velocity = 1.0472
+
+[node name="Animal6" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5700, 129)
+linear_velocity = Vector2(-110, -15)
+angular_velocity = 0.523599
+
+[node name="Animal7" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5912, 145)
+linear_velocity = Vector2(-180, 10)
+angular_velocity = 0.523599
+
+[node name="Animal8" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5955, 133)
+rotation = 0.261799
+linear_velocity = Vector2(-120, -40)
+
+[node name="Animal16" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5985, 164)
+rotation = -1.83259
+linear_velocity = Vector2(-80, -15)
+angular_velocity = 1.39626
+
+[node name="Animal11" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6150, 176)
+rotation = -2.09439
+linear_velocity = Vector2(-30, -120)
+angular_velocity = 0.349066
+
+[node name="Animal17" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6047, 4)
+rotation = -2.71863
+linear_velocity = Vector2(-60, 20)
+angular_velocity = 0.872665
+
+[node name="Animal18" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6147, 121)
+rotation = -0.523598
+linear_velocity = Vector2(-20, -80)
+angular_velocity = 0.872665
+
+[node name="Animal19" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6415, 195)
+rotation = 1.57079
+linear_velocity = Vector2(-100, -60)
+angular_velocity = 1.5708
+
+[node name="Animal20" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6458, 177)
+rotation = 0.523598
+linear_velocity = Vector2(-100, 20)
+
+[node name="Animal21" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6335, 66.0002)
+linear_velocity = Vector2(-120, -10)
+
+[node name="Animal22" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6404, 160)
+linear_velocity = Vector2(-120, -30)
+angular_velocity = 0.174533
+
+[node name="Animal23" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6279, 192)
+rotation = -0.523598
+linear_velocity = Vector2(10, -90)
+angular_velocity = 0.174533
+
+[node name="Animal24" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6292, 172)
+rotation = 0.523598
+linear_velocity = Vector2(-20, -80)
+angular_velocity = 0.523599
+
+[node name="Animal25" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6232, 54.0002)
+rotation = -0.082248
+linear_velocity = Vector2(-160, 30)
+angular_velocity = 0.523599
+
+[node name="Animal26" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6272, 7.99976)
+rotation = -0.523598
+linear_velocity = Vector2(-120, 30)
+angular_velocity = 0.523599
+
+[node name="Animal27" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6282, 58.0002)
+rotation = -0.082248
+linear_velocity = Vector2(-80, 10)
+
+[node name="Animal28" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6308, 21.0002)
+rotation = 1.57079
+linear_velocity = Vector2(120, -10)
+
+[node name="Animal29" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6468, 17)
+rotation = 0.785397
+linear_velocity = Vector2(-70, -15)
+angular_velocity = 0.698132
+
+[node name="Animal30" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6449, 32)
+rotation = -0.523598
+linear_velocity = Vector2(-80, -20)
+angular_velocity = 0.523599
+
+[node name="Animal37" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6688, 63.0002)
+rotation = -0.785397
+linear_velocity = Vector2(-120, 10)
+angular_velocity = 0.349066
+
+[node name="Animal38" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6769, 156)
+rotation = 2.35619
+linear_velocity = Vector2(-100, -15)
+angular_velocity = 0.349066
+
+[node name="Animal39" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6699, 152)
+rotation = 1.0472
+linear_velocity = Vector2(-120, 20)
+angular_velocity = 0.174533
+
+[node name="Animal40" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6751, 194)
+rotation = -1.57079
+linear_velocity = Vector2(-80, -20)
+angular_velocity = 0.261799
+
+[node name="Animal31" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6501, 41)
+rotation = -2.09439
+linear_velocity = Vector2(-120, 20)
+angular_velocity = 1.0472
+
+[node name="Animal32" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6514, 23)
+rotation = 2.35619
+linear_velocity = Vector2(-200, 40)
+angular_velocity = 1.39626
+
+[node name="Animal33" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(6082, 6)
+linear_velocity = Vector2(-120, 40)
+angular_velocity = 1.0472
+
+[node name="Animal9" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5845, 30)
+rotation = 0.523598
+linear_velocity = Vector2(-100, 0)
+angular_velocity = 0.261799
+
+[node name="Animal10" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5899, 33)
+rotation = 0.523598
+linear_velocity = Vector2(-90, 20)
+angular_velocity = 0.20944
+
+[node name="Animal34" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5787, 48)
+linear_velocity = Vector2(-120, 10)
+angular_velocity = 0.349066
+
+[node name="Animal35" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5637, 51)
+linear_velocity = Vector2(-70, -20)
+angular_velocity = 0.523599
+
+[node name="Animal36" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(5688, 156)
+linear_velocity = Vector2(-90, -30)
+angular_velocity = 0.872665
+
+[node name="Tornado3" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(1535, 104)
+
+[node name="Tornado8" parent="Obstacles" instance=ExtResource("5_88lxc")]
+position = Vector2(824, 129)
+
+[node name="Animal3" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(1347, 128)
+linear_velocity = Vector2(-150, -50)
+angular_velocity = 0.698132
+
+[node name="Animal4" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(3054, 49.1134)
+linear_velocity = Vector2(-150, -50)
+angular_velocity = 0.698132
+
+[node name="Animal5" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(3148, 163)
+linear_velocity = Vector2(-150, -50)
+angular_velocity = 0.698132
+
+[node name="Animal12" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(1268, 32)
+linear_velocity = Vector2(-50, 100)
+angular_velocity = 1.22173
+
+[node name="Animal13" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(1605, 0)
+linear_velocity = Vector2(-50, 100)
+angular_velocity = 1.22173
+
+[node name="Animal14" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(1793, 97)
+linear_velocity = Vector2(-100, -50)
+angular_velocity = 1.22173
+
+[node name="Animal15" parent="Obstacles" instance=ExtResource("4_qgnbj")]
+position = Vector2(2175, 79)
+linear_velocity = Vector2(-100, 50)
+angular_velocity = 1.22173
+
+[node name="BarnBit14" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(825, 176)
+linear_velocity = Vector2(-50, -10)
+angular_velocity = -0.174533
+
+[node name="Rake2" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(1080, 82)
+linear_velocity = Vector2(-100, -80)
+angular_velocity = 0.349066
+
+[node name="Rake3" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(2893, 117.113)
+linear_velocity = Vector2(-100, -60)
+angular_velocity = 0.349066
+
+[node name="Rake4" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(2985, 40.1134)
+linear_velocity = Vector2(-100, 60)
+angular_velocity = 0.349066
+
+[node name="Rake5" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(2002, 107)
+linear_velocity = Vector2(-100, 60)
+angular_velocity = 0.349066
+
+[node name="Rake6" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(2431, 82)
+linear_velocity = Vector2(-170, 20)
+angular_velocity = 0.523599
+
+[node name="BarnBit15" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(2559, 44.1134)
+linear_velocity = Vector2(-100, -20)
+angular_velocity = 0.349066
+
+[node name="BarnBit18" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(2033, 21)
+linear_velocity = Vector2(-100, 30)
+angular_velocity = 0.349066
+
+[node name="BarnBit19" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(2286, 189)
+linear_velocity = Vector2(-100, -30)
+angular_velocity = 0.349066
+
+[node name="BarnBit17" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(1640, 186)
+linear_velocity = Vector2(-100, -20)
+angular_velocity = 0.349066
+
+[node name="BarnBit16" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(2974, 142.113)
+linear_velocity = Vector2(-100, 20)
+angular_velocity = 0.349066
+
+[node name="BarnBit1" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(2540, 185.113)
+linear_velocity = Vector2(-150, -30)
+angular_velocity = 0.349066
+
+[node name="BarnBit2" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(3085, 186)
+linear_velocity = Vector2(-50, -150)
+angular_velocity = 0.261799
+
+[node name="Rake" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(5361, 155)
+linear_velocity = Vector2(-40, 10)
+angular_velocity = 0.174533
+
+[node name="Rake7" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(5401, 27)
+linear_velocity = Vector2(-200, 10)
+angular_velocity = 6.28319
+
+[node name="Rake9" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(5822, 152)
+linear_velocity = Vector2(-120, -20)
+angular_velocity = 6.28319
+
+[node name="Rake12" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(6237, 184)
+rotation = 1.83259
+linear_velocity = Vector2(-120, -30)
+angular_velocity = 3.14159
+
+[node name="Rake16" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(6672, 193)
+rotation = 1.83259
+linear_velocity = Vector2(-120, -40)
+angular_velocity = 2.79253
+
+[node name="Rake17" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(7164, 188)
+rotation = 1.83259
+linear_velocity = Vector2(-120, -40)
+angular_velocity = 2.79253
+
+[node name="Rake13" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(6237, 21)
+rotation = 1.0472
+linear_velocity = Vector2(-120, 30)
+angular_velocity = 3.49066
+
+[node name="Rake15" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(6512, 183)
+rotation = -0.785397
+linear_velocity = Vector2(-200, 10)
+angular_velocity = 6.28319
+
+[node name="Rake10" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(5970, 52)
+rotation = -1.57079
+linear_velocity = Vector2(-200, 10)
+angular_velocity = 1.0472
+
+[node name="Rake14" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(6137, 31)
+linear_velocity = Vector2(-120, 50)
+angular_velocity = 0.349066
+
+[node name="Rake8" parent="Obstacles" instance=ExtResource("7_x0j48")]
+position = Vector2(5659, 20)
+rotation = 0.785397
+linear_velocity = Vector2(-150, 10)
+angular_velocity = 1.74533
+
+[node name="BarnBit3" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(5498, 98)
+linear_velocity = Vector2(-40, 0)
+angular_velocity = 0.523599
+
+[node name="BarnBit8" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(6058, 155)
+rotation = -0.523598
+linear_velocity = Vector2(-40, -10)
+angular_velocity = 0.523599
+
+[node name="BarnBit13" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(6581, 43.0002)
+rotation = 0.785397
+linear_velocity = Vector2(-40, 0)
+angular_velocity = 0.523599
+
+[node name="BarnBit21" parent="Obstacles" instance=ExtResource("6_7utqy")]
+position = Vector2(7116, 15.0001)
+rotation = 1.309
+linear_velocity = Vector2(-40, -10)
+angular_velocity = 0.523599
+
+[node name="BarnBit4" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(5316, 59)
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit5" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(5729, 31)
+rotation = -0.785397
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit7" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(5924, 97)
+rotation = -0.523598
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit9" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6193, 45)
+rotation = 0.523598
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit11" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6394, 24)
+rotation = 1.0472
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit12" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6340, 169)
+rotation = -0.523598
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit20" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6433, 84.0001)
+rotation = 0.261799
+linear_velocity = Vector2(-50, -15)
+angular_velocity = 0.174533
+
+[node name="BarnBit22" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6819, 59.0001)
+rotation = 0.261799
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit23" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(7066, 148)
+rotation = 0.261799
+linear_velocity = Vector2(-50, 20)
+angular_velocity = 0.174533
+
+[node name="BarnBit24" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6924, 162)
+rotation = 0.261799
+linear_velocity = Vector2(-10, 20)
+angular_velocity = 0.174533
+
+[node name="BarnBit10" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(6238, 103)
+rotation = -0.261799
+linear_velocity = Vector2(-50, -20)
+angular_velocity = 0.174533
+
+[node name="BarnBit6" parent="Obstacles" instance=ExtResource("9_oqvgn")]
+position = Vector2(5747, 153)
+rotation = 0.523598
+linear_velocity = Vector2(-80, -20)
+angular_velocity = 0.174533
+
+[node name="WinArea" type="Area2D" parent="."]
+position = Vector2(7273, 90)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinArea"]
+shape = SubResource("RectangleShape2D_nn7nn")
+
+[node name="HUD" parent="." instance=ExtResource("8_qrdrs")]
+
+[connection signal="lives_changed" from="Player" to="." method="_on_player_lives_changed"]
+[connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]
+[connection signal="area_entered" from="WinArea" to="." method="_on_win_area_area_entered"]

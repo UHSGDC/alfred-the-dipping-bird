@@ -1,0 +1,242 @@
+[gd_scene load_steps=23 format=3 uid="uid://ctnpoit68dsld"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_akeri"]
+[ext_resource type="PackedScene" uid="uid://cy0uso36digxw" path="res://scenes/menus/menus.tscn" id="1_c7o8y"]
+[ext_resource type="Script" path="res://scripts/minigame_manager.gd" id="2_yod0e"]
+[ext_resource type="Script" path="res://scripts/dipping_cutscene.gd" id="4_1bp2r"]
+[ext_resource type="Script" path="res://scripts/cutscene_manager.gd" id="4_cyvwb"]
+[ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/alfred_cutscene.png" id="4_gkau4"]
+[ext_resource type="Texture2D" uid="uid://cc443d3yvyyq" path="res://assets/waves-Sheet.png" id="5_5rq2k"]
+
+[sub_resource type="Animation" id="Animation_en401"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DippingCutscene/Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DippingCutscene/Path2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DippingCutscene/Water:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y5fpt"]
+resource_name = "dip"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DippingCutscene/Path2D/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2.2, 3.5, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DippingCutscene/Path2D/PathFollow2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.4, 2.8, 3.1, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.577704, 0.577704, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DippingCutscene/Path2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DippingCutscene/Water:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1jslu"]
+_data = {
+"RESET": SubResource("Animation_en401"),
+"dip": SubResource("Animation_y5fpt")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_v6u0x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -99, 59, -15.9099, -1.06066, 15.9099, 1.06066, -78, 71, -13.7886, 0, 13.7886, 0, -51, 63, -15.5564, -1.41421, 15.5564, 1.41421, -35, 72, -8.83884, 0, 8.83884, 0, -12, 61, 0, 0, 0, 0, 1, 68, 0, 0, 0, 0, 17, 57)
+}
+point_count = 7
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcoyk"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldwoh"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcw46"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr1x4"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl7ql"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjf5j"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(1600, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcr01"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(1920, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsmql"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(2240, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg2uf"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(2560, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b78qj"]
+atlas = ExtResource("5_5rq2k")
+region = Rect2(2880, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ij3nd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcoyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldwoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcw46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr1x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl7ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjf5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcr01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsmql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg2uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b78qj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_akeri")
+
+[node name="MinigameManager" type="Node" parent="."]
+script = ExtResource("2_yod0e")
+
+[node name="CutsceneManager" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("4_cyvwb")
+
+[node name="DippingCutscene" type="Node" parent="CutsceneManager"]
+script = ExtResource("4_1bp2r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneManager/DippingCutscene"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_1jslu")
+}
+
+[node name="Path2D" type="Path2D" parent="CutsceneManager/DippingCutscene"]
+position = Vector2(-1, -14)
+curve = SubResource("Curve2D_v6u0x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CutsceneManager/DippingCutscene/Path2D"]
+position = Vector2(-99, 59)
+rotates = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CutsceneManager/DippingCutscene/Path2D/PathFollow2D"]
+texture = ExtResource("4_gkau4")
+offset = Vector2(35.6753, 23.1212)
+
+[node name="Water" type="AnimatedSprite2D" parent="CutsceneManager/DippingCutscene"]
+position = Vector2(160, 90)
+sprite_frames = SubResource("SpriteFrames_ij3nd")
+frame_progress = 0.096023
+
+[node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
+layer = 3
+visible = false
+
+[connection signal="minigame_ended" from="MinigameManager" to="Menus" method="_on_minigame_manager_minigame_ended"]
+[connection signal="dipping_finished" from="CutsceneManager" to="." method="_on_cutscene_manager_dipping_finished"]
+[connection signal="intro_finished" from="CutsceneManager" to="." method="_on_cutscene_manager_intro_finished"]
+[connection signal="finished" from="CutsceneManager/DippingCutscene" to="CutsceneManager" method="_on_dipping_cutscene_finished"]
+[connection signal="level_selected" from="Menus" to="." method="_on_menus_level_selected"]
+[connection signal="menu_closed" from="Menus" to="." method="_on_menus_menu_closed"]
+[connection signal="menu_opened" from="Menus" to="." method="_on_menus_menu_opened"]
+[connection signal="next_pressed" from="Menus" to="." method="_on_menus_next_pressed"]
+[connection signal="play_pressed" from="Menus" to="." method="_on_menus_play_pressed"]
+[connection signal="retry_pressed" from="Menus" to="." method="_on_menus_retry_pressed"]
+[connection signal="trigger_minigame_kill" from="Menus" to="." method="_on_menus_trigger_minigame_kill"]

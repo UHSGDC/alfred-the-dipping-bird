@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://uwnlbh4c5fac"]
+
+[ext_resource type="Script" path="res://scripts/niagara/fish_indicator.gd" id="1_cm0wf"]
+[ext_resource type="Texture2D" uid="uid://w6sm610ln70w" path="res://assets/niagara/fish sign.png" id="1_k8n65"]
+[ext_resource type="Texture2D" uid="uid://d1nrm5s8l3s4p" path="res://assets/niagara/fish1.png" id="3_h8v7l"]
+
+[sub_resource type="Animation" id="Animation_r6ije"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p6osk"]
+resource_name = "flash"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eocgo"]
+_data = {
+"RESET": SubResource("Animation_r6ije"),
+"flash": SubResource("Animation_p6osk")
+}
+
+[node name="FishIndicator" type="Sprite2D"]
+texture = ExtResource("1_k8n65")
+offset = Vector2(0, 12)
+script = ExtResource("1_cm0wf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eocgo")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource("3_h8v7l")

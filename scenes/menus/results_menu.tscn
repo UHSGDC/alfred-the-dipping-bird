@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnhcekbfwy7m8"]
+
+[ext_resource type="Script" path="res://scripts/menus/results_menu.gd" id="1_euydd"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_cftgf"]
+[ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_sysfa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw3a"]
+bg_color = Color(0, 0, 0, 0.243137)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ox2gg"]
+font = ExtResource("2_cftgf")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_n6dec"]
+font = ExtResource("3_sysfa")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_7cvkg"]
+font = ExtResource("3_sysfa")
+font_size = 6
+
+[node name="ResultsMenu" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.175
+anchor_right = 0.825
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqw3a")
+script = ExtResource("1_euydd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.0
+offset_top = -50.5
+offset_right = 37.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="Result" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Win"
+label_settings = SubResource("LabelSettings_ox2gg")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Score: 1000"
+label_settings = SubResource("LabelSettings_n6dec")
+horizontal_alignment = 1
+
+[node name="ScoreInfo" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "1 lives left x 500 = 500"
+label_settings = SubResource("LabelSettings_7cvkg")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_cftgf")
+theme_override_font_sizes/font_size = 8
+text = "Main Menu"
+
+[node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_cftgf")
+theme_override_font_sizes/font_size = 8
+text = "Retry"
+
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_cftgf")
+theme_override_font_sizes/font_size = 8
+text = "Next"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

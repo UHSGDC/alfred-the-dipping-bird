@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 ## The minigame that will be tested by the tester
 @export var minigame_scene: PackedScene
