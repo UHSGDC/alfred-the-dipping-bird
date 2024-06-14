@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq4s0sxpegncc"]
+
+[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="1_jx3u3"]
+[ext_resource type="Script" path="res://scripts/japanese/note.gd" id="1_ub1un"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rtdt"]
+size = Vector2(2, 2)
+
+[node name="Note" type="Area2D" groups=["note"]]
+script = ExtResource("1_ub1un")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.466667, 0.0392157, 1)
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("1_jx3u3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4rtdt")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+
+[node name="LabelHolder" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="LabelHolder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -8.0
+offset_right = 14.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
