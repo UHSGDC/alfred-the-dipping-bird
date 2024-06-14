@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3u7b5gve82ix"]
+
+[ext_resource type="Texture2D" uid="uid://dimw8c80n3jx0" path="res://assets/oasis/cactus bush budding 1.png" id="1_adimb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_61bi4"]
+radius = 4.12311
+
+[node name="CactusBush" type="StaticBody2D"]
+texture_filter = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_adimb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_61bi4")
