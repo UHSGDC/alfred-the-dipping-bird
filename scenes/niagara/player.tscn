@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://dv26boqu0ncd0"]
+
+[ext_resource type="Script" path="res://scripts/niagara/player.gd" id="1_uitqq"]
+[ext_resource type="Shader" path="res://scripts/flash.gdshader" id="2_wdcvh"]
+[ext_resource type="Texture2D" uid="uid://bm4aoc75wge4i" path="res://assets/midwest/alfred.png" id="3_nhf0p"]
+[ext_resource type="PackedScene" uid="uid://d0kgy881xef88" path="res://scenes/chicago/death_particles.tscn" id="4_iu1ar"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqhjb"]
+shader = ExtResource("2_wdcvh")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/flashState = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vs87n"]
+size = Vector2(3.5, 1.83333)
+
+[sub_resource type="Gradient" id="Gradient_bhvnh"]
+colors = PackedColorArray(0.517184, 0.517184, 0.517184, 1, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_wkn2e"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:material:shader_parameter/flashState")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nbrom"]
+resource_name = "hurt"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:material:shader_parameter/flashState")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.2, 1.0, 0.2, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrwmf"]
+_data = {
+"RESET": SubResource("Animation_wkn2e"),
+"hurt": SubResource("Animation_nbrom")
+}
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_uitqq")
+
+[node name="Body" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uqhjb")
+rotation = 1.5708
+texture = ExtResource("3_nhf0p")
+region_enabled = true
+region_rect = Rect2(0, 16, 25, 7)
+
+[node name="LowerWing" type="Sprite2D" parent="Body"]
+use_parent_material = true
+position = Vector2(-4, 5)
+rotation = 0.523598
+texture = ExtResource("3_nhf0p")
+region_enabled = true
+region_rect = Rect2(5, 24, 9, 15)
+
+[node name="UpperWing" type="Sprite2D" parent="Body"]
+use_parent_material = true
+position = Vector2(-4, -5)
+rotation = -0.523598
+texture = ExtResource("3_nhf0p")
+region_enabled = true
+region_rect = Rect2(5, 0, 9, 15)
+
+[node name="Hat" type="Sprite2D" parent="Body"]
+texture = ExtResource("3_nhf0p")
+region_enabled = true
+region_rect = Rect2(26, 16, 7, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, -4.5)
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_vs87n")
+
+[node name="DryingTimer" type="Timer" parent="."]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, -7)
+amount = 64
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+color_initial_ramp = SubResource("Gradient_bhvnh")
+
+[node name="DeathParticles" parent="." instance=ExtResource("4_iu1ar")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="HurtAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rrwmf")
+}
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="DryingTimer" to="." method="_on_drying_timer_timeout"]

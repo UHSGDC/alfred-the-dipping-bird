@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://r4n8rma3un50"]
+
+[ext_resource type="Script" path="res://scripts/menus/options/simple_setting.gd" id="1_jnqys"]
+[ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="2_mhwja"]
+[ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_xg2sr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pn2vl"]
+font = ExtResource("2_mhwja")
+font_size = 8
+font_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y2avf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d5qxt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybav1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu6ao"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ha0bc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_58p1l"]
+font = ExtResource("3_xg2sr")
+font_size = 8
+font_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[node name="SimpleSetting" type="HSplitContainer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+split_offset = 200
+dragger_visibility = 2
+script = ExtResource("1_jnqys")
+setting_name = "Simple Setting"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Simple Setting"
+label_settings = SubResource("LabelSettings_pn2vl")
+clip_text = true
+uppercase = true
+
+[node name="Button" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="Decrease" type="Button" parent="Button"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.376471, 0.298039, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_fonts/font = ExtResource("3_xg2sr")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y2avf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5qxt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ybav1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wu6ao")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ha0bc")
+disabled = true
+text = "<"
+
+[node name="Value" type="Label" parent="Button"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_58p1l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Increase" type="Button" parent="Button"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.376471, 0.298039, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_fonts/font = ExtResource("3_xg2sr")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_y2avf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_d5qxt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ybav1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wu6ao")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ha0bc")
+disabled = true
+text = ">"
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

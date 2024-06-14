@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsj5aposlela1"]
+
+[ext_resource type="Texture2D" uid="uid://dgsi41crgyy2q" path="res://assets/chicago/factory.png" id="1_6qb7n"]
+[ext_resource type="Texture2D" uid="uid://ibjvi4hg34xn" path="res://assets/chicago/factory_hvac.png" id="2_2f6ch"]
+[ext_resource type="Texture2D" uid="uid://bvy4frrtsgwhf" path="res://assets/chicago/factory_smoke_hatch.png" id="3_1a72x"]
+[ext_resource type="PackedScene" uid="uid://b0onck61deuc0" path="res://scenes/chicago/smoke.tscn" id="4_l5ome"]
+
+[node name="Factory" type="Sprite2D"]
+texture = ExtResource("1_6qb7n")
+
+[node name="FactoryHvac" type="Sprite2D" parent="."]
+position = Vector2(7, -14)
+texture = ExtResource("2_2f6ch")
+
+[node name="FactorySmokeHatch" type="Sprite2D" parent="."]
+position = Vector2(-14, 14)
+texture = ExtResource("3_1a72x")
+
+[node name="Smoke" parent="FactorySmokeHatch" instance=ExtResource("4_l5ome")]

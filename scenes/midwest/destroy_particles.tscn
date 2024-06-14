@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxmrylq28us3q"]
+
+[sub_resource type="Curve" id="Curve_n81in"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.384615), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0wu1i"]
+offsets = PackedFloat32Array(0, 0.459627, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="DestroyParticles" type="CPUParticles2D"]
+emitting = false
+amount = 32
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 7.0
+spread = 180.0
+gravity = Vector2(0, 0)
+scale_amount_min = 0.8
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_n81in")
+color = Color(0.72549, 0.054902, 0.290196, 1)
+color_ramp = SubResource("Gradient_0wu1i")

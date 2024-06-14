@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://dadhkw5ulxa0b"]
+
+[ext_resource type="Script" path="res://scripts/midwest/tornado.gd" id="1_wlt6b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_euvjd"]
+radius = 56.0
+
+[sub_resource type="Curve" id="Curve_51bvq"]
+min_value = -10.0
+max_value = 5.0
+_data = [Vector2(0, -2.473), 0.0, 0.0, 0, 0, Vector2(0.513, -8), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8t43v"]
+min_value = -1.0
+_data = [Vector2(0, -0.208791), 0.0, 0.0, 0, 0, Vector2(0.492063, -0.67033), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_366l8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.661376, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kwm2x"]
+colors = PackedColorArray(0.454524, 0.454524, 0.454524, 1, 1, 1, 1, 1)
+
+[node name="Tornado" type="Area2D" groups=["tornado"]]
+z_index = -1
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 400.0
+linear_damp_space_override = 1
+linear_damp = 0.2
+angular_damp_space_override = 3
+angular_damp = 0.0
+script = ExtResource("1_wlt6b")
+path_follow_speed = 30.0
+force_vel_multiplier = 0.2
+minimum_scale = 0.3
+torque_vel_multiplier = 10.0
+time_before_force = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_euvjd")
+debug_color = Color(0, 0.552941, 0.917647, 0.419608)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+process_mode = 3
+scale = Vector2(1.6, 1.6)
+amount = 300
+lifetime = 2.0
+preprocess = 2.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 36.57
+gravity = Vector2(0, 0)
+angular_velocity_max = 3.0
+angular_velocity_curve = SubResource("Curve_51bvq")
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("Curve_8t43v")
+scale_amount_min = 0.7
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_366l8")
+color_ramp = SubResource("Gradient_kwm2x")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+process_mode = 3
+scale = Vector2(1.6, 1.6)
+amount = 150
+lifetime = 2.0
+preprocess = 2.0
+local_coords = true
+emission_shape = 2
+emission_sphere_radius = 36.57
+gravity = Vector2(0, 0)
+angular_velocity_max = 3.0
+angular_velocity_curve = SubResource("Curve_51bvq")
+orbit_velocity_max = 1.0
+orbit_velocity_curve = SubResource("Curve_8t43v")
+scale_amount_min = 0.7
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_366l8")
+color_ramp = SubResource("Gradient_kwm2x")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-70, -70, 140, 140)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
