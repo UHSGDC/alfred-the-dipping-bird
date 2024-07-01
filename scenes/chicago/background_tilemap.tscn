@@ -9,6 +9,9 @@ texture = ExtResource("1_h4eb3")
 1:0/0/probability = 2.0
 0:1/0 = 0
 1:1/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+2:1/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_jl60c"]
 sources/0 = SubResource("TileSetAtlasSource_uv55u")

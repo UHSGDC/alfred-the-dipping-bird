@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sh61q"]
 shader = ExtResource("2_gtlnh")
-shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 1)
+shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 0.470588)
 
 [node name="Pigeon" type="RigidBody2D" groups=["bird"]]
 z_index = 1
