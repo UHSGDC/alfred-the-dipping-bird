@@ -1,0 +1,530 @@
+[gd_scene load_steps=11 format=3 uid="uid://6331rs70pmbj"]
+
+[ext_resource type="Script" path="res://scripts/tutorials/tutorial_manager.gd" id="1_immcd"]
+[ext_resource type="Script" path="res://scripts/tutorials/tutorial.gd" id="3_rdywh"]
+[ext_resource type="Texture2D" uid="uid://cmimwanbqi4by" path="res://assets/tutorials/midwest.png" id="3_vqkno"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="5_lt4rc"]
+[ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="6_bp6p3"]
+[ext_resource type="Texture2D" uid="uid://c103dgaosteby" path="res://assets/tutorials/chicago.png" id="6_v0v2b"]
+[ext_resource type="Texture2D" uid="uid://skl0dtavdc4l" path="res://assets/tutorials/niagara.png" id="7_gr5t5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdu3m"]
+bg_color = Color(0.654902, 0.607843, 0.619608, 1)
+border_width_left = 4
+border_width_top = 14
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.854902, 0.784314, 0.760784, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_orrc4"]
+font = ExtResource("5_lt4rc")
+font_size = 8
+font_color = Color(0.501961, 0.439216, 0.423529, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4aly3"]
+line_spacing = 0.0
+font = ExtResource("6_bp6p3")
+font_size = 8
+font_color = Color(0.854902, 0.784314, 0.760784, 1)
+
+[node name="TutorialManager" type="CanvasLayer"]
+script = ExtResource("1_immcd")
+
+[node name="Midwest" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdu3m")
+script = ExtResource("3_rdywh")
+
+[node name="Screenshot" type="TextureRect" parent="Midwest"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -3.0
+offset_right = 53.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vqkno")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Midwest"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Tutorial - Midwest Farmlands"
+label_settings = SubResource("LabelSettings_orrc4")
+horizontal_alignment = 1
+
+[node name="Descriptions" type="Control" parent="Midwest"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Midwest/Descriptions"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "W & S/Up & Down - Move
+"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description2" type="Label" parent="Midwest/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Dodge airborne animals, rakes, and barn roofs"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description3" type="Label" parent="Midwest/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Don't get sucked into the tornadoes!"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description4" type="Label" parent="Midwest/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Survive until the end. More hearts = more score :D"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="Midwest"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 118.0
+offset_right = 232.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+
+[node name="Back" type="Button" parent="Midwest"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
+[node name="Chicago" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdu3m")
+script = ExtResource("3_rdywh")
+
+[node name="Screenshot" type="TextureRect" parent="Chicago"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -3.0
+offset_right = 53.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_v0v2b")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Chicago"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Tutorial - Chicago City"
+label_settings = SubResource("LabelSettings_orrc4")
+horizontal_alignment = 1
+
+[node name="Descriptions" type="Control" parent="Chicago"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Chicago/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "W & S/Up & Down - Move
+"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description2" type="Label" parent="Chicago/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Smog and pigeons damage Alfred! ):"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description3" type="Label" parent="Chicago/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Skyscrapers kill Alfred!!! D:"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description4" type="Label" parent="Chicago/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Survive until the end. More hearts = more score :D"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="Chicago"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 118.0
+offset_right = 232.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+
+[node name="Back" type="Button" parent="Chicago"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
+[node name="Niagara" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdu3m")
+script = ExtResource("3_rdywh")
+
+[node name="Screenshot" type="TextureRect" parent="Niagara"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -3.0
+offset_right = 53.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00358453
+texture = ExtResource("7_gr5t5")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Niagara"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Tutorial - Niagara Falls"
+label_settings = SubResource("LabelSettings_orrc4")
+horizontal_alignment = 1
+
+[node name="Descriptions" type="Control" parent="Niagara"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "A & D/Left & Right - Move
+"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description2" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Dodge falling branches, rocks, and branches. Indicated by yellow caution sign."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description3" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Gushes of water kill Alfred instantly. Indicated by yellow water sign"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description4" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Fishes restore Alfred's lives. Indicated by green fish circle sign"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description5" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Staying over the waterfall too long will cause Alfred's wing to get heavy with water and he'll fall"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description6" type="Label" parent="Niagara/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Stay above the the purple cliffface to dry his wings. The large red wing in the lower left indicates current wetness"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description7" type="Label" parent="Niagara/Descriptions"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Have a swell time! but don't let Alfred's wings swell with water!!!
+
+Very funny, I know :D"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="Niagara"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 118.0
+offset_right = 232.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+
+[node name="Back" type="Button" parent="Niagara"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
+[connection signal="tutorial_finished" from="Midwest" to="." method="_on_tutorial_finished"]
+[connection signal="pressed" from="Midwest/Start" to="Midwest" method="_on_start_pressed"]
+[connection signal="pressed" from="Midwest/Back" to="Midwest" method="_on_back_pressed"]
+[connection signal="tutorial_finished" from="Chicago" to="." method="_on_tutorial_finished"]
+[connection signal="pressed" from="Chicago/Start" to="Chicago" method="_on_start_pressed"]
+[connection signal="pressed" from="Chicago/Back" to="Chicago" method="_on_back_pressed"]
+[connection signal="tutorial_finished" from="Niagara" to="." method="_on_tutorial_finished"]
+[connection signal="pressed" from="Niagara/Start" to="Niagara" method="_on_start_pressed"]
+[connection signal="pressed" from="Niagara/Back" to="Niagara" method="_on_back_pressed"]

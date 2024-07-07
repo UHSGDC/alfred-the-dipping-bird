@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctnpoit68dsld"]
+[gd_scene load_steps=24 format=3 uid="uid://ctnpoit68dsld"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_akeri"]
 [ext_resource type="PackedScene" uid="uid://cy0uso36digxw" path="res://scenes/menus/menus.tscn" id="1_c7o8y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/cutscene_manager.gd" id="4_cyvwb"]
 [ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/alfred_cutscene.png" id="4_gkau4"]
 [ext_resource type="Texture2D" uid="uid://cc443d3yvyyq" path="res://assets/waves-Sheet.png" id="5_5rq2k"]
+[ext_resource type="PackedScene" uid="uid://6331rs70pmbj" path="res://scenes/tutorials/tutorial_manager.tscn" id="8_7lrus"]
 
 [sub_resource type="Animation" id="Animation_en401"]
 length = 0.001
@@ -195,8 +196,11 @@ script = ExtResource("1_akeri")
 [node name="MinigameManager" type="Node" parent="."]
 script = ExtResource("2_yod0e")
 
-[node name="CutsceneManager" type="CanvasLayer" parent="."]
+[node name="TutorialManager" parent="." instance=ExtResource("8_7lrus")]
 layer = 2
+
+[node name="CutsceneManager" type="CanvasLayer" parent="."]
+layer = 3
 script = ExtResource("4_cyvwb")
 
 [node name="DippingCutscene" type="Node" parent="CutsceneManager"]
@@ -226,10 +230,11 @@ sprite_frames = SubResource("SpriteFrames_ij3nd")
 frame_progress = 0.096023
 
 [node name="Menus" parent="." instance=ExtResource("1_c7o8y")]
-layer = 3
+layer = 4
 visible = false
 
 [connection signal="minigame_ended" from="MinigameManager" to="Menus" method="_on_minigame_manager_minigame_ended"]
+[connection signal="tutorial_finished" from="TutorialManager" to="." method="_on_tutorial_manager_tutorial_finished"]
 [connection signal="dipping_finished" from="CutsceneManager" to="." method="_on_cutscene_manager_dipping_finished"]
 [connection signal="intro_finished" from="CutsceneManager" to="." method="_on_cutscene_manager_intro_finished"]
 [connection signal="finished" from="CutsceneManager/DippingCutscene" to="CutsceneManager" method="_on_dipping_cutscene_finished"]

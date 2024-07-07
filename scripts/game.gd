@@ -12,14 +12,22 @@ var cutscene_played: Dictionary = {
 	Level.NIAGARA : false,
 }
 
+var tutorial_played: Dictionary = {
+	Level.MIDWEST : false,
+	Level.CHICAGO : false,
+	Level.NIAGARA : false,
+}
+
 var current_level: Level = Level.MIDWEST
 
 @onready var menus: Menus = $Menus
 @onready var minigame_manager: MinigameManager = $MinigameManager
 @onready var cutscene_manager: CutsceneManager = $CutsceneManager
+@onready var tutorial_manager: TutorialManager = $TutorialManager
+
 
 func _ready() -> void:
-	MusicManager.play_track(0)
+	MusicManager.play_track(MusicManager.Track.TITLE)
 	cutscene_manager.kill_all()
 
 
@@ -27,12 +35,13 @@ func play_current_level() -> void:
 	minigame_manager.kill_minigame()
 	cutscene_manager.kill_cutscene()
 	MusicManager.fade_to_track(current_level + 1)
-	#if cutscene_played[current_level]:
-		#minigame_manager.play_minigame(current_level)
-		#return
-	#cutscene_manager.play_cutscene(current_level, true)
-	minigame_manager.play_minigame(current_level)
-	# The rest of this method continues after the minigame finishes in the _on_cutscene finished method
+	if cutscene_played[current_level]:
+		if tutorial_played[current_level]:
+			minigame_manager.play_minigame(current_level)
+			return
+		tutorial_manager.play_tutorial(current_level)
+	cutscene_manager.play_cutscene(current_level, false)
+	# The rest of this method continues after the cutscene finishes in the _on_cutscene finished method
 
 
 func _on_menus_level_selected(level: Game.Level) -> void:
@@ -80,4 +89,10 @@ func _on_cutscene_manager_dipping_finished() -> void:
 func _on_cutscene_manager_intro_finished() -> void:
 	cutscene_manager.kill_cutscene.call_deferred()
 	cutscene_played[current_level] = true
+	tutorial_manager.play_tutorial(current_level)
+
+
+func _on_tutorial_manager_tutorial_finished() -> void:
+	tutorial_manager.kill_tutorial.call_deferred()
+	tutorial_played[current_level] = true
 	minigame_manager.play_minigame(current_level)

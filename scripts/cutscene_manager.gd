@@ -14,6 +14,9 @@ func kill_all() -> void:
 func play_cutscene(level: Game.Level, dipping: bool) -> void:
 	if dipping:
 		current_cutscene = $DippingCutscene
+	else:
+		intro_finished.emit()
+		return
 	current_cutscene.play()
 	is_playing = true
 
@@ -33,6 +36,7 @@ func pause_cutscene() -> void:
 func kill_cutscene() -> void:
 	if current_cutscene:
 		current_cutscene.kill()
+		current_cutscene = null
 	is_playing = false
 
 
