@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/japanese/note_target.gd" id="2_ntqt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chqa4"]
-size = Vector2(2, 1.375)
+size = Vector2(2, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oj2k"]
 size = Vector2(3.92157, 51.8519)

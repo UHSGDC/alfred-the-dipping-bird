@@ -2,6 +2,8 @@ class_name RhythmConductor extends AudioStreamPlayer
 
 signal beat_reached(beat_position: int)
 
+const custom_offset: float = 0.12
+
 var bpm: int
 
 # Tracking the beat and song position
@@ -16,7 +18,7 @@ var audio_latency: float
 
 func _physics_process(_delta: float) -> void:
 	if playing:
-		song_position_seconds = get_playback_position() + AudioServer.get_time_since_last_mix()
+		song_position_seconds = get_playback_position() + AudioServer.get_time_since_last_mix() - custom_offset
 		song_position_seconds -= audio_latency
 		song_position_beats = int(ceilf(song_position_seconds / sec_per_beat)) + beats_before_start
 		_report_beat()
