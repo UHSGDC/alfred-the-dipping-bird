@@ -3,7 +3,6 @@ extends Area2D
 signal note_hit(score: int)
 
 @export var input_action: StringName
-@export var player_direction: StringName
 
 var perfect := false
 var good := false
@@ -11,8 +10,8 @@ var okay := false
 var current_note: Area2D = null
 
 
-func handle_input(direction: StringName) -> void:
-	if direction == player_direction and Input.is_action_just_pressed(input_action):
+func handle_input() -> void:
+	if Input.is_action_just_pressed(input_action):
 		$Sprite2D.modulate = Color.WHITE
 		$PushTimer.start()
 		if current_note != null:
@@ -21,7 +20,7 @@ func handle_input(direction: StringName) -> void:
 			note_hit.emit(score)
 			current_note.destroy(score)
 			_reset()
-	elif direction != player_direction || !Input.is_action_pressed(input_action):
+	elif !Input.is_action_pressed(input_action):
 		$Sprite2D.modulate = Color.BLACK
 
 
