@@ -7,6 +7,7 @@ const MINIGAME_SCENES: Dictionary = {
 	Game.Level.MIDWEST : preload("res://scenes/midwest/midwest_minigame.tscn"),
 	Game.Level.CHICAGO : preload("res://scenes/chicago/chicago_minigame.tscn"),
 	Game.Level.NIAGARA : preload("res://scenes/niagara/niagara_minigame.tscn"),
+	Game.Level.ICY : preload("res://scenes/icy/icy_minigame.tscn"),
 }
 
 var current_minigame: BaseMinigame
@@ -25,7 +26,7 @@ func play_minigame(level: Game.Level) -> void:
 
 func pause_minigame() -> void:
 	if current_minigame:
-		current_minigame.process_mode = Node.PROCESS_MODE_DISABLED
+		current_minigame.set_deferred("process_mode", Node.PROCESS_MODE_DISABLED)
 	is_playing = false
 	
 

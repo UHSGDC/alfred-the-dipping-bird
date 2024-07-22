@@ -3,19 +3,22 @@ class_name Game extends Node
 enum Level {
 	MIDWEST,
 	CHICAGO,
-	NIAGARA
+	NIAGARA,
+	ICY,
 }
 
 var cutscene_played: Dictionary = {
 	Level.MIDWEST : false,
 	Level.CHICAGO : false,
 	Level.NIAGARA : false,
+	Level.ICY : false
 }
 
 var tutorial_played: Dictionary = {
 	Level.MIDWEST : false,
 	Level.CHICAGO : false,
 	Level.NIAGARA : false,
+	Level.ICY : false,
 }
 
 var current_level: Level = Level.MIDWEST

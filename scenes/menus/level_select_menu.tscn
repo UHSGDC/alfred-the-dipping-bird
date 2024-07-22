@@ -99,6 +99,10 @@ text = "Niagara Falls"
 
 [node name="LevelSelectButton4" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
+text = "Icy Tundra"
+
+[node name="LevelSelectButton5" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
+layout_mode = 2
 disabled = true
 text = "Coming Soon..."
 
@@ -106,3 +110,4 @@ text = "Coming Soon..."
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton2" to="." method="_on_level_select_button_2_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton3" to="." method="_on_level_select_button_3_pressed"]
+[connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton4" to="." method="_on_level_select_button_4_pressed"]
