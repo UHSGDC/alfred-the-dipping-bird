@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cadv1mhqdjyi6"]
+
+[ext_resource type="Texture2D" uid="uid://i4tf6spg0wji" path="res://assets/icy/ice_spike1.png" id="1_ttlpl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tbyk6"]
+radius = 4.0
+
+[node name="Spike1" type="StaticBody2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_ttlpl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tbyk6")
