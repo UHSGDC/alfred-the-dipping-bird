@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://q7q8p1ttcxap"]
+
+[ext_resource type="Script" path="res://scripts/icy/gate.gd" id="1_wx62l"]
+[ext_resource type="Texture2D" uid="uid://dmdl85u0xl88g" path="res://assets/icy/gate.png" id="2_yi8lg"]
+
+[sub_resource type="Animation" id="Animation_hu7rq"]
+resource_name = "open"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_m8i12"]
+resource_name = "close"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5708, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Right:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.5708, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jj62r"]
+_data = {
+"close": SubResource("Animation_m8i12"),
+"open": SubResource("Animation_hu7rq")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh55u"]
+size = Vector2(64, 2.25)
+
+[node name="Gate" type="Node2D"]
+script = ExtResource("1_wx62l")
+
+[node name="Left" type="Sprite2D" parent="."]
+position = Vector2(-32, 0)
+texture = ExtResource("2_yi8lg")
+offset = Vector2(16, 0)
+region_enabled = true
+region_rect = Rect2(48, 0, 32, 16)
+
+[node name="Right" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("2_yi8lg")
+offset = Vector2(-16, 0)
+flip_h = true
+region_enabled = true
+region_rect = Rect2(48, 0, 32, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jj62r")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_sh55u")

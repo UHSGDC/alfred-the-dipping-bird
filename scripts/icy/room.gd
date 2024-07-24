@@ -25,7 +25,6 @@ func _on_body_entered(body: Node2D) -> void:
 		player = body
 		camera.position = position
 		player.global_position = get_start_pos()
-		$Gate.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func get_start_pos() -> Vector2:
@@ -51,7 +50,8 @@ func reset() -> void:
 	$Water.hide()
 	$WeakSpots.show()
 	$WeakSpots.process_mode = Node.PROCESS_MODE_INHERIT
-	$CrackGate.process_mode = Node.PROCESS_MODE_INHERIT
+	if $CrackGate != null:
+		$CrackGate.close()
 
 
 func _on_weak_spots_uncracked_count_changed(new_value: int) -> void:
@@ -66,4 +66,5 @@ func _on_weak_spots_uncracked_count_changed(new_value: int) -> void:
 		$Water.show()
 		$WeakSpots.hide()
 		$WeakSpots.process_mode = Node.PROCESS_MODE_DISABLED
-		$CrackGate.process_mode = Node.PROCESS_MODE_DISABLED
+		if $CrackGate != null:
+			$CrackGate.open_animation()

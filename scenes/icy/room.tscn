@@ -15,7 +15,4 @@ shape = SubResource("RectangleShape2D_s00vy")
 
 [node name="Start" type="Marker2D" parent="."]
 
-[node name="Gate" type="StaticBody2D" parent="."]
-process_mode = 4
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
