@@ -16,6 +16,8 @@ func play_tutorial(level: Game.Level) -> void:
 			$Chicago.display()
 		Game.Level.NIAGARA:
 			$Niagara.display()
+		Game.Level.ICY:
+			$Icy.display()
 		_:
 			tutorial_finished.emit()
 

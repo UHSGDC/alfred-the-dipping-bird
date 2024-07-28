@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6331rs70pmbj"]
+[gd_scene load_steps=12 format=3 uid="uid://6331rs70pmbj"]
 
 [ext_resource type="Script" path="res://scripts/tutorials/tutorial_manager.gd" id="1_immcd"]
 [ext_resource type="Script" path="res://scripts/tutorials/tutorial.gd" id="3_rdywh"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="6_bp6p3"]
 [ext_resource type="Texture2D" uid="uid://c103dgaosteby" path="res://assets/tutorials/chicago.png" id="6_v0v2b"]
 [ext_resource type="Texture2D" uid="uid://skl0dtavdc4l" path="res://assets/tutorials/niagara.png" id="7_gr5t5"]
+[ext_resource type="Texture2D" uid="uid://byvvaaq4d6vaw" path="res://assets/tutorials/icy.png" id="8_7hci4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdu3m"]
 bg_color = Color(0.654902, 0.607843, 0.619608, 1)
@@ -519,6 +520,169 @@ theme_override_fonts/font = ExtResource("6_bp6p3")
 theme_override_font_sizes/font_size = 8
 text = "Back"
 
+[node name="Icy" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdu3m")
+script = ExtResource("3_rdywh")
+
+[node name="Screenshot" type="TextureRect" parent="Icy"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -3.0
+offset_right = 53.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00358453
+texture = ExtResource("8_7hci4")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Icy"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Tutorial - Icy Tundra"
+label_settings = SubResource("LabelSettings_orrc4")
+horizontal_alignment = 1
+
+[node name="Descriptions" type="Control" parent="Icy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Icy/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "WASD/Arrow Keys - Move
+Space - Jump
+"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description2" type="Label" parent="Icy/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Jump on weakspots twice to fully crack them. Then crack all the other weakspots."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description3" type="Label" parent="Icy/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Be quick! Otherwise, previously cracked weakspots will freeze over."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description4" type="Label" parent="Icy/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Once all weakspots on the ice lake are cracked, run to the snow before all the ice cracks."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description5" type="Label" parent="Icy/Descriptions"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Get to the end in the least amount of time!
+Have fun! :>"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="Icy"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 118.0
+offset_right = 232.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+
+[node name="Back" type="Button" parent="Icy"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
 [connection signal="tutorial_finished" from="Midwest" to="." method="_on_tutorial_finished"]
 [connection signal="pressed" from="Midwest/Start" to="Midwest" method="_on_start_pressed"]
 [connection signal="pressed" from="Midwest/Back" to="Midwest" method="_on_back_pressed"]
@@ -528,3 +692,6 @@ text = "Back"
 [connection signal="tutorial_finished" from="Niagara" to="." method="_on_tutorial_finished"]
 [connection signal="pressed" from="Niagara/Start" to="Niagara" method="_on_start_pressed"]
 [connection signal="pressed" from="Niagara/Back" to="Niagara" method="_on_back_pressed"]
+[connection signal="tutorial_finished" from="Icy" to="." method="_on_tutorial_finished"]
+[connection signal="pressed" from="Icy/Start" to="Icy" method="_on_start_pressed"]
+[connection signal="pressed" from="Icy/Back" to="Icy" method="_on_back_pressed"]
