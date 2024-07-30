@@ -28,7 +28,6 @@ func _report_beat() -> void:
 	if last_reported_beat < song_position_beats:
 		audio_latency = AudioServer.get_output_latency()
 		beat_reached.emit(song_position_beats)
-		print(song_position_beats)
 		last_reported_beat = song_position_beats
 
 

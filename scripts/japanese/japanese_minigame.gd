@@ -38,7 +38,6 @@ func start() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	
 	# Player animation
 	if event.is_action_pressed("left"):
 		player.hit(true)

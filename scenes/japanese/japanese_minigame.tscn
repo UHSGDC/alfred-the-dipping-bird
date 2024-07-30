@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://clombk6ni8atl"]
+[gd_scene load_steps=10 format=3 uid="uid://clombk6ni8atl"]
 
 [ext_resource type="Script" path="res://scripts/japanese/japanese_minigame.gd" id="1_q86hw"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_8g4kp"]
 [ext_resource type="PackedScene" uid="uid://bnnxmjxkdm565" path="res://scenes/japanese/rhythm_conductor.tscn" id="2_st8hx"]
 [ext_resource type="Resource" uid="uid://b103s5csb3yan" path="res://assets/japanese/adbniagara.tres" id="2_yf430"]
+[ext_resource type="Texture2D" uid="uid://dcu82blnjd0r7" path="res://assets/japanese/alfred drum.png" id="3_cwrra"]
 [ext_resource type="Script" path="res://scripts/japanese/player.gd" id="3_qfsrm"]
 [ext_resource type="PackedScene" uid="uid://ebglyiq7nmj7" path="res://scenes/japanese/drum.tscn" id="3_y7nx7"]
 [ext_resource type="PackedScene" uid="uid://beh2ln8ceok27" path="res://scenes/japanese/stick.tscn" id="4_04ayk"]
 [ext_resource type="PackedScene" uid="uid://ctgw5vu4lgpq0" path="res://scenes/japanese/note_target.tscn" id="4_vgji6"]
+[ext_resource type="Texture2D" uid="uid://c6frslinpwvjn" path="res://assets/japanese/background.png" id="9_yi3qn"]
 
 [node name="JapaneseMinigame" type="Node2D" node_paths=PackedStringArray("targets")]
 script = ExtResource("1_q86hw")
@@ -17,15 +18,19 @@ print_score = true
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(160, 150)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_8g4kp")
-flip_v = true
+position = Vector2(160, 153)
+texture = ExtResource("3_cwrra")
+region_enabled = true
+region_rect = Rect2(11, 6, 12, 21)
 script = ExtResource("3_qfsrm")
 
 [node name="LeftTopStick" parent="Player" instance=ExtResource("4_04ayk")]
+show_behind_parent = true
+position = Vector2(-2, 2)
 
 [node name="RightTopStick" parent="Player" instance=ExtResource("4_04ayk")]
+show_behind_parent = true
+position = Vector2(2, 2)
 scale = Vector2(-1, 1)
 
 [node name="Conductor" parent="." instance=ExtResource("2_st8hx")]
@@ -48,5 +53,10 @@ position = Vector2(160, -8)
 [node name="HalfBeatTimer" type="Timer" parent="."]
 
 [node name="QuarterBeatTimer" type="Timer" parent="."]
+
+[node name="Bg" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(160, 90)
+texture = ExtResource("9_yi3qn")
 
 [connection signal="beat_reached" from="Conductor" to="." method="_on_rhythm_conductor_beat_reached"]

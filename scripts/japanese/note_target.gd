@@ -2,6 +2,8 @@ extends Area2D
 
 signal note_hit(score: int)
 
+const HIT_COLOR: Color = Color("b0cfee")
+
 @export var input_action: StringName
 
 var perfect := false
@@ -10,9 +12,10 @@ var okay := false
 var current_note: Area2D = null
 
 
+
 func handle_input() -> void:
 	if Input.is_action_just_pressed(input_action):
-		$Sprite2D.modulate = Color.WHITE
+		$Sprite2D.modulate = HIT_COLOR
 		$PushTimer.start()
 		if current_note != null:
 			# Adding up booleans (false = 0, true = 1) instead of having if statements

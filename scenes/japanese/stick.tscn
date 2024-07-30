@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://beh2ln8ceok27"]
 
 [ext_resource type="Script" path="res://scripts/japanese/stick.gd" id="1_qs4et"]
-[ext_resource type="Texture2D" uid="uid://3ttwa7rolvit" path="res://icon.svg" id="2_ithgg"]
+[ext_resource type="Texture2D" uid="uid://dcu82blnjd0r7" path="res://assets/japanese/alfred drum.png" id="2_jpg2c"]
 [ext_resource type="AudioStream" uid="uid://dwydp5ra1g7bo" path="res://assets/japanese/drum.wav" id="3_og8v8"]
 
 [sub_resource type="Animation" id="Animation_uevu8"]
@@ -10,31 +10,31 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-70, -50)]
+"values": [Vector2(-7, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Hand:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.2, 0.7)]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/path = NodePath("Hand:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -50,31 +50,31 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/path = NodePath("Hand:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-70, -70), Vector2(-70, -50)]
+"values": [Vector2(-7, -7), Vector2(-7, -5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/path = NodePath("Hand:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.2, 0.8), Vector2(0.2, 0.7)]
+"values": [Vector2(1, 1.1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/path = NodePath("Hand:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -113,11 +113,20 @@ stream_0/weight = 1.0
 [node name="Stick" type="Node2D"]
 script = ExtResource("1_qs4et")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-70, -50)
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(-7, -5)
 rotation = -0.261799
-scale = Vector2(0.2, 0.7)
-texture = ExtResource("2_ithgg")
+texture = ExtResource("2_jpg2c")
+region_enabled = true
+region_rect = Rect2(3, 3, 6, 20)
+
+[node name="Stick" type="Sprite2D" parent="Hand"]
+show_behind_parent = true
+position = Vector2(-0.227087, -5.06294)
+rotation = 0.366519
+texture = ExtResource("2_jpg2c")
+region_enabled = true
+region_rect = Rect2(27, 3, 1, 9)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
