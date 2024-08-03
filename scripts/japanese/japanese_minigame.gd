@@ -1,15 +1,17 @@
 extends BaseMinigame
 
 const NOTE_SCENE: PackedScene = preload("res://scenes/japanese/note.tscn")
+const BEATMAPS: Array[Beatmap] = [preload("res://assets/japanese/phsummit.tres"), preload("res://assets/japanese/adbniagara.tres")]
 
 @export var targets: Array[Area2D]
 @export var beatmap: Beatmap
 @export var print_score: bool = false
 
-var score: int = 0
+var scores: Array[int] = [0, 0]
 var beats_till_hit: int = 0
+var cur_beatmap_idx: int = 0
 
-var total_notes: int
+var total_notes: Array[int] = [0, 0]
 var sec_per_half_beat: float
 var sec_per_quarter_beat: float
 
@@ -19,12 +21,16 @@ var sec_per_quarter_beat: float
 @onready var quarter_beat_timer: Timer = $QuarterBeatTimer
 
 func _ready() -> void:
+	if !debug_mode:
+		beatmap = BEATMAPS[0]
 	start()
 	
 	for target in targets:
 		target.note_hit.connect(_on_note_hit)
 
 func start() -> void:
+	scores[cur_beatmap_idx] = 0
+	conductor.reset()
 	conductor.bpm = beatmap.bpm
 	conductor.sec_per_beat = 60.0 / beatmap.bpm
 	conductor.stream = beatmap.stream
@@ -33,8 +39,9 @@ func start() -> void:
 	sec_per_half_beat = 30.0 / beatmap.bpm
 	sec_per_quarter_beat = 15.0 / beatmap.bpm
 	beats_till_hit = beatmap.beats_till_hit
-	total_notes = beatmap.get_total_notes()
+	total_notes[cur_beatmap_idx] = beatmap.get_total_notes()
 	conductor.play_with_beat_offset(beats_till_hit)
+	update_score_ui()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,9 +57,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_note_hit(score_to_add: int) -> void:
-	score += score_to_add
+	scores[cur_beatmap_idx] += score_to_add
+	update_score_ui()
 	if print_score:
-		print("score: " + str(score) + "/" + str(total_notes * 3)) # 3 is the score of perfect
+		print("score: " + str(scores[cur_beatmap_idx]) + "/" + str(total_notes[cur_beatmap_idx] * 3)) # 3 is the score of perfect
+		
+func update_score_ui() -> void:
+	$UI/Score.text = "Score: %3d/ %3d" % [scores[cur_beatmap_idx], total_notes[cur_beatmap_idx] * 3]
 
 
 func _on_rhythm_conductor_beat_reached(beat_position: int) -> void:
@@ -105,3 +116,26 @@ func _spawn_note(note_start: Vector2, note_target: Vector2) -> void:
 	var note := NOTE_SCENE.instantiate()
 	add_child(note)
 	note.initialize(note_start, note_target, beatmap.bpm, beats_till_hit)
+
+
+func _on_conductor_finished() -> void:
+	# Show score / total score and show retry/next button
+	$UI/Menu.show()
+	
+func finish() -> void:
+	end_minigame(scores[0] + scores[1], "Level 1 score: %s/%s\nLevel 2 score: %s/%s" % [scores[0], total_notes[0] * 3, scores[1], total_notes[1] * 3])
+
+
+func _on_next_pressed() -> void:
+	$UI/Menu.hide()
+	if cur_beatmap_idx == 1:
+		finish()
+	else:
+		cur_beatmap_idx += 1
+		beatmap = BEATMAPS[cur_beatmap_idx]
+		start()
+
+
+func _on_retry_pressed() -> void:
+	$UI/Menu.hide()
+	start()

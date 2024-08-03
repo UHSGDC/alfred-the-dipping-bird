@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://clombk6ni8atl"]
+[gd_scene load_steps=11 format=3 uid="uid://clombk6ni8atl"]
 
 [ext_resource type="Script" path="res://scripts/japanese/japanese_minigame.gd" id="1_q86hw"]
 [ext_resource type="PackedScene" uid="uid://bnnxmjxkdm565" path="res://scenes/japanese/rhythm_conductor.tscn" id="2_st8hx"]
@@ -9,12 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://beh2ln8ceok27" path="res://scenes/japanese/stick.tscn" id="4_04ayk"]
 [ext_resource type="PackedScene" uid="uid://ctgw5vu4lgpq0" path="res://scenes/japanese/note_target.tscn" id="4_vgji6"]
 [ext_resource type="Texture2D" uid="uid://c6frslinpwvjn" path="res://assets/japanese/background.png" id="9_yi3qn"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="11_7n1aj"]
 
 [node name="JapaneseMinigame" type="Node2D" node_paths=PackedStringArray("targets")]
 script = ExtResource("1_q86hw")
 targets = [NodePath("LeftTopTarget"), NodePath("RightTopTarget")]
 beatmap = ExtResource("2_yf430")
-print_score = true
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
@@ -59,4 +59,47 @@ z_index = -2
 position = Vector2(160, 90)
 texture = ExtResource("9_yi3qn")
 
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 109.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_fonts/font = ExtResource("11_7n1aj")
+theme_override_font_sizes/font_size = 8
+text = "Score: 10/ 300"
+
+[node name="Menu" type="VBoxContainer" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -20.0
+offset_right = 49.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Next" type="Button" parent="UI/Menu"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("11_7n1aj")
+theme_override_font_sizes/font_size = 8
+text = "Next"
+
+[node name="Retry" type="Button" parent="UI/Menu"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("11_7n1aj")
+theme_override_font_sizes/font_size = 8
+text = "Retry"
+
 [connection signal="beat_reached" from="Conductor" to="." method="_on_rhythm_conductor_beat_reached"]
+[connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
+[connection signal="pressed" from="UI/Menu/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="UI/Menu/Retry" to="." method="_on_retry_pressed"]

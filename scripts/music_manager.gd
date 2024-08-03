@@ -6,12 +6,13 @@ enum Track {
 	TITLE,
 	MIDWEST,
 	CHICAGO,
-	NIAGARA
+	NIAGARA,
+	JAPAN
 }
 
 var current_player: AudioStreamPlayer
 
-@onready var stream_players: Array[AudioStreamPlayer] = [$Title, $Midwest, $Chicago, $Niagara, $Icy]
+@onready var stream_players: Array[AudioStreamPlayer] = [$Title, $Midwest, $Chicago, $Niagara, $Icy, $Japan]
 
 
 func _ready() -> void:

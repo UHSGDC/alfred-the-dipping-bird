@@ -1,7 +1,14 @@
 extends BaseMinigame
 
-var time_elapsed: float
+var time_elapsed: float :
+	set(value):
+		time_elapsed = value
+		$CanvasLayer/Time.text = "Time: %6.2f" % value
 var track_time: bool = false
+
+
+func _ready() -> void:
+	time_elapsed = 0
 
 
 func _process(delta: float) -> void:

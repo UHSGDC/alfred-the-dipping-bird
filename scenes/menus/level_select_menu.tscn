@@ -81,33 +81,44 @@ anchors_preset = -1
 anchor_left = 0.0277778
 anchor_top = 0.0588235
 anchor_right = 0.972222
-anchor_bottom = 1.0
+anchor_bottom = 0.941176
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="LevelSelectButton" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
 
 [node name="LevelSelectButton2" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
 text = "Chicago"
 
 [node name="LevelSelectButton3" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
 text = "Niagara Falls"
 
 [node name="LevelSelectButton4" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
 text = "Icy Tundra"
 
 [node name="LevelSelectButton5" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
-disabled = true
-text = "Coming Soon..."
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+text = "Japan"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton2" to="." method="_on_level_select_button_2_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton3" to="." method="_on_level_select_button_3_pressed"]
 [connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton4" to="." method="_on_level_select_button_4_pressed"]
+[connection signal="pressed" from="LevelSelectWindow/ButtonContainer/LevelSelectButton5" to="." method="_on_level_select_button_5_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bojjxin3rbo7q"]
+[gd_scene load_steps=29 format=3 uid="uid://bojjxin3rbo7q"]
 
 [ext_resource type="Script" path="res://scripts/icy/icy_minigame.gd" id="1_0qgft"]
 [ext_resource type="Texture2D" uid="uid://bxdj777c7mrft" path="res://assets/icy/snow_tiles.png" id="2_kaja4"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwiauv73bkdp" path="res://scenes/icy/spike2.tscn" id="12_v2o0t"]
 [ext_resource type="PackedScene" uid="uid://baw7lggbp5y3s" path="res://scenes/black_screen.tscn" id="13_bvh86"]
 [ext_resource type="PackedScene" uid="uid://q7q8p1ttcxap" path="res://scenes/icy/gate.tscn" id="15_dd01s"]
+[ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="16_ce4st"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2kwmf"]
 texture = ExtResource("2_kaja4")
@@ -100,7 +101,6 @@ position = Vector2(152, -361)
 rotation = -1.5708
 
 [node name="Player" parent="." instance=ExtResource("3_geuf7")]
-position = Vector2(-58, -9)
 collision_layer = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1890,6 +1890,19 @@ layer_0/tile_data = PackedInt32Array(-393214, 0, 0, -393213, 0, 0, -393212, 0, 0
 
 [node name="BlackScreen" parent="CanvasLayer" instance=ExtResource("13_bvh86")]
 modulate = Color(1, 1, 1, 0)
+fade_in_time = 2.0
+fade_out_time = 2.0
+
+[node name="Time" type="Label" parent="CanvasLayer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 109.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_colors/font_outline_color = Color(0.0431373, 0.0862745, 0.27451, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("16_ce4st")
+theme_override_font_sizes/font_size = 8
 
 [connection signal="body_entered" from="Room1" to="." method="_on_room_1_body_entered"]
 [connection signal="uncracked_count_changed" from="Room1/WeakSpots" to="Room1" method="_on_weak_spots_uncracked_count_changed"]

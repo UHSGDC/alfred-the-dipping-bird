@@ -180,6 +180,7 @@ theme_override_font_sizes/font_size = 8
 text = "Back"
 
 [node name="Chicago" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -490,9 +491,11 @@ offset_top = 20.0
 offset_right = 109.0
 offset_bottom = 60.0
 grow_horizontal = 2
-text = "Have a swell time! but don't let Alfred's wings swell with water!!!
+text = "Survive for 80 seconds!
 
-Very funny, I know :D"
+Have a swell time! but don't let Alfred's wings swell with water!!! :D
+
+"
 label_settings = SubResource("LabelSettings_4aly3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -521,6 +524,7 @@ theme_override_font_sizes/font_size = 8
 text = "Back"
 
 [node name="Icy" type="Panel" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -683,6 +687,170 @@ theme_override_fonts/font = ExtResource("6_bp6p3")
 theme_override_font_sizes/font_size = 8
 text = "Back"
 
+[node name="Japan" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -73.0
+offset_right = 120.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kdu3m")
+script = ExtResource("3_rdywh")
+
+[node name="Screenshot" type="TextureRect" parent="Japan"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -3.0
+offset_right = 53.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.00358453
+texture = ExtResource("8_7hci4")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="Japan"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -106.0
+offset_top = 3.0
+offset_right = 106.0
+offset_bottom = 13.0
+grow_horizontal = 2
+text = "Tutorial - Japan"
+label_settings = SubResource("LabelSettings_orrc4")
+horizontal_alignment = 1
+
+[node name="Descriptions" type="Control" parent="Japan"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Japan/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "WASD/Arrow Keys - Move
+Space - Jump
+"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description2" type="Label" parent="Japan/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Jump on weakspots twice to fully crack them. Then crack all the other weakspots."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description3" type="Label" parent="Japan/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Be quick! Otherwise, previously cracked weakspots will freeze over."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description4" type="Label" parent="Japan/Descriptions"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Once all weakspots on the ice lake are cracked, run to the snow before all the ice cracks."
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description5" type="Label" parent="Japan/Descriptions"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 20.0
+offset_right = 109.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "Get to the end in the least amount of time!
+Have fun! :>"
+label_settings = SubResource("LabelSettings_4aly3")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Start" type="Button" parent="Japan"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 118.0
+offset_right = 232.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Start"
+
+[node name="Back" type="Button" parent="Japan"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 118.0
+offset_right = 58.0
+offset_bottom = 138.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("6_bp6p3")
+theme_override_font_sizes/font_size = 8
+text = "Back"
+
 [connection signal="tutorial_finished" from="Midwest" to="." method="_on_tutorial_finished"]
 [connection signal="pressed" from="Midwest/Start" to="Midwest" method="_on_start_pressed"]
 [connection signal="pressed" from="Midwest/Back" to="Midwest" method="_on_back_pressed"]
@@ -695,3 +863,6 @@ text = "Back"
 [connection signal="tutorial_finished" from="Icy" to="." method="_on_tutorial_finished"]
 [connection signal="pressed" from="Icy/Start" to="Icy" method="_on_start_pressed"]
 [connection signal="pressed" from="Icy/Back" to="Icy" method="_on_back_pressed"]
+[connection signal="tutorial_finished" from="Japan" to="." method="_on_tutorial_finished"]
+[connection signal="pressed" from="Japan/Start" to="Japan" method="_on_start_pressed"]
+[connection signal="pressed" from="Japan/Back" to="Japan" method="_on_back_pressed"]

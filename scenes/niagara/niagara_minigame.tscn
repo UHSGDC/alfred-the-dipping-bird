@@ -34,7 +34,7 @@ script = ExtResource("1_6bwwf")
 gush_indicator_scene = ExtResource("2_pm52m")
 obstacle_indicator_scene = ExtResource("3_hgaek")
 fish_indicator_scene = ExtResource("6_voupq")
-minigame_time = 60.0
+minigame_time = 80.0
 
 [node name="MinigameTimer" type="Timer" parent="."]
 

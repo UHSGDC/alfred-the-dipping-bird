@@ -28,3 +28,6 @@ bus = &"Music"
 [node name="Icy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_asu7r")
 bus = &"Music"
+
+[node name="Japan" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

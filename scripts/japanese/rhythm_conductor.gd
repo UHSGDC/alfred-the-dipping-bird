@@ -16,6 +16,14 @@ var audio_latency: float
 var custom_offset: float = 0.0
 
 
+func reset() -> void:
+	song_position_seconds = 0
+	song_position_beats = 1
+	last_reported_beat = 0
+	beats_before_start = 0
+	audio_latency = 0
+
+
 func _physics_process(_delta: float) -> void:
 	if playing:
 		song_position_seconds = get_playback_position() + AudioServer.get_time_since_last_mix() - custom_offset

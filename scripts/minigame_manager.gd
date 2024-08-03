@@ -8,6 +8,7 @@ const MINIGAME_SCENES: Dictionary = {
 	Game.Level.CHICAGO : preload("res://scenes/chicago/chicago_minigame.tscn"),
 	Game.Level.NIAGARA : preload("res://scenes/niagara/niagara_minigame.tscn"),
 	Game.Level.ICY : preload("res://scenes/icy/icy_minigame.tscn"),
+	Game.Level.JAPAN : preload("res://scenes/japanese/japanese_minigame.tscn")
 }
 
 var current_minigame: BaseMinigame

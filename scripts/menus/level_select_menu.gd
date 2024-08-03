@@ -23,3 +23,8 @@ func _on_level_select_button_3_pressed() -> void:
 func _on_level_select_button_4_pressed() -> void:
 	menus.level_selected.emit(Game.Level.ICY)
 	menus.change_menu(Menus.NONE, true)
+
+
+func _on_level_select_button_5_pressed() -> void:
+	menus.level_selected.emit(Game.Level.JAPAN)
+	menus.change_menu(Menus.NONE, true)

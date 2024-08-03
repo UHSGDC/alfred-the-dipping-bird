@@ -5,13 +5,15 @@ enum Level {
 	CHICAGO,
 	NIAGARA,
 	ICY,
+	JAPAN,
 }
 
 var cutscene_played: Dictionary = {
 	Level.MIDWEST : false,
 	Level.CHICAGO : false,
 	Level.NIAGARA : false,
-	Level.ICY : false
+	Level.ICY : false,
+	Level.JAPAN : false
 }
 
 var tutorial_played: Dictionary = {
@@ -19,6 +21,7 @@ var tutorial_played: Dictionary = {
 	Level.CHICAGO : false,
 	Level.NIAGARA : false,
 	Level.ICY : false,
+	Level.JAPAN : false
 }
 
 var current_level: Level = Level.MIDWEST
