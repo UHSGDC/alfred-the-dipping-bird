@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://rmgdlodutsm6"]
+[gd_scene load_steps=14 format=3 uid="uid://rmgdlodutsm6"]
 
 [ext_resource type="Script" path="res://scripts/midwest/player.gd" id="1_2ehcf"]
 [ext_resource type="Shader" path="res://scripts/flash.gdshader" id="1_3ejt8"]
 [ext_resource type="Texture2D" uid="uid://bm4aoc75wge4i" path="res://assets/midwest/alfred.png" id="2_vklqj"]
 [ext_resource type="PackedScene" uid="uid://d0kgy881xef88" path="res://scenes/chicago/death_particles.tscn" id="4_jy4rf"]
+[ext_resource type="AudioStream" uid="uid://dv8m3t6x1q4ns" path="res://assets/sfx/alfred_hurt.wav" id="5_5o733"]
+[ext_resource type="AudioStream" uid="uid://dnqjyh4es0myf" path="res://assets/sfx/tornado_suck.wav" id="6_4u14a"]
+[ext_resource type="AudioStream" uid="uid://co7jdbd7pxhv" path="res://assets/sfx/wind_sound.wav" id="7_7u3sh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5pm1c"]
 shader = ExtResource("1_3ejt8")
@@ -48,6 +51,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.2, 1.0, 0.2, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rrwmf"]
@@ -109,6 +126,23 @@ libraries = {
 }
 
 [node name="DeathParticles" parent="." instance=ExtResource("4_jy4rf")]
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5o733")
+volume_db = 1.0
+pitch_scale = 2.68
+bus = &"Sound"
+
+[node name="TornadoSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4u14a")
+pitch_scale = 1.5
+bus = &"Sound"
+
+[node name="WindLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7u3sh")
+volume_db = 6.0
+pitch_scale = 1.3
+autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

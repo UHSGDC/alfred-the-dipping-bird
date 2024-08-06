@@ -21,6 +21,7 @@ const TORNADO_BASE_ROTATION_SPEED: float = PI * 0.7
 @export var debug_mode: bool
 @export var print_debug_messages: bool
 @export var max_lives: int = 3
+@export var hurt_sound: AudioStreamPlayer
 
 var debug_movement_paused: bool = false
 var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
@@ -152,6 +153,7 @@ func _on_area_entered(area: Area2D) -> void:
 		print(name + " hit tornado")
 	tornado = area
 	tornado.path_follow_speed = 0
+	$TornadoSound.play()
 
 
 func _on_hurt_animator_animation_finished(_anim_name: StringName) -> void:
@@ -172,5 +174,6 @@ func kill(message: String) -> void:
 	$CPUParticles2D.hide()
 	$DeathParticles.emitting = true
 	death_pause = true
+	$HurtSound.play()
 	await $DeathParticles.finished	
 	player_killed.emit(message)
