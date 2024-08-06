@@ -9,7 +9,7 @@ var score: int :
 	set(value):
 		score = value
 		$VBoxContainer/Score.text = str(score)
-		$VBoxContainer/Result.text = "Win" if score > 0 else "Lose"
+		$VBoxContainer/Result.text = "Win" if score > 0 else "Game Over"
 		$VBoxContainer/HBoxContainer/Next.text = "Next" if score > 0 else "Skip"
 
 
