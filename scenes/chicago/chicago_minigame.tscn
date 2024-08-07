@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d05kqnx5bfvhh"]
+[gd_scene load_steps=12 format=3 uid="uid://d05kqnx5bfvhh"]
 
 [ext_resource type="Script" path="res://scripts/chicago/chicago_minigame.gd" id="1_aeqwi"]
 [ext_resource type="PackedScene" uid="uid://cnqph5euvj6ye" path="res://scenes/chicago/player.tscn" id="2_7k8nf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dx80j726p2txt" path="res://scenes/chicago/background_tilemap.tscn" id="8_b8miv"]
 [ext_resource type="Script" path="res://scripts/chicago/cars.gd" id="8_nn2d2"]
 [ext_resource type="Texture2D" uid="uid://bh3q1aduwpvhi" path="res://assets/chicago/cars.png" id="9_b3onm"]
+[ext_resource type="AudioStream" uid="uid://de2ikslymi1sb" path="res://assets/sfx/city_ambience.wav" id="10_gskb0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlxs1"]
 size = Vector2(10, 180)
@@ -1395,6 +1396,12 @@ rotation = 4.71239
 texture = ExtResource("9_b3onm")
 hframes = 2
 vframes = 2
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_gskb0")
+volume_db = 9.0
+autoplay = true
+bus = &"Sound"
 
 [connection signal="lives_changed" from="Player" to="." method="_on_player_lives_changed"]
 [connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]

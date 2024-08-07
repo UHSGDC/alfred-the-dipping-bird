@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://laaln4dpdyqi"]
+[gd_scene load_steps=20 format=3 uid="uid://laaln4dpdyqi"]
 
 [ext_resource type="Script" path="res://scripts/niagara/niagara_minigame.gd" id="1_6bwwf"]
 [ext_resource type="PackedScene" uid="uid://dar4ylmf5vwos" path="res://scenes/niagara/indicators/gush_indicator.tscn" id="2_pm52m"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://sngqk6vdp58r" path="res://scenes/niagara/wetness_meter.tscn" id="9_woj0y"]
 [ext_resource type="Texture2D" uid="uid://dmcoqvd1ml70d" path="res://assets/heart.png" id="10_s8vwk"]
 [ext_resource type="PackedScene" uid="uid://cbevh14qab4rl" path="res://scenes/midwest/progress_bar.tscn" id="11_f6fy7"]
+[ext_resource type="PackedScene" uid="uid://baw7lggbp5y3s" path="res://scenes/black_screen.tscn" id="12_ims8q"]
+[ext_resource type="AudioStream" uid="uid://b00j3lbwqen2k" path="res://assets/sfx/catch_fish.wav" id="13_pteib"]
+[ext_resource type="AudioStream" uid="uid://uyj4khcgvro4" path="res://assets/sfx/waterfall_ambience.wav" id="14_pga8c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_or3sr"]
 size = Vector2(126, 180)
@@ -138,12 +141,27 @@ metadata/_edit_use_anchors_ = true
 offset_top = 2.0
 offset_bottom = 9.0
 
+[node name="BlackScreen" parent="HUD" instance=ExtResource("12_ims8q")]
+modulate = Color(1, 1, 1, 0)
+fade_in_time = 2.0
+
 [node name="ObjectRemover" type="Area2D" parent="."]
 position = Vector2(160, 500)
 script = ExtResource("7_6awaa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectRemover"]
 shape = SubResource("RectangleShape2D_bl2v0")
+
+[node name="CatchFishSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_pteib")
+volume_db = 2.0
+bus = &"Sound"
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_pga8c")
+pitch_scale = 0.9
+autoplay = true
+bus = &"Sound"
 
 [connection signal="timeout" from="MinigameTimer" to="." method="_on_minigame_timer_timeout"]
 [connection signal="body_entered" from="Player" to="." method="_on_player_body_entered"]

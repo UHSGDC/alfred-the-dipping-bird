@@ -27,6 +27,9 @@ var current_wetness: float :
 		wetness_changed.emit(current_wetness, MAX_WETNESS)
 var death_pause: bool = false
 
+func _ready() -> void:
+	$HurtAnimator.play("RESET")
+
 func _physics_process(delta: float) -> void:
 	move(delta)
 	if !death_pause:
@@ -90,6 +93,7 @@ func kill() -> void:
 func fall() -> void:
 	death_pause = true
 	velocity.y = 1
+	$HurtSound.play()
 	await $VisibleOnScreenNotifier2D.screen_exited
 
 

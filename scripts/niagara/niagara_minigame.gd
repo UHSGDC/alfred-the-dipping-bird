@@ -50,6 +50,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	$HUD/ProgressBar.value = (minigame_time - $MinigameTimer.time_left) / minigame_time * 100
+	if $MinigameTimer.time_left <= 1.5: # Stop spawning when minigame is about to end. 1.5 is picked arbitrarily here.
+		$FishTimer.stop()
+		$GushTimer.stop()
+		$ObstacleTimer.stop()
+		
 
 
 func _spawn_falling_object(indicator_scene: PackedScene, object_pos: Vector2) -> void:
@@ -69,6 +74,7 @@ func _on_player_body_entered(body: Node2D) -> void:
 		if current_lives < max_lives:
 			current_lives += 1
 		body.queue_free()
+		$CatchFishSound.play()
 		if debug_mode:
 			print(str(current_lives) + " lives left")
 	elif body.is_in_group("obstacle"):
@@ -101,6 +107,8 @@ func _on_fish_timer_timeout() -> void:
 func _on_minigame_timer_timeout() -> void:
 	if debug_mode:
 		print("timer finished. Player won")
+	$HUD/BlackScreen.fade_in()
+	await $HUD/BlackScreen.fade_done
 	var score: int = current_lives * LIFE_SCORE_MULTIPLIER
 	end_minigame(score, "%s lives left x %s = %s" % [current_lives, LIFE_SCORE_MULTIPLIER, score])
 	

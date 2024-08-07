@@ -46,6 +46,7 @@ var death_pause: bool = false
 
 func _ready() -> void:
 	current_lives = max_lives
+	$HurtAnimator.play("RESET")
 
 
 func _physics_process(delta: float) -> void:

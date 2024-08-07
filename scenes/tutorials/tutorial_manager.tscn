@@ -459,7 +459,7 @@ offset_top = 20.0
 offset_right = 109.0
 offset_bottom = 60.0
 grow_horizontal = 2
-text = "Staying over the waterfall too long will cause Alfred's wing to get heavy with water and he'll fall"
+text = "Staying over the waterfall too long will cause Alfred's wing to get heavy with water and fall"
 label_settings = SubResource("LabelSettings_4aly3")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -483,6 +483,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Description7" type="Label" parent="Niagara/Descriptions"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -492,7 +493,7 @@ offset_top = 20.0
 offset_right = 109.0
 offset_bottom = 60.0
 grow_horizontal = 2
-text = "Survive for 80 seconds!
+text = "Survive until the end!
 
 Have a swell time! but don't let Alfred's wings swell with water!!! :D
 

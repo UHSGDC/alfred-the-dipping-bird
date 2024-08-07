@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://js817b4xkyyx"]
+[gd_scene load_steps=8 format=3 uid="uid://js817b4xkyyx"]
 
 [ext_resource type="Script" path="res://scripts/niagara/gush.gd" id="1_73ubr"]
 [ext_resource type="Texture2D" uid="uid://jojwhkqen8h8" path="res://assets/niagara/gush_background.png" id="2_uxwag"]
+[ext_resource type="AudioStream" uid="uid://c01cr3tb7mv2s" path="res://assets/sfx/water_gush.wav" id="3_qejk7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8gr5"]
 size = Vector2(82, 172)
@@ -49,5 +50,12 @@ initial_velocity_max = 20.0
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_6u3s8")
 color_initial_ramp = SubResource("Gradient_phhe3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qejk7")
+volume_db = 12.0
+pitch_scale = 1.2
+autoplay = true
+bus = &"Sound"
 
 [connection signal="body_entered" from="BreakArea" to="." method="_on_break_area_body_entered"]

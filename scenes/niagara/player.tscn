@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dv26boqu0ncd0"]
+[gd_scene load_steps=13 format=3 uid="uid://dv26boqu0ncd0"]
 
 [ext_resource type="Script" path="res://scripts/niagara/player.gd" id="1_uitqq"]
 [ext_resource type="Shader" path="res://scripts/flash.gdshader" id="2_wdcvh"]
 [ext_resource type="Texture2D" uid="uid://bm4aoc75wge4i" path="res://assets/midwest/alfred.png" id="3_nhf0p"]
 [ext_resource type="PackedScene" uid="uid://d0kgy881xef88" path="res://scenes/chicago/death_particles.tscn" id="4_iu1ar"]
+[ext_resource type="AudioStream" uid="uid://co7jdbd7pxhv" path="res://assets/sfx/wind_sound.wav" id="5_ky702"]
+[ext_resource type="AudioStream" uid="uid://dv8m3t6x1q4ns" path="res://assets/sfx/alfred_hurt.wav" id="6_nou3v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uqhjb"]
 shader = ExtResource("2_wdcvh")
@@ -46,6 +48,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.2, 1.0, 0.2, 1.0, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtSound")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rrwmf"]
@@ -106,6 +122,7 @@ initial_velocity_max = 60.0
 color_initial_ramp = SubResource("Gradient_bhvnh")
 
 [node name="DeathParticles" parent="." instance=ExtResource("4_iu1ar")]
+gravity = Vector2(0, 100)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -2)
@@ -114,6 +131,18 @@ position = Vector2(0, -2)
 libraries = {
 "": SubResource("AnimationLibrary_rrwmf")
 }
+
+[node name="WindLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ky702")
+volume_db = 3.0
+pitch_scale = 1.3
+autoplay = true
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nou3v")
+volume_db = 1.0
+pitch_scale = 2.68
+bus = &"Sound"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
