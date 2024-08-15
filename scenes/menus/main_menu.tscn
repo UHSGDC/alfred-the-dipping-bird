@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://boywxuhfg8sh5"]
+[gd_scene load_steps=7 format=3 uid="uid://boywxuhfg8sh5"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
 [ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/alfred_cutscene.png" id="2_gi225"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="4_cvfma"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwh5c"]
 bg_color = Color(0.294118, 0.0313726, 0.262745, 1)
@@ -59,47 +60,52 @@ offset_right = 124.0
 offset_bottom = 71.0
 grow_vertical = 2
 
-[node name="Play" type="Button" parent="Buttons"]
+[node name="Play" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 text = "Play"
 
-[node name="LevelSelect" type="Button" parent="Buttons"]
+[node name="LevelSelect" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 text = "Level Select"
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Options" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 text = "Options"
 
-[node name="Credits" type="Button" parent="Buttons"]
+[node name="Credits" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 text = "Credits"
 
-[node name="Quit" type="Button" parent="Buttons"]
+[node name="Quit" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 text = "Quit"

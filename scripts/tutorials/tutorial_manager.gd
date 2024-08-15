@@ -5,7 +5,8 @@ signal tutorial_finished
 
 func _ready() -> void:
 	for child in get_children():
-		child.hide()
+		if child is Panel:
+			child.hide()
 	
 
 func play_tutorial(level: Game.Level) -> void:
@@ -26,7 +27,8 @@ func play_tutorial(level: Game.Level) -> void:
 
 func kill_tutorial() -> void:
 	for child in get_children():
-		child.hide()
+		if child is Panel:
+			child.hide()
 
 
 func _on_tutorial_finished() -> void:

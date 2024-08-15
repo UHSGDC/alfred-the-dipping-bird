@@ -125,3 +125,4 @@ func _on_weak_spot_detector_area_exited(area: Area2D) -> void:
 
 func splash() -> void:
 	$SplashParticle.restart()
+	$DeathSound.play()

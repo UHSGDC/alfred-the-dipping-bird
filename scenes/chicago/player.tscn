@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnqph5euvj6ye"]
+[gd_scene load_steps=14 format=3 uid="uid://cnqph5euvj6ye"]
 
 [ext_resource type="Shader" path="res://scripts/flash.gdshader" id="1_dpxoe"]
 [ext_resource type="Script" path="res://scripts/chicago/player.gd" id="2_cb4ea"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0kgy881xef88" path="res://scenes/chicago/death_particles.tscn" id="4_d0v3x"]
 [ext_resource type="AudioStream" uid="uid://co7jdbd7pxhv" path="res://assets/sfx/wind_sound.wav" id="5_hcpap"]
 [ext_resource type="AudioStream" uid="uid://dv8m3t6x1q4ns" path="res://assets/sfx/alfred_hurt.wav" id="6_w6q3h"]
+[ext_resource type="AudioStream" uid="uid://63eqbwficgyf" path="res://assets/sfx/hit_skyscraper.wav" id="7_ksr2p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5pm1c"]
 shader = ExtResource("1_dpxoe")
@@ -136,6 +137,11 @@ autoplay = true
 stream = ExtResource("6_w6q3h")
 volume_db = 1.0
 pitch_scale = 2.68
+bus = &"Sound"
+
+[node name="SkyscraperHitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ksr2p")
+volume_db = 2.0
 bus = &"Sound"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

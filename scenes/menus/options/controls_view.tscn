@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkirc166y8d8u"]
+[gd_scene load_steps=15 format=3 uid="uid://dkirc166y8d8u"]
 
 [ext_resource type="Script" path="res://scripts/menus/options/controls_view.gd" id="1_c8llo"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_bt2no"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="3_tw6mf"]
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_wsp8x"]
 [ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="4_64jim"]
 
@@ -14,15 +15,15 @@ anti_aliasing = false
 font = ExtResource("2_bt2no")
 font_color = Color(0.137255, 0.486275, 0.541176, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wnpsg"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kun4t"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y48ib"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eevld"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7f3s"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o007j"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6381i"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3egjt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3ptu"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gl1ix"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2w7dw"]
 font = ExtResource("2_bt2no")
@@ -75,25 +76,24 @@ text = "Controls"
 label_settings = SubResource("LabelSettings_4gy0e")
 uppercase = true
 
-[node name="Close" type="Button" parent="."]
+[node name="Close" parent="." instance=ExtResource("3_tw6mf")]
 layout_mode = 0
 offset_left = 176.0
 offset_top = 8.0
 offset_right = 184.0
 offset_bottom = 16.0
-focus_mode = 0
 theme_override_colors/font_color = Color(0.137255, 0.486275, 0.541176, 1)
-theme_override_colors/font_pressed_color = Color(0.0627451, 0.196078, 0.356863, 1)
+theme_override_colors/font_pressed_color = Color(0.0862745, 0.290196, 0.403922, 1)
 theme_override_colors/font_hover_color = Color(0.239216, 0.698039, 0.678431, 1)
 theme_override_colors/font_focus_color = Color(0.239216, 0.698039, 0.678431, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.239216, 0.698039, 0.678431, 1)
 theme_override_fonts/font = ExtResource("3_wsp8x")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wnpsg")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_y48ib")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_c7f3s")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_6381i")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_r3ptu")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kun4t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eevld")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o007j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3egjt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gl1ix")
 text = "X"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

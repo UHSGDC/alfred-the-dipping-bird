@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxyfgqi6tn4s8"]
+[gd_scene load_steps=6 format=3 uid="uid://cxyfgqi6tn4s8"]
 
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="1_wjihu"]
+[ext_resource type="AudioStream" uid="uid://cjmo71hg41u8v" path="res://assets/sfx/button_click.wav" id="2_7ypkj"]
+[ext_resource type="Script" path="res://scripts/menus/sound_button_press.gd" id="3_gxehk"]
+[ext_resource type="AudioStream" uid="uid://eocc0oieavv7" path="res://assets/sfx/button_hover.wav" id="4_pqg0l"]
+[ext_resource type="Script" path="res://scripts/menus/sound_button_hover.gd" id="5_dkga6"]
 
 [node name="LevelSelectButton" type="Button"]
 anchors_preset = 14
@@ -16,3 +20,16 @@ theme_override_fonts/font = ExtResource("1_wjihu")
 theme_override_font_sizes/font_size = 8
 text = "Midwest Farmlands"
 metadata/_edit_use_anchors_ = true
+
+[node name="Press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7ypkj")
+bus = &"Sound"
+script = ExtResource("3_gxehk")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pqg0l")
+bus = &"Sound"
+script = ExtResource("5_dkga6")
+
+[connection signal="mouse_entered" from="." to="Hover" method="_on_sound_button_mouse_entered"]
+[connection signal="pressed" from="." to="Press" method="_on_sound_button_pressed"]

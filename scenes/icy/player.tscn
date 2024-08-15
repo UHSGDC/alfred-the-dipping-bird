@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbjq7mfwv5wh3"]
+[gd_scene load_steps=15 format=3 uid="uid://dbjq7mfwv5wh3"]
 
 [ext_resource type="Script" path="res://scripts/icy/player.gd" id="1_4odhq"]
 [ext_resource type="Texture2D" uid="uid://qehs6ixgxh4a" path="res://assets/icy/alfred.png" id="2_gfnyu"]
 [ext_resource type="PackedScene" uid="uid://5hr4lhrnut5s" path="res://scenes/icy/splash_particle.tscn" id="3_7kdms"]
+[ext_resource type="AudioStream" uid="uid://lykx5llttecm" path="res://assets/sfx/walk_snow.wav" id="4_w1f6i"]
+[ext_resource type="AudioStream" uid="uid://dv8m3t6x1q4ns" path="res://assets/sfx/alfred_hurt.wav" id="5_co48h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0md5g"]
 radius = 4.0
@@ -187,6 +189,23 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 0), Vector2(0, 0), Vector2(1, 0), Vector2(0, 0)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WalkSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2lxe6"]
 _data = {
@@ -195,6 +214,12 @@ _data = {
 "jump": SubResource("Animation_l8sad"),
 "walk": SubResource("Animation_a5iyq")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_srgu1"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("4_w1f6i")
+stream_0/weight = 1.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -241,6 +266,15 @@ libraries = {
 }
 
 [node name="SplashParticle" parent="." instance=ExtResource("3_7kdms")]
+
+[node name="WalkSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_srgu1")
+pitch_scale = 1.5
+bus = &"Sound"
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_co48h")
+bus = &"Sound"
 
 [connection signal="area_entered" from="IceDetector" to="." method="_on_ice_detector_area_entered"]
 [connection signal="area_exited" from="IceDetector" to="." method="_on_ice_detector_area_exited"]

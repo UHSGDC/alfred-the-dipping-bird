@@ -57,6 +57,7 @@ func reset() -> void:
 func _on_weak_spots_uncracked_count_changed(new_value: int) -> void:
 	if new_value == 0:
 		screen_shake = true
+		$SplashSound.play()
 		await get_tree().create_timer(SCREEN_SHAKE_TIME).timeout
 		screen_shake = false
 		camera.position = position
@@ -66,5 +67,6 @@ func _on_weak_spots_uncracked_count_changed(new_value: int) -> void:
 		$Water.show()
 		$WeakSpots.hide()
 		$WeakSpots.process_mode = Node.PROCESS_MODE_DISABLED
+		$VictorySound.play()
 		if $CrackGate != null:
 			$CrackGate.open_animation()

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce7rgb26q4wf2"]
+
+[ext_resource type="AudioStream" uid="uid://cjmo71hg41u8v" path="res://assets/sfx/button_click.wav" id="1_qjtiw"]
+[ext_resource type="Script" path="res://scripts/menus/sound_button_press.gd" id="2_35sto"]
+[ext_resource type="AudioStream" uid="uid://eocc0oieavv7" path="res://assets/sfx/button_hover.wav" id="3_1xuxa"]
+[ext_resource type="Script" path="res://scripts/menus/sound_button_hover.gd" id="4_0406p"]
+
+[node name="SoundButton" type="Button"]
+
+[node name="Press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qjtiw")
+bus = &"Sound"
+script = ExtResource("2_35sto")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1xuxa")
+bus = &"Sound"
+script = ExtResource("4_0406p")
+
+[connection signal="mouse_entered" from="." to="Hover" method="_on_sound_button_mouse_entered"]
+[connection signal="pressed" from="." to="Press" method="_on_sound_button_pressed"]

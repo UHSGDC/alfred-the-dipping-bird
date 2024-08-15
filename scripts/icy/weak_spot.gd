@@ -30,6 +30,7 @@ func crack() -> void:
 	if sprite.frame < 2:
 		sprite.frame += 1
 	start_freezing()
+	$CrackSound.play()
 
 
 func freeze_over() -> void:

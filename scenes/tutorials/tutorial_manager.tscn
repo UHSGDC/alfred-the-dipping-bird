@@ -1,13 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://6331rs70pmbj"]
+[gd_scene load_steps=17 format=3 uid="uid://6331rs70pmbj"]
 
 [ext_resource type="Script" path="res://scripts/tutorials/tutorial_manager.gd" id="1_immcd"]
 [ext_resource type="Script" path="res://scripts/tutorials/tutorial.gd" id="3_rdywh"]
 [ext_resource type="Texture2D" uid="uid://cmimwanbqi4by" path="res://assets/tutorials/midwest.png" id="3_vqkno"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="5_lt4rc"]
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="6_bp6p3"]
+[ext_resource type="AudioStream" uid="uid://cjmo71hg41u8v" path="res://assets/sfx/button_click.wav" id="6_flpg6"]
 [ext_resource type="Texture2D" uid="uid://c103dgaosteby" path="res://assets/tutorials/chicago.png" id="6_v0v2b"]
 [ext_resource type="Texture2D" uid="uid://skl0dtavdc4l" path="res://assets/tutorials/niagara.png" id="7_gr5t5"]
+[ext_resource type="Script" path="res://scripts/menus/sound_button_press.gd" id="7_xpdgd"]
 [ext_resource type="Texture2D" uid="uid://byvvaaq4d6vaw" path="res://assets/tutorials/icy.png" id="8_7hci4"]
+[ext_resource type="AudioStream" uid="uid://eocc0oieavv7" path="res://assets/sfx/button_hover.wav" id="8_tahdq"]
 [ext_resource type="Texture2D" uid="uid://vvooarfsg65i" path="res://assets/tutorials/japan.png" id="9_o353r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kdu3m"]
@@ -32,6 +35,14 @@ line_spacing = 0.0
 font = ExtResource("6_bp6p3")
 font_size = 8
 font_color = Color(0.854902, 0.784314, 0.760784, 1)
+
+[sub_resource type="GDScript" id="GDScript_dmpad"]
+script/source = "extends AudioStreamPlayer
+
+
+func _on_sound_button_mouse_entered() -> void:
+	play()
+"
 
 [node name="TutorialManager" type="CanvasLayer"]
 script = ExtResource("1_immcd")
@@ -854,18 +865,48 @@ theme_override_fonts/font = ExtResource("6_bp6p3")
 theme_override_font_sizes/font_size = 8
 text = "Back"
 
+[node name="Press" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_flpg6")
+bus = &"Sound"
+script = ExtResource("7_xpdgd")
+
+[node name="Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tahdq")
+bus = &"Sound"
+script = SubResource("GDScript_dmpad")
+
 [connection signal="tutorial_finished" from="Midwest" to="." method="_on_tutorial_finished"]
+[connection signal="mouse_entered" from="Midwest/Start" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Midwest/Start" to="Midwest" method="_on_start_pressed"]
+[connection signal="pressed" from="Midwest/Start" to="Press" method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="Midwest/Back" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Midwest/Back" to="Midwest" method="_on_back_pressed"]
+[connection signal="pressed" from="Midwest/Back" to="Press" method="_on_sound_button_pressed"]
 [connection signal="tutorial_finished" from="Chicago" to="." method="_on_tutorial_finished"]
+[connection signal="mouse_entered" from="Chicago/Start" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Chicago/Start" to="Chicago" method="_on_start_pressed"]
+[connection signal="pressed" from="Chicago/Start" to="Press" method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="Chicago/Back" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Chicago/Back" to="Chicago" method="_on_back_pressed"]
+[connection signal="pressed" from="Chicago/Back" to="Press" method="_on_sound_button_pressed"]
 [connection signal="tutorial_finished" from="Niagara" to="." method="_on_tutorial_finished"]
+[connection signal="mouse_entered" from="Niagara/Start" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Niagara/Start" to="Niagara" method="_on_start_pressed"]
+[connection signal="pressed" from="Niagara/Start" to="Press" method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="Niagara/Back" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Niagara/Back" to="Niagara" method="_on_back_pressed"]
+[connection signal="pressed" from="Niagara/Back" to="Press" method="_on_sound_button_pressed"]
 [connection signal="tutorial_finished" from="Icy" to="." method="_on_tutorial_finished"]
+[connection signal="mouse_entered" from="Icy/Start" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Icy/Start" to="Icy" method="_on_start_pressed"]
+[connection signal="pressed" from="Icy/Start" to="Press" method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="Icy/Back" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Icy/Back" to="Icy" method="_on_back_pressed"]
+[connection signal="pressed" from="Icy/Back" to="Press" method="_on_sound_button_pressed"]
 [connection signal="tutorial_finished" from="Japan" to="." method="_on_tutorial_finished"]
+[connection signal="mouse_entered" from="Japan/Start" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Japan/Start" to="Japan" method="_on_start_pressed"]
+[connection signal="pressed" from="Japan/Start" to="Press" method="_on_sound_button_pressed"]
+[connection signal="mouse_entered" from="Japan/Back" to="Hover" method="_on_sound_button_mouse_entered"]
 [connection signal="pressed" from="Japan/Back" to="Japan" method="_on_back_pressed"]
+[connection signal="pressed" from="Japan/Back" to="Press" method="_on_sound_button_pressed"]

@@ -323,7 +323,7 @@ uv = PackedVector2Array(-36, -82, -67, -38, -40, 16, -59, 32, -54, 51, -18, 74, 
 polygon = PackedVector2Array(-51, -47, -67, -38, -40, 16, -59, 32, -54, 51, -19, 62, 30, 49, 72, -8, 32, -36)
 
 [node name="Spike1" parent="Room2/Ice" instance=ExtResource("6_ig8f3")]
-position = Vector2(-18, -39)
+position = Vector2(-21, -35)
 
 [node name="Spike2" parent="Room2/Ice" instance=ExtResource("12_v2o0t")]
 position = Vector2(-11, -30)

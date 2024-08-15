@@ -128,6 +128,8 @@ func on_body_entered_skyscraper(_body: Node2D) -> void:
 	if print_debug_messages:
 		print(name + " hit a skyscraper")
 	current_lives = -10
+	$SkyscraperHitSound.play()
+	
 
 # Collision of bird
 func on_body_entered_bird(body: Node2D) -> void:

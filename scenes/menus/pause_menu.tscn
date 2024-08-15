@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmoa37dm4ehqc"]
+[gd_scene load_steps=6 format=3 uid="uid://dmoa37dm4ehqc"]
 
 [ext_resource type="Script" path="res://scripts/menus/pause_menu.gd" id="1_n4geu"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_ioj14"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="3_yhihb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw3a"]
 bg_color = Color(0, 0, 0, 0.243137)
@@ -47,28 +48,25 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Resume" type="Button" parent="Buttons"]
+[node name="Resume" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
 text = "Resume"
 
-[node name="Options" type="Button" parent="Buttons"]
+[node name="Options" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
 text = "Options"
 
-[node name="MainMenu" type="Button" parent="Buttons"]
+[node name="MainMenu" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8

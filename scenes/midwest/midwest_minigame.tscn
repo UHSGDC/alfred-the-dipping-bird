@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://j8mu3u2ibpkd"]
+[gd_scene load_steps=19 format=3 uid="uid://j8mu3u2ibpkd"]
 
 [ext_resource type="Script" path="res://scripts/midwest/midwest_minigame.gd" id="1_6cg3t"]
 [ext_resource type="PackedScene" uid="uid://rmgdlodutsm6" path="res://scenes/midwest/player.tscn" id="2_tds7h"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://blyma6prntnp0" path="res://scenes/midwest/rake.tscn" id="7_x0j48"]
 [ext_resource type="PackedScene" uid="uid://bmhmsudomlnck" path="res://scenes/midwest/hud.tscn" id="8_qrdrs"]
 [ext_resource type="PackedScene" uid="uid://67cjdpxmixv6" path="res://scenes/midwest/barn_bit2.tscn" id="9_oqvgn"]
+[ext_resource type="AudioStream" uid="uid://duqb1jiy0adca" path="res://assets/sfx/farm.wav" id="10_h0tq6"]
 
 [sub_resource type="Curve2D" id="Curve2D_mx3ea"]
 _data = {
@@ -636,6 +637,12 @@ collision_mask = 16
 shape = SubResource("RectangleShape2D_nn7nn")
 
 [node name="HUD" parent="." instance=ExtResource("8_qrdrs")]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_h0tq6")
+volume_db = 8.0
+autoplay = true
+bus = &"Sound"
 
 [connection signal="lives_changed" from="Player" to="." method="_on_player_lives_changed"]
 [connection signal="player_killed" from="Player" to="." method="_on_player_player_killed"]

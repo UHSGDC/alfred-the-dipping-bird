@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnhcekbfwy7m8"]
+[gd_scene load_steps=9 format=3 uid="uid://bnhcekbfwy7m8"]
 
 [ext_resource type="Script" path="res://scripts/menus/results_menu.gd" id="1_euydd"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_cftgf"]
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_sysfa"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="4_3q4me"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqw3a"]
 bg_color = Color(0, 0, 0, 0.243137)
@@ -68,21 +69,21 @@ autowrap_mode = 3
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="MainMenu" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="MainMenu" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_3q4me")]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_cftgf")
 theme_override_font_sizes/font_size = 8
 text = "Main Menu"
 
-[node name="Retry" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Retry" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_3q4me")]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_cftgf")
 theme_override_font_sizes/font_size = 8
 text = "Retry"
 
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="Next" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_3q4me")]
 layout_mode = 2
 focus_mode = 0
 theme_override_fonts/font = ExtResource("2_cftgf")

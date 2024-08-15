@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://duwyqtp6my2s0"]
+[gd_scene load_steps=14 format=3 uid="uid://duwyqtp6my2s0"]
 
 [ext_resource type="Script" path="res://scripts/menus/options_menu.gd" id="1_rahuf"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_3ptin"]
 [ext_resource type="PackedScene" uid="uid://r4n8rma3un50" path="res://scenes/menus/options/simple_setting.tscn" id="2_lhgcb"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="3_mnfwx"]
 [ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="3_mthvx"]
 [ext_resource type="PackedScene" uid="uid://dkirc166y8d8u" path="res://scenes/menus/options/controls_view.tscn" id="5_05qtu"]
 
@@ -13,15 +14,15 @@ bg_color = Color(0.376471, 0.298039, 0.490196, 1)
 font = ExtResource("2_3ptin")
 font_color = Color(0.690196, 0.811765, 0.933333, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cc05"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4ydc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xodc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mmm04"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mfa7"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1krl7"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpm63"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qj0a6"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h61au"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1v62t"]
 
 [node name="OptionsMenu" type="Panel"]
 anchors_preset = 15
@@ -47,13 +48,12 @@ label_settings = SubResource("LabelSettings_rkjht")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" parent="." instance=ExtResource("3_mnfwx")]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 31.0
-focus_mode = 0
 theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
 theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -62,11 +62,11 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("3_mthvx")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f4ydc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mmm04")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1krl7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qj0a6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1v62t")
 text = "BACK"
 
 [node name="OptionsWindow" type="ColorRect" parent="."]
@@ -83,7 +83,6 @@ offset_left = 16.0
 offset_right = 288.0
 offset_bottom = 136.0
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
 [node name="Settings" type="VBoxContainer" parent="OptionsWindow/ScrollContainer"]
 custom_minimum_size = Vector2(260, 0)
@@ -108,13 +107,12 @@ setting_name = "Music"
 initial_value = 5
 max_value = 10
 
-[node name="ViewControls" type="Button" parent="."]
+[node name="Controls" parent="." instance=ExtResource("3_mnfwx")]
 layout_mode = 0
 offset_left = 248.0
 offset_top = 8.0
-offset_right = 314.0
+offset_right = 280.0
 offset_bottom = 31.0
-focus_mode = 0
 theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
 theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -123,11 +121,11 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("3_mthvx")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f4ydc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mmm04")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1krl7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_qj0a6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1v62t")
 text = "CONTROLS"
 
 [node name="ControlsView" parent="." instance=ExtResource("5_05qtu")]
@@ -138,4 +136,4 @@ layout_mode = 1
 [connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Master" to="." method="_on_master_value_changed"]
 [connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Sound" to="." method="_on_sound_value_changed"]
 [connection signal="value_changed" from="OptionsWindow/ScrollContainer/Settings/Music" to="." method="_on_music_value_changed"]
-[connection signal="pressed" from="ViewControls" to="." method="_on_view_controls_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]

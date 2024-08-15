@@ -1,15 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://jty2haqh7u7j"]
+[gd_scene load_steps=7 format=3 uid="uid://jty2haqh7u7j"]
 
 [ext_resource type="Script" path="res://scripts/icy/weak_spot.gd" id="1_kpvck"]
 [ext_resource type="Texture2D" uid="uid://b42o4rtwwlrqh" path="res://assets/icy/weakspot.png" id="2_txjlx"]
 [ext_resource type="Texture2D" uid="uid://c8o031me5kwba" path="res://assets/icy/weakspot_circle.png" id="3_x6juu"]
+[ext_resource type="AudioStream" uid="uid://c6bqfty315t0s" path="res://assets/sfx/crack.wav" id="4_lvqgl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pg40r"]
 radius = 6.0
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_h8u6u"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("4_lvqgl")
+stream_0/weight = 1.0
+
 [node name="WeakSpot" type="Area2D" groups=["weak_spot"]]
 script = ExtResource("1_kpvck")
-max_freeze_time = 10.0
+max_freeze_time = 12.0
 min_freeze_time = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,5 +30,10 @@ texture = ExtResource("3_x6juu")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_txjlx")
 hframes = 3
+
+[node name="CrackSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_h8u6u")
+pitch_scale = 2.0
+bus = &"Sound"
 
 [connection signal="timeout" from="FreezeTimer" to="." method="_on_freeze_timer_timeout"]

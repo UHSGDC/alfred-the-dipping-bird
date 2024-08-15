@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwth8r8cejiuq"]
+[gd_scene load_steps=5 format=3 uid="uid://bwth8r8cejiuq"]
 
 [ext_resource type="Script" path="res://scripts/icy/room.gd" id="1_cn5gd"]
+[ext_resource type="AudioStream" uid="uid://d3kak1uoaj7ed" path="res://assets/sfx/water_splash.wav" id="2_h3qu6"]
+[ext_resource type="AudioStream" uid="uid://dv5a1db8yqvlk" path="res://assets/sfx/victory_sound.wav" id="3_jwmo0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s00vy"]
 size = Vector2(320, 180)
@@ -14,5 +16,14 @@ script = ExtResource("1_cn5gd")
 shape = SubResource("RectangleShape2D_s00vy")
 
 [node name="Start" type="Marker2D" parent="."]
+
+[node name="SplashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h3qu6")
+volume_db = 4.0
+bus = &"Sound"
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jwmo0")
+bus = &"Sound"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

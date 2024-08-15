@@ -8,13 +8,8 @@ enum Level {
 	JAPAN,
 }
 
-var cutscene_played: Dictionary = {
-	Level.MIDWEST : false,
-	Level.CHICAGO : false,
-	Level.NIAGARA : false,
-	Level.ICY : false,
-	Level.JAPAN : false
-}
+var intro_cutscene_played: bool = false
+var end_cutscene_played: bool = false
 
 var tutorial_played: Dictionary = {
 	Level.MIDWEST : false,
@@ -40,14 +35,16 @@ func _ready() -> void:
 func play_current_level() -> void:
 	minigame_manager.kill_minigame()
 	cutscene_manager.kill_cutscene()
+	minigame_manager.play_minigame(current_level)
+	minigame_manager.pause_minigame()
 	MusicManager.fade_to_track(current_level + 1)
-	if cutscene_played[current_level]:
+	if current_level == Level.MIDWEST && !intro_cutscene_played:
+		cutscene_manager.play_cutscene(Level.MIDWEST, CutsceneManager.Type.INTRO)
+	else:
 		if tutorial_played[current_level]:
 			minigame_manager.play_minigame(current_level)
 			return
 		tutorial_manager.play_tutorial(current_level)
-	cutscene_manager.play_cutscene(current_level, false)
-	# The rest of this method continues after the cutscene finishes in the _on_cutscene finished method
 
 
 func _on_menus_level_selected(level: Game.Level) -> void:
@@ -66,7 +63,7 @@ func _on_menus_menu_opened() -> void:
 
 
 func _on_menus_next_pressed() -> void:
-	cutscene_manager.play_cutscene(current_level, true)
+	cutscene_manager.play_cutscene(current_level, CutsceneManager.Type.DIPPING)
 
 
 func _on_menus_play_pressed() -> void:
@@ -94,11 +91,11 @@ func _on_cutscene_manager_dipping_finished() -> void:
 
 func _on_cutscene_manager_intro_finished() -> void:
 	cutscene_manager.kill_cutscene.call_deferred()
-	cutscene_played[current_level] = true
+	intro_cutscene_played = true
 	tutorial_manager.play_tutorial(current_level)
 
 
 func _on_tutorial_manager_tutorial_finished() -> void:
 	tutorial_manager.kill_tutorial.call_deferred()
 	tutorial_played[current_level] = true
-	minigame_manager.play_minigame(current_level)
+	minigame_manager.unpause_minigame()

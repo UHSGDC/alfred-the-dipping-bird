@@ -14,7 +14,7 @@ func _on_back_pressed() -> void:
 	menus.change_menu(menus.previous_menu, false)
 	
 
-func _on_view_controls_pressed() -> void:
+func _on_controls_pressed() -> void:
 	$ControlsView.show()
 
 

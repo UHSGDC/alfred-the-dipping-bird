@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8igrafkyth5w"]
+[gd_scene load_steps=13 format=3 uid="uid://c8igrafkyth5w"]
 
 [ext_resource type="Script" path="res://scripts/menus/level_select_menu.gd" id="1_17o3r"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_1306q"]
+[ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="3_phdfl"]
 [ext_resource type="FontFile" uid="uid://dsffuedg4maj6" path="res://assets/font/Pixeled.ttf" id="3_y8jlr"]
 [ext_resource type="PackedScene" uid="uid://cxyfgqi6tn4s8" path="res://scenes/menus/level_select_button.tscn" id="4_fnreq"]
 
@@ -12,15 +13,15 @@ bg_color = Color(0.376471, 0.298039, 0.490196, 1)
 font = ExtResource("2_1306q")
 font_color = Color(0.690196, 0.811765, 0.933333, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4cc05"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7ele"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xodc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_py1tv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3mfa7"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jlggc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bpm63"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlcco"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h61au"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37gct"]
 
 [node name="LevelSelectMenu" type="Panel"]
 anchors_preset = 15
@@ -45,13 +46,12 @@ text = "Level Select"
 label_settings = SubResource("LabelSettings_rkjht")
 horizontal_alignment = 1
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" parent="." instance=ExtResource("3_phdfl")]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 31.0
-focus_mode = 0
 theme_override_colors/font_color = Color(0.564706, 0.54902, 0.780392, 1)
 theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
@@ -60,11 +60,11 @@ theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("3_y8jlr")
 theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxEmpty_4cc05")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_4xodc")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3mfa7")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_bpm63")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_h61au")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c7ele")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_py1tv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jlggc")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nlcco")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_37gct")
 text = "BACK"
 
 [node name="LevelSelectWindow" type="ColorRect" parent="."]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfnan7m7cqrk3"]
+
+[ext_resource type="Script" path="res://scripts/cutscenes/intro_cutscene.gd" id="1_rxtr7"]
+[ext_resource type="Script" path="res://scenes/cutscenes/dialog_box.gd" id="2_ce0gi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fuw6v"]
+
+[node name="IntroCutscene" type="Node"]
+script = ExtResource("1_rxtr7")
+
+[node name="DialogBox" type="Panel" parent="."]
+visible = false
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.389
+offset_bottom = -0.0200043
+theme_override_styles/panel = SubResource("StyleBoxFlat_fuw6v")
+script = ExtResource("2_ce0gi")
+
+[node name="Text" type="Label" parent="DialogBox"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
