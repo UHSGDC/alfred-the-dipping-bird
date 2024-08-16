@@ -37,10 +37,11 @@ func play_current_level() -> void:
 	cutscene_manager.kill_cutscene()
 	minigame_manager.play_minigame(current_level)
 	minigame_manager.pause_minigame()
-	MusicManager.fade_to_track(current_level + 1)
 	if current_level == Level.MIDWEST && !intro_cutscene_played:
+		MusicManager.fade_to_track(MusicManager.Track.NONE)
 		cutscene_manager.play_cutscene(Level.MIDWEST, CutsceneManager.Type.INTRO)
 	else:
+		MusicManager.fade_to_track(current_level + 1)
 		if tutorial_played[current_level]:
 			minigame_manager.play_minigame(current_level)
 			return
@@ -90,6 +91,7 @@ func _on_cutscene_manager_dipping_finished() -> void:
 
 
 func _on_cutscene_manager_intro_finished() -> void:
+	MusicManager.fade_to_track(current_level + 1)
 	cutscene_manager.kill_cutscene.call_deferred()
 	intro_cutscene_played = true
 	tutorial_manager.play_tutorial(current_level)

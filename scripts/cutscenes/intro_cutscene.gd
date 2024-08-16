@@ -2,16 +2,25 @@ extends Cutscene
 
 
 func play() -> void:
-	finished.emit()
+	$DialogBox.process_mode = Node.PROCESS_MODE_INHERIT
+	$DialogBox.show()
+	$DialogBox.play()
 
 
 func pause() -> void:
-	pass
+	$DialogBox.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func unpause() -> void:
-	pass
+	$DialogBox.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	
 func kill() -> void:
-	pass
+	$DialogBox.process_mode = Node.PROCESS_MODE_DISABLED
+	$DialogBox.hide()
+	$DialogBox.skip_input = true
+
+
+func _on_dialog_box_finished() -> void:
+	$DialogBox.hide()
+	finished.emit()
