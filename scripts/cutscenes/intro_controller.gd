@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 signal finished
 
@@ -19,9 +19,9 @@ enum {
 
 # Dialog is stored as a series of commands. A string will output text. A speed will set the speed of the dialog. A float will wait the indicated amount of seconds. Commands
 @onready var dialog_commands: Array = [
-	CLEAR, FAST, "?: Come on little bro! ", 0.5, MEDIUM, "Let's go dip our beaks in the lake. ", 0.2, "It's just over this hill.",
-	WAIT_FOR_PLAYER, CLEAR, "?: Oh, you want to take a nap. ", 0.4, "Well, I’m still gonna go dipping. ", 0.4, FAST, "Bye!",
-	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "Narrator: What ? didn’t know was that that \"Bye!\" ", 0.3, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
+	CLEAR, FAST, "?: Come on little bro! ", 0.5, "Let's go dip our beaks in the lake. ", 0.2, "It's just over this hill.",
+	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "?: Oh, you want to take a nap. ", 0.4, "Well, I’m still gonna go dipping. ", 0.4, FAST, "Bye!",
+	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "Narrator: What ? didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
 	CLEAR, INSTANT, "Alfred!",
 	WAIT_FOR_PLAYER, CLEAR, INSTANT, "Alfred! ", 0.5, FAST, "Wake up!",
 	WAIT_FOR_PLAYER, CLEAR, "poop"
@@ -32,18 +32,19 @@ var text_delay: float = 0
 var dialog_playing: bool = false
 var skip_input: bool = false
 
-@onready var output: Label = $Output
+@onready var dialog_box: Panel = $DialogBox
+@onready var output: Label = $DialogBox/Output
 @onready var text_timer: Timer = $TextTimer
 @onready var wait_timer: Timer = $WaitTimer
-@onready var next_icon: Node2D = $NextIcon
-
+@onready var next_icon: Node2D = $DialogBox/NextIcon
 
 func dream_to_real_life_transition() -> void:
-	# Code the transition here
-	pass
+	$AnimationPlayer.play("dream_to_real_life")
+	await $AnimationPlayer.animation_finished
 
 
 func play() -> void:
+	$DreamBackground/AnimationPlayer.play("rgb")
 	dialog_playing = true
 	for command in dialog_commands:
 		if !visible:
@@ -68,9 +69,9 @@ func play() -> void:
 					output.text = ""
 					output.visible_characters = 0
 				WAIT_FOR_PLAYER:
-					$NextIcon.activate()
+					next_icon.activate()
 					skip_input = false
-					await $NextIcon.finished
+					await next_icon.finished
 				ENABLE_SKIPPING:
 					skipping_enabled = true
 				DISABLE_SKIPPING:
@@ -78,15 +79,14 @@ func play() -> void:
 					skip_input = false
 				# Special commands
 				DREAM_TO_REAL_LIFE_TRANSITION:
-					dream_to_real_life_transition()
-				
+					await dream_to_real_life_transition()
 				# Speed commands
 				INSTANT:
 					text_delay = 0
 				FAST:
 					text_delay = 0.02
 				MEDIUM:
-					text_delay = 0.05
+					text_delay = 0.04
 				SLOW:
 					text_delay = 0.1
 				VERY_SLOW:

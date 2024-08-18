@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnbm4rn71da0j"
-path="res://.godot/imported/alfred_cutscene.png-280192c897f1c5b2f9c198d347f20458.ctex"
+uid="uid://d15pty7nculvf"
+path="res://.godot/imported/swirl.png-5bc7bfc71227e473ef513c5bdb2794e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/alfred_cutscene.png"
-dest_files=["res://.godot/imported/alfred_cutscene.png-280192c897f1c5b2f9c198d347f20458.ctex"]
+source_file="res://assets/cutscenes/swirl.png"
+dest_files=["res://.godot/imported/swirl.png-5bc7bfc71227e473ef513c5bdb2794e1.ctex"]
 
 [params]
 

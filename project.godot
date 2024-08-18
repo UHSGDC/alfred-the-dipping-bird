@@ -15,7 +15,7 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
 boot_splash/show_image=false
-config/icon="res://assets/alfred_cutscene.png"
+config/icon="res://assets/cutscenes/alfred_cutscene.png"
 
 [autoload]
 

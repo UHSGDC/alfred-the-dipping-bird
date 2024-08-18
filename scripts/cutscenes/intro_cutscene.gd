@@ -1,26 +1,32 @@
 extends Cutscene
 
+@onready var controller: Control = $Controller
+
+func _ready() -> void:
+	if get_tree().root.get_child(1) == self:
+		controller.play()
+
 
 func play() -> void:
-	$DialogBox.process_mode = Node.PROCESS_MODE_INHERIT
-	$DialogBox.show()
-	$DialogBox.play()
+	controller.process_mode = Node.PROCESS_MODE_INHERIT
+	controller.show()
+	controller.play()
 
 
 func pause() -> void:
-	$DialogBox.process_mode = Node.PROCESS_MODE_DISABLED
+	controller.process_mode = Node.PROCESS_MODE_DISABLED
 	
 
 func unpause() -> void:
-	$DialogBox.process_mode = Node.PROCESS_MODE_INHERIT
+	controller.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	
 func kill() -> void:
-	$DialogBox.process_mode = Node.PROCESS_MODE_DISABLED
-	$DialogBox.hide()
-	$DialogBox.skip_input = true
+	controller.process_mode = Node.PROCESS_MODE_DISABLED
+	controller.hide()
+	controller.skip_input = true
 
 
 func _on_dialog_box_finished() -> void:
-	$DialogBox.hide()
+	controller.hide()
 	finished.emit()

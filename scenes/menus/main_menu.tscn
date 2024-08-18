@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
-[ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/alfred_cutscene.png" id="2_gi225"]
+[ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/cutscenes/alfred_cutscene.png" id="2_gi225"]
 [ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="4_cvfma"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwh5c"]

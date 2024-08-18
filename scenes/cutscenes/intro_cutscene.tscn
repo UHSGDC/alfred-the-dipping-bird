@@ -1,11 +1,50 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfnan7m7cqrk3"]
+[gd_scene load_steps=18 format=3 uid="uid://bfnan7m7cqrk3"]
 
 [ext_resource type="Script" path="res://scripts/cutscenes/intro_cutscene.gd" id="1_rxtr7"]
-[ext_resource type="Texture2D" uid="uid://5rbytm0qy4h7" path="res://assets/dialogbox.png" id="2_0mn2n"]
-[ext_resource type="Script" path="res://scenes/cutscenes/dialog_box.gd" id="2_ce0gi"]
+[ext_resource type="Texture2D" uid="uid://5rbytm0qy4h7" path="res://assets/cutscenes/dialogbox.png" id="2_0mn2n"]
+[ext_resource type="Script" path="res://scripts/cutscenes/intro_controller.gd" id="2_y2gqg"]
+[ext_resource type="Texture2D" uid="uid://d15pty7nculvf" path="res://assets/cutscenes/swirl.png" id="3_6hws5"]
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="3_egco5"]
 [ext_resource type="Script" path="res://scripts/cutscenes/next_icon.gd" id="4_xqdmv"]
-[ext_resource type="Texture2D" uid="uid://cejbhglmnl684" path="res://assets/nexticon.png" id="5_7nwtn"]
+[ext_resource type="Texture2D" uid="uid://cejbhglmnl684" path="res://assets/cutscenes/nexticon.png" id="5_7nwtn"]
+
+[sub_resource type="Animation" id="Animation_t05km"]
+resource_name = "rgb"
+length = 7.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 0.6, 0, 1), Color(0.984314, 1, 0, 1), Color(0.329412, 0.988235, 0, 1), Color(0, 0.85098, 0.737255, 1), Color(0, 0.282353, 1, 1), Color(0.6, 0, 1, 1), Color(1, 0, 0.0156863, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.5664]
+}
+
+[sub_resource type="Animation" id="Animation_uciib"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7qvr"]
+_data = {
+"RESET": SubResource("Animation_uciib"),
+"rgb": SubResource("Animation_t05km")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwvvu"]
 content_margin_left = 3.0
@@ -19,30 +58,13 @@ texture_margin_right = 6.0
 texture_margin_bottom = 8.0
 region_rect = Rect2(0, 0, 18, 18)
 
-[sub_resource type="Animation" id="Animation_11wg4"]
-resource_name = "flash"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogBox/NextIcon:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_bjfah"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DialogBox/NextIcon:modulate")
+tracks/0/path = NodePath("Controller/DialogBox/NextIcon:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,16 +74,139 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_11wg4"]
+resource_name = "flash"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controller/DialogBox/NextIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yn6sw"]
 _data = {
 "RESET": SubResource("Animation_bjfah"),
 "flash": SubResource("Animation_11wg4")
 }
 
+[sub_resource type="Animation" id="Animation_b8kt7"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DreamBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4wi0x"]
+resource_name = "dream_to_real_life"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DreamBackground:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7cs4x"]
+_data = {
+"RESET": SubResource("Animation_b8kt7"),
+"dream_to_real_life": SubResource("Animation_4wi0x")
+}
+
 [node name="IntroCutscene" type="Node"]
 script = ExtResource("1_rxtr7")
 
-[node name="DialogBox" type="Panel" parent="."]
+[node name="Controller" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_y2gqg")
+
+[node name="Background" type="ColorRect" parent="Controller"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DreamBackground" type="ColorRect" parent="Controller"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0637183, 0.252368, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controller/DreamBackground"]
+libraries = {
+"": SubResource("AnimationLibrary_t7qvr")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="Controller/DreamBackground"]
+modulate = Color(1, 1, 1, 0.447059)
+position = Vector2(154, 116)
+rotation = 9.16662
+texture = ExtResource("3_6hws5")
+offset = Vector2(10, 45)
+
+[node name="TextTimer" type="Timer" parent="Controller"]
+
+[node name="WaitTimer" type="Timer" parent="Controller"]
+
+[node name="DialogBox" type="Panel" parent="Controller"]
+layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.389
@@ -70,9 +215,8 @@ offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -0.0199966
 theme_override_styles/panel = SubResource("StyleBoxTexture_hwvvu")
-script = ExtResource("2_ce0gi")
 
-[node name="Output" type="Label" parent="DialogBox"]
+[node name="Output" type="Label" parent="Controller/DialogBox"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.039
@@ -80,9 +224,9 @@ anchor_top = 0.21
 anchor_right = 0.964
 anchor_bottom = 0.871
 offset_left = 0.144
-offset_top = -0.0200005
+offset_top = -0.0199995
 offset_right = -0.0559998
-offset_bottom = -0.00200272
+offset_bottom = -0.00200653
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
@@ -91,11 +235,7 @@ theme_override_font_sizes/font_size = 8
 autowrap_mode = 3
 visible_characters_behavior = 1
 
-[node name="TextTimer" type="Timer" parent="DialogBox"]
-
-[node name="WaitTimer" type="Timer" parent="DialogBox"]
-
-[node name="NextIcon" type="Sprite2D" parent="DialogBox"]
+[node name="NextIcon" type="Sprite2D" parent="Controller/DialogBox"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.690196, 0.811765, 0.933333, 1)
 position = Vector2(288, 46)
@@ -103,10 +243,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("5_7nwtn")
 script = ExtResource("4_xqdmv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DialogBox/NextIcon"]
-root_node = NodePath("../../..")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controller/DialogBox/NextIcon"]
+root_node = NodePath("../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_yn6sw")
 }
 
-[connection signal="finished" from="DialogBox" to="." method="_on_dialog_box_finished"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controller"]
+libraries = {
+"": SubResource("AnimationLibrary_7cs4x")
+}

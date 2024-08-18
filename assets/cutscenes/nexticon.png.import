@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cejbhglmnl684"
-path="res://.godot/imported/nexticon.png-3f080e613b1b8e36d1fe111db0f4d6aa.ctex"
+path="res://.godot/imported/nexticon.png-b214f926db5076d8ba8578a1896b34c1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/nexticon.png"
-dest_files=["res://.godot/imported/nexticon.png-3f080e613b1b8e36d1fe111db0f4d6aa.ctex"]
+source_file="res://assets/cutscenes/nexticon.png"
+dest_files=["res://.godot/imported/nexticon.png-b214f926db5076d8ba8578a1896b34c1.ctex"]
 
 [params]
 
