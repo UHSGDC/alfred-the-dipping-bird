@@ -20,6 +20,14 @@ func handle_input() -> void:
 		if current_note != null:
 			# Adding up booleans (false = 0, true = 1) instead of having if statements
 			var score: int = int(perfect) + int(good) + int(okay)
+			if perfect:
+				$GreatParticles.restart()
+				$GreatSound.play()
+			if good:
+				$GoodParticles.restart()
+			if okay:
+				$OkayParticles.restart()
+			
 			note_hit.emit(score)
 			current_note.destroy(score)
 			_reset()

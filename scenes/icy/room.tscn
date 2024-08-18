@@ -26,4 +26,6 @@ bus = &"Sound"
 stream = ExtResource("3_jwmo0")
 bus = &"Sound"
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

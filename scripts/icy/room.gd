@@ -35,6 +35,7 @@ func reset() -> void:
 	cracked = false
 	var tween := create_tween()
 	
+	screen_shake = true
 	player.falling = true
 	player.on_ice = false
 	player.in_air = false
@@ -42,7 +43,9 @@ func reset() -> void:
 	tween.tween_property(player, "scale", Vector2.ZERO, 0.5)
 	await tween.finished
 	
+	screen_shake = false
 	camera.position = position
+	
 	player.falling = false
 	player.scale = Vector2.ONE
 	player.global_position = get_start_pos()
@@ -52,17 +55,20 @@ func reset() -> void:
 	$WeakSpots.process_mode = Node.PROCESS_MODE_INHERIT
 	if $CrackGate != null:
 		$CrackGate.close()
+	
 
 
 func _on_weak_spots_uncracked_count_changed(new_value: int) -> void:
 	if new_value == 0:
-		screen_shake = true
 		$SplashSound.play()
-		await get_tree().create_timer(SCREEN_SHAKE_TIME).timeout
+		screen_shake = true
+		$Timer.start(SCREEN_SHAKE_TIME)
+		await $Timer.timeout
 		screen_shake = false
 		camera.position = position
 		$SplashParticles.splash()
-		await get_tree().create_timer(0.1).timeout
+		$Timer.start(0.1)
+		await $Timer.timeout
 		cracked = true
 		$Water.show()
 		$WeakSpots.hide()

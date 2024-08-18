@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctgw5vu4lgpq0"]
+[gd_scene load_steps=9 format=3 uid="uid://ctgw5vu4lgpq0"]
 
 [ext_resource type="Texture2D" uid="uid://b6a3raijhgxb4" path="res://assets/japanese/beat.png" id="2_dn3fw"]
 [ext_resource type="Script" path="res://scripts/japanese/note_target.gd" id="2_ntqt3"]
+[ext_resource type="AudioStream" uid="uid://dwydp5ra1g7bo" path="res://assets/japanese/drum.wav" id="3_2igbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chqa4"]
 size = Vector2(2, 4)
@@ -11,6 +12,16 @@ size = Vector2(2, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6024x"]
 size = Vector2(2, 8)
+
+[sub_resource type="Curve" id="Curve_beqvp"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 0), 0.0, 0.0, 0, 0, Vector2(0.617143, -142.857), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_0hqc7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.114286, 1), 0.0, 0.0, 0, 0, Vector2(0.685714, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="NoteTarget" type="Area2D"]
 script = ExtResource("2_ntqt3")
@@ -37,6 +48,65 @@ shape = SubResource("RectangleShape2D_6024x")
 
 [node name="PushTimer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="GreatParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("Curve_beqvp")
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_0hqc7")
+color = Color(0.352941, 0.858824, 0.980392, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="GoodParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("Curve_beqvp")
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_0hqc7")
+color = Color(0.980392, 0.403922, 0.207843, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="OkayParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+linear_accel_max = 2.0
+linear_accel_curve = SubResource("Curve_beqvp")
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_0hqc7")
+color = Color(1, 0.615686, 0.243137, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="GreatSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2igbh")
+volume_db = -2.0
+bus = &"Drum"
 
 [connection signal="area_entered" from="." to="." method="_on_perfect_area_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_perfect_area_area_exited"]

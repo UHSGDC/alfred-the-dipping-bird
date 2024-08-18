@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func jump() -> void:
 	in_air = true
+	$JumpParticles.restart()
 	anim_player.play("jump")
 	await anim_player.animation_finished
 	in_air = false
@@ -49,6 +50,10 @@ func animate() -> void:
 		anim_player.play("jump")
 	elif velocity != Vector2.ZERO:
 		anim_player.play("walk")
+		if !on_ice:
+			$WalkParticles.emitting = true
+		else:
+			$WalkParticles.emitting = false
 	else:
 		anim_player.play("idle")
 
@@ -111,6 +116,7 @@ func _on_ice_detector_area_entered(area: Area2D) -> void:
 func _on_ice_detector_area_exited(area: Area2D) -> void:
 	if area.is_in_group("ice"):
 		on_ice = false
+		
 
 
 func _on_weak_spot_detector_area_entered(area: Area2D) -> void:

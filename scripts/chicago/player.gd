@@ -27,6 +27,16 @@ var velocity: Vector2 = Vector2(AUTOSCROLL_SPEED, 0)
 var was_just_hit: bool = false
 var death_pause: bool = false
 
+var screen_shake_pos: Vector2
+var screen_shake: bool = false :
+	set(value):
+		screen_shake = value
+		if value:
+			screen_shake_pos = camera.position
+		else:
+			camera.position = screen_shake_pos
+
+
 @onready var current_lives: int :
 	set(value):
 		if print_debug_messages:
@@ -48,6 +58,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if screen_shake:
+		camera.position = screen_shake_pos + Vector2.RIGHT.rotated(randf_range(-PI, PI))
+				
 	if debug_mode and Input.is_action_just_pressed("interact"):
 		debug_movement_paused = !debug_movement_paused
 
@@ -162,7 +175,12 @@ func on_body_entered_smoke(_body: Node2D) -> void:
 func kill(message: String) -> void:
 	$Body.hide()
 	$CPUParticles2D.hide()
-	$DeathParticles.emitting = true
+	$DeathParticles.restart()
 	death_pause = true
-	await $DeathParticles.finished	
+	screen_shake = true
+	$Timer.start(0.3)
+	await $Timer.timeout
+	screen_shake = false
+	await $DeathParticles.finished
 	player_killed.emit(message)
+	

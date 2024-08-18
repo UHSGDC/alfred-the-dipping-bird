@@ -135,4 +135,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_rnnfv")
-volume_db = -8.966
+bus = &"Sound"

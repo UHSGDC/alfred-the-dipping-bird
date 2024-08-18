@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbjq7mfwv5wh3"]
+[gd_scene load_steps=19 format=3 uid="uid://dbjq7mfwv5wh3"]
 
 [ext_resource type="Script" path="res://scripts/icy/player.gd" id="1_4odhq"]
 [ext_resource type="Texture2D" uid="uid://qehs6ixgxh4a" path="res://assets/icy/alfred.png" id="2_gfnyu"]
@@ -160,6 +160,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LandParticles")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"restart"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_a5iyq"]
 resource_name = "walk"
@@ -221,6 +235,23 @@ streams_count = 1
 stream_0/stream = ExtResource("4_w1f6i")
 stream_0/weight = 1.0
 
+[sub_resource type="Curve" id="Curve_qu4gr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.291429, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.153846), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_piudq"]
+offsets = PackedFloat32Array(0, 0.346939, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_j54yc"]
+colors = PackedColorArray(0.690196, 0.811765, 0.933333, 1, 0.352941, 0.858824, 0.980392, 1)
+
+[sub_resource type="Curve" id="Curve_x5vry"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.462857, -200), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 motion_mode = 1
@@ -275,6 +306,60 @@ bus = &"Sound"
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_co48h")
 bus = &"Sound"
+
+[node name="WalkParticles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+emitting = false
+amount = 16
+lifetime = 0.4
+explosiveness = 0.8
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+scale_amount_curve = SubResource("Curve_qu4gr")
+color_ramp = SubResource("Gradient_piudq")
+color_initial_ramp = SubResource("Gradient_j54yc")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+emitting = false
+amount = 16
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+linear_accel_curve = SubResource("Curve_x5vry")
+scale_amount_curve = SubResource("Curve_qu4gr")
+color_ramp = SubResource("Gradient_piudq")
+color_initial_ramp = SubResource("Gradient_j54yc")
+
+[node name="LandParticles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+emitting = false
+amount = 32
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+emission_shape = 2
+emission_sphere_radius = 2.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 40.0
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+linear_accel_curve = SubResource("Curve_x5vry")
+scale_amount_curve = SubResource("Curve_qu4gr")
+color_ramp = SubResource("Gradient_piudq")
+color_initial_ramp = SubResource("Gradient_j54yc")
 
 [connection signal="area_entered" from="IceDetector" to="." method="_on_ice_detector_area_entered"]
 [connection signal="area_exited" from="IceDetector" to="." method="_on_ice_detector_area_exited"]
