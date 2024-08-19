@@ -15,16 +15,22 @@ enum {
 	ENABLE_SKIPPING,
 	DISABLE_SKIPPING,
 	DREAM_TO_REAL_LIFE_TRANSITION,
+	YES_BUTTON,
 }
 
 # Dialog is stored as a series of commands. A string will output text. A speed will set the speed of the dialog. A float will wait the indicated amount of seconds. Commands
 @onready var dialog_commands: Array = [
 	CLEAR, FAST, "?: Come on little bro! ", 0.5, "Let's go dip our beaks in the lake. ", 0.2, "It's just over this hill.",
 	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "?: Oh, you want to take a nap. ", 0.4, "Well, I’m still gonna go dipping. ", 0.4, FAST, "Bye!",
-	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "Narrator: What ? didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
+	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "What ? didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
 	CLEAR, INSTANT, "Alfred!",
 	WAIT_FOR_PLAYER, CLEAR, INSTANT, "Alfred! ", 0.5, FAST, "Wake up!",
-	WAIT_FOR_PLAYER, CLEAR, "poop"
+	WAIT_FOR_PLAYER, CLEAR, MEDIUM, "You’ve been asleep for 100 years. ", 0.4, "The world needs you. ", 
+	WAIT_FOR_PLAYER, CLEAR, FAST, "Wake up! ", 0.4, MEDIUM, "Have you forgotten who you are?",
+	WAIT_FOR_PLAYER, CLEAR, SLOW, "You are ", 0.4, VERY_SLOW, "ALFRED THE DIPPING BIRD",
+	WAIT_FOR_PLAYER, CLEAR, FAST, "The world is on the verge of destruction", 0.4, MEDIUM, ", for its lakes have not been dipped in years. ", 0.5, FAST, CLEAR, "The Roman Empire has collapsed. ", 0.2, "The Shire is the new Mordor. ", 0.2, "Bandits run the streets. ", 0.2, "Everywhere you go there is chaos.",
+	WAIT_FOR_PLAYER, CLEAR, "The world needs its hero.\n", 0.2, "The world needs Alfred.\n", 0.4, MEDIUM, "Will you fight for the world?",
+	WAIT_FOR_PLAYER, YES_BUTTON, CLEAR, SLOW, "Good luck hero...\n\n", 1.0, "The world needs you"
 ]
 
 var skipping_enabled: bool = true
@@ -44,8 +50,8 @@ func dream_to_real_life_transition() -> void:
 
 
 func play() -> void:
-	$DreamBackground/AnimationPlayer.play("rgb")
 	dialog_playing = true
+	$DreamBackground/AnimationPlayer.play("rgb")
 	for command in dialog_commands:
 		if !visible:
 			break
@@ -90,8 +96,14 @@ func play() -> void:
 				SLOW:
 					text_delay = 0.1
 				VERY_SLOW:
-					text_delay = 0.5
-	dialog_playing = false
+					text_delay = 0.2
+	dialog_playing = true
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, "modulate", Color.BLACK, 2)
+	await tween.finished
+	tween = get_tree().create_tween()
+	tween.tween_interval(0.6)
+	await tween.finished
 	finished.emit()
 	
 

@@ -26,7 +26,6 @@ func kill() -> void:
 	controller.hide()
 	controller.skip_input = true
 
-
-func _on_dialog_box_finished() -> void:
+func _on_controller_finished() -> void:
 	controller.hide()
 	finished.emit()
