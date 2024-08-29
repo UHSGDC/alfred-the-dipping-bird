@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bfnan7m7cqrk3"]
+[gd_scene load_steps=58 format=3 uid="uid://bfnan7m7cqrk3"]
 
 [ext_resource type="Script" path="res://scripts/cutscenes/intro_cutscene.gd" id="1_rxtr7"]
 [ext_resource type="Texture2D" uid="uid://5rbytm0qy4h7" path="res://assets/cutscenes/dialogbox.png" id="2_0mn2n"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bt61mmybu2mo3" path="res://assets/cutscenes/sfx/pop.wav" id="6_8782d"]
 [ext_resource type="AudioStream" uid="uid://vgvtc4hsvq52" path="res://assets/cutscenes/sfx/eye_open.wav" id="7_2vr66"]
 [ext_resource type="AudioStream" uid="uid://dvmgtonnuoxgg" path="res://assets/cutscenes/sfx/quack2.wav" id="8_birb8"]
+[ext_resource type="AudioStream" uid="uid://bev1quwpwg4fo" path="res://assets/cutscenes/sfx/snore.wav" id="9_bwfpb"]
 [ext_resource type="AudioStream" uid="uid://b745jedbh6500" path="res://assets/cutscenes/sfx/type_writer.wav" id="12_v8sru"]
 [ext_resource type="AudioStream" uid="uid://dy4ovppgf5ox5" path="res://assets/cutscenes/sfx/text.wav" id="15_yqr66"]
 [ext_resource type="AudioStream" uid="uid://dtj5vxmvwwuw0" path="res://assets/cutscenes/sfx/next2.wav" id="16_xylyx"]
@@ -72,13 +73,13 @@ region = Rect2(480, 0, 40, 56)
 atlas = ExtResource("4_tyti2")
 region = Rect2(520, 0, 40, 56)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cuf5e"]
-atlas = ExtResource("4_tyti2")
-region = Rect2(400, 0, 40, 56)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhvkk"]
 atlas = ExtResource("4_tyti2")
 region = Rect2(360, 0, 40, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuf5e"]
+atlas = ExtResource("4_tyti2")
+region = Rect2(400, 0, 40, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gwbgm"]
 atlas = ExtResource("4_tyti2")
@@ -173,6 +174,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lhvkk")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_cuf5e")
 }, {
 "duration": 1.0,
@@ -208,13 +212,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eqoc7")
 }, {
-"duration": 3.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_x5o0b")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_mw2dv")
 }, {
-"duration": 1.0,
+"duration": 1.5,
 "texture": SubResource("AtlasTexture_kwxjw")
 }],
 "loop": true,
@@ -568,9 +572,7 @@ color = Color(0.521569, 0.0352941, 0.313726, 1)
 modulate = Color(1, 1, 1, 0)
 position = Vector2(159, 124)
 sprite_frames = SubResource("SpriteFrames_enc2n")
-animation = &"wake_up3"
-frame = 1
-frame_progress = 1.0
+animation = &"nod"
 script = ExtResource("5_pxcvg")
 
 [node name="Pop" type="AudioStreamPlayer" parent="Controller/LifeBackground/AnimatedSprite2D"]
@@ -584,8 +586,13 @@ bus = &"Sound"
 
 [node name="Quack" type="AudioStreamPlayer" parent="Controller/LifeBackground/AnimatedSprite2D"]
 stream = ExtResource("8_birb8")
-volume_db = 15.0
-pitch_scale = 1.2
+volume_db = 6.0
+pitch_scale = 1.1
+bus = &"Sound"
+
+[node name="Snore" type="AudioStreamPlayer" parent="Controller/LifeBackground/AnimatedSprite2D"]
+stream = ExtResource("9_bwfpb")
+volume_db = -5.0
 bus = &"Sound"
 
 [node name="AlfredHat" type="Sprite2D" parent="Controller/LifeBackground"]

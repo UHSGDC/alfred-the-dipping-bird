@@ -1,0 +1,362 @@
+[gd_scene load_steps=27 format=3 uid="uid://c4nqwbmmepikk"]
+
+[ext_resource type="Script" path="res://scripts/cutscenes/end_cutscene.gd" id="1_rwjhg"]
+[ext_resource type="Script" path="res://scripts/cutscenes/end_controller.gd" id="2_3vkra"]
+[ext_resource type="Texture2D" uid="uid://5rbytm0qy4h7" path="res://assets/cutscenes/dialogbox.png" id="10_g2g6t"]
+[ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="11_8q7yg"]
+[ext_resource type="Texture2D" uid="uid://cejbhglmnl684" path="res://assets/cutscenes/nexticon.png" id="12_dqguk"]
+[ext_resource type="Script" path="res://scripts/cutscenes/next_icon.gd" id="13_kca6r"]
+[ext_resource type="AudioStream" uid="uid://b745jedbh6500" path="res://assets/cutscenes/sfx/type_writer.wav" id="14_61doo"]
+[ext_resource type="AudioStream" uid="uid://dy4ovppgf5ox5" path="res://assets/cutscenes/sfx/text.wav" id="15_0o16h"]
+[ext_resource type="AudioStream" uid="uid://dijqj83dl7nmr" path="res://assets/cutscenes/sfx/next.wav" id="16_utp85"]
+[ext_resource type="AudioStream" uid="uid://dtj5vxmvwwuw0" path="res://assets/cutscenes/sfx/next2.wav" id="17_k7ysv"]
+[ext_resource type="FontFile" uid="uid://bicugomobccmp" path="res://assets/font/alagard.ttf" id="18_l4i1w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwvvu"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("10_g2g6t")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+
+[sub_resource type="Animation" id="Animation_bjfah"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controller/DialogBox/NextIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_11wg4"]
+resource_name = "flash"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Controller/DialogBox/NextIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yn6sw"]
+_data = {
+"RESET": SubResource("Animation_bjfah"),
+"flash": SubResource("Animation_11wg4")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_001wi"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("16_utp85")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("17_k7ysv")
+stream_1/weight = 1.0
+
+[sub_resource type="Animation" id="Animation_b8kt7"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4wi0x"]
+resource_name = "dream_to_real_life"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 6.8, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogBox/Output:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7cs4x"]
+_data = {
+"RESET": SubResource("Animation_b8kt7"),
+"dream_to_real_life": SubResource("Animation_4wi0x")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74du8"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("10_g2g6t")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ndfv3"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("10_g2g6t")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+modulate_color = Color(0.878431, 0.85098, 0.909804, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fbi60"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("10_g2g6t")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+modulate_color = Color(0.717647, 0.666667, 0.768627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_08iwy"]
+content_margin_left = 3.0
+content_margin_top = 4.0
+content_margin_right = 3.0
+content_margin_bottom = 4.0
+texture = ExtResource("10_g2g6t")
+texture_margin_left = 6.0
+texture_margin_top = 8.0
+texture_margin_right = 6.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 0, 18, 18)
+modulate_color = Color(0.537255, 0.537255, 0.537255, 1)
+
+[sub_resource type="Theme" id="Theme_bcvgk"]
+TooltipLabel/colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+TooltipLabel/font_sizes/font_size = 8
+TooltipLabel/fonts/font = ExtResource("11_8q7yg")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuke3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_764ku"]
+font = ExtResource("18_l4i1w")
+
+[node name="EndCutscene" type="Node"]
+script = ExtResource("1_rwjhg")
+
+[node name="Controller" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_3vkra")
+
+[node name="Background" type="ColorRect" parent="Controller"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextTimer" type="Timer" parent="Controller"]
+
+[node name="WaitTimer" type="Timer" parent="Controller"]
+
+[node name="DialogBox" type="Panel" parent="Controller"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.389
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -0.0199966
+theme_override_styles/panel = SubResource("StyleBoxTexture_hwvvu")
+
+[node name="Output" type="Label" parent="Controller/DialogBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_top = 0.177
+anchor_right = 0.964
+anchor_bottom = 0.839
+offset_left = 0.144
+offset_top = 0.026
+offset_right = -0.0559998
+offset_bottom = -0.0180092
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("11_8q7yg")
+theme_override_font_sizes/font_size = 8
+autowrap_mode = 3
+visible_characters_behavior = 1
+
+[node name="NextIcon" type="Sprite2D" parent="Controller/DialogBox"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.690196, 0.811765, 0.933333, 1)
+position = Vector2(288, 46)
+scale = Vector2(2, 2)
+texture = ExtResource("12_dqguk")
+script = ExtResource("13_kca6r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controller/DialogBox/NextIcon"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_yn6sw")
+}
+
+[node name="TypeWriter" type="AudioStreamPlayer" parent="Controller/DialogBox"]
+stream = ExtResource("14_61doo")
+volume_db = 4.0
+max_polyphony = 10
+bus = &"Sound"
+
+[node name="TextSound" type="AudioStreamPlayer" parent="Controller/DialogBox"]
+stream = ExtResource("15_0o16h")
+volume_db = 3.0
+pitch_scale = 0.6
+max_polyphony = 30
+bus = &"Sound"
+
+[node name="NextSound" type="AudioStreamPlayer" parent="Controller/DialogBox"]
+stream = SubResource("AudioStreamRandomizer_001wi")
+volume_db = 6.0
+max_polyphony = 30
+bus = &"Sound"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Controller"]
+libraries = {
+"": SubResource("AnimationLibrary_7cs4x")
+}
+
+[node name="Yes" type="Button" parent="Controller"]
+visible = false
+layout_mode = 0
+offset_left = 249.0
+offset_top = 75.0
+offset_right = 305.0
+offset_bottom = 100.0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_pressed_color = Color(0.376471, 0.298039, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(0.564706, 0.54902, 0.780392, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("11_8q7yg")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_74du8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ndfv3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_fbi60")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_08iwy")
+text = "Yes"
+
+[node name="No" type="Button" parent="Controller"]
+visible = false
+layout_mode = 0
+offset_left = 249.0
+offset_top = 106.0
+offset_right = 305.0
+offset_bottom = 131.0
+tooltip_text = "No, you're not allowed to say no"
+focus_mode = 0
+theme = SubResource("Theme_bcvgk")
+theme_override_colors/font_disabled_color = Color(0.290196, 0.345098, 0.4, 1)
+theme_override_fonts/font = ExtResource("11_8q7yg")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/disabled = SubResource("StyleBoxTexture_08iwy")
+disabled = true
+text = "No"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Controller"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="CenterContainer" type="PanelContainer" parent="Controller/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nuke3")
+
+[node name="Text" type="Label" parent="Controller/ScrollContainer/CenterContainer"]
+texture_filter = 5
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "The hero will wake from his 100 year “nap” on the hill,
+
+He will fly and soar above the clouds,
+
+He will dip and save the world from destruction,
+
+He will crack open the barren ice lakes,
+
+He will play the drums with perfect rhythm,
+
+But most importantly, he will return,
+
+He will return to something,
+someone he left 100 years ago,
+
+When he closed his eyes,
+For what was supposed to be
+just a nap"
+label_settings = SubResource("LabelSettings_764ku")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ScrollTexture" type="TextureRect" parent="Controller/ScrollContainer/CenterContainer"]
+layout_mode = 2
+
+[connection signal="finished" from="Controller" to="." method="_on_controller_finished"]

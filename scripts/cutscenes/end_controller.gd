@@ -33,7 +33,7 @@ enum {
 @onready var dialog_commands: Array = [
 	CLEAR, FAST, "?: Come on little bro! ", 0.5, "Let's go dip our beaks in the lake. ", 0.2, "It's just over this hill.",
 	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "?: Oh, you want to take a nap. ", 0.4, "Well, I’m still gonna go dipping. ", 0.4, FAST, "Bye!",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "What \"?\" didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
+	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "What ? didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
 	CLEAR, INSTANT, "Alfred!",
 	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, INSTANT, "Alfred! ", 0.5, FAST, "Wake up!",
 	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "You’ve been asleep for 100 years. ", 0.4, "The world needs you. ", 
@@ -66,7 +66,6 @@ func play() -> void:
 	dialog_playing = true
 	$Yes.hide()
 	$No.hide()
-	$DreamBackground/AnimationPlayer.play("rgb")
 	for command in dialog_commands:
 		if !visible:
 			break
