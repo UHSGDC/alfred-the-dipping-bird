@@ -1,16 +1,25 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4nqwbmmepikk"]
+[gd_scene load_steps=33 format=3 uid="uid://c4nqwbmmepikk"]
 
 [ext_resource type="Script" path="res://scripts/cutscenes/end_cutscene.gd" id="1_rwjhg"]
 [ext_resource type="Script" path="res://scripts/cutscenes/end_controller.gd" id="2_3vkra"]
+[ext_resource type="Shader" path="res://scripts/blur.gdshader" id="3_vuvdm"]
+[ext_resource type="Texture2D" uid="uid://c6frslinpwvjn" path="res://assets/japanese/background.png" id="4_grnsf"]
 [ext_resource type="Texture2D" uid="uid://5rbytm0qy4h7" path="res://assets/cutscenes/dialogbox.png" id="10_g2g6t"]
+[ext_resource type="Texture2D" uid="uid://b0nj46376chmt" path="res://assets/cutscenes/scroll.png" id="11_5bbua"]
 [ext_resource type="FontFile" uid="uid://b1bh8q82a83pd" path="res://assets/font/PressStart2P-Regular.ttf" id="11_8q7yg"]
 [ext_resource type="Texture2D" uid="uid://cejbhglmnl684" path="res://assets/cutscenes/nexticon.png" id="12_dqguk"]
+[ext_resource type="Shader" path="res://scripts/outline.gdshader" id="13_gg7xd"]
 [ext_resource type="Script" path="res://scripts/cutscenes/next_icon.gd" id="13_kca6r"]
+[ext_resource type="Texture2D" uid="uid://c4qy8f3du24ve" path="res://assets/cutscenes/scroll_item.png" id="13_mb6no"]
 [ext_resource type="AudioStream" uid="uid://b745jedbh6500" path="res://assets/cutscenes/sfx/type_writer.wav" id="14_61doo"]
 [ext_resource type="AudioStream" uid="uid://dy4ovppgf5ox5" path="res://assets/cutscenes/sfx/text.wav" id="15_0o16h"]
 [ext_resource type="AudioStream" uid="uid://dijqj83dl7nmr" path="res://assets/cutscenes/sfx/next.wav" id="16_utp85"]
 [ext_resource type="AudioStream" uid="uid://dtj5vxmvwwuw0" path="res://assets/cutscenes/sfx/next2.wav" id="17_k7ysv"]
 [ext_resource type="FontFile" uid="uid://bicugomobccmp" path="res://assets/font/alagard.ttf" id="18_l4i1w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tu3i6"]
+shader = ExtResource("3_vuvdm")
+shader_parameter/blur_amount = Vector2(0.003, 0.003)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hwvvu"]
 content_margin_left = 3.0
@@ -177,10 +186,13 @@ TooltipLabel/colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 TooltipLabel/font_sizes/font_size = 8
 TooltipLabel/fonts/font = ExtResource("11_8q7yg")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nuke3"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_764ku"]
 font = ExtResource("18_l4i1w")
+font_color = Color(0.0431373, 0.0862745, 0.27451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhh2o"]
+shader = ExtResource("13_gg7xd")
+shader_parameter/outline_color = Color(1, 0.94902, 0.768627, 0)
 
 [node name="EndCutscene" type="Node"]
 script = ExtResource("1_rwjhg")
@@ -194,14 +206,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_3vkra")
 
-[node name="Background" type="ColorRect" parent="Controller"]
+[node name="Background" type="TextureRect" parent="Controller"]
+texture_filter = 2
+material = SubResource("ShaderMaterial_tu3i6")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("4_grnsf")
 
 [node name="TextTimer" type="Timer" parent="Controller"]
 
@@ -312,28 +326,33 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_08iwy")
 disabled = true
 text = "No"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Controller"]
+[node name="ScrollTexture" type="TextureRect" parent="Controller"]
+layout_mode = 2
+offset_top = 180.0
+offset_right = 320.0
+offset_bottom = 651.0
+size_flags_vertical = 8
+texture = ExtResource("11_5bbua")
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="Controller/ScrollTexture"]
+texture_filter = 5
+use_parent_material = true
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -200.5
+offset_right = 140.0
+offset_bottom = 200.5
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-
-[node name="CenterContainer" type="PanelContainer" parent="Controller/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nuke3")
-
-[node name="Text" type="Label" parent="Controller/ScrollContainer/CenterContainer"]
-texture_filter = 5
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
+size_flags_horizontal = 4
+size_flags_vertical = 8
 text = "The hero will wake from his 100 year “nap” on the hill,
 
 He will fly and soar above the clouds,
@@ -356,7 +375,9 @@ label_settings = SubResource("LabelSettings_764ku")
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="ScrollTexture" type="TextureRect" parent="Controller/ScrollContainer/CenterContainer"]
-layout_mode = 2
+[node name="ScrollItem" type="Sprite2D" parent="Controller"]
+material = SubResource("ShaderMaterial_xhh2o")
+position = Vector2(160, -29)
+texture = ExtResource("13_mb6no")
 
 [connection signal="finished" from="Controller" to="." method="_on_controller_finished"]

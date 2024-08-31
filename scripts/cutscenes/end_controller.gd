@@ -16,14 +16,6 @@ enum {
 	DISABLE_SKIPPING,
 	DREAM_TO_REAL_LIFE_TRANSITION,
 	YES_BUTTON,
-	WAKEUP1,
-	WAKEUP2,
-	WAKEUP3,
-	HAT,
-	HATNOD,
-	NOD,
-	NORMAL,
-	SAD,
 	SOUND_ON,
 	SOUND_OFF,
 	NEXT_SOUND,
@@ -31,17 +23,7 @@ enum {
 
 # Dialog is stored as a series of commands. A string will output text. A speed will set the speed of the dialog. A float will wait the indicated amount of seconds. Commands
 @onready var dialog_commands: Array = [
-	CLEAR, FAST, "?: Come on little bro! ", 0.5, "Let's go dip our beaks in the lake. ", 0.2, "It's just over this hill.",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "?: Oh, you want to take a nap. ", 0.4, "Well, I’m still gonna go dipping. ", 0.4, FAST, "Bye!",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "What ? didn’t know was that that \"Bye!\" ", 0.3, SLOW, "would be for far longer than he realized.", DREAM_TO_REAL_LIFE_TRANSITION,
-	CLEAR, INSTANT, "Alfred!",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, INSTANT, "Alfred! ", 0.5, FAST, "Wake up!",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "You’ve been asleep for 100 years. ", 0.4, "The world needs you. ", 
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, FAST, "Wake up! ", 0.4, MEDIUM, "Have you forgotten who you are?",
-	WAIT_FOR_PLAYER, CLEAR, SOUND_ON, INSTANT, DISABLE_SKIPPING, "YOU ", WAKEUP1, 0.5, "ARE ", WAKEUP2, 0.5, SLOW, "ALFRED THE DIPPING BIRD!", SOUND_OFF, WAKEUP3,
-	WAIT_FOR_PLAYER, NEXT_SOUND, ENABLE_SKIPPING, CLEAR, MEDIUM, "The world is on the verge of destruction", 0.4, ", for its lakes have not been dipped in years. ", 0.5, SAD, CLEAR, "The Roman Empire has collapsed. ", 0.2, "The Shire is the new Mordor. ", 0.2, "Bandits run the streets. ", 0.2, "Everywhere you go ", 0.2, "there is chaos.",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, SAD, "The world needs its hero.\n", 0.2, "The world needs Alfred.\n", NORMAL, 0.4, MEDIUM, "Will you fight for the world?",
-	YES_BUTTON, NEXT_SOUND, NOD, CLEAR, SLOW, "Good luck hero...\n\n", HAT, 1.0, "The world needs you", HATNOD
+	WAIT_FOR_PLAYER
 ]
 
 var skipping_enabled: bool = true
@@ -55,7 +37,6 @@ var text_sound: bool = false
 @onready var text_timer: Timer = $TextTimer
 @onready var wait_timer: Timer = $WaitTimer
 @onready var next_icon: Node2D = $DialogBox/NextIcon
-@onready var alfred_sleep: AnimatedSprite2D = $LifeBackground/AnimatedSprite2D
 
 func dream_to_real_life_transition() -> void:
 	$AnimationPlayer.play("dream_to_real_life")
@@ -113,24 +94,6 @@ func play() -> void:
 					text_delay = 0.2
 				NEXT_SOUND:
 					$DialogBox/NextSound.play()
-				WAKEUP1:
-					await alfred_sleep.wake_up(1)
-				WAKEUP2:
-					await alfred_sleep.wake_up(2)
-				WAKEUP3:
-					await alfred_sleep.wake_up(3)
-				NOD:
-					await alfred_sleep.nod()
-				HAT:
-					var tween := get_tree().create_tween()
-					tween.tween_property($LifeBackground/AlfredHat, "modulate", Color.TRANSPARENT, 0.1)
-					await alfred_sleep.hat()
-				HATNOD:
-					await alfred_sleep.hat_nod()
-				NORMAL:
-					await alfred_sleep.normal()
-				SAD:
-					await alfred_sleep.sad()
 				YES_BUTTON:
 					$Yes.show()
 					$No.show()

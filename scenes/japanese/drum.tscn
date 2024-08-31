@@ -8,9 +8,11 @@
 size = Vector2(26, 2)
 
 [node name="Drum" type="Area2D"]
+use_parent_material = true
 script = ExtResource("1_pekp6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 position = Vector2(0, 2)
 texture = ExtResource("2_ha0ai")
 

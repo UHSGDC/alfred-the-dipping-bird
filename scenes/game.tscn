@@ -229,7 +229,7 @@ offset = Vector2(35.6753, 23.1212)
 [node name="Water" type="AnimatedSprite2D" parent="CutsceneManager/DippingCutscene"]
 position = Vector2(160, 90)
 sprite_frames = SubResource("SpriteFrames_ij3nd")
-frame_progress = 0.096023
+frame_progress = 0.178268
 
 [node name="IntroCutscene" parent="CutsceneManager" instance=ExtResource("8_sok2v")]
 

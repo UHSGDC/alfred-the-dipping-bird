@@ -18,6 +18,7 @@ beatmap = ExtResource("2_yf430")
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
+use_parent_material = true
 position = Vector2(160, 153)
 texture = ExtResource("3_cwrra")
 region_enabled = true
@@ -56,6 +57,7 @@ position = Vector2(160, -8)
 
 [node name="Bg" type="Sprite2D" parent="."]
 z_index = -2
+use_parent_material = true
 position = Vector2(160, 90)
 texture = ExtResource("9_yi3qn")
 
