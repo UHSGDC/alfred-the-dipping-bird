@@ -8,6 +8,7 @@ enum Type {
 
 signal dipping_finished
 signal intro_finished
+signal end_finished
 
 var current_cutscene: Cutscene
 var is_playing: bool = false
@@ -54,3 +55,7 @@ func _on_dipping_cutscene_finished() -> void:
 
 func _on_intro_cutscene_finished() -> void:
 	intro_finished.emit()
+
+
+func _on_end_cutscene_finished() -> void:
+	end_finished.emit()

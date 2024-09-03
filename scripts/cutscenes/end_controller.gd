@@ -14,8 +14,9 @@ enum {
 	CLEAR,
 	ENABLE_SKIPPING,
 	DISABLE_SKIPPING,
-	DREAM_TO_REAL_LIFE_TRANSITION,
-	YES_BUTTON,
+	SHOW_SCROLL,
+	WAIT_FOR_SCROLL,
+	HIDE_SCROLL,
 	SOUND_ON,
 	SOUND_OFF,
 	NEXT_SOUND,
@@ -23,7 +24,10 @@ enum {
 
 # Dialog is stored as a series of commands. A string will output text. A speed will set the speed of the dialog. A float will wait the indicated amount of seconds. Commands
 @onready var dialog_commands: Array = [
-	WAIT_FOR_PLAYER
+	DISABLE_SKIPPING,
+	SHOW_SCROLL, WAIT_FOR_SCROLL, HIDE_SCROLL, SLOW, ENABLE_SKIPPING, "?: Alfred?",
+	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "?: The prophecy is true. ", 0.4, "I never thought I'd see you again. ", 0.2, "You have saved us all, ", SLOW, 0.2, "my little brother.",
+	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, "?: Who am I? ", 0.4, "Do you not remember me? ", 0.4, "I am Brofred, ", 0.2, "your older brother. ", 0.4, "It is very good to see you, ", 0.4, "brother..."
 ]
 
 var skipping_enabled: bool = true
@@ -38,15 +42,18 @@ var text_sound: bool = false
 @onready var wait_timer: Timer = $WaitTimer
 @onready var next_icon: Node2D = $DialogBox/NextIcon
 
-func dream_to_real_life_transition() -> void:
-	$AnimationPlayer.play("dream_to_real_life")
+func show_scroll() -> void:
+	$AnimationPlayer.play("show_scroll")
+	await $AnimationPlayer.animation_finished
+
+
+func hide_scroll() -> void:
+	$AnimationPlayer.play("hide_scroll")
 	await $AnimationPlayer.animation_finished
 
 
 func play() -> void:
 	dialog_playing = true
-	$Yes.hide()
-	$No.hide()
 	for command in dialog_commands:
 		if !visible:
 			break
@@ -79,8 +86,13 @@ func play() -> void:
 					skipping_enabled = false
 					skip_input = false
 				# Special commands
-				DREAM_TO_REAL_LIFE_TRANSITION:
-					await dream_to_real_life_transition()
+				SHOW_SCROLL:
+					await show_scroll()
+				WAIT_FOR_SCROLL:
+					$ScrollTexture.start_scrolling()
+					await $ScrollTexture.scroll_finished
+				HIDE_SCROLL:
+					await hide_scroll()
 				# Speed commands
 				INSTANT:
 					text_delay = 0
@@ -94,19 +106,13 @@ func play() -> void:
 					text_delay = 0.2
 				NEXT_SOUND:
 					$DialogBox/NextSound.play()
-				YES_BUTTON:
-					$Yes.show()
-					$No.show()
-					await $Yes.pressed
-					$Yes.hide()
-					$No.hide()
 				SOUND_ON:
 					text_sound = true
 				SOUND_OFF:
 					text_sound = false
 	dialog_playing = true
 	var tween := get_tree().create_tween()
-	tween.tween_property(self, "modulate", Color.BLACK, 2)
+	tween.tween_property($Fade, "modulate", Color.BLACK, 2)
 	await tween.finished
 	tween = get_tree().create_tween()
 	tween.tween_interval(0.6)

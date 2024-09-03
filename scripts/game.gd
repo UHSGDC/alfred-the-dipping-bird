@@ -86,8 +86,7 @@ func _on_cutscene_manager_dipping_finished() -> void:
 	if current_level < Level.size():
 		play_current_level()
 	else:
-		menus.change_menu.call_deferred(Menus.CREDITS, false)
-		MusicManager.fade_to_track(MusicManager.Track.TITLE)
+		cutscene_manager.play_cutscene(0, CutsceneManager.Type.END)
 
 
 func _on_cutscene_manager_intro_finished() -> void:
@@ -101,3 +100,8 @@ func _on_tutorial_manager_tutorial_finished() -> void:
 	tutorial_manager.kill_tutorial.call_deferred()
 	tutorial_played[current_level] = true
 	minigame_manager.unpause_minigame()
+
+
+func _on_cutscene_manager_end_finished() -> void:
+	menus.change_menu.call_deferred(Menus.CREDITS, false)
+	MusicManager.fade_to_track(MusicManager.Track.TITLE)

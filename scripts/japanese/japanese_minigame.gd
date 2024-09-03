@@ -42,6 +42,13 @@ func start() -> void:
 	total_notes[cur_beatmap_idx] = beatmap.get_total_notes()
 	conductor.play_with_beat_offset(beats_till_hit)
 	update_score_ui()
+#
+#
+#func _input(event: InputEvent) -> void:
+	#if Input.is_key_pressed(KEY_0):
+		#$AnimationPlayer.play("finish")
+		#await $AnimationPlayer.animation_finished
+		#end_minigame(1200, "CHETINFG!")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -123,6 +130,8 @@ func _on_conductor_finished() -> void:
 	$UI/Menu.show()
 	
 func finish() -> void:
+	$AnimationPlayer.play("finish")
+	await $AnimationPlayer.animation_finished
 	end_minigame(scores[0] + scores[1], "Level 1 score: %s/%s\nLevel 2 score: %s/%s" % [scores[0], total_notes[0] * 3, scores[1], total_notes[1] * 3])
 
 

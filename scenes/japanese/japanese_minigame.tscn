@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://clombk6ni8atl"]
+[gd_scene load_steps=16 format=3 uid="uid://clombk6ni8atl"]
 
+[ext_resource type="Shader" path="res://scripts/blur.gdshader" id="1_pqey6"]
 [ext_resource type="Script" path="res://scripts/japanese/japanese_minigame.gd" id="1_q86hw"]
 [ext_resource type="PackedScene" uid="uid://bnnxmjxkdm565" path="res://scenes/japanese/rhythm_conductor.tscn" id="2_st8hx"]
 [ext_resource type="Resource" uid="uid://b103s5csb3yan" path="res://assets/japanese/adbniagara.tres" id="2_yf430"]
@@ -11,14 +12,174 @@
 [ext_resource type="Texture2D" uid="uid://c6frslinpwvjn" path="res://assets/japanese/background.png" id="9_yi3qn"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="11_7n1aj"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17bw8"]
+shader = ExtResource("1_pqey6")
+shader_parameter/blur_amount = Vector2(0, 0)
+
+[sub_resource type="Animation" id="Animation_dqrvd"]
+resource_name = "finish"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.003, 0.003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftTopTarget:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightTopTarget:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DrumTop:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Score:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wfl7x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/blur_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LeftTopTarget:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RightTopTarget:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DrumTop:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Score:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4r005"]
+_data = {
+"RESET": SubResource("Animation_wfl7x"),
+"finish": SubResource("Animation_dqrvd")
+}
+
 [node name="JapaneseMinigame" type="Node2D" node_paths=PackedStringArray("targets")]
+material = SubResource("ShaderMaterial_17bw8")
 script = ExtResource("1_q86hw")
 targets = [NodePath("LeftTopTarget"), NodePath("RightTopTarget")]
 beatmap = ExtResource("2_yf430")
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 1
-use_parent_material = true
 position = Vector2(160, 153)
 texture = ExtResource("3_cwrra")
 region_enabled = true
@@ -46,6 +207,7 @@ position = Vector2(166, 124)
 input_action = &"right"
 
 [node name="DrumTop" parent="." instance=ExtResource("3_y7nx7")]
+use_parent_material = false
 position = Vector2(160, 135)
 
 [node name="TopStart" type="Marker2D" parent="."]
@@ -74,6 +236,7 @@ theme_override_font_sizes/font_size = 8
 text = "Score: 10/ 300"
 
 [node name="Menu" type="VBoxContainer" parent="UI"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -99,6 +262,11 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("11_7n1aj")
 theme_override_font_sizes/font_size = 8
 text = "Retry Beatmap"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4r005")
+}
 
 [connection signal="beat_reached" from="Conductor" to="." method="_on_rhythm_conductor_beat_reached"]
 [connection signal="finished" from="Conductor" to="." method="_on_conductor_finished"]
