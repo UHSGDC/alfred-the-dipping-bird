@@ -1,17 +1,108 @@
-[gd_scene load_steps=12 format=3 uid="uid://boywxuhfg8sh5"]
+[gd_scene load_steps=34 format=3 uid="uid://boywxuhfg8sh5"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
+[ext_resource type="Shader" path="res://scripts/blur.gdshader" id="2_3hxue"]
+[ext_resource type="Texture2D" uid="uid://cmimwanbqi4by" path="res://assets/tutorials/midwest.png" id="2_3m7nc"]
+[ext_resource type="Texture2D" uid="uid://cc443d3yvyyq" path="res://assets/waves-Sheet.png" id="2_5xhum"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
 [ext_resource type="Texture2D" uid="uid://cnbm4rn71da0j" path="res://assets/cutscenes/alfred_cutscene.png" id="2_gi225"]
+[ext_resource type="Texture2D" uid="uid://c103dgaosteby" path="res://assets/tutorials/chicago.png" id="3_o03iu"]
 [ext_resource type="PackedScene" uid="uid://ce7rgb26q4wf2" path="res://scenes/menus/sound_button.tscn" id="4_cvfma"]
+[ext_resource type="Texture2D" uid="uid://skl0dtavdc4l" path="res://assets/tutorials/niagara.png" id="4_y2wvn"]
+[ext_resource type="Texture2D" uid="uid://byvvaaq4d6vaw" path="res://assets/tutorials/icy.png" id="5_4e14m"]
+[ext_resource type="Texture2D" uid="uid://vvooarfsg65i" path="res://assets/tutorials/japan.png" id="6_ubts8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwh5c"]
 bg_color = Color(0.294118, 0.0313726, 0.262745, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_konud"]
+shader = ExtResource("2_3hxue")
+shader_parameter/blur_amount = Vector2(0.005, 0.005)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcoyk"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldwoh"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(320, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcw46"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(640, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr1x4"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(960, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl7ql"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(1280, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjf5j"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(1600, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcr01"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(1920, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsmql"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(2240, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg2uf"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(2560, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b78qj"]
+atlas = ExtResource("2_5xhum")
+region = Rect2(2880, 0, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0p0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcoyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldwoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcw46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr1x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl7ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjf5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcr01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsmql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg2uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b78qj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [sub_resource type="LabelSettings" id="LabelSettings_tpvyh"]
 font = ExtResource("2_8k3rw")
 font_size = 12
-font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+font_color = Color(0.72549, 0.054902, 0.290196, 1)
+outline_size = 4
+outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64kw5"]
 
@@ -23,6 +114,43 @@ font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8ojo"]
 
+[sub_resource type="Animation" id="Animation_ioxuy"]
+resource_name = "fun_text"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0349066, 0.0349066]
+}
+
+[sub_resource type="Animation" id="Animation_slhf5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rajtb"]
+_data = {
+"RESET": SubResource("Animation_slhf5"),
+"fun_text": SubResource("Animation_ioxuy")
+}
+
 [node name="MainMenu" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,30 +160,95 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gwh5c")
 script = ExtResource("1_y3qq4")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 170.0
-offset_top = 37.0
-offset_right = 320.0
-offset_bottom = 203.0
+[node name="Previews" type="Control" parent="."]
+material = SubResource("ShaderMaterial_konud")
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Previews"]
+use_parent_material = true
+layout_mode = 2
+offset_left = -7.0
+offset_right = 1282.0
+offset_bottom = 722.0
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("2_3m7nc")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Previews"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 102.0
+offset_right = 1380.0
+offset_bottom = 722.0
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("3_o03iu")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Previews"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 213.0
+offset_right = 1503.0
+offset_bottom = 722.0
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("4_y2wvn")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="Previews"]
+use_parent_material = true
+layout_mode = 2
+offset_top = 65.0
+offset_right = 1680.0
+offset_bottom = 1125.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_4e14m")
+stretch_mode = 4
+
+[node name="TextureRect7" type="TextureRect" parent="Previews"]
+use_parent_material = true
+layout_mode = 2
+offset_left = 167.0
+offset_top = 65.0
+offset_right = 1727.0
+offset_bottom = 1125.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("6_ubts8")
+stretch_mode = 4
+
+[node name="Water" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 90)
+sprite_frames = SubResource("SpriteFrames_i0p0e")
+frame_progress = 0.592627
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 182.0
+offset_top = 31.0
+offset_right = 332.0
+offset_bottom = 197.0
+rotation = 0.0741153
 texture = ExtResource("2_gi225")
 flip_h = true
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -189.0
-offset_top = -71.0
-offset_right = -5.0
-grow_horizontal = 0
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.264
+anchor_right = 0.7
+anchor_bottom = 0.264
+offset_left = -92.0
+offset_top = -35.52
+offset_right = 92.0
+offset_bottom = 35.48
+grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(92, 40)
 text = "Alfred
 the
-Dipping Bird"
+Dipping Bird:
+The Full release"
 label_settings = SubResource("LabelSettings_tpvyh")
 horizontal_alignment = 1
 
@@ -73,9 +266,10 @@ grow_vertical = 2
 [node name="Play" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
@@ -88,9 +282,10 @@ text = "Play"
 [node name="LevelSelect" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
@@ -103,9 +298,10 @@ text = "Level Select"
 [node name="Options" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
@@ -118,9 +314,10 @@ text = "Options"
 [node name="Credits" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
@@ -133,9 +330,10 @@ text = "Credits"
 [node name="Quit" parent="Buttons" instance=ExtResource("4_cvfma")]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-focus_mode = 0
 theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
@@ -145,8 +343,34 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Quit"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rajtb")
+}
+
+[node name="PH" parent="." instance=ExtResource("4_cvfma")]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+offset_left = 90.0
+offset_top = 155.0
+offset_right = 230.0
+offset_bottom = 179.0
+theme_override_colors/font_color = Color(0.521569, 0.0352941, 0.313726, 1)
+theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_outline_color = Color(0.294118, 0.0313726, 0.262745, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_8k3rw")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
+text = "Play Our other game"
+
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Buttons/LevelSelect" to="." method="_on_level_select_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PH" to="." method="_on_ph_pressed"]

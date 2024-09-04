@@ -51,7 +51,6 @@ grow_vertical = 2
 [node name="Resume" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
@@ -60,7 +59,6 @@ text = "Resume"
 [node name="Tutorial" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
@@ -69,7 +67,6 @@ text = "Tutorial"
 [node name="Options" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
@@ -78,7 +75,6 @@ text = "Options"
 [node name="MainMenu" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 0
 theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
