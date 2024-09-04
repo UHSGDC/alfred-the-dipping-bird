@@ -56,6 +56,14 @@ theme_override_fonts/font = ExtResource("2_ioj14")
 theme_override_font_sizes/font_size = 8
 text = "Resume"
 
+[node name="Tutorial" parent="Buttons" instance=ExtResource("3_yhihb")]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_fonts/font = ExtResource("2_ioj14")
+theme_override_font_sizes/font_size = 8
+text = "Tutorial"
+
 [node name="Options" parent="Buttons" instance=ExtResource("3_yhihb")]
 layout_mode = 2
 size_flags_vertical = 3
@@ -73,5 +81,6 @@ theme_override_font_sizes/font_size = 8
 text = "Main Menu"
 
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Buttons/MainMenu" to="." method="_on_main_menu_pressed"]

@@ -21,6 +21,7 @@ func display() -> void:
 	show()
 	$Back.hide()
 	current_description_index = 0
+	show_description(0)
 	if desc_count > 1:
 		start.text = "Next"
 	else:

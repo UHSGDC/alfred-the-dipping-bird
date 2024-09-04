@@ -16,8 +16,8 @@ stream_0/weight = 1.0
 
 [node name="WeakSpot" type="Area2D" groups=["weak_spot"]]
 script = ExtResource("1_kpvck")
-max_freeze_time = 12.0
-min_freeze_time = 8.0
+max_freeze_time = 16.0
+min_freeze_time = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pg40r")

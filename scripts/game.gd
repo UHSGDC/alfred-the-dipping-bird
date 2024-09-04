@@ -105,3 +105,9 @@ func _on_tutorial_manager_tutorial_finished() -> void:
 func _on_cutscene_manager_end_finished() -> void:
 	menus.change_menu.call_deferred(Menus.CREDITS, false)
 	MusicManager.fade_to_track(MusicManager.Track.TITLE)
+
+
+func _on_menus_show_tutorial() -> void:
+	minigame_manager.pause_minigame()
+	tutorial_manager.play_tutorial(current_level)
+	

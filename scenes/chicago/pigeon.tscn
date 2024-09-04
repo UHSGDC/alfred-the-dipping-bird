@@ -1,13 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2bxisrhl4j1s"]
+[gd_scene load_steps=8 format=3 uid="uid://b2bxisrhl4j1s"]
 
 [ext_resource type="Script" path="res://scripts/chicago/pigeon.gd" id="1_07j60"]
-[ext_resource type="Shader" path="res://scripts/outline.gdshader" id="2_gtlnh"]
+[ext_resource type="Texture2D" uid="uid://cny0opuafvax7" path="res://assets/chicago/pigeon_outline.png" id="2_75ian"]
 [ext_resource type="Texture2D" uid="uid://c0j2rl4a483it" path="res://assets/chicago/pigeon.png" id="2_kajvk"]
 [ext_resource type="PackedScene" uid="uid://cxmrylq28us3q" path="res://scenes/midwest/destroy_particles.tscn" id="4_ujivd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh61q"]
-shader = ExtResource("2_gtlnh")
-shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 0.470588)
+[sub_resource type="Animation" id="Animation_2m5ue"]
+resource_name = "flash"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigeonOutline:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.219608), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qm73b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigeonOutline:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwhot"]
+_data = {
+"RESET": SubResource("Animation_qm73b"),
+"flash": SubResource("Animation_2m5ue")
+}
 
 [node name="Pigeon" type="RigidBody2D" groups=["bird"]]
 z_index = 1
@@ -17,8 +51,11 @@ contact_monitor = true
 linear_velocity = Vector2(-150, 0)
 script = ExtResource("1_07j60")
 
+[node name="PigeonOutline" type="Sprite2D" parent="."]
+self_modulate = Color(0.8, 0.207843, 0.247059, 1)
+texture = ExtResource("2_75ian")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_sh61q")
 position = Vector2(0, -4.47035e-08)
 texture = ExtResource("2_kajvk")
 
@@ -32,5 +69,10 @@ polygon = PackedVector2Array(-4.5, 0, -1.5, 3, 4.5, 0, -1.5, -3)
 [node name="DeathParticles" parent="." instance=ExtResource("4_ujivd")]
 process_mode = 3
 color = Color(0.917647, 0.164706, 0.32549, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rwhot")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

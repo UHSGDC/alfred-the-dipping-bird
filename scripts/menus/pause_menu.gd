@@ -18,3 +18,8 @@ func _on_options_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	menus.trigger_minigame_kill.emit()
 	menus.change_menu(menus.MAIN, true)
+
+
+func _on_tutorial_pressed() -> void:
+	menus.show_tutorial.emit()
+	menus.change_menu(menus.NONE, false)

@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+func _ready() -> void:
+	$AnimationPlayer.play("flash")
+
 
 func kill() -> void:
 	$DeathParticles.emitting = true

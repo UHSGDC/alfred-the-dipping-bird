@@ -71,7 +71,6 @@ sources/0 = SubResource("TileSetAtlasSource_c03ou")
 
 [node name="IcyMinigame" type="Node2D"]
 script = ExtResource("1_0qgft")
-debug_mode = true
 
 [node name="Snow" type="TileMap" parent="."]
 position = Vector2(0, 8)
@@ -89,16 +88,20 @@ start_opened = true
 [node name="Gate2" parent="Gates" instance=ExtResource("15_dd01s")]
 position = Vector2(168, 0)
 rotation = 1.5708
+show_arrow = false
 
 [node name="Gate3" parent="Gates" instance=ExtResource("15_dd01s")]
 position = Vector2(311, -100)
+show_arrow = false
 
 [node name="Gate4" parent="Gates" instance=ExtResource("15_dd01s")]
 position = Vector2(312, -280)
+show_arrow = false
 
 [node name="Gate5" parent="Gates" instance=ExtResource("15_dd01s")]
 position = Vector2(152, -361)
 rotation = -1.5708
+show_arrow = false
 
 [node name="Player" parent="." instance=ExtResource("3_geuf7")]
 collision_layer = 4

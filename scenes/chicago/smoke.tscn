@@ -57,5 +57,5 @@ orbit_velocity_max = 0.05
 scale_amount_min = 0.5
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_tklpw")
-color = Color(0.909804, 0.137255, 0.215686, 0.470588)
+color = Color(0.909804, 0.137255, 0.215686, 0.741176)
 color_initial_ramp = SubResource("Gradient_b5ned")

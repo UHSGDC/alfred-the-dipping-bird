@@ -1,13 +1,17 @@
 extends Node2D
 
 @export var start_opened: bool = false
+@export var show_arrow: bool = true
 
 
 func _ready() -> void:
+	$Arrow.visible = show_arrow
 	if start_opened:
 		open()
+		$Arrow.modulate = Color.WHITE
 	else:
 		close()
+		$Arrow.modulate = Color.TRANSPARENT
 
 
 func open_animation() -> void:

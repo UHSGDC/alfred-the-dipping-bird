@@ -9,7 +9,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ah5c"]
 shader = ExtResource("1_fgopf")
-shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 0.470588)
+shader_parameter/outline_color = Color(0.909804, 0.137255, 0.215686, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7cvp"]
 size = Vector2(32, 46)

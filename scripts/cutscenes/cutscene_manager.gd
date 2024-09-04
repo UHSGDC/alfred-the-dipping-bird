@@ -1,5 +1,9 @@
 class_name CutsceneManager extends Node
 
+const INTRO = preload("res://scenes/cutscenes/intro_cutscene.tscn")
+const DIPPING = preload("res://scenes/cutscenes/dipping_cutscene.tscn")
+const END = preload("res://scenes/cutscenes/end_cutscene.tscn")
+
 enum Type {
 	DIPPING,
 	INTRO,
@@ -21,12 +25,16 @@ func kill_all() -> void:
 func play_cutscene(level: Game.Level, type: Type) -> void:
 	match type:
 		Type.DIPPING:
-			current_cutscene = $DippingCutscene
+			current_cutscene = DIPPING.instantiate()
+			current_cutscene.finished.connect(_on_dipping_cutscene_finished)
 		Type.INTRO:
-			current_cutscene = $IntroCutscene
+			current_cutscene = INTRO.instantiate()
+			current_cutscene.finished.connect(_on_intro_cutscene_finished)
 		Type.END:
-			current_cutscene = $EndCutscene
-	current_cutscene.play()
+			current_cutscene = END.instantiate()
+			current_cutscene.finished.connect(_on_end_cutscene_finished)
+	add_child(current_cutscene)
+	current_cutscene.play.call_deferred()
 	is_playing = true
 
 
@@ -45,6 +53,7 @@ func pause_cutscene() -> void:
 func kill_cutscene() -> void:
 	if current_cutscene:
 		current_cutscene.kill()
+		current_cutscene.queue_free()
 		current_cutscene = null
 	is_playing = false
 
