@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://boywxuhfg8sh5"]
+[gd_scene load_steps=12 format=3 uid="uid://boywxuhfg8sh5"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_y3qq4"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_8k3rw"]
@@ -12,6 +12,16 @@ bg_color = Color(0.294118, 0.0313726, 0.262745, 1)
 font = ExtResource("2_8k3rw")
 font_size = 12
 font_color = Color(0.615686, 0.0980392, 0.321569, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64kw5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w41my"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q8ehk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ru3b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8ojo"]
 
 [node name="MainMenu" type="Panel"]
 anchors_preset = 15
@@ -68,6 +78,11 @@ theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Play"
 
 [node name="LevelSelect" parent="Buttons" instance=ExtResource("4_cvfma")]
@@ -78,6 +93,11 @@ theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Level Select"
 
 [node name="Options" parent="Buttons" instance=ExtResource("4_cvfma")]
@@ -88,6 +108,11 @@ theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Options"
 
 [node name="Credits" parent="Buttons" instance=ExtResource("4_cvfma")]
@@ -98,6 +123,11 @@ theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Credits"
 
 [node name="Quit" parent="Buttons" instance=ExtResource("4_cvfma")]
@@ -108,6 +138,11 @@ theme_override_colors/font_color = Color(0.615686, 0.0980392, 0.321569, 1)
 theme_override_colors/font_hover_color = Color(0.690196, 0.811765, 0.933333, 1)
 theme_override_fonts/font = ExtResource("2_8k3rw")
 theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_64kw5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w41my")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_q8ehk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6ru3b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8ojo")
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8igrafkyth5w"]
+[gd_scene load_steps=18 format=3 uid="uid://c8igrafkyth5w"]
 
 [ext_resource type="Script" path="res://scripts/menus/level_select_menu.gd" id="1_17o3r"]
 [ext_resource type="FontFile" uid="uid://drq86l6656w0b" path="res://assets/font/Early GameBoy.ttf" id="2_1306q"]
@@ -22,6 +22,21 @@ font_color = Color(0.690196, 0.811765, 0.933333, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlcco"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37gct"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keuj0"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27hvg"]
+bg_color = Color(0.533511, 0.442481, 0.670108, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kkhv"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6dvv"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn3oq"]
+bg_color = Color(0.376471, 0.298039, 0.490196, 1)
 
 [node name="LevelSelectMenu" type="Panel"]
 anchors_preset = 15
@@ -91,29 +106,54 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27hvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kkhv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l6dvv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn3oq")
 
 [node name="LevelSelectButton2" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27hvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kkhv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l6dvv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn3oq")
 text = "Chicago"
 
 [node name="LevelSelectButton3" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27hvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kkhv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l6dvv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn3oq")
 text = "Niagara Falls"
 
 [node name="LevelSelectButton4" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27hvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kkhv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l6dvv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn3oq")
 text = "Icy Tundra"
 
 [node name="LevelSelectButton5" parent="LevelSelectWindow/ButtonContainer" instance=ExtResource("4_fnreq")]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.721569, 1, 0.941176, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_keuj0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_27hvg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3kkhv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_l6dvv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qn3oq")
 text = "Japan"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
