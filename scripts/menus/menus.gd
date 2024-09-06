@@ -66,7 +66,7 @@ func change_menu(new_menu: int, signal_emitted: bool) -> void:
 
 
 func credits_to_main() -> void:
-	print("h")
+	#print("h")
 	var tween := get_tree().create_tween()
 	
 	tween.tween_property($CreditsMenu, "modulate", Color.TRANSPARENT, 3)
@@ -84,6 +84,9 @@ func credits_to_main() -> void:
 	
 	
 func none_to_credits() -> void:
+	previous_menu = current_menu
+	current_menu = CREDITS
+	
 	var tween := get_tree().create_tween()
 	
 	$CreditsMenu.fading_in = true
@@ -93,9 +96,6 @@ func none_to_credits() -> void:
 	await tween.finished
 	$CreditsMenu.perform_show_action()
 	
-	previous_menu = current_menu
-	current_menu = MAIN
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):

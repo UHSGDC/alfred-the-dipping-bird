@@ -11,7 +11,7 @@ var playing: bool = false :
 			playing = false
 		else:
 			playing = value
-		print(playing, " ", value)
+		#print(playing, " ", value)
 
 var was_visible: bool = false
 
@@ -21,7 +21,7 @@ var fading_out: bool = false
 
 
 func _back_input() -> void:
-	if (!fading_out and !fading_in):
+	if !fading_out:
 		menus.change_menu(menus.MAIN, false)
 		get_viewport().set_input_as_handled()
 
