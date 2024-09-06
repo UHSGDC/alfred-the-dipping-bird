@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyjwweniftc78"]
+[gd_scene load_steps=8 format=3 uid="uid://cyjwweniftc78"]
 
 [ext_resource type="Script" path="res://scripts/music_manager.gd" id="1_3opie"]
 [ext_resource type="AudioStream" uid="uid://c6fv61ar6my0w" path="res://assets/music/adptitle.wav" id="1_eeogr"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cdh8o806mdgdk" path="res://assets/music/adpmidwest.wav" id="3_50vf0"]
 [ext_resource type="AudioStream" uid="uid://noi0se55q32f" path="res://assets/music/adpchicago.wav" id="4_mr74a"]
 [ext_resource type="AudioStream" uid="uid://dibxg35tjudxq" path="res://assets/music/adpicy44y.mp3" id="6_if780"]
+[ext_resource type="AudioStream" uid="uid://brqpqdik00lm3" path="res://assets/music/adpend44y.mp3" id="7_eg7jb"]
 
 [node name="MusicManager" type="Node"]
 script = ExtResource("1_3opie")
@@ -31,4 +32,8 @@ stream = ExtResource("6_if780")
 bus = &"Music"
 
 [node name="Japan" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="End" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_eg7jb")
 bus = &"Music"

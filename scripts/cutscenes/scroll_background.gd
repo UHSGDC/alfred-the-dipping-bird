@@ -1,6 +1,6 @@
 extends TextureRect
 
-const AUTOSCROLL_SPEED: float = 15.0
+const AUTOSCROLL_SPEED: float = 10.0
 const FINISH: float = -470
 
 signal scroll_finished

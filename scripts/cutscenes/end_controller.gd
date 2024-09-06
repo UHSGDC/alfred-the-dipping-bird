@@ -27,7 +27,7 @@ enum {
 	DISABLE_SKIPPING,
 	SHOW_SCROLL, WAIT_FOR_SCROLL, HIDE_SCROLL, SLOW, ENABLE_SKIPPING, "?: Alfred?",
 	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, MEDIUM, "?: The prophecy is true. ", 0.4, "I never thought I'd see you again. ", 0.2, "You have saved us all, ", SLOW, 0.2, "my little brother.",
-	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, "?: Who am I? ", 0.4, "Do you not remember me? ", 0.4, "I am Brofred, ", 0.2, "your older brother. ", 0.4, "It is very good to see you, ", 0.4, "brother..."
+	WAIT_FOR_PLAYER, NEXT_SOUND, CLEAR, "?: Who am I? ", 0.4, "Do you not remember me? ", 0.4, "I am Brofred, ", 0.2, "your older brother. ", 0.4, "It is very nice to see you, ", 0.4, "little bro..."
 ]
 
 var skipping_enabled: bool = true
@@ -112,7 +112,7 @@ func play() -> void:
 					text_sound = false
 	dialog_playing = true
 	var tween := get_tree().create_tween()
-	tween.tween_property($Fade, "modulate", Color.BLACK, 2)
+	tween.tween_property($DialogBox, "modulate", Color.TRANSPARENT, 2)
 	await tween.finished
 	tween = get_tree().create_tween()
 	tween.tween_interval(0.6)
@@ -126,12 +126,12 @@ func output_text(text: String) -> void:
 	if text_delay == 0:
 		$DialogBox/TextSound.play()
 		if text_sound:
-			$DialogBox/TypeWriter.play()
+			$TypeWriter.play()
 		output.visible_characters = output.text.length()
 		return
 	for character in text:
 		if text_sound:
-			$DialogBox/TypeWriter.play()
+			$TypeWriter.play()
 		$DialogBox/TextSound.play()
 		output.visible_characters += 1
 		await wait_while_paused()

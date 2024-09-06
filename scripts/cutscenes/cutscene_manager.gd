@@ -20,9 +20,11 @@ var is_playing: bool = false
 func kill_all() -> void:
 	for child in get_children():
 		child.kill()
+		child.queue_free()
 
 
 func play_cutscene(level: Game.Level, type: Type) -> void:
+	kill_all()
 	match type:
 		Type.DIPPING:
 			current_cutscene = DIPPING.instantiate()

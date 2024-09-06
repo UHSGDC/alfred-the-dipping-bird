@@ -60,6 +60,7 @@ label_settings = SubResource("LabelSettings_rkjht")
 horizontal_alignment = 1
 
 [node name="Back" parent="." instance=ExtResource("3_8hjm1")]
+layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
@@ -69,7 +70,7 @@ theme_override_colors/font_pressed_color = Color(0.690196, 0.811765, 0.933333, 1
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(0.690196, 0.811765, 0.933333, 1)
+theme_override_colors/font_disabled_color = Color(0.564706, 0.54902, 0.780392, 1)
 theme_override_fonts/font = ExtResource("3_u6cd5")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ly7ie")
@@ -101,7 +102,7 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 132
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_bottom = 128
 
 [node name="CreditsLabel" type="Label" parent="CreditsWindow/ScrollContainer/MarginContainer"]
 custom_minimum_size = Vector2(280, 0)

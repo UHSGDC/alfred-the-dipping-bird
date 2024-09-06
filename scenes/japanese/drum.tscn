@@ -22,8 +22,6 @@ shape = SubResource("RectangleShape2D_e64a4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vq1x4")
-volume_db = 12.0
-pitch_scale = 0.93
 max_polyphony = 8
 bus = &"Sound"
 

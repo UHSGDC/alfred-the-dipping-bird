@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c4nqwbmmepikk"]
+[gd_scene load_steps=31 format=3 uid="uid://c4nqwbmmepikk"]
 
 [ext_resource type="Script" path="res://scripts/cutscenes/end_cutscene.gd" id="1_rwjhg"]
 [ext_resource type="Script" path="res://scripts/cutscenes/end_controller.gd" id="2_3vkra"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://dijqj83dl7nmr" path="res://assets/cutscenes/sfx/next.wav" id="16_utp85"]
 [ext_resource type="AudioStream" uid="uid://dtj5vxmvwwuw0" path="res://assets/cutscenes/sfx/next2.wav" id="17_k7ysv"]
 [ext_resource type="FontFile" uid="uid://bicugomobccmp" path="res://assets/font/alagard.ttf" id="18_l4i1w"]
+[ext_resource type="AudioStream" uid="uid://cqwk5lrlgjb7p" path="res://assets/sfx/scroll.mp3" id="18_tcd37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tu3i6"]
 shader = ExtResource("3_vuvdm")
@@ -141,6 +142,22 @@ tracks/3/keys = {
 "values": [Color(1, 0.94902, 0.768627, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_oix5t"]
+resource_name = "hide_scroll"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogBox:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_bob7r"]
 resource_name = "show_scroll"
 length = 8.5
@@ -180,21 +197,48 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 0.94902, 0.768627, 0), Color(1, 0.94902, 0.768627, 0.572549), Color(1, 0.94902, 0.768627, 0), Color(1, 0.94902, 0.768627, 0.572549), Color(1, 0.94902, 0.768627, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_oix5t"]
-resource_name = "hide_scroll"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogBox:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TypeWriter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.7, 5.1, 6.2, 6.6, 7.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScrollSound")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(7.9, 8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fi1m4"]
@@ -276,12 +320,6 @@ libraries = {
 "": SubResource("AnimationLibrary_yn6sw")
 }
 
-[node name="TypeWriter" type="AudioStreamPlayer" parent="Controller/DialogBox"]
-stream = ExtResource("14_61doo")
-volume_db = 4.0
-max_polyphony = 10
-bus = &"Sound"
-
 [node name="TextSound" type="AudioStreamPlayer" parent="Controller/DialogBox"]
 stream = ExtResource("15_0o16h")
 pitch_scale = 0.5
@@ -354,14 +392,15 @@ libraries = {
 "": SubResource("AnimationLibrary_fi1m4")
 }
 
-[node name="Fade" type="ColorRect" parent="Controller"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
+[node name="TypeWriter" type="AudioStreamPlayer" parent="Controller"]
+stream = ExtResource("14_61doo")
+volume_db = 6.0
+max_polyphony = 10
+bus = &"Sound"
+
+[node name="ScrollSound" type="AudioStreamPlayer" parent="Controller"]
+stream = ExtResource("18_tcd37")
+volume_db = 10.0
+bus = &"Sound"
 
 [connection signal="finished" from="Controller" to="." method="_on_controller_finished"]
