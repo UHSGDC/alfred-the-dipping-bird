@@ -36,16 +36,16 @@ font_size = 6
 font_color = Color(0.239216, 0.698039, 0.678431, 1)
 
 [node name="ControlsView" type="Panel"]
-custom_minimum_size = Vector2(192, 152)
+custom_minimum_size = Vector2(192, 112)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -96.0
-offset_top = -76.0
+offset_top = -56.0
 offset_right = 96.0
-offset_bottom = 76.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tnvaw")
@@ -102,12 +102,13 @@ anchors_preset = -1
 anchor_left = 0.083
 anchor_top = 0.158
 anchor_right = 0.917
-anchor_bottom = 0.895
+anchor_bottom = 0.671
 offset_left = 0.0639992
-offset_top = -0.0159912
-offset_right = -0.0640106
-offset_bottom = -0.0399475
+offset_top = 0.303999
+offset_right = -0.0639954
+offset_bottom = 30.848
 theme_override_constants/separation = 12
+alignment = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -147,27 +148,6 @@ uppercase = true
 layout_mode = 2
 size_flags_vertical = 5
 text = "SPACE"
-label_settings = SubResource("LabelSettings_ptw0h")
-vertical_alignment = 1
-uppercase = true
-
-[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer"]
-layout_mode = 2
-dragger_visibility = 2
-
-[node name="Action" type="Label" parent="VBoxContainer/HSplitContainer3"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Secondary Action"
-label_settings = SubResource("LabelSettings_2w7dw")
-vertical_alignment = 2
-uppercase = true
-
-[node name="Input" type="Label" parent="VBoxContainer/HSplitContainer3"]
-layout_mode = 2
-size_flags_vertical = 5
-text = "Shift"
 label_settings = SubResource("LabelSettings_ptw0h")
 vertical_alignment = 1
 uppercase = true

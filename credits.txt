@@ -2,21 +2,19 @@ Alfred the Dipping Bird
 
 
 
-A game created by University High School Game Development Club
-
-Developed in 2024
+Developed in 2024 by University High School Game Development Club
 
 
 
 Nick Vatanshenas
-- Club President
-- Programming Head
+- Club President & Programming Head
 - Lead Developer
-- Midwest, Chicago, Niagara, Oasis,
-and Japanese Levels Game Design
-- UI Design
+- Art
 - Music
-- Programming
+- Midwest Farmalands, Chicago, Niagara Falls,
+and Japanese Lake Game Designs
+- Cutscene Writing
+- Quack Sound Effect
 
 
 Arman Akhtari
@@ -25,15 +23,15 @@ Arman Akhtari
 - Art
 
 
-Miryam Greenstein
-- Club Vice President
-- Sound Head
-
-
 Nguyen Do
 - Game Design Head
-- Educating the team on Game Design
 - Game Design
+- Snoring Sound Effect
+
+
+44y
+- Icy Tundra Music
+- End Music
 
 
 Levi
@@ -47,19 +45,19 @@ Andrew Fu
 - Midwest Animals Art
 - Rock, Branch, Kayak Niagara Falls Art
 - Niagara Falls Wetness Meter Art
+- Snow Tile Art
 
 
 Neel Wu
 - Chicago Tile Art
 - Niagara Falls Fish Art
+- Ice Tile Art
+- Ice Spike Art
 
 
 Juliet Kozlov
-- Icy Lake Game Design
-
-
-Edward Li
-- Mountain Game Design
+- Icy Tundra Game Design
+- Sound Effects
 
 
 Sean Z
@@ -68,11 +66,10 @@ Sean Z
 
 Marcellino Abdelmalak
 - Programming Chicago Minigame
-- Programming Mountain Minigame
 
 
 Dylan M
-- Programming Icy Lake Minigame
+- Programming Icy Tundra Minigame
 
 
 Playtesters
@@ -83,8 +80,7 @@ Playtesters
 - Edward Li
 
 
-
-Current Board Members
+Board Members
 - President and Programming Head: Nick Vatanshenas
 - Vice President and Sound Head: Miryam Greenstein
 - Art Head: Arman Akhtari
@@ -92,5 +88,7 @@ Current Board Members
 - Secretary: Cody Cascalla
 - Publicist: Minerva You
 - Treasuer: Neeraj Bhuvaneshwaran
+
+Stock sounds from pixabay.com
 
 Special thanks to Mr. Brighton, our club advisor, who provided us a space to meet during the development of the game.
