@@ -105,7 +105,7 @@ hue_variation_max = 1.0
 
 [node name="GreatSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2igbh")
-volume_db = -2.0
+volume_db = -3.0
 bus = &"Drum"
 
 [connection signal="area_entered" from="." to="." method="_on_perfect_area_area_entered"]

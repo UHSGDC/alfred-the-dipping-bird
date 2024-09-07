@@ -214,12 +214,10 @@ position = Vector2(-1, -14)
 curve = SubResource("Curve2D_v6u0x")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(17, 57)
-progress = 135.682
+position = Vector2(-99, 59)
 rotates = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
-rotation = 0.577704
 texture = ExtResource("2_yj5ba")
 offset = Vector2(35.6753, 23.1212)
 

@@ -44,10 +44,10 @@ func start() -> void:
 	update_score_ui()
 
 
-func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_0):
-		$AnimationPlayer.play("finish")
-		end_minigame(1200, "CHETINFG!")
+#func _input(event: InputEvent) -> void:
+	#if Input.is_key_pressed(KEY_L):
+		#$AnimationPlayer.play("finish")
+		#end_minigame(1200, "CHETINFG!")
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -69,7 +69,7 @@ func _on_note_hit(score_to_add: int) -> void:
 		print("score: " + str(scores[cur_beatmap_idx]) + "/" + str(total_notes[cur_beatmap_idx] * 3)) # 3 is the score of perfect
 		
 func update_score_ui() -> void:
-	$UI/Score.text = "Score: %3d/ %3d" % [scores[cur_beatmap_idx], total_notes[cur_beatmap_idx] * 3]
+	$UI/Score.text = "Max Score: %3d\nScore: %3d" % [total_notes[cur_beatmap_idx] * 3,  scores[cur_beatmap_idx]]
 
 
 func _on_rhythm_conductor_beat_reached(beat_position: int) -> void:

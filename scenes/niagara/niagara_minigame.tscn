@@ -67,7 +67,7 @@ position = Vector2(160, 90)
 texture = ExtResource("7_3k8ij")
 
 [node name="FishTimer" parent="." instance=ExtResource("5_ua3ch")]
-starting_max_time = 4.0
+starting_max_time = 5.0
 starting_min_time = 3.0
 
 [node name="GushTimer" parent="." instance=ExtResource("5_ua3ch")]

@@ -93,9 +93,10 @@ func _on_menus_trigger_minigame_kill() -> void:
 
 
 func _on_cutscene_manager_dipping_finished() -> void:
+	cutscene_playing = false
 	current_level = (current_level + 1) as Level # Sets current level to next level. Assumes the levels enum has the levels in order
 	if current_level < Level.size():
-		cutscene_playing = false
+		tutorial_played[current_level] = false
 		play_current_level()
 	else:
 		current_level = 0
