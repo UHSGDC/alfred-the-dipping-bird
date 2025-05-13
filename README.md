@@ -1,5 +1,7 @@
 # Alfred the Dipping Bird
-Alfred the Dipping Bird is a game being developed by UHS GDC. Please find designs [here](https://drive.google.com/drive/folders/1lnitsR1zWVWEHTpg9e8AgMcp_j1iRgpz)
+Alfred the Dipping Bird is now finished and can be played on [itch.io](https://uhs-gdc.itch.io/alfred-the-dipping-bird)
+
+Alfred the Dipping Bird is the University High School Game Dev Club game for 2024. Please find designs [here](https://drive.google.com/drive/folders/1lnitsR1zWVWEHTpg9e8AgMcp_j1iRgpz)
 
 The game is being developed for Windows, Mac, Linux, and Web using Godot 4.2.1
 
